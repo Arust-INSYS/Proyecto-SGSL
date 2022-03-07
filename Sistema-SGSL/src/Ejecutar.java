@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication23;
 
 /**
  *
  * @author Arust
  */
-public class JavaApplication23 {
+public class Ejecutar {
 
     /**
      * @param args the command line arguments

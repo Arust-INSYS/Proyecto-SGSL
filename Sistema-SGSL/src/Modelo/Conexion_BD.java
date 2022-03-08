@@ -19,56 +19,49 @@ import java.util.logging.Logger;
  */
 public class Conexion_BD {
     Connection con;
-            
-    String Conexion ="jdbc:postgresql://localhost:5433/SGSL";
-    String pgUser="postgres";
-    String pgPass="Arust20#";
+
+    String cadConexion = "jdbc:postgresql://localhost:5432/prueba1";
+    String pgUser = "postgres";
+    String pgPass = "1234";
 
     public Conexion_BD() {
-        
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Conexion_BD.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
         try {
-            con= DriverManager.getConnection(Conexion,pgUser,pgPass);
-            System.out.println("Conectado");
+            con = DriverManager.getConnection(cadConexion, pgUser, pgPass);
+            System.out.println("Conexion OK.");
         } catch (SQLException ex) {
             Logger.getLogger(Conexion_BD.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    public ResultSet consulta(String sql){
-        
+
+    public ResultSet colsulta(String sql) {
         try {
             Statement st = con.createStatement();
-            return  st.executeQuery(sql);
+            return st.executeQuery(sql);
         } catch (SQLException ex) {
             Logger.getLogger(Conexion_BD.class.getName()).log(Level.SEVERE, null, ex);
-            
             return null;
         }
-       
     }
-    
     public boolean accion(String sql){
-        boolean correcto;
+        boolean correcto = true;
         try {
             Statement st = con.createStatement();
-            correcto=st.execute(sql);            
+            st.execute(sql);
             st.close();
-            correcto = true;
         } catch (SQLException ex) {
             Logger.getLogger(Conexion_BD.class.getName()).log(Level.SEVERE, null, ex);
-            correcto=false;
+            correcto = false;
         }
         return correcto;
     }
 
+   
     public Connection getCon() {
         return con;
     }

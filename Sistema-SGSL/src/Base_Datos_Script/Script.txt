@@ -1,0 +1,117 @@
+create table Persona (
+id_persona integer not null,
+cedula Varchar(10) not null,
+nombre Varchar(50),
+apellido Varchar(50),
+genero Char,
+Fecha_nacimiento Date,
+Dirección Varchar(100),
+foto bytea,
+CONSTRAINT pk_persona PRIMARY KEY (id_persona)
+);
+
+create table Empleado (
+id_empleado integer not null,
+sueldo  float,
+estado_civil varchar(15),
+fecha_contrato Date,
+id_persona integer,
+CONSTRAINT pk_empleado PRIMARY KEY (id_empleado),
+CONSTRAINT fk_persona FOREIGN KEY (id_persona) REFERENCES Persona (id_persona)
+);
+
+create table Gerente  (
+id_gerente integer,
+cargo_gerente Varchar(30),
+titulo_gerente Varchar(30),
+id_persona integer,
+CONSTRAINT fk_persona FOREIGN KEY (id_persona) REFERENCES Persona (id_persona),
+CONSTRAINT pk_gerente PRIMARY KEY (id_gerente)
+);
+
+create table Cliente (
+id_cliente integer,
+telefono varchar(10),
+id_persona integer,
+CONSTRAINT fk_persona FOREIGN KEY (id_persona) REFERENCES Persona (id_persona),	
+CONSTRAINT pk_cliente PRIMARY KEY (id_cliente)
+);
+ 
+ CREATE TABLE Pedido
+(
+    id_pedido integer NOT NULL,
+    fecha_pedido date,
+	direccion varchar(100) NOT NULL,
+	cantida_servicios integer NOT NULL,
+	total_servicios float NOT NULL,
+	id_cliente integer NOT NULL,
+	id_servicio integer NOT NULL,
+    CONSTRAINT pk_Pedido PRIMARY KEY (id_pedido),
+	CONSTRAINT fk_Cliente FOREIGN KEY (id_cliente) REFERENCES Cliente (id_cliente),
+	CONSTRAINT fk_Servicios FOREIGN KEY (id_servicio) REFERENCES Servicios (id_servicio)
+);
+CREATE TABLE Servicios
+(
+    id_servicio integer NOT NULL,
+    nom_servicio varchar(50) NOT NULL,
+	descri_servicio varchar(150),
+    costo_servicio float NOT NULL,
+	id_empleado integer NOT NULL,
+    CONSTRAINT pk_Servicios PRIMARY KEY (id_servicio),
+	CONSTRAINT fk_Empleado FOREIGN KEY (id_empleado) REFERENCES Empleado (id_empleado)
+	
+);
+CREATE TABLE Detalle_Pedido
+(
+    id_detalle_pedi integer NOT NULL,
+	nom_servicio varchar(50) NOT NULL,
+	id_pedido integer NOT NULL,
+	id_servicio integer NOT NULL,
+    CONSTRAINT pk_Detalle_Pedido PRIMARY KEY (id_detalle_pedi),
+	CONSTRAINT fk_Pedido FOREIGN KEY (id_pedido) REFERENCES Pedido (id_pedido),
+	CONSTRAINT fk_Servicios FOREIGN KEY (id_servicio) REFERENCES Servicios (id_servicio)
+);
+ CREATE TABLE Productos
+(
+    id_producto integer NOT NULL,
+    nom_producto varchar(50) NOT NULL,
+    precio_producto float NOT NULL,
+    cantidad_producto integer NOT NULL,
+	marcar_producto varchar(50) NOT NULL,
+	foto_producto bytea NOT NULL,
+	id_empleado integer NOT NULL,
+	id_bodega integer NOT NULL,
+    CONSTRAINT pk_Productos PRIMARY KEY (id_producto),
+	CONSTRAINT fk_Empleado FOREIGN KEY (id_empleado) REFERENCES Empleado (id_empleado),
+	CONSTRAINT fk_Bodega FOREIGN KEY (id_bodega) REFERENCES Bodega (id_bodega)
+);
+CREATE TABLE Detalle_Servicio
+(
+    id_detalleServicio integer NOT NULL,
+    cantidad integer,
+    nombre_produ varchar(50) NOT NULL,
+    id_servicio integer NOT NULL,
+    id_producto integer NOT NULL,
+    CONSTRAINT pk_Detalle_Servicio PRIMARY KEY (id_detalleServicio),
+	CONSTRAINT fk_Servicios FOREIGN KEY (id_servicio) REFERENCES Servicios (id_servicio),
+	CONSTRAINT fk_Productos FOREIGN KEY (id_producto) REFERENCES Productos (id_producto)
+);
+ CREATE TABLE Comprobante_Pago
+(
+    id_com integer NOT NULL,
+	id_cliente integer NOT NULL,
+	id_pedido integer NOT NULL,
+    descri_com varchar(150) NOT NULL,
+    fecha_com date NOT NULL,
+    valor_cancelar float NOT NULL,
+    CONSTRAINT pk_Comprobante_Pago PRIMARY KEY (id_com),
+	CONSTRAINT fk_Clientes FOREIGN KEY (id_cliente) REFERENCES Cliente (id_cliente),
+	CONSTRAINT fk_Pedidos FOREIGN KEY (id_pedido ) REFERENCES Pedido (id_pedido)
+);
+ CREATE TABLE Bodega
+(
+    id_bodega integer NOT NULL,
+	num_bodega integer NOT NULL,
+	cantidad_bodega integer NOT NULL,
+    CONSTRAINT pk_Bodega PRIMARY KEY (id_bodega)
+);

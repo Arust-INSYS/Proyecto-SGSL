@@ -6,6 +6,7 @@
 package Modelo;
 
 import Modelo.CLASES.Servicios;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,4 +50,48 @@ public class ModeloServicio extends Servicios{
             return null;
         }
     }
+    
+    public boolean creaServicio(){
+        try {
+            String sql;
+            sql= "INSERT INTO Servicios (id_servicio, nom_servicio, descri_servicio, costo_servicio, id_empleado)";
+            sql+="VALUES(?,?,?,?,?)";
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setInt(1, getId_servicio());
+            ps.setString(2, getNom_servicio());
+            ps.setString(3, getDescri_servicio());
+            ps.setDouble(4, getCosto_servicio());
+            ps.setInt(5, getId_empleado());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloServicio.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }    
+    }
+    
+       public boolean ModificarServicio(){
+        try {
+            String sql;
+            sql= "UPDATE producto SET id_servicio=?, nom_servicio=?, descri_servicio=?, costo_servicio=?, id_empleado=? \n" +
+            "WHERE id_servicio = '" +getId_servicio()+ "';";
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setInt(1, getId_servicio());
+            ps.setString(2, getNom_servicio());
+            ps.setString(3, getDescri_servicio());
+            ps.setDouble(4, getCosto_servicio());
+            ps.setInt(5, getId_empleado());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloServicio.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }   
+    }
+      
+    public boolean RemoverServicio(String idservi){
+     String nsql="DELETE FROM servicios WHERE id_servicio ='" +idservi+ "'";
+     return cpg.accion(nsql);
+    }
+    
 }

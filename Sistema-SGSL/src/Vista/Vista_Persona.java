@@ -200,7 +200,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         BtnCancelarPer = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         Txt_ID_Persona = new javax.swing.JTextField();
-        fechanaci = new com.toedter.calendar.JDateChooser();
+        FechaNacimientoPer = new com.toedter.calendar.JDateChooser();
         GrupoBotonGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -319,7 +319,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
                                     .addComponent(TxtDireccionPersona)))
                             .addGroup(DialogoPersonaLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(fechanaci, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(FechaNacimientoPer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DialogoPersonaLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -366,7 +366,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26)
                         .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
-                            .addComponent(fechanaci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(FechaNacimientoPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -503,6 +503,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnRemoverPersona;
     private javax.swing.JButton BtnSeleccionarFoto;
     private javax.swing.JDialog DialogoPersona;
+    private com.toedter.calendar.JDateChooser FechaNacimientoPer;
     private javax.swing.ButtonGroup GrupoBotonGenero;
     private javax.swing.JLabel LblFotoPersona;
     private javax.swing.JRadioButton RadioBtnFemenino;
@@ -514,7 +515,6 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtDireccionPersona;
     private javax.swing.JTextField TxtNombrePersona;
     private javax.swing.JTextField Txt_ID_Persona;
-    private com.toedter.calendar.JDateChooser fechanaci;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

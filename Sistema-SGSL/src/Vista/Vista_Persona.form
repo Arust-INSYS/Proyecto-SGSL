@@ -71,7 +71,7 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="fechanaci" max="32767" attributes="0"/>
+                                  <Component id="FechaNacimientoPer" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -134,7 +134,7 @@
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <Component id="fechanaci" min="-2" max="-2" attributes="0"/>
+                              <Component id="FechaNacimientoPer" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -283,7 +283,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="Txt_ID_Persona">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="fechanaci">
+        <Component class="com.toedter.calendar.JDateChooser" name="FechaNacimientoPer">
         </Component>
       </SubComponents>
     </Container>

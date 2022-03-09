@@ -76,6 +76,15 @@ public class VistaServicio extends javax.swing.JInternalFrame {
         return areadescripcion;
     }
 
+    public JButton getBtnActualizarServicio() {
+        return BtnActualizarServicio;
+    }
+
+    public void setBtnActualizarServicio(JButton BtnActualizarServicio) {
+        this.BtnActualizarServicio = BtnActualizarServicio;
+    }
+    
+
     public void setAreadescripcion(JTextPane areadescripcion) {
         this.areadescripcion = areadescripcion;
     }
@@ -177,6 +186,7 @@ public class VistaServicio extends javax.swing.JInternalFrame {
         BtnImprimirServicio = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblServicio = new javax.swing.JTable();
+        BtnActualizarServicio = new javax.swing.JButton();
 
         jLabel8.setText("Descripción:");
 
@@ -308,9 +318,9 @@ public class VistaServicio extends javax.swing.JInternalFrame {
                 .addComponent(BtnCrearServicio)
                 .addGap(33, 33, 33)
                 .addComponent(BtnEditarServicio)
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
                 .addComponent(BtnRemoverServicio)
-                .addGap(45, 45, 45)
+                .addGap(46, 46, 46)
                 .addComponent(BtnImprimirServicio)
                 .addGap(194, 194, 194))
         );
@@ -350,11 +360,16 @@ public class VistaServicio extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 824, 257));
 
+        BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnActualizarServicio.setText("Actualizar");
+        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnActualizarServicio;
     private javax.swing.JButton BtnCrearServicio;
     private javax.swing.JButton BtnEditarServicio;
     private javax.swing.JButton BtnImprimirServicio;

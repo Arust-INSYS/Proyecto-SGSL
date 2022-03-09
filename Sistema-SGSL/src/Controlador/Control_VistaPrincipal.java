@@ -5,8 +5,8 @@
  */
 package Controlador;
 
-import Modelo.ModeloServicio;
-import Vista.VistaServicio;
+import Modelo.Modelo_Servicio;
+import Vista.Vista_Servicio;
 import Vista.Vista_Principal;
 
 /**
@@ -26,10 +26,10 @@ public class Control_VistaPrincipal {
         
     }
     private void Crud_Servicios(){
-        VistaServicio vista_servi = new VistaServicio();
-        ModeloServicio modelo_servi = new ModeloServicio();
+        Vista_Servicio vista_servi = new Vista_Servicio();
+        Modelo_Servicio modelo_servi = new Modelo_Servicio();
         vista_menu.getDkp_pane_principal().add(vista_servi);
-        ControladorServicio controlador = new ControladorServicio(modelo_servi, vista_servi);
+        Controlador_Servicio controlador = new Controlador_Servicio(modelo_servi, vista_servi);
         controlador.iniciaControl();
     }
 }

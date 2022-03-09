@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+
 /**
  *
  * @author Arust
@@ -28,13 +31,16 @@ public class Vista_Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
+        subMenu_Persona = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
+        subMenu_servicios = new javax.swing.JButton();
         dkp_pane_principal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         menu_principal = new javax.swing.JMenuBar();
         menu_persona = new javax.swing.JMenu();
-        submenu_clientes = new javax.swing.JMenuItem();
-        submenu_empleados = new javax.swing.JMenuItem();
+        menuItem_clientes = new javax.swing.JMenuItem();
+        menuItem_empleados = new javax.swing.JMenuItem();
         menu_servicos = new javax.swing.JMenu();
         menu_pedidos = new javax.swing.JMenu();
         menu_productos = new javax.swing.JMenu();
@@ -42,6 +48,19 @@ public class Vista_Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jToolBar1.setRollover(true);
+
+        subMenu_Persona.setText("Persona-Icono");
+        subMenu_Persona.setFocusable(false);
+        subMenu_Persona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        subMenu_Persona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(subMenu_Persona);
+        jToolBar1.add(jSeparator1);
+
+        subMenu_servicios.setText("Servicos");
+        subMenu_servicios.setFocusable(false);
+        subMenu_servicios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        subMenu_servicios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(subMenu_servicios);
 
         javax.swing.GroupLayout dkp_pane_principalLayout = new javax.swing.GroupLayout(dkp_pane_principal);
         dkp_pane_principal.setLayout(dkp_pane_principalLayout);
@@ -71,13 +90,13 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         menu_persona.setText("Persona");
 
-        submenu_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        submenu_clientes.setText("Clientes");
-        menu_persona.add(submenu_clientes);
+        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_clientes.setText("Clientes");
+        menu_persona.add(menuItem_clientes);
 
-        submenu_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        submenu_empleados.setText("Empleados");
-        menu_persona.add(submenu_empleados);
+        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_empleados.setText("Empleados");
+        menu_persona.add(menuItem_empleados);
 
         menu_principal.add(menu_persona);
 
@@ -113,18 +132,46 @@ public class Vista_Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getSubMenu_Persona() {
+        return subMenu_Persona;
+    }
+
+    public void setSubMenu_Persona(JButton subMenu_Persona) {
+        this.subMenu_Persona = subMenu_Persona;
+    }
+
+    public JButton getSubMenu_servicios() {
+        return subMenu_servicios;
+    }
+
+    public void setSubMenu_servicios(JButton subMenu_servicios) {
+        this.subMenu_servicios = subMenu_servicios;
+    }
+
+    
+    public JDesktopPane getDkp_pane_principal() {
+        return dkp_pane_principal;
+    }
+
+    public void setDkp_pane_principal(JDesktopPane dkp_pane_principal) {
+        this.dkp_pane_principal = dkp_pane_principal;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dkp_pane_principal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenuItem menuItem_clientes;
+    private javax.swing.JMenuItem menuItem_empleados;
     private javax.swing.JMenu menu_pedidos;
     private javax.swing.JMenu menu_persona;
     private javax.swing.JMenuBar menu_principal;
     private javax.swing.JMenu menu_productos;
     private javax.swing.JMenu menu_servicos;
-    private javax.swing.JMenuItem submenu_clientes;
-    private javax.swing.JMenuItem submenu_empleados;
+    private javax.swing.JButton subMenu_Persona;
+    private javax.swing.JButton subMenu_servicios;
     // End of variables declaration//GEN-END:variables
 }

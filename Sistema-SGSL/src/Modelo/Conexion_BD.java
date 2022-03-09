@@ -20,9 +20,9 @@ import java.util.logging.Logger;
 public class Conexion_BD {
     Connection con;
 
-    String cadConexion = "jdbc:postgresql://localhost:5432/prueba1";
-    String pgUser = "postgres";
-    String pgPass = "1234";
+    String cadConexion = "jdbc:postgresql://localhost:5432/d77vqcomjq39mn";
+    String pgUser = "vkixawnamrivic";
+    String pgPass = "c9e001aabc86d62df5ceefb07e8859c8c569046a935bb10875c9870d89745b51";
 
     public Conexion_BD() {
         try {

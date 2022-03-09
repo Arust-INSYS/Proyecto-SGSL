@@ -70,7 +70,7 @@ public class ModeloServicio extends Servicios{
         }    
     }
     
-       public boolean ModificarServicio(){
+    public boolean ModificarServicio(){
         try {
             String sql;
             sql= "UPDATE producto SET id_servicio=?, nom_servicio=?, descri_servicio=?, costo_servicio=?, id_empleado=? \n" +

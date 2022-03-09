@@ -15,9 +15,9 @@ import javax.swing.JTextPane;
  *
  * @author lorena
  */
-public class VistaServicio extends javax.swing.JInternalFrame {
+public class Vista_Servicio extends javax.swing.JInternalFrame {
     
-    public VistaServicio() {
+    public Vista_Servicio() {
         initComponents();
     }
 

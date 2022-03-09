@@ -18,12 +18,12 @@ import java.util.logging.Logger;
  *
  * @author lorena
  */
-public class ModeloServicio extends Servicios{
+public class Modelo_Servicio extends Servicios{
     Conexion_BD cpg = new Conexion_BD();
-    public ModeloServicio() {
+    public Modelo_Servicio() {
     }
 
-    public ModeloServicio(int id_servicio, String nom_servicio, String descri_servicio, Double costo_servicio, int id_empleado) {
+    public Modelo_Servicio(int id_servicio, String nom_servicio, String descri_servicio, Double costo_servicio, int id_empleado) {
         super(id_servicio, nom_servicio, descri_servicio, costo_servicio, id_empleado);
     }
     
@@ -46,7 +46,7 @@ public class ModeloServicio extends Servicios{
             rs.close();
             return lista;
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloServicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Modelo_Servicio.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -65,7 +65,7 @@ public class ModeloServicio extends Servicios{
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloServicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Modelo_Servicio.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }    
     }
@@ -84,7 +84,7 @@ public class ModeloServicio extends Servicios{
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloServicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Modelo_Servicio.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }   
     }

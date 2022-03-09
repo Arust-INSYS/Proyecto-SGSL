@@ -6,8 +6,8 @@
 package Controlador;
 
 import Modelo.CLASES.Servicios;
-import Modelo.ModeloServicio;
-import Vista.VistaServicio;
+import Modelo.Modelo_Servicio;
+import Vista.Vista_Servicio;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.FileInputStream;
@@ -24,11 +24,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author lorena
  */
-public class ControladorServicio {
-    private ModeloServicio modelo_servi;
-    private VistaServicio vista_servi;
+public class Controlador_Servicio {
+    private Modelo_Servicio modelo_servi;
+    private Vista_Servicio vista_servi;
 
-    public ControladorServicio(ModeloServicio modelo_servi, VistaServicio vista_servi) {
+    public Controlador_Servicio(Modelo_Servicio modelo_servi, Vista_Servicio vista_servi) {
         this.modelo_servi = modelo_servi;
         this.vista_servi = vista_servi;
         vista_servi.setVisible(true);
@@ -75,7 +75,7 @@ public class ControladorServicio {
                     
 
 
-                    ModeloServicio servi = new ModeloServicio();
+                    Modelo_Servicio servi = new Modelo_Servicio();
                     servi.setId_servicio(Integer.parseInt(String.valueOf(id_servi)));
                     servi.setNom_servicio(nombre);
                     servi.setDescri_servicio(descripcion);
@@ -102,7 +102,7 @@ public class ControladorServicio {
                     String id_emple = vista_servi.getTxtid_empleado().getText().toString();
 
 
-                    ModeloServicio servimod = new ModeloServicio();
+                    Modelo_Servicio servimod = new Modelo_Servicio();
                     servimod.setId_servicio(Integer.parseInt(String.valueOf(id_servi)));
                     servimod.setNom_servicio(nombre);
                     servimod.setDescri_servicio(descripcion);
@@ -123,7 +123,7 @@ public class ControladorServicio {
         int seleccionado = vista_servi.getTblServicio().getSelectedRow();
         int respuesta=0;
         Component rootPane = null;
-        ModeloServicio servieli = new ModeloServicio();
+        Modelo_Servicio servieli = new Modelo_Servicio();
           if(seleccionado !=-1){
             String idservi = vista_servi.getTblServicio().getValueAt(seleccionado, 0).toString();
             

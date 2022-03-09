@@ -26,10 +26,10 @@ public class Control_VistaPrincipal {
         
     }
     private void Crud_Servicios(){
-        VistaServicio vista = new VistaServicio();
-        ModeloServicio modelo = new ModeloServicio();
-        vista_menu.getDkp_pane_principal().add(vista);
-        ControladorServicio controlador = new ControladorServicio(modelo, vista);
+        VistaServicio vista_servi = new VistaServicio();
+        ModeloServicio modelo_servi = new ModeloServicio();
+        vista_menu.getDkp_pane_principal().add(vista_servi);
+        ControladorServicio controlador = new ControladorServicio(modelo_servi, vista_servi);
         controlador.iniciaControl();
     }
 }

@@ -31,6 +31,7 @@ public class ControladorServicio {
     public ControladorServicio(ModeloServicio modelo_servi, VistaServicio vista_servi) {
         this.modelo_servi = modelo_servi;
         this.vista_servi = vista_servi;
+        vista_servi.setVisible(true);
     }
     
     public void iniciaControl(){

@@ -1,43 +1,40 @@
 package Controlador;
 
 import Modelo.Modelo_productos;
-import Vista.vista_producto;
+import Vista.Vista_productos;
+
 
 public class Controlador_productos {
-private Modelo_productos modelpro;
-private vista_producto vispro;
+    private Modelo_productos modelpro;
+    private Vista_productos vispro;
 
-    public Controlador_productos(Modelo_productos modelpro, vista_producto vispro) {
+    public Controlador_productos(Modelo_productos modelpro, Vista_productos vispro) {
         this.modelpro = modelpro;
         this.vispro = vispro;
-      
-    }
-     public void iniciaControl(){
-                 vispro.getBtncrear().addActionListener(j -> abrirdialo(1));
-       
-    }
     
 
-    private void abrirdialo(int num) {
-        String title;
-        if (num == 1) {
-     //       limm();
-            title = "crear nueva producto";
-            vispro.getDialogproducto().setName("CREAR");
-        } else {
-       //     editar();
-            title = "editar producto";
-            vispro.getDialogproducto().setName("EDITAR");
+            vispro.setVisible(true);
+    }
+    
+    public void iniciaControl(){
+        vispro.getBtnCrearServicio().addActionListener(l->abrirDialogo_pro(3));
+        vispro.getBtnEditarServicio().addActionListener(l->abrirDialogo_pro(4));
+            
+    }
+    
+    private void abrirDialogo_pro(int ce){
+      String title;
+        if(ce==3){
+            title="Crear nuevo servicio";
+            vispro.getDialog_Crear().setName("crear");
+        }else{
+            title="Editar servicio";
+            vispro.getDialog_Crear().setName("editar");
         }
-        vispro.getDialogproducto().setLocationRelativeTo(null);
-        vispro.getDialogproducto().setSize(630, 400);
-//        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-//        int x = (int) ((dimension.getWidth() - vispro.getDalproduc().getWidth()) / 2);
-//        int y = (int) ((dimension.getHeight() -vispro.getDalproduc().getHeight()) / 2);
-//        vispro.getDalproduc().setLocation(x, y);
-        vispro.getDialogproducto().setTitle(title);
-        vispro.getDialogproducto().setVisible(true);
+        vispro.getDialog_Crear().setLocationRelativeTo(vispro);
+        vispro.getDialog_Crear().setSize(620,500);
+        vispro.getDialog_Crear().setTitle(title);
+        vispro.getDialog_Crear().setVisible(true); 
     }
     
-
 }

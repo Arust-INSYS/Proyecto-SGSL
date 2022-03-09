@@ -1,21 +1,64 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
-/**
- *
- * @author LENOVO
- */
-public class vista_producto extends javax.swing.JFrame {
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JTextField;
+
+public class vista_producto extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form vista_producto
      */
     public vista_producto() {
         initComponents();
+    }
+
+    public JButton getBTNREPORTE() {
+        return BTNREPORTE;
+    }
+
+    public void setBTNREPORTE(JButton BTNREPORTE) {
+        this.BTNREPORTE = BTNREPORTE;
+    }
+
+    public JButton getBtncrear() {
+        return btncrear;
+    }
+
+    public void setBtncrear(JButton btncrear) {
+        this.btncrear = btncrear;
+    }
+
+    public JButton getBtneditar() {
+        return btneditar;
+    }
+
+    public void setBtneditar(JButton btneditar) {
+        this.btneditar = btneditar;
+    }
+
+    public JButton getBtneleminar() {
+        return btneleminar;
+    }
+
+    public void setBtneleminar(JButton btneleminar) {
+        this.btneleminar = btneleminar;
+    }
+
+    public JDialog getDialogproducto() {
+        return dialogproducto;
+    }
+
+    public void setDialogproducto(JDialog dialogproducto) {
+        this.dialogproducto = dialogproducto;
+    }
+
+    public JTextField getTxtbuscar() {
+        return txtbuscar;
+    }
+
+    public void setTxtbuscar(JTextField txtbuscar) {
+        this.txtbuscar = txtbuscar;
     }
 
     /**
@@ -27,7 +70,7 @@ public class vista_producto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
+        dialogproducto = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         txtbuscar = new javax.swing.JTextField();
         btncrear = new javax.swing.JButton();
@@ -39,14 +82,14 @@ public class vista_producto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         BTNREPORTE = new javax.swing.JButton();
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout dialogproductoLayout = new javax.swing.GroupLayout(dialogproducto.getContentPane());
+        dialogproducto.getContentPane().setLayout(dialogproductoLayout);
+        dialogproductoLayout.setHorizontalGroup(
+            dialogproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        dialogproductoLayout.setVerticalGroup(
+            dialogproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -130,48 +173,13 @@ public class vista_producto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vista_producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vista_producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vista_producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vista_producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new vista_producto().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNREPORTE;
     private javax.swing.JButton btncrear;
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btneleminar;
+    private javax.swing.JDialog dialogproducto;
     private javax.swing.JButton jButton3;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

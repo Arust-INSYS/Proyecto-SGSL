@@ -34,6 +34,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         subMenu_Persona = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         subMenu_servicios = new javax.swing.JButton();
+        sub_menupro = new javax.swing.JButton();
         dkp_pane_principal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -61,6 +62,12 @@ public class Vista_Principal extends javax.swing.JFrame {
         subMenu_servicios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         subMenu_servicios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(subMenu_servicios);
+
+        sub_menupro.setText("Productos");
+        sub_menupro.setFocusable(false);
+        sub_menupro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sub_menupro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(sub_menupro);
 
         javax.swing.GroupLayout dkp_pane_principalLayout = new javax.swing.GroupLayout(dkp_pane_principal);
         dkp_pane_principal.setLayout(dkp_pane_principalLayout);
@@ -90,11 +97,11 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         menu_persona.setText("Persona");
 
-        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         menuItem_clientes.setText("Clientes");
         menu_persona.add(menuItem_clientes);
 
-        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         menuItem_empleados.setText("Empleados");
         menu_persona.add(menuItem_empleados);
 
@@ -173,5 +180,14 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu menu_servicos;
     private javax.swing.JButton subMenu_Persona;
     private javax.swing.JButton subMenu_servicios;
+    private javax.swing.JButton sub_menupro;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getSub_menupro() {
+        return sub_menupro;
+    }
+
+    public void setSub_menupro(JButton sub_menupro) {
+        this.sub_menupro = sub_menupro;
+    }
 }

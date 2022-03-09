@@ -6,8 +6,10 @@
 package Controlador;
 
 import Modelo.Modelo_Servicio;
+import Modelo.Modelo_productos;
 import Vista.Vista_Servicio;
 import Vista.Vista_Principal;
+import Vista.vista_producto;
 
 /**
  *
@@ -23,7 +25,7 @@ public class Control_VistaPrincipal {
     
     public void iniciaControl(){
         vista_menu.getSubMenu_servicios().addActionListener(l->Crud_Servicios());
-        
+        vista_menu.getSub_menupro().addActionListener(l->Crud_productos());
     }
     private void Crud_Servicios(){
         Vista_Servicio vista_servi = new Vista_Servicio();
@@ -32,4 +34,12 @@ public class Control_VistaPrincipal {
         Controlador_Servicio controlador = new Controlador_Servicio(modelo_servi, vista_servi);
         controlador.iniciaControl();
     }
+    private void Crud_productos(){
+        vista_producto vista_pro = new vista_producto();
+        Modelo_productos modelo_pro = new Modelo_productos();
+        vista_menu.getDkp_pane_principal().add(vista_pro);
+        Controlador_productos conpro= new Controlador_productos(modelo_pro, vista_pro);
+        conpro.iniciaControl();
+    }
+    
 }

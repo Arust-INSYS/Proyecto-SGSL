@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class Conexion_BD {
     Connection con;
 
-    String cadConexion = "jdbc:postgresql://localhost:5432/d77vqcomjq39mn";
+    String cadConexion = "jdbc:postgresql://ec2-54-145-224-156.compute-1.amazonaws.com:5432/d77vqcomjq39mn";
     String pgUser = "vkixawnamrivic";
     String pgPass = "c9e001aabc86d62df5ceefb07e8859c8c569046a935bb10875c9870d89745b51";
 

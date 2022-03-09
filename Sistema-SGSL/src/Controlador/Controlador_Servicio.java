@@ -64,13 +64,13 @@ public class Controlador_Servicio {
     private void crearEditarServicio(){
         if(vista_servi.getDialog_Crear().getName()=="crear"){
             //Insertar
-              if ( vista_servi.getTxtidservicio().getText().equals("")||  vista_servi.getTxtnom_servicio().getText().equals("") ||
-                 vista_servi.getAreadescripcion().getText().equals("") ||  vista_servi.getTxtcosto_servicio().getText().equals("")|| vista_servi.getTxtid_empleado().getText().equals("")){
+              if ( vista_servi.getTxtidservicio().getText().equals("")||vista_servi.getTxtnom_servicio().getText().equals("") ||
+                 vista_servi.getDescri_servicio().getText().equals("") ||  vista_servi.getTxtcosto_servicio().getText().equals("")|| vista_servi.getTxtid_empleado().getText().equals("")){
                 JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS CAMPOS");
               }else{
                     String id_servi = vista_servi.getTxtidservicio().getText().toString();
                     String nombre = vista_servi.getTxtnom_servicio().getText();
-                    String descripcion = vista_servi.getAreadescripcion().getText();
+                    String descripcion = vista_servi.getDescri_servicio().getText();
                     String costo= vista_servi.getTxtcosto_servicio().getText();
                     String id_emple = vista_servi.getTxtid_empleado().getText().toString();
                     
@@ -93,12 +93,12 @@ public class Controlador_Servicio {
            
         }else if (vista_servi.getDialog_Crear().getName()=="editar"){    
                if ( vista_servi.getTxtidservicio().getText().equals("")||  vista_servi.getTxtnom_servicio().getText().equals("") ||
-                 vista_servi.getAreadescripcion().getText().equals("") ||  vista_servi.getTxtcosto_servicio().getText().equals("")|| vista_servi.getTxtid_empleado().getText().equals("")) {
+                 vista_servi.getDescri_servicio().getText().equals("") ||  vista_servi.getTxtcosto_servicio().getText().equals("")|| vista_servi.getTxtid_empleado().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS CAMPOS");
               }else{
                     String id_servi = vista_servi.getTxtidservicio().getText().toString();
                     String nombre = vista_servi.getTxtnom_servicio().getText();
-                    String descripcion = vista_servi.getAreadescripcion().getText();
+                    String descripcion = vista_servi.getDescri_servicio().getText();
                     String costo= vista_servi.getTxtcosto_servicio().getText();
                     String id_emple = vista_servi.getTxtid_empleado().getText().toString();
 
@@ -151,7 +151,7 @@ public class Controlador_Servicio {
           int cod = Integer.parseInt(id);
               vista_servi.getTxtidservicio().setText(id);
               vista_servi.getTxtnom_servicio().setText(vista_servi.getTblServicio().getValueAt(seleccionado, 1).toString());
-              vista_servi.getAreadescripcion().setText(vista_servi.getTblServicio().getValueAt(seleccionado, 2).toString());
+              vista_servi.getDescri_servicio().setText(vista_servi.getTblServicio().getValueAt(seleccionado, 2).toString());
               vista_servi.getTxtcosto_servicio().setText(vista_servi.getTblServicio().getValueAt(seleccionado, 3).toString());
               vista_servi.getTxtid_empleado().setText(String.valueOf(vista_servi.getTblServicio().getValueAt(seleccionado, 4)));
               
@@ -165,7 +165,7 @@ public class Controlador_Servicio {
       vista_servi.getTxtidservicio().setText("");
       vista_servi.getTxtnom_servicio().setText("");
       vista_servi.getTxtcosto_servicio().setText("");
-      vista_servi.getAreadescripcion().setText("");
+      vista_servi.getDescri_servicio().setText("");
       vista_servi.getTxtid_empleado().setText("");
     }
     

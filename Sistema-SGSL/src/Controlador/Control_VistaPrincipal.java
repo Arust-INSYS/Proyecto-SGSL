@@ -42,4 +42,5 @@ public class Control_VistaPrincipal {
         conpro.iniciaControl();
     }
     
+    
 }

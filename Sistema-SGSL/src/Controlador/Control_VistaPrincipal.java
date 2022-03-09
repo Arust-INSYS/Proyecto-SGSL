@@ -9,7 +9,7 @@ import Modelo.Modelo_Servicio;
 import Modelo.Modelo_productos;
 import Vista.Vista_Servicio;
 import Vista.Vista_Principal;
-import Vista.vista_producto;
+import Vista.Vista_productos;
 
 /**
  *
@@ -35,7 +35,7 @@ public class Control_VistaPrincipal {
         controlador.iniciaControl();
     }
     private void Crud_productos(){
-        vista_producto vista_pro = new vista_producto();
+        Vista_productos vista_pro = new Vista_productos();
         Modelo_productos modelo_pro = new Modelo_productos();
         vista_menu.getDkp_pane_principal().add(vista_pro);
         Controlador_productos conpro= new Controlador_productos(modelo_pro, vista_pro);

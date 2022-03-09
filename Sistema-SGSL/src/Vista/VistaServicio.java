@@ -16,10 +16,7 @@ import javax.swing.JTextPane;
  * @author lorena
  */
 public class VistaServicio extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form VistaServicio
-     */
+    
     public VistaServicio() {
         initComponents();
     }

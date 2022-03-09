@@ -14,21 +14,22 @@ import Vista.Vista_Principal;
  * @author Arust
  */
 public class Control_VistaPrincipal {
-    
-     Vista_Principal vista_menu;
+    Vista_Principal vista_menu;
     
     public Control_VistaPrincipal(Vista_Principal vista_menu){
         this.vista_menu=vista_menu;
         vista_menu.setVisible(true);
     }
+    
     public void iniciaControl(){
-        
         vista_menu.getSubMenu_servicios().addActionListener(l->Crud_Servicios());
+        
     }
     private void Crud_Servicios(){
-//        ModeloServicio modelo= new  ModeloServicio();
         VistaServicio vista = new VistaServicio();
+        ModeloServicio modelo = new ModeloServicio();
         vista_menu.getDkp_pane_principal().add(vista);
-        
+        ControladorServicio controlador = new ControladorServicio(modelo, vista);
+        controlador.iniciaControl();
     }
 }

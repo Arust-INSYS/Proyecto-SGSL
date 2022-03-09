@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import com.toedter.calendar.JDateChooser;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -168,6 +170,30 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     public void setTxtNombrePersona(JTextField TxtNombrePersona) {
         this.TxtNombrePersona = TxtNombrePersona;
     }
+
+    public JDateChooser getFechaNacimientoPer() {
+        return FechaNacimientoPer;
+    }
+
+    public void setFechaNacimientoPer(JDateChooser FechaNacimientoPer) {
+        this.FechaNacimientoPer = FechaNacimientoPer;
+    }
+
+    public ButtonGroup getGrupoBotonGenero() {
+        return GrupoBotonGenero;
+    }
+
+    public void setGrupoBotonGenero(ButtonGroup GrupoBotonGenero) {
+        this.GrupoBotonGenero = GrupoBotonGenero;
+    }
+
+    public JTextField getTxt_ID_Persona() {
+        return Txt_ID_Persona;
+    }
+
+    public void setTxt_ID_Persona(JTextField Txt_ID_Persona) {
+        this.Txt_ID_Persona = Txt_ID_Persona;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -264,6 +290,8 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         BtnCancelarPer.setText("Cancelar");
 
         jLabel10.setText("Id_Persona");
+
+        FechaNacimientoPer.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout DialogoPersonaLayout = new javax.swing.GroupLayout(DialogoPersona.getContentPane());
         DialogoPersona.getContentPane().setLayout(DialogoPersonaLayout);
@@ -465,7 +493,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "Nombres", "Apellidos", "Edad", "Telefono", "Sexo", "Sueldo", "Cupo", "Foto"
+                "id_persona", "Cédula ", "Nombre ", "Apellido ", "Genero ", "Fecha_nacimiento ", "Dirección ", "Foto"
             }
         ));
         jScrollPane1.setViewportView(TblPersonas);

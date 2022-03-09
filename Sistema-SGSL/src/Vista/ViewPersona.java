@@ -200,6 +200,7 @@ public class ViewPersona extends javax.swing.JInternalFrame {
         BtnCancelarPer = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         Txt_ID_Persona = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         GrupoBotonGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -301,16 +302,20 @@ public class ViewPersona extends javax.swing.JInternalFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel6)
                             .addComponent(jLabel4))
-                        .addGap(20, 20, 20)
                         .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(DialogoPersonaLayout.createSequentialGroup()
-                                .addComponent(RadioBtnMasculino)
+                                .addGap(20, 20, 20)
+                                .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(DialogoPersonaLayout.createSequentialGroup()
+                                        .addComponent(RadioBtnMasculino)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(RadioBtnFemenino))
+                                    .addComponent(TxtDireccionPersona)
+                                    .addComponent(TxtApellidoPersona)
+                                    .addComponent(TxtNombrePersona, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(DialogoPersonaLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(RadioBtnFemenino)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(TxtDireccionPersona)
-                            .addComponent(TxtApellidoPersona)
-                            .addComponent(TxtNombrePersona, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DialogoPersonaLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -354,8 +359,10 @@ public class ViewPersona extends javax.swing.JInternalFrame {
                             .addGroup(DialogoPersonaLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4)))
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel5)
+                        .addGap(25, 25, 25)
+                        .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -503,6 +510,7 @@ public class ViewPersona extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtDireccionPersona;
     private javax.swing.JTextField TxtNombrePersona;
     private javax.swing.JTextField Txt_ID_Persona;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

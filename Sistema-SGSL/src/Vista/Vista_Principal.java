@@ -50,7 +50,7 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        subMenu_Persona.setText("Persona-Icono");
+        subMenu_Persona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-persona-femenina-24.png"))); // NOI18N
         subMenu_Persona.setFocusable(false);
         subMenu_Persona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         subMenu_Persona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

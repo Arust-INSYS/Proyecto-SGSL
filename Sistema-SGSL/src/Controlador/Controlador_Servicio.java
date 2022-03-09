@@ -19,6 +19,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.ws.Holder;
 
 /**
  *
@@ -64,7 +65,7 @@ public class Controlador_Servicio {
         if(vista_servi.getDialog_Crear().getName()=="crear"){
             //Insertar
               if ( vista_servi.getTxtidservicio().getText().equals("")||  vista_servi.getTxtnom_servicio().getText().equals("") ||
-                 vista_servi.getAreadescripcion().getText().equals("") ||  vista_servi.getTxtcosto_servicio().getText().equals("")|| vista_servi.getTxtid_empleado().getText().equals("")) {
+                 vista_servi.getAreadescripcion().getText().equals("") ||  vista_servi.getTxtcosto_servicio().getText().equals("")|| vista_servi.getTxtid_empleado().getText().equals("")){
                 JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS CAMPOS");
               }else{
                     String id_servi = vista_servi.getTxtidservicio().getText().toString();
@@ -170,24 +171,24 @@ public class Controlador_Servicio {
     
     private void CargarProductos(){
         
-//        //Enlazar el modelo de tabla con mi controlador.
-//        DefaultTableModel tblModel;
-//        tblModel=(DefaultTableModel)vista_servi.getTblServicio().getModel();
-//        tblModel.setNumRows(0);//limpio filas de la tabla.
-//
-//        List<Servicios> listap=modelo_servi.listarServicios();//Enlazo al Modelo y obtengo los datos
-//        Holder<Integer> i = new Holder<>(0);//contador para el no. fila
-//        listap.stream().forEach(pe->{
-//            
-//            tblModel.addRow(new Object[6]);//Creo una fila vacia/
-//            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 0);
-//            vista_servi.getTblServicio().setValueAt(pe.getNom_servicio(), i.value, 1);
-//            vista_servi.getTblServicio().setValueAt(pe.getDescri_servicio(), i.value, 2);
-//            vista_servi.getTblServicio().setValueAt(pe.getCosto_servicio(), i.value, 3);
-//            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 5);
-//            
-//            i.value++;
-//        });
+        //Enlazar el modelo de tabla con mi controlador.
+        DefaultTableModel tblModel;
+        tblModel=(DefaultTableModel)vista_servi.getTblServicio().getModel();
+        tblModel.setNumRows(0);//limpio filas de la tabla.
+
+        List<Servicios> listap=modelo_servi.listarServicios();//Enlazo al Modelo y obtengo los datos
+        Holder<Integer> i = new Holder<>(0);//contador para el no. fila
+        listap.stream().forEach(pe->{
+            
+            tblModel.addRow(new Object[6]);//Creo una fila vacia/
+            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 0);
+            vista_servi.getTblServicio().setValueAt(pe.getNom_servicio(), i.value, 1);
+            vista_servi.getTblServicio().setValueAt(pe.getDescri_servicio(), i.value, 2);
+            vista_servi.getTblServicio().setValueAt(pe.getCosto_servicio(), i.value, 3);
+            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 5);
+            
+            i.value++;
+        });
         
     }
     

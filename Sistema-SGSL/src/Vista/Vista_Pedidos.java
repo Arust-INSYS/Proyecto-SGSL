@@ -5,6 +5,13 @@
  */
 package Vista;
 
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author HP
@@ -44,6 +51,7 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         nombreServicios = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         txtDirección = new javax.swing.JTextField();
+        fechaPedido = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPedidos = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -108,16 +116,19 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtIdClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(77, 77, 77)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(23, 23, 23)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(numeroServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(nombreServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(258, 258, 258)))))
+                            .addComponent(fechaPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,10 +144,12 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
                         .addComponent(btnEliminar)
                         .addComponent(btnImprimir)))
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addComponent(fechaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -163,11 +176,6 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tablaPedidos);
 
         btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -208,10 +216,109 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
 
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnCrear() {
+        return btnCrear;
+    }
+
+    public void setBtnCrear(JButton btnCrear) {
+        this.btnCrear = btnCrear;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public JButton getBtnImprimir() {
+        return btnImprimir;
+    }
+
+    public void setBtnImprimir(JButton btnImprimir) {
+        this.btnImprimir = btnImprimir;
+    }
+
+    public JDateChooser getFechaPedido() {
+        return fechaPedido;
+    }
+
+    public void setFechaPedido(JDateChooser fechaPedido) {
+        this.fechaPedido = fechaPedido;
+    }
+
+    public JComboBox<String> getNombreServicios() {
+        return nombreServicios;
+    }
+
+    public void setNombreServicios(JComboBox<String> nombreServicios) {
+        this.nombreServicios = nombreServicios;
+    }
+
+    public JSpinner getNumeroServicios() {
+        return numeroServicios;
+    }
+
+    public void setNumeroServicios(JSpinner numeroServicios) {
+        this.numeroServicios = numeroServicios;
+    }
+
+    public JTable getTablaPedidos() {
+        return tablaPedidos;
+    }
+
+    public void setTablaPedidos(JTable tablaPedidos) {
+        this.tablaPedidos = tablaPedidos;
+    }
+
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public void setTxtBuscar(JTextField txtBuscar) {
+        this.txtBuscar = txtBuscar;
+    }
+
+    public JTextField getTxtDirección() {
+        return txtDirección;
+    }
+
+    public void setTxtDirección(JTextField txtDirección) {
+        this.txtDirección = txtDirección;
+    }
+
+    public JTextField getTxtIdClientes() {
+        return txtIdClientes;
+    }
+
+    public void setTxtIdClientes(JTextField txtIdClientes) {
+        this.txtIdClientes = txtIdClientes;
+    }
+
+    public JTextField getTxtIdPedido() {
+        return txtIdPedido;
+    }
+
+    public void setTxtIdPedido(JTextField txtIdPedido) {
+        this.txtIdPedido = txtIdPedido;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -219,6 +326,7 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnImprimir;
+    private com.toedter.calendar.JDateChooser fechaPedido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -16,12 +16,12 @@ import javax.swing.JTextField;
  *
  * @author DELL
  */
-public class ViewPersona extends javax.swing.JInternalFrame {
+public class Vista_Persona extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ViewPersona
      */
-    public ViewPersona() {
+    public Vista_Persona() {
         initComponents();
     }
 

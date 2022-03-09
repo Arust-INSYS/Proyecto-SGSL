@@ -51,14 +51,14 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         nombreServicios = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         txtDirección = new javax.swing.JTextField();
-        fechaPedido = new com.toedter.calendar.JDateChooser();
+        fechaPedido = new org.netbeans.modules.form.InvalidComponent();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPedidos = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Buscar:");
 
@@ -332,7 +332,7 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnImprimir;
-    private com.toedter.calendar.JDateChooser fechaPedido;
+    private org.netbeans.modules.form.InvalidComponent fechaPedido;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

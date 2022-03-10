@@ -266,7 +266,8 @@ public class Controlador_Persona {
             }
 
         } else {
-            JOptionPane.showMessageDialog(vistaPer, "Error.");
+            JOptionPane.showMessageDialog(vistaPer, "Error nu.");
+            System.out.println("error");
         }
     }
 }

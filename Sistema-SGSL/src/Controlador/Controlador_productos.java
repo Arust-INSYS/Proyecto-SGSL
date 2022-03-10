@@ -37,6 +37,7 @@ public class Controlador_productos {
         vispro.getBtnEditarServicio().addActionListener(l->abrirDialogo_pro(4));
         vispro.getBtnexaminar().addActionListener(l->examifoto());
             vispro.getBtnActualizarServicio().addActionListener(l->cargarproduc());
+            vispro.getBtnAceptar_pro1().addActionListener(l->crear());
 
     }
      private void examifoto() {
@@ -71,41 +72,60 @@ public class Controlador_productos {
     }
     
         private void cargarproduc() {
+            System.out.println("1");
         vispro.getTblproduc().setDefaultRenderer(Object.class, new Imangentabla());
+                    System.out.println("2");
         vispro.getTblproduc().setRowHeight(100);
+                    System.out.println("3");
         DefaultTableModel ta;
+                    System.out.println("4");
         ta = (DefaultTableModel) vispro.getTblproduc().getModel();
+                    System.out.println("5");
         ta.setNumRows(0);
+                    System.out.println("6");
         List<Productos> lisproduc = modelpro.listarproduc();
         Holder<Integer> i = new Holder<>(0);
+                    System.out.println("7");
         lisproduc.stream().forEach(q -> {
-            ta.addRow(new Object[7]);//cantidad de columna
+                        System.out.println("6");
+            ta.addRow(new Object[6]);//cantidad de columna
             vispro.getTblproduc().setValueAt(q.getId_producto(), i.value,0);
+                        System.out.println("9");
             vispro.getTblproduc().setValueAt(q.getNom_producto(), i.value,1);
+                        System.out.println("1o");
            vispro.getTblproduc().setValueAt(q.getPrecio_producto(), i.value, 2);
+                       System.out.println("11");
             vispro.getTblproduc().setValueAt(q.getCantidad_producto(), i.value,3);
+                        System.out.println("12");
             vispro.getTblproduc().setValueAt(q.getMarcar_producto(), i.value, 4);
-          
+                      System.out.println("13");
             Image foto = q.getFoto();
+                        System.out.println("14");
             if (foto != null) {
-
+                            System.out.println("15");
                 Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-                ImageIcon icon = new ImageIcon(nimg);        
+            System.out.println("16");
+                ImageIcon icon = new ImageIcon(nimg); 
+                            System.out.println("17");
                 DefaultTableCellRenderer render = new DefaultTableCellRenderer();
                 render.setIcon(icon);
+                            System.out.println("18");
                 vispro.getTblproduc().setValueAt(new JLabel(icon), i.value, 5);
-
+            System.out.println("19");
             } else {
+                            System.out.println("20");
                 vispro.getTblproduc().setValueAt(null, i.value, 5);
-
             }
+                        System.out.println("21");
             i.value++;
+                        System.out.println("22");
         });
         
     }
 
     private void crear() {
-        if (vispro.getDialog_Crear().getName() == "CREAR") {
+        System.out.println("1");
+        if (vispro.getDialog_Crear().getName() == "crear") {
             String id = vispro.getTxtidproducto().getText();
             String nom = vispro.getTxtnom_pro().getText();
             String marca= vispro.getTxtmarca().getText();
@@ -117,12 +137,12 @@ public class Controlador_productos {
             Modelo_productos mopro = new Modelo_productos();
             mopro.setId_producto(Integer.parseInt(id));
             mopro.setNom_producto(nom);
-            mopro.setNom_producto(marca);
+            mopro.setMarcar_producto(marca);
             mopro.setPrecio_producto(Double.parseDouble(precio));
             mopro.setCantidad_producto(Integer.parseInt(cant));
             mopro.setId_empleado(Integer.parseInt(idEM));
             mopro.setId_bodega(Integer.parseInt(idBO));
-
+            System.out.println("2");
             try {
                 //Foto
                 FileInputStream img = new FileInputStream(jfch.getSelectedFile());
@@ -132,6 +152,7 @@ public class Controlador_productos {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Controlador_productos.class.getName()).log(Level.SEVERE, null, ex);
             }
+            System.out.println("3");
 
             if (mopro.crearprocduc()) {
                 vispro.getDialog_Crear().setVisible(false);
@@ -182,6 +203,4 @@ public class Controlador_productos {
         }
     }
 
-    
-    
 }

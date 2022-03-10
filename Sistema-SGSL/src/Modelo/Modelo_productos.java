@@ -26,24 +26,47 @@ public class Modelo_productos extends Productos{
     }
     public Modelo_productos(int id_producto, String nom_producto, double precio_producto, int cantidad_producto, String marcar_producto, Image foto, FileInputStream imagen, int largo, int id_empleado, int id_bodega) {
         super(id_producto, nom_producto, precio_producto, cantidad_producto, marcar_producto, foto, imagen, largo, id_empleado, id_bodega);
-    }
-        
+    }   
     public List<Productos> listarproduc() {
+                    System.out.println("1m");
+
         List<Productos> listaprod = new ArrayList<Productos>();
+            System.out.println("1m");
+
         String sql = "select * from productos";
+            System.out.println("1m");
+
         ResultSet r = cpg.colsulta(sql);
+             System.out.println("1m");
+
         byte[] bytes;
+                    System.out.println("1m");
+
         try {
             while (r.next()) {
+                            System.out.println("1m");
                 Productos producto = new Productos();
+                            System.out.println("2m");
+
                 producto.setId_producto(r.getInt("id_producto"));
+                            System.out.println("3m");
+
                 producto.setNom_producto(r.getString("nom_producto"));
+                            System.out.println("4m");
+
                 producto.setPrecio_producto(r.getDouble("precio_producto"));
+                
+            System.out.println("5m");
                 producto.setCantidad_producto(r.getInt("cantidad_producto"));
+                            System.out.println("6m");
+
                 producto.setMarcar_producto(r.getString("marcar_producto"));
+                            System.out.println("7m");
+                System.out.println("8m");
                 bytes = r.getBytes("foto_producto");
-               // producto.setId_empleado(r.getInt("id_empleado"));
-                producto.setId_bodega(r.getInt("id_bodega"));
+                               System.out.println("9m");
+
+                //producto.setId_bodega(r.getInt("id_bodega"));
 
                 if (bytes != null) {
                     try {
@@ -52,11 +75,14 @@ public class Modelo_productos extends Productos{
                         Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+                System.out.println("123");
                 listaprod.add(producto);
             }
             r.close();
+            System.out.println("ass");
             return listaprod;
         } catch (SQLException ex) {
+            
           Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
@@ -75,7 +101,7 @@ public class Modelo_productos extends Productos{
     }
         public boolean crearprocduc() {
         try {
-            String sql = "INSERT INTO producto(id_producto,nom_producto,precio_producto,cantidad_producto,marca_producto,foto_producto,id_empleado,id_bodega)\n" + "VALUES(?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_empleado,id_bodega)\n" + "VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
@@ -95,7 +121,7 @@ public class Modelo_productos extends Productos{
     }
             public boolean edipro(String id) {
         try {
-            String sql = "UPDATE producto SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?, foto_producto=?,id_empleado=?,id_bodega=? WHERE idproducto ='" + id + "'";
+            String sql = "UPDATE productos SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?, foto_producto=?,id_empleado=?,id_bodega=? WHERE id_producto ='" + id + "'";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
@@ -114,7 +140,7 @@ public class Modelo_productos extends Productos{
     }
              public boolean editarpro(String id) {
         try {
-            String sql = "UPDATE producto SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?,id_empleado=?,id_bodega=? WHERE idproducto ='" + id + "'";
+            String sql = "UPDATE productos SET id_producto=?, nom_producto=?, precio_producto=?, cantidad_producto=?, marcar_producto=?, id_empleado=?, id_bodega=? WHERE id_producto ='" + id + "'";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
@@ -131,7 +157,7 @@ public class Modelo_productos extends Productos{
         }
     }
         public boolean eliminapro(String id) {
-        String sql = "delete from producto WHERE idproducto ='" + id + "'";
+        String sql = "delete from productos WHERE  id_producto ='" + id + "'";
         System.out.println("" + sql);
         return cpg.accion(sql);
     }
@@ -140,7 +166,7 @@ public class Modelo_productos extends Productos{
         String sql = "";
         String plb = busqueda;
         if (busqueda.equalsIgnoreCase("")) {
-            sql = "select *from producto";
+            sql = "select *from productos";
         } else if (plb.equalsIgnoreCase(busqueda)) {
             sql = "select * from producto where CAST(id_producto AS TEXT) LIKE '" + busqueda + "%' or lower(nom_producto) like '"+busqueda  + "%'";
         }

@@ -72,31 +72,31 @@ public class Controlador_productos {
     }
     
         private void cargarproductos() {
-        vispro.getTblproduc().setDefaultRenderer(Object.class, new Imangentabla());
-        vispro.getTblproduc().setRowHeight(100);
+        vispro.getTablita().setDefaultRenderer(Object.class, new Imangentabla());
+        vispro.getTablita().setRowHeight(100);
         DefaultTableModel ta;
-        ta = (DefaultTableModel) vispro.getTblproduc().getModel();
+        ta = (DefaultTableModel) vispro.getTablita().getModel();
         ta.setNumRows(0);
         List<Productos> lisproduc = modelpro.listarproductos();
         Holder<Integer> i = new Holder<>(0);
         lisproduc.stream().forEach(q -> {
             ta.addRow(new Object[9]);//cantidad de columna
-            vispro.getTblproduc().setValueAt(q.getId_producto(), i.value,0);
-            vispro.getTblproduc().setValueAt(q.getNom_producto(), i.value,1);
-           vispro.getTblproduc().setValueAt(q.getPrecio_producto(), i.value, 2);
-            vispro.getTblproduc().setValueAt(q.getCantidad_producto(), i.value,3);
-            vispro.getTblproduc().setValueAt(q.getMarcar_producto(), i.value, 4);
-           vispro.getTblproduc().setValueAt(q.getId_empleado(), i.value,6);
-            vispro.getTblproduc().setValueAt(q.getId_bodega(), i.value,7);
-            Image foto = q.getFoto();
+            vispro.getTablita().setValueAt(q.getId_producto(), i.value,0);
+            vispro.getTablita().setValueAt(q.getNom_producto(), i.value,1);
+           vispro.getTablita().setValueAt(q.getPrecio_producto(), i.value, 2);
+            vispro.getTablita().setValueAt(q.getCantidad_producto(), i.value,3);
+            vispro.getTablita().setValueAt(q.getMarcar_producto(), i.value, 4);
+//              vispro.getTablita().setValueAt(q.getId_empleado(), i.value,6);
+//            vispro.getTablita().setValueAt(q.getId_bodega(), i.value,7);
+             Image foto = q.getFoto();
             if (foto != null) {
                 Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                 ImageIcon icon = new ImageIcon(nimg); 
                 DefaultTableCellRenderer render = new DefaultTableCellRenderer();
                 render.setIcon(icon);
-                vispro.getTblproduc().setValueAt(new JLabel(icon), i.value, 5);
+               vispro.getTablita().setValueAt(new JLabel(icon), i.value, 5);
             } else {
-                vispro.getTblproduc().setValueAt(null, i.value, 5);
+                vispro.getTablita().setValueAt(null, i.value, 5);
             }
             i.value++;
         });

@@ -107,10 +107,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         this.btnCancelar_pro1 = btnCancelar_pro1;
     }
 
-    public JTable getTblServicio() {
-        return tblproduc;
-    }
-
     public JLabel getjLabel14() {
         return jLabel14;
     }
@@ -125,14 +121,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
     public void setSnipercanti(JSpinner snipercanti) {
         this.snipercanti = snipercanti;
-    }
-
-    public JTable getTblproduc() {
-        return tblproduc;
-    }
-
-    public void setTblproduc(JTable tblproduc) {
-        this.tblproduc = tblproduc;
     }
 
     public JLabel getTxtfoto() {
@@ -183,9 +171,14 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         this.txtpreciopro = txtpreciopro;
     }
 
-    public void setTblServicio(JTable tblServicio) {
-        this.tblproduc = tblServicio;
+    public JTable getTablita() {
+        return tablita;
     }
+
+    public void setTablita(JTable tablita) {
+        this.tablita = tablita;
+    }
+
 
     public JTextField getTxtcosto_servicio() {
         return txtpreciopro;
@@ -256,10 +249,10 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         BtnEditarServicio = new javax.swing.JButton();
         BtnRemoverServicio = new javax.swing.JButton();
         BtnImprimirServicio = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblproduc = new javax.swing.JTable();
         BtnActualizarServicio = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablita = new javax.swing.JTable();
 
         Dialog_Crear.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -363,26 +356,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 840, -1));
 
-        tblproduc.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id producto", "Nombre", "Precio", "Cantidad", "Marca", "Foto", "id_empleado", "id_bodega"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblproduc);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 824, 257));
-
         BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnActualizarServicio.setText("Actualizar");
         getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, -1, -1));
@@ -390,6 +363,18 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
         jLabel2.setText("PRODUCTOS");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 260, 30));
+
+        tablita.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+            }
+        ));
+        jScrollPane2.setViewportView(tablita);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 850, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -419,10 +404,10 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner snipercanti;
-    private javax.swing.JTable tblproduc;
+    private javax.swing.JTable tablita;
     private javax.swing.JLabel txtfoto;
     private javax.swing.JTextField txtid_empleado;
     private javax.swing.JTextField txtidbodega;

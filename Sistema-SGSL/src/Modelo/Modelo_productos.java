@@ -42,8 +42,8 @@ public class Modelo_productos extends Productos{
                 producto.setCantidad_producto(r.getInt("cantidad_producto"));
                 producto.setMarcar_producto(r.getString("marcar_producto"));
                 bytes = r.getBytes("foto_producto");
-                 producto.setId_producto(r.getInt("id_empleado"));
-                producto.setId_producto(r.getInt("id_bodega"));
+              //   producto.setId_producto(r.getInt("id_empleado"));
+                //producto.setId_producto(r.getInt("id_bodega"));
                         if (bytes != null) {
                     try {
                         producto.setFoto(obtenerImagen(bytes));
@@ -58,7 +58,6 @@ public class Modelo_productos extends Productos{
             System.out.println("ass");
             return listaprod;
         } catch (SQLException ex) {
-            
           Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }

@@ -253,6 +253,18 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablita = new javax.swing.JTable();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        TxtBuscarServicio1 = new javax.swing.JTextField();
+        BtnCrearServicio1 = new javax.swing.JButton();
+        BtnEditarServicio1 = new javax.swing.JButton();
+        BtnRemoverServicio1 = new javax.swing.JButton();
+        BtnImprimirServicio1 = new javax.swing.JButton();
+        BtnActualizarServicio1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablita1 = new javax.swing.JTable();
 
         Dialog_Crear.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -369,12 +381,101 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+                "ID_PRODUCTOS", "NOMBRE", "PRECIO", "CANTIDAD", "MARCA ", "FOTO", "ID_Empleafo", "ID_BODEGA"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tablita);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 850, 270));
+
+        jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("Buscar");
+
+        BtnCrearServicio1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnCrearServicio1.setText("Crear");
+
+        BtnEditarServicio1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnEditarServicio1.setText("Editar");
+
+        BtnRemoverServicio1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnRemoverServicio1.setText("Remover");
+
+        BtnImprimirServicio1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnImprimirServicio1.setText("Imprimir");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TxtBuscarServicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(BtnCrearServicio1)
+                .addGap(33, 33, 33)
+                .addComponent(BtnEditarServicio1)
+                .addGap(34, 34, 34)
+                .addComponent(BtnRemoverServicio1)
+                .addGap(46, 46, 46)
+                .addComponent(BtnImprimirServicio1)
+                .addGap(194, 194, 194))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnImprimirServicio1)
+                    .addComponent(BtnRemoverServicio1)
+                    .addComponent(BtnEditarServicio1)
+                    .addComponent(BtnCrearServicio1)
+                    .addComponent(TxtBuscarServicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(19, 19, 19))
+        );
+
+        jInternalFrame1.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 840, -1));
+
+        BtnActualizarServicio1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnActualizarServicio1.setText("Actualizar");
+        jInternalFrame1.getContentPane().add(BtnActualizarServicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
+        jLabel6.setText("PRODUCTOS");
+        jInternalFrame1.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 260, 30));
+
+        tablita1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID_PRODUCTOS", "NOMBRE", "PRECIO", "CANTIDAD", "MARCA ", "FOTO", "ID_Empleafo", "ID_BODEGA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablita1);
+
+        jInternalFrame1.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 850, 270));
+
+        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -382,16 +483,23 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizarServicio;
+    private javax.swing.JButton BtnActualizarServicio1;
     private javax.swing.JButton BtnCrearServicio;
+    private javax.swing.JButton BtnCrearServicio1;
     private javax.swing.JButton BtnEditarServicio;
+    private javax.swing.JButton BtnEditarServicio1;
     private javax.swing.JButton BtnImprimirServicio;
+    private javax.swing.JButton BtnImprimirServicio1;
     private javax.swing.JButton BtnRemoverServicio;
+    private javax.swing.JButton BtnRemoverServicio1;
     private javax.swing.JDialog Dialog_Crear;
     private javax.swing.JTextField TxtBuscarServicio;
+    private javax.swing.JTextField TxtBuscarServicio1;
     private javax.swing.JTextPane areadescripcion;
     private javax.swing.JButton btnAceptar_pro1;
     private javax.swing.JButton btnCancelar_pro1;
     private javax.swing.JButton btnexaminar;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -400,14 +508,19 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner snipercanti;
     private javax.swing.JTable tablita;
+    private javax.swing.JTable tablita1;
     private javax.swing.JLabel txtfoto;
     private javax.swing.JTextField txtid_empleado;
     private javax.swing.JTextField txtidbodega;

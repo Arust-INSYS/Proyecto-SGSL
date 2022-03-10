@@ -36,7 +36,7 @@ public class Controlador_productos {
         vispro.getBtnCrearServicio().addActionListener(l->abrirDialogo_pro(3));
         vispro.getBtnEditarServicio().addActionListener(l->abrirDialogo_pro(4));
         vispro.getBtnexaminar().addActionListener(l->examifoto());
-            vispro.getBtnActualizarServicio().addActionListener(l->cargarproduc());
+            vispro.getBtnActualizarServicio().addActionListener(l->cargarproductos());
             vispro.getBtnAceptar_pro1().addActionListener(l->crear());
 
     }
@@ -71,7 +71,7 @@ public class Controlador_productos {
         vispro.getDialog_Crear().setVisible(true); 
     }
     
-        private void cargarproduc() {
+        private void cargarproductos() {
             System.out.println("1");
         vispro.getTblproduc().setDefaultRenderer(Object.class, new Imangentabla());
                     System.out.println("2");
@@ -83,11 +83,11 @@ public class Controlador_productos {
                     System.out.println("5");
         ta.setNumRows(0);
                     System.out.println("6");
-        List<Productos> lisproduc = modelpro.listarproduc();
+        List<Productos> lisproduc = modelpro.listarproductos();
         Holder<Integer> i = new Holder<>(0);
                     System.out.println("7");
         lisproduc.stream().forEach(q -> {
-                        System.out.println("6");
+                        System.out.println("8");
             ta.addRow(new Object[6]);//cantidad de columna
             vispro.getTblproduc().setValueAt(q.getId_producto(), i.value,0);
                         System.out.println("9");

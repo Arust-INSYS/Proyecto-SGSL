@@ -47,6 +47,8 @@ public class Controlador_Persona {
         vistaPer.getBtnCrearPersona().addActionListener(l->DialogoCrearEditarPersona(1));
         vistaPer.getBtnEditarPersona().addActionListener(l->DialogoCrearEditarPersona(2));
         vistaPer.getBtnActualizarPersona().addActionListener(l -> CargarTablaPersona());
+        vistaPer.getBtnAceptarPer().addActionListener(l -> crearEditarPersona());
+        vistaPer.getBtnSeleccionarFoto().addActionListener(l -> ExaminarFoto());
         
     }
     
@@ -91,11 +93,13 @@ public class Controlador_Persona {
     }
     private void crearEditarPersona() {
         String fecha = ((JTextField) vistaPer.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
-
         if (vistaPer.getDialogoPersona().getName().equals("Crear")) {
-                //CrearPersona();            
+                CrearPersona();            
         } else {
-               //EditarPersona();    
+            if(vistaPer.getDialogoPersona().getName().equals("Editar")){
+                  EditarPersona();  
+            }
+  
         }
     }
     

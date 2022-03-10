@@ -49,7 +49,7 @@ public class Control_VistaPrincipal {
         Vista_Persona vistaPerson = new Vista_Persona();
         Modelo_Persona modelPerson = new Modelo_Persona();
         vista_menu.getDkp_pane_principal().add(vistaPerson);
-        Controlador_Persona ControlPerson= new Controlador_Persona(modelPerson, vistaPerson);
+        Controlador_Persona ControlPerson = new Controlador_Persona(modelPerson, vistaPerson);
         ControlPerson.ControlBotonesPrincipales();
     }
     

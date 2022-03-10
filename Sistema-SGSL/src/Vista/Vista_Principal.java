@@ -71,7 +71,7 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         dkp_pane_principal.setBackground(new java.awt.Color(0, 51, 102));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PIRNCIPAL.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADA.jpg"))); // NOI18N
 
         dkp_pane_principal.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

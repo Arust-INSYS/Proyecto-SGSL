@@ -132,9 +132,11 @@ public class Modelo_Persona extends Persona {
             ResultSet rs = cp.colsulta(sql);
             while (rs.next()) {
                 incremento = rs.getInt(1) + 1;
+                System.out.println("Si in");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println("Error");
         }
         return incremento;
     }

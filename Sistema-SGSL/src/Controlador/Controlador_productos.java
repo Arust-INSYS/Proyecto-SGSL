@@ -40,6 +40,7 @@ public class Controlador_productos {
         vispro.getBtnActualizarServicio().addActionListener(l -> cargarproductos());
         vispro.getBtnAceptar_pro1().addActionListener(l -> crear());
         vispro.getBtnEditarServicio().addActionListener(l -> editar());
+        vispro.getBtnRemoverServicio().addActionListener(l -> eli());
 
     }
 
@@ -201,8 +202,7 @@ public class Controlador_productos {
             String cant = vispro.getTablita().getValueAt(xx, 3).toString();
             vispro.getSnipercanti().setValue(Integer.parseInt(cant));
   String marca = vispro.getTablita().getValueAt(xx, 4).toString();
-            vispro.getTxtmarca().setText(marca);
-          
+            vispro.getTxtmarca().setText(marca);          
             String idem = vispro.getTablita().getValueAt(xx, 6).toString();
             vispro.getTxtid_empleado().setText(idem);
             String idbo = vispro.getTablita().getValueAt(xx, 7).toString();
@@ -215,6 +215,23 @@ public class Controlador_productos {
                     vispro.getTxtfoto().setIcon(ic);
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(vispro, "error seleccione una fila");
+            vispro.getDialog_Crear().dispose();
+        }
+    }
+    private void eli() {
+        int yy;
+        yy = vispro.getTablita().getSelectedRow();
+        if (yy != -1) {
+            String nu = vispro.getTablita().getValueAt(yy, 0).toString();
+            if (modelpro.eliminapro(nu)) {
+                JOptionPane.showMessageDialog(vispro, "se elimino correctamente");
+                cargarproductos();
+            } else {
+                JOptionPane.showMessageDialog(vispro, "no se pudo eliminar");
+            }
+
         } else {
             JOptionPane.showMessageDialog(vispro, "error seleccione una fila");
             vispro.getDialog_Crear().dispose();

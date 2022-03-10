@@ -1,4 +1,5 @@
 package Controlador;
+
 import Modelo.CLASES.Productos;
 import Modelo.Modelo_productos;
 import Vista.Vista_productos;
@@ -19,8 +20,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 
-
 public class Controlador_productos {
+
     private Modelo_productos modelpro;
     private Vista_productos vispro;
     private JFileChooser jfch;
@@ -28,19 +29,21 @@ public class Controlador_productos {
     public Controlador_productos(Modelo_productos modelpro, Vista_productos vispro) {
         this.modelpro = modelpro;
         this.vispro = vispro;
-            vispro.setVisible(true);
-    //        cargarproduc();
+        vispro.setVisible(true);
+        cargarproductos();
     }
-    
-    public void iniciaControl(){
-        vispro.getBtnCrearServicio().addActionListener(l->abrirDialogo_pro(3));
-        vispro.getBtnEditarServicio().addActionListener(l->abrirDialogo_pro(4));
-        vispro.getBtnexaminar().addActionListener(l->examifoto());
-            vispro.getBtnActualizarServicio().addActionListener(l->cargarproductos());
-            vispro.getBtnAceptar_pro1().addActionListener(l->crear());
+
+    public void iniciaControl() {
+        vispro.getBtnCrearServicio().addActionListener(l -> abrirDialogo_pro(3));
+        vispro.getBtnEditarServicio().addActionListener(l -> abrirDialogo_pro(4));
+        vispro.getBtnexaminar().addActionListener(l -> examifoto());
+        vispro.getBtnActualizarServicio().addActionListener(l -> cargarproductos());
+        vispro.getBtnAceptar_pro1().addActionListener(l -> crear());
+        vispro.getBtnEditarServicio().addActionListener(l -> editar());
 
     }
-     private void examifoto() {
+
+    private void examifoto() {
         jfch = new JFileChooser();
         jfch.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int est = jfch.showOpenDialog(vispro);
@@ -55,23 +58,24 @@ public class Controlador_productos {
             }
 
         }
-     }
-    private void abrirDialogo_pro(int ce){
-      String title;
-        if(ce==3){
-            title="Crear nuevo servicio";
+    }
+
+    private void abrirDialogo_pro(int ce) {
+        String title;
+        if (ce == 3) {
+            title = "Crear nuevo servicio";
             vispro.getDialog_Crear().setName("crear");
-        }else{
-            title="Editar servicio";
+        } else {
+            title = "Editar servicio";
             vispro.getDialog_Crear().setName("editar");
         }
         vispro.getDialog_Crear().setLocationRelativeTo(vispro);
-        vispro.getDialog_Crear().setSize(620,500);
+        vispro.getDialog_Crear().setSize(620, 500);
         vispro.getDialog_Crear().setTitle(title);
-        vispro.getDialog_Crear().setVisible(true); 
+        vispro.getDialog_Crear().setVisible(true);
     }
-    
-        private void cargarproductos() {
+
+    private void cargarproductos() {
         vispro.getTablita().setDefaultRenderer(Object.class, new Imangentabla());
         vispro.getTablita().setRowHeight(100);
         DefaultTableModel ta;
@@ -81,26 +85,26 @@ public class Controlador_productos {
         Holder<Integer> i = new Holder<>(0);
         lisproduc.stream().forEach(q -> {
             ta.addRow(new Object[9]);//cantidad de columna
-            vispro.getTablita().setValueAt(q.getId_producto(), i.value,0);
-            vispro.getTablita().setValueAt(q.getNom_producto(), i.value,1);
-           vispro.getTablita().setValueAt(q.getPrecio_producto(), i.value, 2);
-            vispro.getTablita().setValueAt(q.getCantidad_producto(), i.value,3);
+            vispro.getTablita().setValueAt(q.getId_producto(), i.value, 0);
+            vispro.getTablita().setValueAt(q.getNom_producto(), i.value, 1);
+            vispro.getTablita().setValueAt(q.getPrecio_producto(), i.value, 2);
+            vispro.getTablita().setValueAt(q.getCantidad_producto(), i.value, 3);
             vispro.getTablita().setValueAt(q.getMarcar_producto(), i.value, 4);
-//              vispro.getTablita().setValueAt(q.getId_empleado(), i.value,6);
-//            vispro.getTablita().setValueAt(q.getId_bodega(), i.value,7);
-             Image foto = q.getFoto();
+            vispro.getTablita().setValueAt(q.getId_empleado(), i.value, 6);
+            vispro.getTablita().setValueAt(q.getId_bodega(), i.value, 7);
+            Image foto = q.getFoto();
             if (foto != null) {
                 Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-                ImageIcon icon = new ImageIcon(nimg); 
+                ImageIcon icon = new ImageIcon(nimg);
                 DefaultTableCellRenderer render = new DefaultTableCellRenderer();
                 render.setIcon(icon);
-               vispro.getTablita().setValueAt(new JLabel(icon), i.value, 5);
+                vispro.getTablita().setValueAt(new JLabel(icon), i.value, 5);
             } else {
                 vispro.getTablita().setValueAt(null, i.value, 5);
             }
             i.value++;
         });
-        
+
     }
 
     private void crear() {
@@ -108,7 +112,7 @@ public class Controlador_productos {
         if (vispro.getDialog_Crear().getName() == "crear") {
             String id = vispro.getTxtidproducto().getText();
             String nom = vispro.getTxtnom_pro().getText();
-            String marca= vispro.getTxtmarca().getText();
+            String marca = vispro.getTxtmarca().getText();
             String precio = vispro.getTxtpreciopro().getText();
             String cant = vispro.getSnipercanti().getValue().toString();
             String idEM = vispro.getTxtid_empleado().getText();
@@ -180,6 +184,40 @@ public class Controlador_productos {
                 }
 
             }
+        }
+    }
+
+    private void editar() {
+        List<Productos> lp = modelpro.listarproductos();
+        int xx = vispro.getTablita().getSelectedRow();
+        if (xx != -1) {
+            String id = vispro.getTablita().getValueAt(xx, 0).toString();
+            int pro = Integer.parseInt(id);
+            vispro.getTxtidproducto().setText(id);
+            String nom = vispro.getTablita().getValueAt(xx, 1).toString();
+            vispro.getTxtnom_pro().setText(nom);
+            String precio = vispro.getTablita().getValueAt(xx, 2).toString();
+            vispro.getTxtpreciopro().setText(precio);
+            String cant = vispro.getTablita().getValueAt(xx, 3).toString();
+            vispro.getSnipercanti().setValue(Integer.parseInt(cant));
+  String marca = vispro.getTablita().getValueAt(xx, 4).toString();
+            vispro.getTxtmarca().setText(marca);
+          
+            String idem = vispro.getTablita().getValueAt(xx, 6).toString();
+            vispro.getTxtid_empleado().setText(idem);
+            String idbo = vispro.getTablita().getValueAt(xx, 7).toString();
+            vispro.getTxtidbodega().setText(idbo);
+            for (int i = 0; i < lp.size(); i++) {
+                if (lp.get(i).getId_producto() == pro) {
+                    Image ft = lp.get(i).getFoto();
+                    Image j = ft.getScaledInstance(196, 136, Image.SCALE_SMOOTH);
+                    Icon ic = new ImageIcon(j);
+                    vispro.getTxtfoto().setIcon(ic);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(vispro, "error seleccione una fila");
+            vispro.getDialog_Crear().dispose();
         }
     }
 

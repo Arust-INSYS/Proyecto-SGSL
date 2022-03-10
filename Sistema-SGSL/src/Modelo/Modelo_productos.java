@@ -30,7 +30,7 @@ public class Modelo_productos extends Productos{
         
     public List<Productos> listarproduc() {
         List<Productos> listaprod = new ArrayList<Productos>();
-        String sql = "select * from producto";
+        String sql = "select * from productos";
         ResultSet r = cpg.colsulta(sql);
         byte[] bytes;
         try {
@@ -40,9 +40,9 @@ public class Modelo_productos extends Productos{
                 producto.setNom_producto(r.getString("nom_producto"));
                 producto.setPrecio_producto(r.getDouble("precio_producto"));
                 producto.setCantidad_producto(r.getInt("cantidad_producto"));
-                producto.setMarcar_producto(r.getString("marca_producto"));
+                producto.setMarcar_producto(r.getString("marcar_producto"));
                 bytes = r.getBytes("foto_producto");
-                producto.setId_empleado(r.getInt("id_empleado"));
+               // producto.setId_empleado(r.getInt("id_empleado"));
                 producto.setId_bodega(r.getInt("id_bodega"));
 
                 if (bytes != null) {
@@ -105,6 +105,24 @@ public class Modelo_productos extends Productos{
             ps.setBinaryStream(6, getImagen(), getLargo());
             ps.setInt(7, getId_empleado());
             ps.setInt(8, getId_bodega());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+             public boolean editarpro(String id) {
+        try {
+            String sql = "UPDATE producto SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?,id_empleado=?,id_bodega=? WHERE idproducto ='" + id + "'";
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setInt(1, getId_producto());
+            ps.setString(2, getNom_producto());
+            ps.setDouble(3, getPrecio_producto());
+            ps.setInt(4, getCantidad_producto());
+            ps.setString(5, getMarcar_producto());
+            ps.setInt(6, getId_empleado());
+            ps.setInt(7, getId_bodega());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {

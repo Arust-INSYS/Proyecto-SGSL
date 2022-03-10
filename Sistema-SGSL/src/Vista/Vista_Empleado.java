@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -96,12 +99,90 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     public void setTblEmpleado(JTable tblEmpleado) {
         this.tblEmpleado = tblEmpleado;
     }
+
+    public JDialog getDialogEmpleado() {
+        return DialogEmpleado;
+    }
+
+    public void setDialogEmpleado(JDialog DialogEmpleado) {
+        this.DialogEmpleado = DialogEmpleado;
+    }
+
+    public JComboBox<String> getBoxEstado() {
+        return boxEstado;
+    }
+
+    public void setBoxEstado(JComboBox<String> boxEstado) {
+        this.boxEstado = boxEstado;
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JDateChooser getContratacion() {
+        return contratacion;
+    }
+
+    public void setContratacion(JDateChooser contratacion) {
+        this.contratacion = contratacion;
+    }
+
+    public JTextField getTxtid_persona() {
+        return txtid_persona;
+    }
+
+    public void setTxtid_persona(JTextField txtid_persona) {
+        this.txtid_persona = txtid_persona;
+    }
+
+    public JTextField getTxtidempleado() {
+        return txtidempleado;
+    }
+
+    public void setTxtidempleado(JTextField txtidempleado) {
+        this.txtidempleado = txtidempleado;
+    }
+
+    public JTextField getTxtsueldo() {
+        return txtsueldo;
+    }
+
+    public void setTxtsueldo(JTextField txtsueldo) {
+        this.txtsueldo = txtsueldo;
+    }
     
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        DialogEmpleado = new javax.swing.JDialog();
+        btnAceptar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtidempleado = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtsueldo = new javax.swing.JTextField();
+        txtid_persona = new javax.swing.JTextField();
+        boxEstado = new javax.swing.JComboBox<>();
+        contratacion = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtBuscarServicio = new javax.swing.JTextField();
@@ -111,6 +192,96 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         BtnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmpleado = new javax.swing.JTable();
+
+        btnAceptar.setText("ACEPTAR");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel9.setText("Empleado");
+
+        btnCancelar.setText("CANCELAR");
+
+        jLabel10.setText("Id Empleado:");
+
+        jLabel11.setText("Sueldo:");
+
+        jLabel8.setText("Estado Civil:");
+
+        jLabel12.setText("Fecha de contratación:");
+
+        jLabel13.setText("Id Persona:");
+
+        boxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero", "Casado", "Divorciado", " ", " " }));
+
+        javax.swing.GroupLayout DialogEmpleadoLayout = new javax.swing.GroupLayout(DialogEmpleado.getContentPane());
+        DialogEmpleado.getContentPane().setLayout(DialogEmpleadoLayout);
+        DialogEmpleadoLayout.setHorizontalGroup(
+            DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(btnAceptar)
+                        .addGap(80, 80, 80)
+                        .addComponent(btnCancelar))
+                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DialogEmpleadoLayout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(boxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DialogEmpleadoLayout.createSequentialGroup()
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DialogEmpleadoLayout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                                    .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel12)
+                                        .addComponent(jLabel13))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtid_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                        .addComponent(contratacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        DialogEmpleadoLayout.setVerticalGroup(
+            DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12)
+                    .addComponent(contratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtid_persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(91, 91, 91)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnAceptar))
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
 
         jLabel1.setText("Buscar");
 
@@ -187,7 +358,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
@@ -201,10 +372,24 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnEditar;
     private javax.swing.JButton BtnImprimir;
     private javax.swing.JButton BtnRemover;
+    private javax.swing.JDialog DialogEmpleado;
     private javax.swing.JTextField TxtBuscarServicio;
+    private javax.swing.JComboBox<String> boxEstado;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCancelar;
+    private com.toedter.calendar.JDateChooser contratacion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblEmpleado;
+    private javax.swing.JTextField txtid_persona;
+    private javax.swing.JTextField txtidempleado;
+    private javax.swing.JTextField txtsueldo;
     // End of variables declaration//GEN-END:variables
 }

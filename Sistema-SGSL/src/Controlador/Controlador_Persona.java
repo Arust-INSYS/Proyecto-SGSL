@@ -33,26 +33,32 @@ import javax.xml.ws.Holder;
  * @author DELL
  */
 public class Controlador_Persona {
+
     private Modelo_Persona modelPer;
     private Vista_Persona vistaPer;
     private JFileChooser jfc;
-    
+
     public Controlador_Persona(Modelo_Persona modelPer, Vista_Persona vistaPer) {
         this.modelPer = modelPer;
         this.vistaPer = vistaPer;
         vistaPer.setVisible(true);
-        //vistaPer.getTxt_ID_Persona().setText(String.valueOf(modelPer.IncrementoIdPersona()));
+        CargarTablaPersona();
+        IncremetoID();
     }
-    
-    public void ControlBotonesPrincipales(){
-        vistaPer.getBtnCrearPersona().addActionListener(l->DialogoCrearEditarPersona(1));
-        vistaPer.getBtnEditarPersona().addActionListener(l->DialogoCrearEditarPersona(2));
+
+    private void IncremetoID() {
+        vistaPer.getTxt_ID_Persona().setText(String.valueOf(modelPer.IncrementoIdPersona()));
+    }
+
+    public void ControlBotonesPrincipales() {
+        vistaPer.getBtnCrearPersona().addActionListener(l -> DialogoCrearEditarPersona(1));
+        vistaPer.getBtnEditarPersona().addActionListener(l -> DialogoCrearEditarPersona(2));
         vistaPer.getBtnActualizarPersona().addActionListener(l -> CargarTablaPersona());
         vistaPer.getBtnAceptarPer().addActionListener(l -> crearEditarPersona());
         vistaPer.getBtnSeleccionarFoto().addActionListener(l -> ExaminarFoto());
-        
+
     }
-    
+
     private void ExaminarFoto() {
         jfc = new JFileChooser();
         FileNameExtensionFilter tipo = new FileNameExtensionFilter("JPG, JPEG", "jpg", "jpeg");
@@ -74,37 +80,45 @@ public class Controlador_Persona {
             }
         }
     }
-    
-    private void DialogoCrearEditarPersona(int tipo){
+
+    private void DialogoCrearEditarPersona(int tipo) {
         String titulo = null;
-        if(tipo == 1){
+        if (tipo == 1) {
             titulo = "Crear nueva Persona";
             vistaPer.getDialogoPersona().setName("Crear");
             vistaPer.getDialogoPersona().setVisible(true);
-        }else{
-            if(tipo == 2){
-                titulo = "Editar Persona";
-                vistaPer.getDialogoPersona().setName("Editar");
-                vistaPer.getDialogoPersona().setVisible(true);
+        } else {
+            if (tipo == 2) {
+                System.out.println("Ingreso a dos");
+                int i = vistaPer.getTblPersonas().getSelectedRow();
+                if (i != -1) {
+                    titulo = "Editar Persona";
+                    vistaPer.getDialogoPersona().setName("Editar");
+                    CargarEdicionPersona();
+                    vistaPer.getDialogoPersona().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
         vistaPer.getDialogoPersona().setLocation(600, 80);
         vistaPer.getDialogoPersona().setSize(431, 414);
         vistaPer.getDialogoPersona().setTitle(titulo);
     }
+
     private void crearEditarPersona() {
         String fecha = ((JTextField) vistaPer.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
         if (vistaPer.getDialogoPersona().getName().equals("Crear")) {
-                CrearPersona();            
+            CrearPersona();
         } else {
-            if(vistaPer.getDialogoPersona().getName().equals("Editar")){
-                  EditarPersona();  
+            if (vistaPer.getDialogoPersona().getName().equals("Editar")) {
+                EditarPersona();
             }
-  
+
         }
     }
-    
-    private void CrearPersona(){
+
+    private void CrearPersona() {
         Modelo_Persona modelPer = new Modelo_Persona();
         modelPer.setId_persona(Integer.parseInt(vistaPer.getTxt_ID_Persona().getText()));
         modelPer.setCedula(vistaPer.getTxtCedulaPersona().getText());
@@ -123,15 +137,15 @@ public class Controlador_Persona {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(modelPer.CrearPersonaBDA()){
+        if (modelPer.CrearPersonaBDA()) {
             CargarTablaPersona();
             JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona");
         }
     }
-    
-    private void EditarPersona(){
+
+    private void EditarPersona() {
         Modelo_Persona modelPerE = new Modelo_Persona();
         modelPer.setId_persona(Integer.parseInt(vistaPer.getTxt_ID_Persona().getText()));
         modelPer.setNombre(vistaPer.getTxtNombrePersona().getText());
@@ -149,13 +163,13 @@ public class Controlador_Persona {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(modelPer.ModificarPersonaBDA()){
+        if (modelPer.ModificarPersonaBDA()) {
             JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.");
         }
     }
-    
+
     private void CargarTablaPersona() {
         vistaPer.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
         vistaPer.getTblPersonas().setRowHeight(100);
@@ -186,21 +200,21 @@ public class Controlador_Persona {
             i.value++;
         });
     }
-    
-    private String GeneroPersona(){
+
+    private String GeneroPersona() {
         String GeneroPerso = "";
         vistaPer.getGrupoBotonGenero().add(vistaPer.getRadioBtnMasculino());
         vistaPer.getGrupoBotonGenero().add(vistaPer.getRadioBtnFemenino());
-        if(vistaPer.getRadioBtnMasculino().isSelected()){
+        if (vistaPer.getRadioBtnMasculino().isSelected()) {
             GeneroPerso = "M";
         }
-        if(vistaPer.getRadioBtnFemenino().isSelected()){
-             GeneroPerso = "F";
+        if (vistaPer.getRadioBtnFemenino().isSelected()) {
+            GeneroPerso = "F";
         }
         return GeneroPerso;
     }
-    
-    private void Limpiar_DatosPersona(){
+
+    private void Limpiar_DatosPersona() {
         vistaPer.getTxtCedulaPersona().setText("");
         vistaPer.getTxtNombrePersona().setText("");
         vistaPer.getTxtApellidoPersona().setText("");
@@ -209,26 +223,51 @@ public class Controlador_Persona {
         vistaPer.getTxtDireccionPersona().setText("");
         vistaPer.getLblFotoPersona().setIcon(null);
     }
-    
-    private boolean ValidarUsuarioRepetido(String cedula){
+
+    private boolean ValidarUsuarioRepetido(String cedula) {
         boolean cedulaRepetida = false;
         List<Persona> ValidoListaP = modelPer.listarPersonas();
         for (int i = 0; i < ValidoListaP.size(); i++) {
-            if(ValidoListaP.get(i).getCedula().equals(cedula)){
+            if (ValidoListaP.get(i).getCedula().equals(cedula)) {
                 cedulaRepetida = true;
-            } 
+            }
         }
         return cedulaRepetida;
     }
+
     private void CargarEdicionPersona() {
 
-        int i = vistaPer.getTblPersonas().getSelectedRow();
-        if (i != -1) {
-            String ve = vistaPer.getTblPersonas().getValueAt(i, 0).toString();
-            
-            
+        int j = vistaPer.getTblPersonas().getSelectedRow();
+        if (j != -1) {
+            String ve = vistaPer.getTblPersonas().getValueAt(j, 0).toString();
+            List<Persona> listaPerFT = modelPer.listarPersonas();
+            for (int i = 0; i < listaPerFT.size(); i++) {
+                vistaPer.getTxt_ID_Persona().setText(String.valueOf(listaPerFT.get(i).getId_persona()));
+                vistaPer.getTxtCedulaPersona().setText(listaPerFT.get(i).getCedula());
+                vistaPer.getTxtNombrePersona().setText(listaPerFT.get(i).getNombre());
+                vistaPer.getTxtApellidoPersona().setText(listaPerFT.get(i).getApellido());
+                Date fechan = listaPerFT.get(j).getFecha_nacimiento();
+                vistaPer.getFechaNacimientoPer().setDate(fechan);
+                if (listaPerFT.get(i).getGenero().equals("M")) {
+                    vistaPer.getRadioBtnMasculino().setSelected(true);
+                }
+                if (listaPerFT.get(i).getGenero().equals("F")) {
+                    vistaPer.getRadioBtnFemenino().setSelected(true);
+                }
+                vistaPer.getTxtDireccionPersona().setText(listaPerFT.get(i).getDireccion());
+                if (listaPerFT.get(i).getFoto() == null) {
+                    vistaPer.getLblFotoPersona().setIcon(null);
+                } else {
+                    Image in = listaPerFT.get(j).getFoto();
+                    Image img = in.getScaledInstance(133, 147, Image.SCALE_SMOOTH);
+                    Icon icono = new ImageIcon(img);
+                    vistaPer.getLblFotoPersona().setIcon(icono);
+                }
+            }
+
         } else {
-            JOptionPane.showMessageDialog(vistaPer, "Error.");
+            JOptionPane.showMessageDialog(vistaPer, "Error nu.");
+            System.out.println("error");
         }
     }
 }

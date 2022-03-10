@@ -143,7 +143,7 @@ public class Modelo_productos extends Productos{
         if (busqueda.equalsIgnoreCase("")) {
             sql = "select *from productos";
         } else if (plb.equalsIgnoreCase(busqueda)) {
-            sql = "select * from producto where CAST(id_producto AS TEXT) LIKE '" + busqueda + "%' or lower(nom_producto) like '"+busqueda  + "%'";
+            sql = "select * from productos where CAST(id_producto AS TEXT) LIKE '" + busqueda + "%' or lower(nom_producto) like '"+busqueda  + "%'";
         }
         ResultSet r = cpg.colsulta(sql);
         byte[] bytes;
@@ -154,7 +154,7 @@ public class Modelo_productos extends Productos{
                 producto.setNom_producto(r.getString("nom_producto"));
                 producto.setPrecio_producto(r.getDouble("precio_producto"));
                 producto.setCantidad_producto(r.getInt("cantidad_producto"));
-                producto.setMarcar_producto(r.getString("marca_producto"));
+                producto.setMarcar_producto(r.getString("marcar_producto"));
                 bytes = r.getBytes("foto_producto");
                 producto.setId_empleado(r.getInt("id_empleado"));
                 producto.setId_bodega(r.getInt("id_bodega"));
@@ -174,4 +174,5 @@ public class Modelo_productos extends Productos{
             return null;
         }
     }
+            
 }

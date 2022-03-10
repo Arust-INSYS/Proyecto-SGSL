@@ -94,8 +94,8 @@ public class Controlador_Persona {
                 if (i != -1) {
                     titulo = "Editar Persona";
                     vistaPer.getDialogoPersona().setName("Editar");
-                    CargarEdicionPersona();
                     vistaPer.getDialogoPersona().setVisible(true);
+                    CargarEdicionPersona();
                 } else {
                     JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
                 }

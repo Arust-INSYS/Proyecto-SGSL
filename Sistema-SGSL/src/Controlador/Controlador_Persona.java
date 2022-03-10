@@ -242,26 +242,28 @@ public class Controlador_Persona {
             String ve = vistaPer.getTblPersonas().getValueAt(j, 0).toString();
             List<Persona> listaPerFT = modelPer.listarPersonas();
             for (int i = 0; i < listaPerFT.size(); i++) {
-                vistaPer.getTxt_ID_Persona().setText(String.valueOf(listaPerFT.get(i).getId_persona()));
-                vistaPer.getTxtCedulaPersona().setText(listaPerFT.get(i).getCedula());
-                vistaPer.getTxtNombrePersona().setText(listaPerFT.get(i).getNombre());
-                vistaPer.getTxtApellidoPersona().setText(listaPerFT.get(i).getApellido());
-                Date fechan = listaPerFT.get(j).getFecha_nacimiento();
-                vistaPer.getFechaNacimientoPer().setDate(fechan);
-                if (listaPerFT.get(i).getGenero().equals("M")) {
-                    vistaPer.getRadioBtnMasculino().setSelected(true);
-                }
-                if (listaPerFT.get(i).getGenero().equals("F")) {
-                    vistaPer.getRadioBtnFemenino().setSelected(true);
-                }
-                vistaPer.getTxtDireccionPersona().setText(listaPerFT.get(i).getDireccion());
-                if (listaPerFT.get(i).getFoto() == null) {
-                    vistaPer.getLblFotoPersona().setIcon(null);
-                } else {
-                    Image in = listaPerFT.get(j).getFoto();
-                    Image img = in.getScaledInstance(133, 147, Image.SCALE_SMOOTH);
-                    Icon icono = new ImageIcon(img);
-                    vistaPer.getLblFotoPersona().setIcon(icono);
+                if (listaPerFT.get(i).getCedula().equals(ve)) {
+                    vistaPer.getTxt_ID_Persona().setText(String.valueOf(listaPerFT.get(i).getId_persona()));
+                    vistaPer.getTxtCedulaPersona().setText(listaPerFT.get(i).getCedula());
+                    vistaPer.getTxtNombrePersona().setText(listaPerFT.get(i).getNombre());
+                    vistaPer.getTxtApellidoPersona().setText(listaPerFT.get(i).getApellido());
+                    Date fechan = listaPerFT.get(j).getFecha_nacimiento();
+                    vistaPer.getFechaNacimientoPer().setDate(fechan);
+                    if (listaPerFT.get(i).getGenero().equals("M")) {
+                        vistaPer.getRadioBtnMasculino().setSelected(true);
+                    }
+                    if (listaPerFT.get(i).getGenero().equals("F")) {
+                        vistaPer.getRadioBtnFemenino().setSelected(true);
+                    }
+                    vistaPer.getTxtDireccionPersona().setText(listaPerFT.get(i).getDireccion());
+                    if (listaPerFT.get(i).getFoto() == null) {
+                        vistaPer.getLblFotoPersona().setIcon(null);
+                    } else {
+                        Image in = listaPerFT.get(j).getFoto();
+                        Image img = in.getScaledInstance(133, 147, Image.SCALE_SMOOTH);
+                        Icon icono = new ImageIcon(img);
+                        vistaPer.getLblFotoPersona().setIcon(icono);
+                    }
                 }
             }
 

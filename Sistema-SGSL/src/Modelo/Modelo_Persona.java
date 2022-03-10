@@ -125,5 +125,18 @@ public class Modelo_Persona extends Persona {
             return false;
         }
     }
+    public int IncrementoIdPersona(){
+        int incremento = 1;
+        try {
+            String sql = "select max(id_persona) from persona";
+            ResultSet rs = cp.colsulta(sql);
+            while (rs.next()) {
+                incremento = rs.getInt(1) + 1;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return incremento;
+    }
 
 }

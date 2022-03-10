@@ -41,6 +41,7 @@ public class Controlador_Persona {
         this.modelPer = modelPer;
         this.vistaPer = vistaPer;
         vistaPer.setVisible(true);
+        //vistaPer.getTxt_ID_Persona().setText(String.valueOf(modelPer.IncrementoIdPersona()));
     }
     
     public void ControlBotonesPrincipales(){
@@ -219,5 +220,15 @@ public class Controlador_Persona {
         }
         return cedulaRepetida;
     }
-    
+    private void CargarEdicionPersona() {
+
+        int i = vistaPer.getTblPersonas().getSelectedRow();
+        if (i != -1) {
+            String ve = vistaPer.getTblPersonas().getValueAt(i, 0).toString();
+            
+            
+        } else {
+            JOptionPane.showMessageDialog(vistaPer, "Error.");
+        }
+    }
 }

@@ -50,7 +50,6 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        subMenu_Persona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-persona-femenina-24.png"))); // NOI18N
         subMenu_Persona.setFocusable(false);
         subMenu_Persona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         subMenu_Persona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -99,11 +98,11 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         menu_persona.setText("Persona");
 
-        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         menuItem_clientes.setText("Clientes");
         menu_persona.add(menuItem_clientes);
 
-        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         menuItem_empleados.setText("Empleados");
         menu_persona.add(menuItem_empleados);
 

@@ -7,7 +7,7 @@ package Modelo.CLASES;
 
 import java.awt.Image;
 import java.io.FileInputStream;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Persona {
     private String cedula;
     private String nombre;
     private String apellido;
-    private char genero;
+    private String genero;
     private Date fecha_nacimiento;
     private String Direccion;
     private Image foto;
@@ -30,18 +30,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int id_persona, String nombre, String apellido, char genero, Date fecha_nacimiento, String Direccion, Image foto) {
-        this.id_persona = id_persona;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.genero = genero;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.Direccion = Direccion;
-        this.foto = foto;
-    }
-    
-
-    public Persona(int id_persona, String cedula, String nombre, String apellido, char genero, Date fecha_nacimiento, String Direccion, Image foto, FileInputStream imagen, int largo) {
+    public Persona(int id_persona, String cedula, String nombre, String apellido, String genero, Date fecha_nacimiento, String Direccion, Image foto) {
         this.id_persona = id_persona;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -50,10 +39,17 @@ public class Persona {
         this.fecha_nacimiento = fecha_nacimiento;
         this.Direccion = Direccion;
         this.foto = foto;
-        this.imagen = imagen;
-        this.largo = largo;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+   
     public int getId_persona() {
         return id_persona;
     }
@@ -84,14 +80,6 @@ public class Persona {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public char getGenero() {
-        return genero;
-    }
-
-    public void setGenero(char genero) {
-        this.genero = genero;
     }
 
     public Date getFecha_nacimiento() {

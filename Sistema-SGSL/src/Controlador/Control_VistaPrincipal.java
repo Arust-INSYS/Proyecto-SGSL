@@ -5,8 +5,10 @@
  */
 package Controlador;
 
+import Modelo.Modelo_Persona;
 import Modelo.Modelo_Servicio;
 import Modelo.Modelo_productos;
+import Vista.Vista_Persona;
 import Vista.Vista_Servicio;
 import Vista.Vista_Principal;
 import Vista.Vista_productos;
@@ -26,6 +28,7 @@ public class Control_VistaPrincipal {
     public void iniciaControl(){
         vista_menu.getSubMenu_servicios().addActionListener(l->Crud_Servicios());
         vista_menu.getSub_menupro().addActionListener(l->Crud_productos());
+        vista_menu.getSubMenu_Persona().addActionListener(l -> Registro_Persona());
     }
     private void Crud_Servicios(){
         Vista_Servicio vista_servi = new Vista_Servicio();
@@ -42,5 +45,12 @@ public class Control_VistaPrincipal {
         conpro.iniciaControl();
     }
     
+    private void Registro_Persona(){
+        Vista_Persona vistaPerson = new Vista_Persona();
+        Modelo_Persona modelPerson = new Modelo_Persona();
+        vista_menu.getDkp_pane_principal().add(vistaPerson);
+        Controlador_Persona ControlPerson = new Controlador_Persona(modelPerson, vistaPerson);
+        ControlPerson.ControlBotonesPrincipales();
+    }
     
 }

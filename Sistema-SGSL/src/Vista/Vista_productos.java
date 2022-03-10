@@ -368,11 +368,11 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id producto", "Nombre", "Precio", "Cantidad", "Marca", "Foto"
+                "Id producto", "Nombre", "Precio", "Cantidad", "Marca", "Foto", "id_empleado", "id_bodega"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {

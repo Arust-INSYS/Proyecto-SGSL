@@ -69,9 +69,9 @@ public class Vista_Principal extends javax.swing.JFrame {
         sub_menupro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(sub_menupro);
 
-        dkp_pane_principal.setBackground(new java.awt.Color(0, 51, 102));
+        dkp_pane_principal.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADA.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADAORI.jpg"))); // NOI18N
 
         dkp_pane_principal.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

@@ -41,6 +41,8 @@ public class Controlador_Login {
                 Vista_Principal vp = new Vista_Principal();
                 vp.setVisible(true);
                 vista_login.setVisible(false);
+                Control_VistaPrincipal cvp = new Control_VistaPrincipal(vp);
+                cvp.iniciaControl();
             }
         }
 

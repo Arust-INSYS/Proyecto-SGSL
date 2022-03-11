@@ -9,6 +9,8 @@ import Modelo.CLASES.Persona;
 import Modelo.Modelo_Persona;
 import Vista.Vista_Persona;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -44,6 +46,7 @@ public class Controlador_Persona {
         vistaPer.setVisible(true);
         CargarTablaPersona();
         IncremetoID();
+        EventosComponentesVistaPersona();
     }
 
     private void IncremetoID() {
@@ -56,9 +59,29 @@ public class Controlador_Persona {
         vistaPer.getBtnActualizarPersona().addActionListener(l -> CargarTablaPersona());
         vistaPer.getBtnAceptarPer().addActionListener(l -> crearEditarPersona());
         vistaPer.getBtnSeleccionarFoto().addActionListener(l -> ExaminarFoto());
+        vistaPer.getBtnRemoverPersona().addActionListener(l -> EliminarPersona());
+        
 
     }
 
+    private void EventosComponentesVistaPersona(){
+        KeyListener buscar = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String busqueda = vistaPer.getTxtBuscarPersona().getText().toLowerCase();
+                BuscarPersonaLista(busqueda);
+            }
+        };
+        vistaPer.getTxtBuscarPersona().addKeyListener(buscar);
+    }
     private void ExaminarFoto() {
         jfc = new JFileChooser();
         FileNameExtensionFilter tipo = new FileNameExtensionFilter("JPG, JPEG", "jpg", "jpeg");
@@ -129,45 +152,69 @@ public class Controlador_Persona {
         modelPer.setFecha_nacimiento((java.sql.Date) fechaN);
         modelPer.setGenero(GeneroPersona());
         modelPer.setDireccion(vistaPer.getTxtDireccionPersona().getText());
-        try {
-            FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-            int largo = (int) jfc.getSelectedFile().length();
-            modelPer.setImagen(img);
-            modelPer.setLargo(largo);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (modelPer.CrearPersonaBDA()) {
-            CargarTablaPersona();
-            JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
+
+        if (jfc == null) {
+            if (modelPer.CrearPersonaFT()) {
+                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
+                CargarTablaPersona();
+            } else {
+                JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona");
+            if (jfc != null) {
+                try {
+                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                    int largo = (int) jfc.getSelectedFile().length();
+                    modelPer.setImagen(img);
+                    modelPer.setLargo(largo);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (modelPer.CrearPersonaBDA()) {
+                CargarTablaPersona();
+                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.");
+            }
         }
     }
 
     private void EditarPersona() {
         Modelo_Persona modelPerE = new Modelo_Persona();
-        modelPer.setId_persona(Integer.parseInt(vistaPer.getTxt_ID_Persona().getText()));
-        modelPer.setNombre(vistaPer.getTxtNombrePersona().getText());
-        modelPer.setApellido(vistaPer.getTxtApellidoPersona().getText());
+        modelPerE.setId_persona(Integer.parseInt(vistaPer.getTxt_ID_Persona().getText()));
+        modelPerE.setNombre(vistaPer.getTxtNombrePersona().getText());
+        modelPerE.setApellido(vistaPer.getTxtApellidoPersona().getText());
         String fechaNacimiento = ((JTextField) vistaPer.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
         Date fechaN = java.sql.Date.valueOf(fechaNacimiento);
-        modelPer.setFecha_nacimiento((java.sql.Date) fechaN);
-        modelPer.setGenero(GeneroPersona());
-        modelPer.setDireccion(vistaPer.getTxtDireccionPersona().getText());
-        try {
-            FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-            int largo = (int) jfc.getSelectedFile().length();
-            modelPer.setImagen(img);
-            modelPer.setLargo(largo);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (modelPer.ModificarPersonaBDA()) {
-            JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+        modelPerE.setFecha_nacimiento((java.sql.Date) fechaN);
+        modelPerE.setGenero(GeneroPersona());
+        modelPerE.setDireccion(vistaPer.getTxtDireccionPersona().getText());
+        if (jfc == null) {
+            if (modelPerE.ModificarPersonaFT()) {
+                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+                CargarTablaPersona();
+            } else {
+                JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.");
+            if (jfc != null) {
+                try {
+                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                    int largo = (int) jfc.getSelectedFile().length();
+                    modelPerE.setImagen(img);
+                    modelPerE.setLargo(largo);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (modelPerE.ModificarPersonaBDA()) {
+                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.");
+            }
         }
+
     }
 
     private void CargarTablaPersona() {
@@ -178,6 +225,36 @@ public class Controlador_Persona {
         List<Persona> listaPersonas = modelPer.listarPersonas();
         Holder<Integer> i = new Holder<>(0);
         listaPersonas.stream().forEach(p -> {
+
+            tb.addRow(new Object[8]);
+            vistaPer.getTblPersonas().setValueAt(p.getId_persona(), i.value, 0);
+            vistaPer.getTblPersonas().setValueAt(p.getCedula(), i.value, 1);
+            vistaPer.getTblPersonas().setValueAt(p.getNombre(), i.value, 2);
+            vistaPer.getTblPersonas().setValueAt(p.getApellido(), i.value, 3);
+            vistaPer.getTblPersonas().setValueAt(p.getFecha_nacimiento(), i.value, 4);
+            vistaPer.getTblPersonas().setValueAt(p.getGenero(), i.value, 5);
+            vistaPer.getTblPersonas().setValueAt(p.getDireccion(), i.value, 6);
+            Image foto = p.getFoto();
+            if (foto != null) {
+                Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                ImageIcon icono = new ImageIcon(nimg);
+                DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+                renderer.setIcon(icono);
+                vistaPer.getTblPersonas().setValueAt(new JLabel(icono), i.value, 7);
+            } else {
+                vistaPer.getTblPersonas().setValueAt(null, i.value, 7);
+            }
+            i.value++;
+        });
+    }
+    private void BuscarPersonaLista(String busqueda) {
+        vistaPer.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
+        vistaPer.getTblPersonas().setRowHeight(100);
+        DefaultTableModel tb = (DefaultTableModel) vistaPer.getTblPersonas().getModel();
+        tb.setNumRows(0);
+        List<Persona> listaBusqueda = modelPer.BuscarPersonas(busqueda);
+        Holder<Integer> i = new Holder<>(0);
+        listaBusqueda.stream().forEach(p -> {
 
             tb.addRow(new Object[8]);
             vistaPer.getTblPersonas().setValueAt(p.getId_persona(), i.value, 0);
@@ -239,11 +316,15 @@ public class Controlador_Persona {
 
         int j = vistaPer.getTblPersonas().getSelectedRow();
         if (j != -1) {
-            String ve = vistaPer.getTblPersonas().getValueAt(j, 0).toString();
+            String ve = vistaPer.getTblPersonas().getValueAt(j, 1).toString();
+            System.out.println("Cedula que me sale"+ve);
             List<Persona> listaPerFT = modelPer.listarPersonas();
             for (int i = 0; i < listaPerFT.size(); i++) {
+                System.out.println("Ingreso al for");
                 if (listaPerFT.get(i).getCedula().equals(ve)) {
+                    System.out.println("Ingreso al if");
                     vistaPer.getTxt_ID_Persona().setText(String.valueOf(listaPerFT.get(i).getId_persona()));
+                    System.out.println(""+listaPerFT.get(i).getId_persona());
                     vistaPer.getTxtCedulaPersona().setText(listaPerFT.get(i).getCedula());
                     vistaPer.getTxtNombrePersona().setText(listaPerFT.get(i).getNombre());
                     vistaPer.getTxtApellidoPersona().setText(listaPerFT.get(i).getApellido());
@@ -270,6 +351,27 @@ public class Controlador_Persona {
         } else {
             JOptionPane.showMessageDialog(vistaPer, "Error nu.");
             System.out.println("error");
+        }
+    }
+    private void EliminarPersona() {
+        int i = vistaPer.getTblPersonas().getSelectedRow();
+        if (i != -1) {
+            String idpersona = vistaPer.getTblPersonas().getValueAt(i, 0).toString();
+            int aux = Integer.parseInt(idpersona);
+            String cedula = vistaPer.getTblPersonas().getValueAt(i, 1).toString();
+            int result = JOptionPane.showConfirmDialog(vistaPer, "Esta seguro que desea eliminar al cliente con cédula " + cedula + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (result == JOptionPane.YES_OPTION) {
+                if (modelPer.EliminarPersona(aux)) {
+                    JOptionPane.showMessageDialog(vistaPer, "El registro a sido eliminado correctamente de la base de datos.");
+                    CargarTablaPersona();
+                } else {
+                    JOptionPane.showMessageDialog(vistaPer, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(vistaPer, "Registro cancelado para su eliminación.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(vistaPer, "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

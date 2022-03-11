@@ -71,6 +71,38 @@ public class Modelo_Persona extends Persona {
             return null;
         }
     }
+    public List<Persona> BuscarPersonas(String busqueda) {
+        List<Persona> lp = new ArrayList<Persona>();
+        try {
+            String sql = "select * from persona where CAST(id_persona AS TEXT) LIKE '" + busqueda + "%' or cedula like '" + busqueda + "%' or lower(nombre) like '" + busqueda + "%' or lower(apellido) like '" + busqueda + "%';";
+            ResultSet rs = cp.colsulta(sql);
+            byte[] bytea;
+            while (rs.next()) {
+                Persona persona = new Persona();
+                persona.setId_persona(rs.getInt("id_persona"));
+                persona.setCedula(rs.getString("cedula"));
+                persona.setNombre(rs.getString("nombre"));
+                persona.setApellido(rs.getString("apellido"));
+                persona.setGenero(rs.getString("genero"));
+                persona.setFecha_nacimiento(rs.getDate("Fecha_nacimiento"));
+                persona.setDireccion(rs.getString("Dirección"));
+                bytea = rs.getBytes("foto");
+                if (bytea != null) {
+                    try {
+                        persona.setFoto(obtenerImagen(bytea));
+                    } catch (IOException ex) {
+                        Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                lp.add(persona);
+            }
+            rs.close();
+            return lp;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
     private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
@@ -105,12 +137,33 @@ public class Modelo_Persona extends Persona {
             return false;
         }
     }
+    public boolean CrearPersonaFT() {
+        try {
+            String sql = "INSERT INTO public.persona(\n"
+                    + "	id_persona, cedula, nombre, apellido, genero, fecha_nacimiento, dirección)\n"
+                    + "	VALUES (?, ?, ?, ?, ?, ?, ?);";
+            PreparedStatement ps = cp.getCon().prepareStatement(sql);
+            ps.setInt(1, getId_persona());
+            ps.setString(2, getCedula());
+            ps.setString(3, getNombre());
+            ps.setString(4, getApellido());
+            ps.setString(5, getGenero());
+            ps.setDate(6, getFecha_nacimiento());
+            ps.setString(7, getDireccion());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
 
     public boolean ModificarPersonaBDA() {
         try {
             String sql = "UPDATE public.persona\n"
                     + "	SET nombre=?, apellido=?, genero=?, fecha_nacimiento=?, dirección=?, foto=?\n"
-                    + "	WHERE <condition>;";
+                    + "	WHERE id_persona='"+getId_persona()+"';";
             PreparedStatement ps = cp.getCon().prepareStatement(sql);
             ps.setString(1, getNombre());
             ps.setString(2, getApellido());
@@ -125,6 +178,31 @@ public class Modelo_Persona extends Persona {
             return false;
         }
     }
+    public boolean ModificarPersonaFT() {
+        try {
+            String sql = "UPDATE public.persona\n"
+                    + "	SET nombre=?, apellido=?, genero=?, fecha_nacimiento=?, dirección=?\n"
+                    + "	WHERE id_persona='"+getId_persona()+"';";
+            PreparedStatement ps = cp.getCon().prepareStatement(sql);
+            ps.setString(1, getNombre());
+            ps.setString(2, getApellido());
+            ps.setString(3, getGenero());
+            ps.setDate(4, getFecha_nacimiento());
+            ps.setString(5, getDireccion());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean EliminarPersona(int idperosna) {
+        String sql = "DELETE FROM persona WHERE id_persona = '" + idperosna + "';";
+        System.out.println("" + sql);
+        return cp.accion(sql);
+    }
+    
     public int IncrementoIdPersona(){
         int incremento = 1;
         try {
@@ -132,13 +210,12 @@ public class Modelo_Persona extends Persona {
             ResultSet rs = cp.colsulta(sql);
             while (rs.next()) {
                 incremento = rs.getInt(1) + 1;
-                System.out.println("Si in");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Error");
         }
         return incremento;
     }
-
+    
+    
 }

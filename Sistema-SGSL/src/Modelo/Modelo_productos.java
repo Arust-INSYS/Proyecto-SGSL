@@ -174,5 +174,19 @@ public class Modelo_productos extends Productos{
             return null;
         }
     }
+                public int IncrementoIdproducto(){
+        int incremento = 1;
+        try {
+            String sql = "select max(id_producto) from productos";
+            ResultSet rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                incremento = rs.getInt(1) + 1;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return incremento;
+    }
+
             
 }

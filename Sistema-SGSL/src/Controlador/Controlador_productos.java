@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +23,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 public class Controlador_productos {
+    LocalDate fechahoy = LocalDate.now();
 
     private Modelo_productos modelpro;
     private Vista_productos vispro;
@@ -32,6 +34,11 @@ public class Controlador_productos {
         this.vispro = vispro;
         vispro.setVisible(true);
         cargarproductos();
+        vispro.getTxtidproducto().setText(String.valueOf(modelpro.IncrementoIdproducto()));
+    vispro.getTxtidproducto().setEditable(false);
+        vispro.getTxtfechahoy().setText(fechahoy + "");
+        vispro.getTxtfecha().setText(fechahoy + "");
+
     }
 
     public void iniciaControl() {
@@ -39,7 +46,7 @@ public class Controlador_productos {
         vispro.getBtnEditarServicio().addActionListener(l -> abrirDialogo_pro(4));
         vispro.getBtnexaminar().addActionListener(l -> examifoto());
         vispro.getBtnActualizarServicio().addActionListener(l -> cargarproductos());
-        vispro.getBtnAceptar_pro1().addActionListener(l -> crear());
+        vispro.getBtnAceptar_pro1().addActionListener(l -> guardar());
         vispro.getBtnEditarServicio().addActionListener(l -> editar());
         vispro.getBtnRemoverServicio().addActionListener(l -> eli());
         vispro.getBtnCancelar_pro1().addActionListener(l -> cancelar());
@@ -67,6 +74,7 @@ public class Controlador_productos {
     private void abrirDialogo_pro(int ce) {
         String title;
         if (ce == 3) {
+            limpiardatos();
             title = "Crear nuevo servicio";
             vispro.getDialog_Crear().setName("crear");
         } else {
@@ -243,6 +251,24 @@ public class Controlador_productos {
     private void cancelar() {
         vispro.getDialog_Crear().setVisible(false);
     }
+        private void limpiardatos() {
+        vispro.getTxtidbodega().setText("");
+        vispro.getTxtid_empleado().setText("");
+        vispro.getTxtnom_pro().setText("");
+        vispro.getSnipercanti().setValue(1);
+        vispro.getTxtfechahoy().setIcon(null);
+        vispro.getTxtpreciopro().setText("");
+        vispro.getTxtmarca().setText("");
+
+        }
+        
+    void guardar() {
+    crear();
+    vispro.getTxtidproducto().setText(String.valueOf(modelpro.IncrementoIdproducto()));
+
+    
+    }
+
     private void bus(java.awt.event.KeyEvent evt) {
         vispro.getTablita().setDefaultRenderer(Object.class, new Imangentabla());
         vispro.getTablita().setRowHeight(100);

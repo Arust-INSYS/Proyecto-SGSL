@@ -18,6 +18,30 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JLabel getTxtfechahoy() {
+        return txtfechahoy;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getTxtfecha() {
+        return txtfecha;
+    }
+
+    public void setTxtfecha(JLabel txtfecha) {
+        this.txtfecha = txtfecha;
+    }
+
+    public void setTxtfechahoy(JLabel txtfechahoy) {
+        this.txtfechahoy = txtfechahoy;
+    }
+
     public JButton getBtnexaminar() {
         return btnexaminar;
     }
@@ -240,6 +264,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         txtfoto = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnexaminar = new javax.swing.JButton();
+        txtfecha = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         areadescripcion = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
@@ -265,6 +290,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablita1 = new javax.swing.JTable();
+        txtfechahoy = new javax.swing.JLabel();
 
         Dialog_Crear.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -314,6 +340,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         btnexaminar.setText("Examinar");
         Dialog_Crear.getContentPane().add(btnexaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
+        Dialog_Crear.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 110, 30));
 
         jScrollPane3.setViewportView(areadescripcion);
 
@@ -476,6 +503,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jInternalFrame1.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 850, 270));
 
         getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 110, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -521,6 +549,8 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner snipercanti;
     private javax.swing.JTable tablita;
     private javax.swing.JTable tablita1;
+    private javax.swing.JLabel txtfecha;
+    private javax.swing.JLabel txtfechahoy;
     private javax.swing.JLabel txtfoto;
     private javax.swing.JTextField txtid_empleado;
     private javax.swing.JTextField txtidbodega;

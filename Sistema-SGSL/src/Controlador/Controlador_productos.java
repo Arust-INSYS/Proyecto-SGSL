@@ -4,6 +4,7 @@ import Modelo.CLASES.Productos;
 import Modelo.Modelo_productos;
 import Vista.Vista_productos;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,10 +17,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
-
 public class Controlador_productos {
 
     private Modelo_productos modelpro;
@@ -41,6 +42,8 @@ public class Controlador_productos {
         vispro.getBtnAceptar_pro1().addActionListener(l -> crear());
         vispro.getBtnEditarServicio().addActionListener(l -> editar());
         vispro.getBtnRemoverServicio().addActionListener(l -> eli());
+        vispro.getBtnCancelar_pro1().addActionListener(l -> cancelar());
+                setEventoKeytyped(vispro.getTxtBuscarServicio());
 
     }
 
@@ -237,5 +240,51 @@ public class Controlador_productos {
             vispro.getDialog_Crear().dispose();
         }
     }
+    private void cancelar() {
+        vispro.getDialog_Crear().setVisible(false);
+    }
+    private void bus(java.awt.event.KeyEvent evt) {
+        vispro.getTablita().setDefaultRenderer(Object.class, new Imangentabla());
+        vispro.getTablita().setRowHeight(100);
+        DefaultTableModel ta;
+        ta = (DefaultTableModel) vispro.getTablita().getModel();
+        ta.setRowCount(0);
+
+        List<Productos> lisproduc = modelpro.listarperbusqueda(vispro.getTxtBuscarServicio().getText());
+        Holder<Integer> i = new Holder<>(0);
+        lisproduc.stream().forEach(q -> {
+            ta.addRow(new Object[9]);//cantidad de columna
+            vispro.getTablita().setValueAt(q.getId_producto(), i.value, 0);
+            vispro.getTablita().setValueAt(q.getNom_producto(), i.value, 1);
+            vispro.getTablita().setValueAt(q.getPrecio_producto(), i.value, 2);
+            vispro.getTablita().setValueAt(q.getCantidad_producto(), i.value, 3);
+            vispro.getTablita().setValueAt(q.getMarcar_producto(), i.value, 4);
+            vispro.getTablita().setValueAt(q.getId_empleado(), i.value, 6);
+            vispro.getTablita().setValueAt(q.getId_bodega(), i.value, 7);
+            Image foto = q.getFoto();
+            if (foto != null) {
+                Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(nimg);
+                
+                DefaultTableCellRenderer render = new DefaultTableCellRenderer();
+                render.setIcon(icon);
+                vispro.getTablita().setValueAt(new JLabel(icon), i.value, 5);
+            } else {
+                vispro.getTablita().setValueAt(null, i.value, 5);
+            }
+            i.value++;
+        });
+
+
+    }
+    private void setEventoKeytyped(JTextField txt) {
+        txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                bus(e);
+            }
+        });
+    }
+
 
 }

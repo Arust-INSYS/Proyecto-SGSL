@@ -96,5 +96,20 @@ public class Modelo_Empleado extends Empleado{
      return cpg.accion(nsql);
     }
     
+    //logeo
+    public boolean ValidarCredencial(String user, String password){
+        String sql = "select p.cedula, e.contrasenia from empleado e join persona p "
+                + "on e.id_persona=p.id_persona and p.cedula='"+user+ "' and e.contrasenia='"+password+"'";
+            ResultSet rs = cpg.colsulta(sql);
+            
+        try {
+            return rs.next();
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+            
+       
+    }
     
 }

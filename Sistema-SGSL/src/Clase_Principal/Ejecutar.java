@@ -6,6 +6,9 @@
 package Clase_Principal;
 
 import Controlador.Control_VistaPrincipal;
+import Controlador.Controlador_Login;
+import Modelo.Modelo_Empleado;
+import Vista.Vista_Login;
 import Vista.Vista_Principal;
 
 /**
@@ -21,9 +24,15 @@ public class Ejecutar {
         // TODO code application logic here
         
        
-        Vista_Principal vista = new Vista_Principal();
-        Control_VistaPrincipal controlador = new Control_VistaPrincipal(vista);
-        controlador.iniciaControl();
+//        Vista_Principal vista = new Vista_Principal();
+//        Control_VistaPrincipal controlador = new Control_VistaPrincipal(vista);
+//        controlador.iniciaControl();
+        
+        //logeo
+        Vista_Login vl = new Vista_Login();
+        Modelo_Empleado me = new Modelo_Empleado();
+        Controlador_Login cl = new Controlador_Login(me, vl);
+        cl.IniciarBoton();
     }
     
 }

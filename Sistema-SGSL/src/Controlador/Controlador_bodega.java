@@ -2,9 +2,19 @@ package Controlador;
 
 import Modelo.Modelo_bodega;
 import Modelo.CLASES.Bodega;
+import Modelo.CLASES.Productos;
+import Modelo.Modelo_productos;
 
 import Vista.Vista_bodega;
+import java.awt.Image;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 
@@ -12,7 +22,6 @@ public class Controlador_bodega {
 
     private Modelo_bodega modelbo;
     private Vista_bodega visbo;
-  //  private JFileChooser jfch;
 
     public Controlador_bodega(Modelo_bodega modelbo, Vista_bodega visbo) {
         this.modelbo = modelbo;
@@ -26,6 +35,8 @@ public class Controlador_bodega {
         visbo.getBtnCrearServicio().addActionListener(l -> abrirDialogo_pro(3));
        visbo.getBtnEditarServicio().addActionListener(l -> abrirDialogo_pro(4));
            visbo.getBtnActualizarServicio().addActionListener(l ->cargarbodegas());
+           visbo.getBtnAceptar_pro1().addActionListener(l ->crear());
+           visbo.getBtnEditarServicio().addActionListener(l ->editar());
 
     }
 
@@ -63,5 +74,66 @@ public class Controlador_bodega {
 
     }
 
+    private void crear() {
+        System.out.println("1");
+        if (visbo.getDialog_Crear().getName() == "crear") {
+            String id = visbo.getTxtidproducto().getText();
+            String num = visbo.getSpinernumer().getValue().toString();
+            String ca = visbo.getSnipercanti().getValue().toString();
+            String es= visbo.getSpinerespacio().getValue().toString();
+            Modelo_bodega mopro = new Modelo_bodega();
+            mopro.setIdbodega(Integer.parseInt(id));
+            mopro.setNumero(Integer.parseInt(num));
+            mopro.setCantidad(Integer.parseInt(ca));
+            mopro.setEspacio(Integer.parseInt(es));
+            
+            if (modelbo.creabodega()) {
+                visbo.getDialog_Crear().setVisible(false);
+                JOptionPane.showMessageDialog(visbo, "PRODUCTO Creado Satisfactoriamente");
+            } else {
+                JOptionPane.showMessageDialog(visbo, "No se pudo crear al producto");
+            }
+        } else {
+            Modelo_bodega p = new Modelo_bodega();
+            String id = visbo.getTxtidbodega().getText();
+            String num = visbo.getSpinernumer().getValue().toString();
+            String ca = visbo.getSnipercanti().getValue().toString();
+            String es = visbo.getSpinerespacio().getValue().toString();
+            
+            p.setIdbodega(Integer.parseInt(id));
+            p.setNumero(Integer.parseInt(num));
+            p.setCantidad(Integer.parseInt(ca));
+            p.setEspacio(Integer.parseInt(es));
+            
+                if (p.editarbo()) {
+                    JOptionPane.showMessageDialog(visbo, "PRODUCTO MMODIFICADO");
+                } else {
+                    JOptionPane.showMessageDialog(visbo, "Se a producido un error al modificar el producto.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        }
+     private void editar() {
+        List<Bodega> lp = modelbo.listarbodegas();
+        int xx = visbo.getTABLABODEGA().getSelectedRow();
+        if (xx != -1) {
+            String id = visbo.getTABLABODEGA().getValueAt(xx, 0).toString();
+            int pro = Integer.parseInt(id);
+            visbo.getTxtidbodega().setText(id);
+            String num =visbo.getTABLABODEGA().getValueAt(xx, 1).toString();
+            visbo.getSpinernumer().setValue(Integer.parseInt(num));
+            String ca = visbo.getTABLABODEGA().getValueAt(xx, 2).toString();
+            visbo.getSnipercanti().setValue(Integer.parseInt(ca));
+            String es = visbo.getTABLABODEGA().getValueAt(xx, 3).toString();
+            visbo.getSpinerespacio().setValue(Integer.parseInt(es));
+                
+            
+        } else {
+            JOptionPane.showMessageDialog(visbo, "error seleccione una fila");
+            visbo.getDialog_Crear().dispose();
+        }
+    }
+   
 
 }
+

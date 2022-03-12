@@ -199,6 +199,14 @@ public class Vista_Principal extends javax.swing.JFrame {
     public void setMenuItem_clientes(JMenuItem menuItem_clientes) {
         this.menuItem_clientes = menuItem_clientes;
     }
+
+    public JMenuItem getMenuItem_empleados() {
+        return menuItem_empleados;
+    }
+
+    public void setMenuItem_empleados(JMenuItem menuItem_empleados) {
+        this.menuItem_empleados = menuItem_empleados;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

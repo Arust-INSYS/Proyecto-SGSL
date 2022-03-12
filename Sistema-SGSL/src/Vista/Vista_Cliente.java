@@ -5,11 +5,16 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author DELL
  */
-public class Vista_Cliente extends javax.swing.JFrame {
+public class Vista_Cliente extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Vista_Cliente
@@ -18,6 +23,119 @@ public class Vista_Cliente extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnAceptarCli() {
+        return BtnAceptarCli;
+    }
+
+    public void setBtnAceptarCli(JButton BtnAceptarCli) {
+        this.BtnAceptarCli = BtnAceptarCli;
+    }
+
+    public JButton getBtnActualizarCliente() {
+        return BtnActualizarCliente;
+    }
+
+    public void setBtnActualizarCliente(JButton BtnActualizarCliente) {
+        this.BtnActualizarCliente = BtnActualizarCliente;
+    }
+
+    public JButton getBtnBuscarPersona() {
+        return BtnBuscarPersona;
+    }
+
+    public void setBtnBuscarPersona(JButton BtnBuscarPersona) {
+        this.BtnBuscarPersona = BtnBuscarPersona;
+    }
+
+    public JButton getBtnCancelarCli() {
+        return BtnCancelarCli;
+    }
+
+    public void setBtnCancelarCli(JButton BtnCancelarCli) {
+        this.BtnCancelarCli = BtnCancelarCli;
+    }
+
+    public JButton getBtnCrearCliente() {
+        return BtnCrearCliente;
+    }
+
+    public void setBtnCrearCliente(JButton BtnCrearCliente) {
+        this.BtnCrearCliente = BtnCrearCliente;
+    }
+
+    public JButton getBtnEditarCliente() {
+        return BtnEditarCliente;
+    }
+
+    public void setBtnEditarCliente(JButton BtnEditarCliente) {
+        this.BtnEditarCliente = BtnEditarCliente;
+    }
+
+    public JButton getBtnImprimirCliente() {
+        return BtnImprimirCliente;
+    }
+
+    public void setBtnImprimirCliente(JButton BtnImprimirCliente) {
+        this.BtnImprimirCliente = BtnImprimirCliente;
+    }
+
+    public JButton getBtnRemoverCliente() {
+        return BtnRemoverCliente;
+    }
+
+    public void setBtnRemoverCliente(JButton BtnRemoverCliente) {
+        this.BtnRemoverCliente = BtnRemoverCliente;
+    }
+
+    public JDialog getDialogoCliente() {
+        return DialogoCliente;
+    }
+
+    public void setDialogoCliente(JDialog DialogoCliente) {
+        this.DialogoCliente = DialogoCliente;
+    }
+
+    public JTable getTblCliente() {
+        return TblCliente;
+    }
+
+    public void setTblCliente(JTable TblCliente) {
+        this.TblCliente = TblCliente;
+    }
+
+    public JTextField getTxtBuscarCliente() {
+        return TxtBuscarCliente;
+    }
+
+    public void setTxtBuscarCliente(JTextField TxtBuscarCliente) {
+        this.TxtBuscarCliente = TxtBuscarCliente;
+    }
+
+    public JTextField getTxtTelefonoCliente() {
+        return TxtTelefonoCliente;
+    }
+
+    public void setTxtTelefonoCliente(JTextField TxtTelefonoCliente) {
+        this.TxtTelefonoCliente = TxtTelefonoCliente;
+    }
+
+    public JTextField getTxt_ID_Cliente() {
+        return Txt_ID_Cliente;
+    }
+
+    public void setTxt_ID_Cliente(JTextField Txt_ID_Cliente) {
+        this.Txt_ID_Cliente = Txt_ID_Cliente;
+    }
+
+    public JTextField getTxt_ID_Persona() {
+        return Txt_ID_Persona;
+    }
+
+    public void setTxt_ID_Persona(JTextField Txt_ID_Persona) {
+        this.Txt_ID_Persona = Txt_ID_Persona;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +152,11 @@ public class Vista_Cliente extends javax.swing.JFrame {
         Txt_ID_Cliente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        BtnBuscarPersona = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        BtnAceptarCli = new javax.swing.JButton();
+        BtnCancelarCli = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtBuscarCliente = new javax.swing.JTextField();
@@ -47,59 +170,93 @@ public class Vista_Cliente extends javax.swing.JFrame {
         lblEstado2 = new javax.swing.JLabel();
         BtnActualizarCliente = new javax.swing.JButton();
 
-        jLabel10.setText("Id_Persona");
+        jLabel10.setText("Id_Cliente:");
 
-        jLabel3.setText("Nombre:");
+        jLabel3.setText("Id_Persiona:");
 
-        jLabel2.setText("Cédula:");
+        jLabel2.setText("Telefono:");
+
+        BtnBuscarPersona.setText("Buscar");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Cliente");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(133, 133, 133))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        BtnAceptarCli.setText("Aceptar");
+
+        BtnCancelarCli.setText("Cancelar");
 
         javax.swing.GroupLayout DialogoClienteLayout = new javax.swing.GroupLayout(DialogoCliente.getContentPane());
         DialogoCliente.getContentPane().setLayout(DialogoClienteLayout);
         DialogoClienteLayout.setHorizontalGroup(
             DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(DialogoClienteLayout.createSequentialGroup()
-                    .addGap(73, 73, 73)
-                    .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel10)
-                        .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoClienteLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(Txt_ID_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(DialogoClienteLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(71, 71, 71)
-                                .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(DialogoClienteLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(67, 67, 67)
-                                .addComponent(Txt_ID_Persona))))
-                    .addGap(74, 74, 74)))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoClienteLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Txt_ID_Persona)
+                    .addComponent(Txt_ID_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(BtnBuscarPersona)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoClienteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnAceptarCli)
+                .addGap(26, 26, 26)
+                .addComponent(BtnCancelarCli)
+                .addGap(75, 75, 75))
         );
         DialogoClienteLayout.setVerticalGroup(
             DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-            .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(DialogoClienteLayout.createSequentialGroup()
-                    .addGap(131, 131, 131)
-                    .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
-                        .addComponent(Txt_ID_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(26, 26, 26)
-                    .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(26, 26, 26)
-                    .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(DialogoClienteLayout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addComponent(jLabel3))
-                        .addComponent(Txt_ID_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(177, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoClienteLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(Txt_ID_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(Txt_ID_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnBuscarPersona))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnAceptarCli)
+                    .addComponent(BtnCancelarCli))
+                .addGap(20, 20, 20))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jLabel1.setText("Buscar");
 
@@ -153,7 +310,7 @@ public class Vista_Cliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id Empleado", "Sueldo", "Estado civil", "Fecha contrato", "Id Persona"
+                "Id Cliente", "Telefono", "Id Persona"
             }
         ));
         jScrollPane1.setViewportView(TblCliente);
@@ -189,7 +346,7 @@ public class Vista_Cliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 844, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -212,42 +369,13 @@ public class Vista_Cliente extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Vista_Cliente().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAceptarCli;
     private javax.swing.JButton BtnActualizarCliente;
-    private javax.swing.JButton BtnActualizarPersona;
-    private javax.swing.JButton BtnActualizarPersona1;
+    private javax.swing.JButton BtnBuscarPersona;
+    private javax.swing.JButton BtnCancelarCli;
     private javax.swing.JButton BtnCrearCliente;
     private javax.swing.JButton BtnEditarCliente;
     private javax.swing.JButton BtnImprimirCliente;
@@ -262,13 +390,11 @@ public class Vista_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblEstado;
-    private javax.swing.JLabel lblEstado1;
     private javax.swing.JLabel lblEstado2;
     // End of variables declaration//GEN-END:variables
 }

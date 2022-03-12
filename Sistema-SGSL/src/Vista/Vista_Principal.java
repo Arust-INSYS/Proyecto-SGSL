@@ -7,6 +7,7 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -52,6 +53,7 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
+        subMenu_Persona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-persona-femenina-24.png"))); // NOI18N
         subMenu_Persona.setFocusable(false);
         subMenu_Persona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         subMenu_Persona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -78,6 +80,8 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         dkp_pane_principal.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADAORI.jpg"))); // NOI18N
+
         dkp_pane_principal.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dkp_pane_principalLayout = new javax.swing.GroupLayout(dkp_pane_principal);
@@ -91,7 +95,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         );
         dkp_pane_principalLayout.setVerticalGroup(
             dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel1.setText("          SGSL.version.1");
@@ -113,11 +117,11 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         menu_persona.setText("Persona");
 
-        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menuItem_clientes.setText("Clientes");
         menu_persona.add(menuItem_clientes);
 
-        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
+        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menuItem_empleados.setText("Empleados");
         menu_persona.add(menuItem_empleados);
 
@@ -186,6 +190,14 @@ public class Vista_Principal extends javax.swing.JFrame {
 
     public void setDkp_pane_principal(JDesktopPane dkp_pane_principal) {
         this.dkp_pane_principal = dkp_pane_principal;
+    }
+
+    public JMenuItem getMenuItem_clientes() {
+        return menuItem_clientes;
+    }
+
+    public void setMenuItem_clientes(JMenuItem menuItem_clientes) {
+        this.menuItem_clientes = menuItem_clientes;
     }
     
 

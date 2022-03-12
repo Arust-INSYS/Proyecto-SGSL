@@ -49,6 +49,9 @@ public class Controlador_Persona {
         EventosComponentesVistaPersona();
     }
 
+    public Controlador_Persona() {
+    }
+
     private void IncremetoID() {
         vistaPer.getTxt_ID_Persona().setText(String.valueOf(modelPer.IncrementoIdPersona()));
     }
@@ -60,11 +63,24 @@ public class Controlador_Persona {
         vistaPer.getBtnAceptarPer().addActionListener(l -> crearEditarPersona());
         vistaPer.getBtnSeleccionarFoto().addActionListener(l -> ExaminarFoto());
         vistaPer.getBtnRemoverPersona().addActionListener(l -> EliminarPersona());
-        
 
     }
 
-    private void EventosComponentesVistaPersona(){
+    private void Abrir_DialogosOption() {
+        String[] opciones = {"Persona", "Cliente", "Cancelar"};
+        int numero = JOptionPane.showOptionDialog(vistaPer, "Seleccione cual desea editar", "Edición", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
+        if (numero == 0) {
+            System.out.println("->" + numero);
+        } else {
+            if (numero == 1) {
+                System.out.println("-->" + numero);
+            } else {
+                System.out.println("Salida del JOption.");
+            }
+        }
+    }
+
+    private void EventosComponentesVistaPersona() {
         KeyListener buscar = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -82,6 +98,7 @@ public class Controlador_Persona {
         };
         vistaPer.getTxtBuscarPersona().addKeyListener(buscar);
     }
+
     private void ExaminarFoto() {
         jfc = new JFileChooser();
         FileNameExtensionFilter tipo = new FileNameExtensionFilter("JPG, JPEG", "jpg", "jpeg");
@@ -107,26 +124,53 @@ public class Controlador_Persona {
     private void DialogoCrearEditarPersona(int tipo) {
         String titulo = null;
         if (tipo == 1) {
+            BloqueoTexField();
             titulo = "Crear nueva Persona";
             vistaPer.getDialogoPersona().setName("Crear");
             vistaPer.getDialogoPersona().setVisible(true);
         } else {
             if (tipo == 2) {
-                System.out.println("Ingreso a dos");
-                int i = vistaPer.getTblPersonas().getSelectedRow();
-                if (i != -1) {
-                    titulo = "Editar Persona";
-                    vistaPer.getDialogoPersona().setName("Editar");
-                    vistaPer.getDialogoPersona().setVisible(true);
-                    CargarEdicionPersona();
+                String[] opciones = {"Persona", "Cliente", "Cancelar"};
+                int numero = JOptionPane.showOptionDialog(vistaPer, "Seleccione cual desea editar", "Edición", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
+                if (numero == 0) {
+                    int i = vistaPer.getTblPersonas().getSelectedRow();
+                    if (i != -1) {
+                        BloqueoTexField();
+                        titulo = "Editar Persona";
+                        vistaPer.getDialogoPersona().setName("Editar");
+                        vistaPer.getDialogoPersona().setVisible(true);
+                        CargarEdicionPersona();
+                    } else {
+                        JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+                    }
+                    System.out.println("->" + numero);
                 } else {
-                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+                    if (numero == 1) {
+                        System.out.println("-->" + numero);
+                    } else {
+                        System.out.println("Salida del JOption.");
+                    }
                 }
+
+//                int i = vistaPer.getTblPersonas().getSelectedRow();
+//                if (i != -1) {
+//                    BloqueoTexField();
+//                    titulo = "Editar Persona";
+//                    vistaPer.getDialogoPersona().setName("Editar");
+//                    vistaPer.getDialogoPersona().setVisible(true);
+//                    CargarEdicionPersona();
+//                } else {
+//                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+//                }
             }
         }
         vistaPer.getDialogoPersona().setLocation(600, 80);
         vistaPer.getDialogoPersona().setSize(431, 414);
         vistaPer.getDialogoPersona().setTitle(titulo);
+    }
+
+    private void BloqueoTexField() {
+        vistaPer.getTxt_ID_Persona().setEnabled(false);
     }
 
     private void crearEditarPersona() {
@@ -154,11 +198,16 @@ public class Controlador_Persona {
         modelPer.setDireccion(vistaPer.getTxtDireccionPersona().getText());
 
         if (jfc == null) {
-            if (modelPer.CrearPersonaFT()) {
-                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
-                CargarTablaPersona();
+            if (ValidarUsuarioRepetido(vistaPer.getTxtCedulaPersona().getText()) == true) {
+                JOptionPane.showMessageDialog(vistaPer, "Error la cédula ya existe en la base de datos.", "Cédula Duplicada.", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+                if (modelPer.CrearPersonaFT()) {
+                    JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
+                    CargarTablaPersona();
+                    IncremetoID();
+                } else {
+                    JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } else {
             if (jfc != null) {
@@ -171,11 +220,16 @@ public class Controlador_Persona {
                     Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (modelPer.CrearPersonaBDA()) {
-                CargarTablaPersona();
-                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente.");
+            if (ValidarUsuarioRepetido(vistaPer.getTxtCedulaPersona().getText()) == true) {
+                JOptionPane.showMessageDialog(vistaPer, "Error la cédula ya existe en la base de datos.", "Cédula Duplicada.", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.");
+                if (modelPer.CrearPersonaBDA()) {
+                    CargarTablaPersona();
+                    IncremetoID();
+                    JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente.");
+                } else {
+                    JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.");
+                }
             }
         }
     }
@@ -210,6 +264,7 @@ public class Controlador_Persona {
             }
             if (modelPerE.ModificarPersonaBDA()) {
                 JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+                CargarTablaPersona();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.");
             }
@@ -247,6 +302,7 @@ public class Controlador_Persona {
             i.value++;
         });
     }
+
     private void BuscarPersonaLista(String busqueda) {
         vistaPer.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
         vistaPer.getTblPersonas().setRowHeight(100);
@@ -317,14 +373,14 @@ public class Controlador_Persona {
         int j = vistaPer.getTblPersonas().getSelectedRow();
         if (j != -1) {
             String ve = vistaPer.getTblPersonas().getValueAt(j, 1).toString();
-            System.out.println("Cedula que me sale"+ve);
+            System.out.println("Cedula que me sale" + ve);
             List<Persona> listaPerFT = modelPer.listarPersonas();
             for (int i = 0; i < listaPerFT.size(); i++) {
                 System.out.println("Ingreso al for");
                 if (listaPerFT.get(i).getCedula().equals(ve)) {
                     System.out.println("Ingreso al if");
                     vistaPer.getTxt_ID_Persona().setText(String.valueOf(listaPerFT.get(i).getId_persona()));
-                    System.out.println(""+listaPerFT.get(i).getId_persona());
+                    System.out.println("" + listaPerFT.get(i).getId_persona());
                     vistaPer.getTxtCedulaPersona().setText(listaPerFT.get(i).getCedula());
                     vistaPer.getTxtNombrePersona().setText(listaPerFT.get(i).getNombre());
                     vistaPer.getTxtApellidoPersona().setText(listaPerFT.get(i).getApellido());
@@ -353,6 +409,7 @@ public class Controlador_Persona {
             System.out.println("error");
         }
     }
+
     private void EliminarPersona() {
         int i = vistaPer.getTblPersonas().getSelectedRow();
         if (i != -1) {

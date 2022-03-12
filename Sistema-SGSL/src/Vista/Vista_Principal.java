@@ -36,6 +36,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         subMenu_servicios = new javax.swing.JButton();
         sub_menupro = new javax.swing.JButton();
+        btnbodega = new javax.swing.JButton();
         dkp_pane_principal = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -70,6 +71,12 @@ public class Vista_Principal extends javax.swing.JFrame {
         sub_menupro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         sub_menupro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(sub_menupro);
+
+        btnbodega.setText("Bodega");
+        btnbodega.setFocusable(false);
+        btnbodega.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnbodega.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnbodega);
 
         dkp_pane_principal.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -164,6 +171,14 @@ public class Vista_Principal extends javax.swing.JFrame {
         return subMenu_servicios;
     }
 
+    public JButton getBtnbodega() {
+        return btnbodega;
+    }
+
+    public void setBtnbodega(JButton btnbodega) {
+        this.btnbodega = btnbodega;
+    }
+
     public void setSubMenu_servicios(JButton subMenu_servicios) {
         this.subMenu_servicios = subMenu_servicios;
     }
@@ -195,6 +210,7 @@ public class Vista_Principal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnbodega;
     private javax.swing.JDesktopPane dkp_pane_principal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -8,6 +8,8 @@ package Controlador;
 import Modelo.CLASES.Cliente;
 import Modelo.Modelo_Cliente;
 import Vista.Vista_Cliente;
+import Vista.Vista_Persona;
+import Vista.Vista_Principal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -37,6 +39,7 @@ public class Controlador_Cliente {
         vistaCli.getBtnEditarCliente().addActionListener(l -> DialogoCrearEditarCliente(2));
         vistaCli.getBtnActualizarCliente().addActionListener(l -> CargarTablaCliente());
         vistaCli.getBtnAceptarCli().addActionListener(l -> crearEditarPersona());
+        vistaCli.getBtnBuscarPersona().addActionListener(l -> BotonBuscarDialogo());
         EventosComponentesVistaCliente();
     }
     private void EventosComponentesVistaCliente(){
@@ -148,5 +151,12 @@ public class Controlador_Cliente {
             String[] cliente = {String.valueOf(c.getId_clienteC()),c.getTelefono(),String.valueOf(c.getId_personaCI())};
             tb.addRow(cliente);
         });
+    }
+    private void BotonBuscarDialogo(){
+        JOptionPane.showMessageDialog(vistaCli, "Hola como esatas");
+//        System.out.println("Ingreso");
+//        Vista_Persona viweperson = new Vista_Persona();
+//        Vista_Principal vp = new Vista_Principal();
+//        vp.getDkp_pane_principal().add(viweperson);
     }
 }

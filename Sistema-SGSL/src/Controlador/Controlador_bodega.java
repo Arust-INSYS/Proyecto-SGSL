@@ -27,7 +27,7 @@ public class Controlador_bodega {
         this.modelbo = modelbo;
         this.visbo = visbo;
         visbo.setVisible(true);
-       // cargarbodegas();
+       cargarbodegas();
     }
 
 
@@ -77,7 +77,7 @@ public class Controlador_bodega {
     private void crear() {
         System.out.println("1");
         if (visbo.getDialog_Crear().getName() == "crear") {
-            String id = visbo.getTxtidproducto().getText();
+            String id = visbo.getTxtidbodega().getText();
             String num = visbo.getSpinernumer().getValue().toString();
             String ca = visbo.getSnipercanti().getValue().toString();
             String es= visbo.getSpinerespacio().getValue().toString();
@@ -89,9 +89,9 @@ public class Controlador_bodega {
             
             if (modelbo.creabodega()) {
                 visbo.getDialog_Crear().setVisible(false);
-                JOptionPane.showMessageDialog(visbo, "PRODUCTO Creado Satisfactoriamente");
+                JOptionPane.showMessageDialog(visbo, "creado Satisfactoriamente");
             } else {
-                JOptionPane.showMessageDialog(visbo, "No se pudo crear al producto");
+                JOptionPane.showMessageDialog(visbo, "No se pudo crear");
             }
         } else {
             Modelo_bodega p = new Modelo_bodega();
@@ -106,7 +106,7 @@ public class Controlador_bodega {
             p.setEspacio(Integer.parseInt(es));
             
                 if (p.editarbo()) {
-                    JOptionPane.showMessageDialog(visbo, "PRODUCTO MMODIFICADO");
+                    JOptionPane.showMessageDialog(visbo, " MMODIFICADO");
                 } else {
                     JOptionPane.showMessageDialog(visbo, "Se a producido un error al modificar el producto.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -124,7 +124,7 @@ public class Controlador_bodega {
             visbo.getSpinernumer().setValue(Integer.parseInt(num));
             String ca = visbo.getTABLABODEGA().getValueAt(xx, 2).toString();
             visbo.getSnipercanti().setValue(Integer.parseInt(ca));
-            String es = visbo.getTABLABODEGA().getValueAt(xx, 3).toString();
+        String es = visbo.getTABLABODEGA().getValueAt(xx, 3).toString();
             visbo.getSpinerespacio().setValue(Integer.parseInt(es));
                 
             

@@ -23,14 +23,14 @@ public class Modelo_bodega extends Bodega{
     public List<Bodega> listarbodegas(){
         List<Bodega> lista = new  ArrayList<Bodega>();
         try {
-            String sql ="select * from bodega";
+            String sql ="select * from bodegas";
             ResultSet rs = cpg.colsulta(sql);
             while(rs.next()){
                 Bodega bo = new Bodega();
                 bo.setIdbodega(rs.getInt("id_bodega"));
                 bo.setNumero(rs.getInt("num_bodega"));
                 bo.setCantidad(rs.getInt("cantidad_bodega"));
-                bo.setEspacio(rs.getInt("Espacio_bodega"));
+                bo.setEspacio(rs.getInt("espacio_bo"));
                 lista.add(bo);
                 
             }
@@ -44,7 +44,7 @@ public class Modelo_bodega extends Bodega{
     public boolean creabodega(){
         try {
             String sql;
-            sql= "INSERT INTO bodega (id_bodega, num_bodega,cantidad_bodega,Espacio_bodega)";
+            sql= "INSERT INTO bodegas (id_bodega, num_bodega,cantidad_bodega,espacio_bo)";
             sql+="VALUES(?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getIdbodega());
@@ -62,8 +62,8 @@ public class Modelo_bodega extends Bodega{
     public boolean editarbo(){
         try {
             String sql;
-            sql= "UPDATE bodega SET id_bodegs=?, num_bodega=?, cantidad_bodega=?, Espacio_bodega=? \n" +
-            "WHERE id_bodegs = '" +getIdbodega()+ "';";
+            sql= "UPDATE bodegas SET id_bodega=?, num_bodega=?, cantidad_bodega=?, espacio_bo=? \n" +
+            "WHERE id_bodega = '" +getIdbodega()+ "';";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getIdbodega());
             ps.setInt(2, getNumero());
@@ -78,7 +78,7 @@ public class Modelo_bodega extends Bodega{
     }
       
     public boolean RemoverServicio(String id){
-     String nsql="DELETE FROM bodega WHERE id_bodegs ='" +id+ "'";
+     String nsql="DELETE FROM bodegas WHERE id_bodega ='" +id+ "'";
      return cpg.accion(nsql);
     }
     

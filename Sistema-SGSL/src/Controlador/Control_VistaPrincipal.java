@@ -8,11 +8,13 @@ package Controlador;
 import Modelo.Modelo_Cliente;
 import Modelo.Modelo_Persona;
 import Modelo.Modelo_Servicio;
+import Modelo.Modelo_bodega;
 import Modelo.Modelo_productos;
 import Vista.Vista_Cliente;
 import Vista.Vista_Persona;
 import Vista.Vista_Servicio;
 import Vista.Vista_Principal;
+import Vista.Vista_bodega;
 import Vista.Vista_productos;
 
 /**
@@ -31,7 +33,9 @@ public class Control_VistaPrincipal {
         vista_menu.getSubMenu_servicios().addActionListener(l->Crud_Servicios());
         vista_menu.getSub_menupro().addActionListener(l->Crud_productos());
         vista_menu.getSubMenu_Persona().addActionListener(l -> Registro_Persona());
-        vista_menu.getMenuItem_clientes().addActionListener(l -> Registro_Cliente());
+      vista_menu.getMenuItem_clientes().addActionListener(l -> Registro_Cliente());
+          vista_menu.getBtnbodega().addActionListener(l -> Crud_bodega());
+
     }
     private void Crud_Servicios(){
         Vista_Servicio vista_servi = new Vista_Servicio();
@@ -62,5 +66,11 @@ public class Control_VistaPrincipal {
         Controlador_Cliente ControlPerson = new Controlador_Cliente(modelClien, viweCliente);
         ControlPerson.ControlBotonesCliente();
     }
-    
+    private void Crud_bodega(){
+        Vista_bodega vista_bo = new Vista_bodega();
+        Modelo_bodega modelo_bo = new Modelo_bodega();
+        vista_menu.getDkp_pane_principal().add(vista_bo);
+        Controlador_bodega conpro= new Controlador_bodega(modelo_bo, vista_bo);
+        conpro.iniciaControl();
+    }
 }

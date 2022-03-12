@@ -56,10 +56,10 @@ public class Control_VistaPrincipal {
         ControlPerson.ControlBotonesPrincipales();
     }
     private void Registro_Cliente(){
-        Vista_Cliente vistaClien = new Vista_Cliente();
+        Vista_Cliente viweCliente = new Vista_Cliente();
         Modelo_Cliente modelClien = new Modelo_Cliente();
-        vista_menu.getDkp_pane_principal().add(vistaClien);
-        Controlador_Cliente ControlPerson = new Controlador_Cliente(modelClien, vistaClien);
+        vista_menu.getDkp_pane_principal().add(viweCliente);
+        Controlador_Cliente ControlPerson = new Controlador_Cliente(modelClien, viweCliente);
         ControlPerson.ControlBotonesCliente();
     }
     

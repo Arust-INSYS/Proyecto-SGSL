@@ -32,7 +32,7 @@ public class Modelo_Cliente extends Cliente {
     }
     
 
-    public List<Cliente> listarClientes() {
+    public List<Cliente> listarClientesBDA() {
         List<Cliente> listaCli = new ArrayList<Cliente>();
         try {
             String sql = "select * from cliente";
@@ -40,7 +40,7 @@ public class Modelo_Cliente extends Cliente {
             byte[] bytea;
             while (rs.next()) {
                 Cliente client = new Cliente();
-                client.setId_clienteC(rs.getInt("id_pedido"));
+                client.setId_clienteC(rs.getInt("id_cliente"));
                 client.setTelefono(rs.getString("telefono"));
                 client.setId_personaCI(rs.getInt("id_persona"));
                 listaCli.add(client);
@@ -53,17 +53,17 @@ public class Modelo_Cliente extends Cliente {
         }
     }
 
-    public List<Cliente> BuscarCliente(int id_cli) {
+    public List<Cliente> BuscarCliente(String id_cli) {
         List<Cliente> listaCli = new ArrayList<Cliente>();
         try {
-            String sql = "select * from cliente";
+            String sql = "select * from cliente where CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or CAST(id_persona AS TEXT) LIKE '" + id_cli + "%'";
             ResultSet rs = cp.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {
                 Cliente client = new Cliente();
-                client.setId_clienteC(rs.getInt("id_pedido"));
-                client.setTelefono(rs.getString("fecha_pedido"));
-                client.setId_personaCI(rs.getInt("direccion"));
+                client.setId_clienteC(rs.getInt("id_cliente"));
+                client.setTelefono(rs.getString("telefono"));
+                client.setId_personaCI(rs.getInt("id_persona"));
                 listaCli.add(client);
             }
             rs.close();

@@ -8,6 +8,8 @@ package Controlador;
 import Modelo.CLASES.Cliente;
 import Modelo.Modelo_Cliente;
 import Vista.Vista_Cliente;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -27,6 +29,7 @@ public class Controlador_Cliente {
         this.vistaCli = vistaCli;
         vistaCli.setVisible(true);
         IncremetoID_Cliente();
+        CargarTablaCliente();
     }
 
     public void ControlBotonesCliente() {
@@ -34,6 +37,25 @@ public class Controlador_Cliente {
         vistaCli.getBtnEditarCliente().addActionListener(l -> DialogoCrearEditarCliente(2));
         vistaCli.getBtnActualizarCliente().addActionListener(l -> CargarTablaCliente());
         vistaCli.getBtnAceptarCli().addActionListener(l -> crearEditarPersona());
+        EventosComponentesVistaCliente();
+    }
+    private void EventosComponentesVistaCliente(){
+        KeyListener buscar = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String busqueda = vistaCli.getTxtBuscarCliente().getText().toLowerCase();
+                BuscarCliente(busqueda);
+            }
+        };
+        vistaCli.getTxtBuscarCliente().addKeyListener(buscar);
     }
     private void IncremetoID_Cliente() {
         vistaCli.getTxt_ID_Cliente().setText(String.valueOf(modeloCli.IncrementoIdCliente()));
@@ -112,7 +134,16 @@ public class Controlador_Cliente {
     private void CargarTablaCliente(){
         DefaultTableModel tb = (DefaultTableModel) vistaCli.getTblCliente().getModel();
         tb.setNumRows(0);
-        List<Cliente> listaCliente = modeloCli.listarClientes();
+        List<Cliente> listaCliente = modeloCli.listarClientesBDA();
+        listaCliente.stream().forEach(c ->{
+            String[] cliente = {String.valueOf(c.getId_clienteC()),c.getTelefono(),String.valueOf(c.getId_personaCI())};
+            tb.addRow(cliente);
+        });
+    }
+    private void BuscarCliente(String codigo){
+        DefaultTableModel tb = (DefaultTableModel) vistaCli.getTblCliente().getModel();
+        tb.setNumRows(0);
+        List<Cliente> listaCliente = modeloCli.BuscarCliente(codigo);
         listaCliente.stream().forEach(c ->{
             String[] cliente = {String.valueOf(c.getId_clienteC()),c.getTelefono(),String.valueOf(c.getId_personaCI())};
             tb.addRow(cliente);

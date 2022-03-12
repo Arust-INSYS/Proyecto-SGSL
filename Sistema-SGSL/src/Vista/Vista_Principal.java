@@ -7,6 +7,7 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -174,6 +175,14 @@ public class Vista_Principal extends javax.swing.JFrame {
 
     public void setDkp_pane_principal(JDesktopPane dkp_pane_principal) {
         this.dkp_pane_principal = dkp_pane_principal;
+    }
+
+    public JMenuItem getMenuItem_clientes() {
+        return menuItem_clientes;
+    }
+
+    public void setMenuItem_clientes(JMenuItem menuItem_clientes) {
+        this.menuItem_clientes = menuItem_clientes;
     }
     
 

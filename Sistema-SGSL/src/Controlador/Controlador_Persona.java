@@ -66,6 +66,20 @@ public class Controlador_Persona {
 
     }
 
+    private void Abrir_DialogosOption() {
+        String[] opciones = {"Persona", "Cliente", "Cancelar"};
+        int numero = JOptionPane.showOptionDialog(vistaPer, "Seleccione cual desea editar", "Edición", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
+        if (numero == 0) {
+            System.out.println("->" + numero);
+        } else {
+            if (numero == 1) {
+                System.out.println("-->" + numero);
+            } else {
+                System.out.println("Salida del JOption.");
+            }
+        }
+    }
+
     private void EventosComponentesVistaPersona() {
         KeyListener buscar = new KeyListener() {
             @Override
@@ -110,26 +124,53 @@ public class Controlador_Persona {
     private void DialogoCrearEditarPersona(int tipo) {
         String titulo = null;
         if (tipo == 1) {
+            BloqueoTexField();
             titulo = "Crear nueva Persona";
             vistaPer.getDialogoPersona().setName("Crear");
             vistaPer.getDialogoPersona().setVisible(true);
         } else {
             if (tipo == 2) {
-                System.out.println("Ingreso a dos");
-                int i = vistaPer.getTblPersonas().getSelectedRow();
-                if (i != -1) {
-                    titulo = "Editar Persona";
-                    vistaPer.getDialogoPersona().setName("Editar");
-                    vistaPer.getDialogoPersona().setVisible(true);
-                    CargarEdicionPersona();
+                String[] opciones = {"Persona", "Cliente", "Cancelar"};
+                int numero = JOptionPane.showOptionDialog(vistaPer, "Seleccione cual desea editar", "Edición", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
+                if (numero == 0) {
+                    int i = vistaPer.getTblPersonas().getSelectedRow();
+                    if (i != -1) {
+                        BloqueoTexField();
+                        titulo = "Editar Persona";
+                        vistaPer.getDialogoPersona().setName("Editar");
+                        vistaPer.getDialogoPersona().setVisible(true);
+                        CargarEdicionPersona();
+                    } else {
+                        JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+                    }
+                    System.out.println("->" + numero);
                 } else {
-                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+                    if (numero == 1) {
+                        System.out.println("-->" + numero);
+                    } else {
+                        System.out.println("Salida del JOption.");
+                    }
                 }
+
+//                int i = vistaPer.getTblPersonas().getSelectedRow();
+//                if (i != -1) {
+//                    BloqueoTexField();
+//                    titulo = "Editar Persona";
+//                    vistaPer.getDialogoPersona().setName("Editar");
+//                    vistaPer.getDialogoPersona().setVisible(true);
+//                    CargarEdicionPersona();
+//                } else {
+//                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+//                }
             }
         }
         vistaPer.getDialogoPersona().setLocation(600, 80);
         vistaPer.getDialogoPersona().setSize(431, 414);
         vistaPer.getDialogoPersona().setTitle(titulo);
+    }
+
+    private void BloqueoTexField() {
+        vistaPer.getTxt_ID_Persona().setEnabled(false);
     }
 
     private void crearEditarPersona() {
@@ -163,6 +204,7 @@ public class Controlador_Persona {
                 if (modelPer.CrearPersonaFT()) {
                     JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
                     CargarTablaPersona();
+                    IncremetoID();
                 } else {
                     JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -183,6 +225,7 @@ public class Controlador_Persona {
             } else {
                 if (modelPer.CrearPersonaBDA()) {
                     CargarTablaPersona();
+                    IncremetoID();
                     JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente.");
                 } else {
                     JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.");

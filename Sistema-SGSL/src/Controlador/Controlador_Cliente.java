@@ -42,7 +42,8 @@ public class Controlador_Cliente {
         vistaCli.getBtnBuscarPersona().addActionListener(l -> BotonBuscarDialogo());
         EventosComponentesVistaCliente();
     }
-    private void EventosComponentesVistaCliente(){
+
+    private void EventosComponentesVistaCliente() {
         KeyListener buscar = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -60,6 +61,7 @@ public class Controlador_Cliente {
         };
         vistaCli.getTxtBuscarCliente().addKeyListener(buscar);
     }
+
     private void IncremetoID_Cliente() {
         vistaCli.getTxt_ID_Cliente().setText(String.valueOf(modeloCli.IncrementoIdCliente()));
     }
@@ -105,11 +107,16 @@ public class Controlador_Cliente {
         modelCli.setId_clienteC(Integer.parseInt(vistaCli.getTxt_ID_Cliente().getText()));
         modelCli.setTelefono(vistaCli.getTxtTelefonoCliente().getText());
         modelCli.setId_personaCI(Integer.parseInt(vistaCli.getTxt_ID_Persona().getText()));
-        if (modelCli.CrearClienteBDA()) {
-            CargarTablaCliente();
-            JOptionPane.showMessageDialog(vistaCli, "Cliente Creado Satisfactoriamente.");
+        if (ValidaClienteRepetido(Integer.parseInt(vistaCli.getTxt_ID_Persona().getText())) == true) {
+            JOptionPane.showMessageDialog(vistaCli, "Cliente Repetido, este id ya existe.", "Cliente Repetido.", JOptionPane.ERROR_MESSAGE);
+
         } else {
-            JOptionPane.showMessageDialog(vistaCli, "Error no se puedo crear el Cliente.");
+            if (modelCli.CrearClienteBDA()) {
+                CargarTablaCliente();
+                JOptionPane.showMessageDialog(vistaCli, "Cliente Creado Satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vistaCli, "Error no se puedo crear el Cliente.");
+            }
         }
     }
 
@@ -125,34 +132,49 @@ public class Controlador_Cliente {
             JOptionPane.showMessageDialog(vistaCli, "Error no se puedo Modificar el Cliente.");
         }
     }
-    private void CargarEdicionCliente(){
+
+    private void CargarEdicionCliente() {
         int i = vistaCli.getTblCliente().getSelectedRow();
-        if(i != -1){
+        if (i != -1) {
             vistaCli.getTxt_ID_Cliente().setText(vistaCli.getTblCliente().getValueAt(i, 0).toString());
             vistaCli.getTxtTelefonoCliente().setText(vistaCli.getTblCliente().getValueAt(i, 1).toString());
             vistaCli.getTxt_ID_Persona().setText(vistaCli.getTblCliente().getValueAt(i, 2).toString());
-            
+
         }
     }
-    private void CargarTablaCliente(){
+
+    private void CargarTablaCliente() {
         DefaultTableModel tb = (DefaultTableModel) vistaCli.getTblCliente().getModel();
         tb.setNumRows(0);
         List<Cliente> listaCliente = modeloCli.listarClientesBDA();
-        listaCliente.stream().forEach(c ->{
-            String[] cliente = {String.valueOf(c.getId_clienteC()),c.getTelefono(),String.valueOf(c.getId_personaCI())};
+        listaCliente.stream().forEach(c -> {
+            String[] cliente = {String.valueOf(c.getId_clienteC()), c.getTelefono(), String.valueOf(c.getId_personaCI())};
             tb.addRow(cliente);
         });
     }
-    private void BuscarCliente(String codigo){
+
+    private void BuscarCliente(String codigo) {
         DefaultTableModel tb = (DefaultTableModel) vistaCli.getTblCliente().getModel();
         tb.setNumRows(0);
         List<Cliente> listaCliente = modeloCli.BuscarCliente(codigo);
-        listaCliente.stream().forEach(c ->{
-            String[] cliente = {String.valueOf(c.getId_clienteC()),c.getTelefono(),String.valueOf(c.getId_personaCI())};
+        listaCliente.stream().forEach(c -> {
+            String[] cliente = {String.valueOf(c.getId_clienteC()), c.getTelefono(), String.valueOf(c.getId_personaCI())};
             tb.addRow(cliente);
         });
     }
-    private void BotonBuscarDialogo(){
+
+    private boolean ValidaClienteRepetido(int idrepetidoC) {
+        boolean idreprtido = false;
+        List<Cliente> listaC = modeloCli.listarClientesBDA();
+        for (int i = 0; i < listaC.size(); i++) {
+            if (listaC.get(i).getId_personaCI() == idrepetidoC) {
+                idreprtido = true;
+            }
+        }
+        return idreprtido;
+    }
+
+    private void BotonBuscarDialogo() {
         JOptionPane.showMessageDialog(vistaCli, "Hola como esatas");
 //        System.out.println("Ingreso");
 //        Vista_Persona viweperson = new Vista_Persona();

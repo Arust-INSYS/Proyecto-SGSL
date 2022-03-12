@@ -252,7 +252,11 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jLabel1.setText("Buscar");
 

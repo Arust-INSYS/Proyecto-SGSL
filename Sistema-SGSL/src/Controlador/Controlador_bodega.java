@@ -9,6 +9,7 @@ import Vista.Vista_bodega;
 import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import javax.xml.ws.Holder;
 
 public class Controlador_bodega {
 
+    LocalDate fechahoy = LocalDate.now();
     private Modelo_bodega modelbo;
     private Vista_bodega visbo;
 
@@ -28,6 +30,8 @@ public class Controlador_bodega {
         this.visbo = visbo;
         visbo.setVisible(true);
        cargarbodegas();
+       visbo.getTxtfechahoy().setText(fechahoy + "");
+
     }
 
 
@@ -45,15 +49,15 @@ public class Controlador_bodega {
         if (ce == 3) {
             //limpiardatos();
             title = "Crear nueva bodega";
-            visbo.getDialog_Crear().setName("crear");
+            visbo.getDialog_Crearbo().setName("crear");
         } else {
             title = "Editar bodega";
-            visbo.getDialog_Crear().setName("editar");
+            visbo.getDialog_Crearbo().setName("editar");
         }
-        visbo.getDialog_Crear().setLocationRelativeTo(visbo);
-        visbo.getDialog_Crear().setSize(620, 500);
-        visbo.getDialog_Crear().setTitle(title);
-        visbo.getDialog_Crear().setVisible(true);
+        visbo.getDialog_Crearbo().setLocationRelativeTo(visbo);
+        visbo.getDialog_Crearbo().setSize(620, 500);
+        visbo.getDialog_Crearbo().setTitle(title);
+        visbo.getDialog_Crearbo().setVisible(true);
     }
  private void cargarbodegas() {
         visbo.getTABLABODEGA().setDefaultRenderer(Object.class, new Imangentabla());
@@ -76,19 +80,19 @@ public class Controlador_bodega {
 
     private void crear() {
         System.out.println("1");
-        if (visbo.getDialog_Crear().getName() == "crear") {
+        if (visbo.getDialog_Crearbo().getName() == "crear") {
             String id = visbo.getTxtidbodega().getText();
-            String num = visbo.getSpinernumer().getValue().toString();
-            String ca = visbo.getSnipercanti().getValue().toString();
-            String es= visbo.getSpinerespacio().getValue().toString();
-            Modelo_bodega mopro = new Modelo_bodega();
-            mopro.setIdbodega(Integer.parseInt(id));
-            mopro.setNumero(Integer.parseInt(num));
-            mopro.setCantidad(Integer.parseInt(ca));
-            mopro.setEspacio(Integer.parseInt(es));
-            
+            System.out.println(id);
+            String num = visbo.getTxtnumero().getText();
+            String ca = visbo.getTxtcantidad().getText();
+            String es= visbo.getTxtespacio().getText();
+            Modelo_bodega mo = new Modelo_bodega();
+            mo.setIdbodega(Integer.parseInt(id));
+            mo.setNumero(Integer.parseInt(num));
+            mo.setCantidad(Integer.parseInt(ca));
+            mo.setEspacio(Integer.parseInt(es));        
             if (modelbo.creabodega()) {
-                visbo.getDialog_Crear().setVisible(false);
+                visbo.getDialog_Crearbo().setVisible(false);
                 JOptionPane.showMessageDialog(visbo, "creado Satisfactoriamente");
             } else {
                 JOptionPane.showMessageDialog(visbo, "No se pudo crear");
@@ -96,10 +100,9 @@ public class Controlador_bodega {
         } else {
             Modelo_bodega p = new Modelo_bodega();
             String id = visbo.getTxtidbodega().getText();
-            String num = visbo.getSpinernumer().getValue().toString();
-            String ca = visbo.getSnipercanti().getValue().toString();
-            String es = visbo.getSpinerespacio().getValue().toString();
-            
+            String num = visbo.getTxtnumero().getText();
+            String ca = visbo.getTxtcantidad().getText();
+            String es = visbo.getTxtespacio().getText();  
             p.setIdbodega(Integer.parseInt(id));
             p.setNumero(Integer.parseInt(num));
             p.setCantidad(Integer.parseInt(ca));
@@ -118,19 +121,18 @@ public class Controlador_bodega {
         int xx = visbo.getTABLABODEGA().getSelectedRow();
         if (xx != -1) {
             String id = visbo.getTABLABODEGA().getValueAt(xx, 0).toString();
-            int pro = Integer.parseInt(id);
             visbo.getTxtidbodega().setText(id);
             String num =visbo.getTABLABODEGA().getValueAt(xx, 1).toString();
-            visbo.getSpinernumer().setValue(Integer.parseInt(num));
+            visbo.getTxtnumero().setText(num);
             String ca = visbo.getTABLABODEGA().getValueAt(xx, 2).toString();
-            visbo.getSnipercanti().setValue(Integer.parseInt(ca));
+            visbo.getTxtcantidad().setText(ca);
         String es = visbo.getTABLABODEGA().getValueAt(xx, 3).toString();
-            visbo.getSpinerespacio().setValue(Integer.parseInt(es));
+            visbo.getTxtespacio().setText(es);
                 
             
         } else {
             JOptionPane.showMessageDialog(visbo, "error seleccione una fila");
-            visbo.getDialog_Crear().dispose();
+            visbo.getDialog_Crearbo().dispose();
         }
     }
    

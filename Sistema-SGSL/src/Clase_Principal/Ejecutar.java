@@ -33,6 +33,7 @@ public class Ejecutar {
         Modelo_Empleado me = new Modelo_Empleado();
         Controlador_Login cl = new Controlador_Login(me, vl);
         cl.IniciarBoton();
+        //
     }
     
 }

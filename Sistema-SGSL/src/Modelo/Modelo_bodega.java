@@ -44,8 +44,7 @@ public class Modelo_bodega extends Bodega{
     public boolean creabodega(){
         try {
             String sql;
-            sql= "INSERT INTO bodegas (id_bodega, num_bodega,cantidad_bodega,espacio_bo)";
-            sql+="VALUES(?,?,?,?)";
+            sql= "INSERT INTO bodegas (id_bodega,num_bodega,cantidad_bodega,espacio_bo )VALUES(?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getIdbodega());
             ps.setInt(2, getNumero());

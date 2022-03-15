@@ -129,7 +129,6 @@ public class Controlador_productos {
             String cant = vispro.getSnipercanti().getValue().toString();
             String idEM = vispro.getTxtid_empleado().getText();
             String idBO = vispro.getTxtidbodega().getText();
-
             Modelo_productos mopro = new Modelo_productos();
             mopro.setId_producto(Integer.parseInt(id));
             mopro.setNom_producto(nom);

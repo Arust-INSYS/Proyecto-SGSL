@@ -121,7 +121,7 @@ public class Controlador_Persona {
         }
     }
 
-    private void DialogoCrearEditarPersona(int tipo) {
+    public void DialogoCrearEditarPersona(int tipo) {
         String titulo = null;
         if (tipo == 1) {
             BloqueoTexField();
@@ -234,7 +234,7 @@ public class Controlador_Persona {
         }
     }
 
-    private void EditarPersona() {
+    public void EditarPersona() {
         Modelo_Persona modelPerE = new Modelo_Persona();
         modelPerE.setId_persona(Integer.parseInt(vistaPer.getTxt_ID_Persona().getText()));
         modelPerE.setNombre(vistaPer.getTxtNombrePersona().getText());
@@ -368,7 +368,7 @@ public class Controlador_Persona {
         return cedulaRepetida;
     }
 
-    private void CargarEdicionPersona() {
+    public void CargarEdicionPersona() {
 
         int j = vistaPer.getTblPersonas().getSelectedRow();
         if (j != -1) {

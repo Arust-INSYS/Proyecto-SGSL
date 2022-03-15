@@ -39,7 +39,7 @@ public class Controlador_Cliente {
         vistaCli.getBtnEditarCliente().addActionListener(l -> DialogoCrearEditarCliente(2));
         vistaCli.getBtnActualizarCliente().addActionListener(l -> CargarTablaCliente());
         vistaCli.getBtnAceptarCli().addActionListener(l -> crearEditarPersona());
-        vistaCli.getBtnBuscarPersona().addActionListener(l -> BotonBuscarDialogo());
+        vistaCli.getBtnBuscarPersona().addActionListener(l -> TipoDialogoAbrirCliente());
         EventosComponentesVistaCliente();
     }
 
@@ -78,6 +78,7 @@ public class Controlador_Cliente {
                 int i = vistaCli.getTblCliente().getSelectedRow();
                 if (i != -1) {
                     titulo = "Editar Cliente";
+                    
                     vistaCli.getDialogoCliente().setName("Editar");
                     vistaCli.getDialogoCliente().setVisible(true);
                     CargarEdicionCliente();
@@ -174,11 +175,28 @@ public class Controlador_Cliente {
         return idreprtido;
     }
 
-    private void BotonBuscarDialogo() {
+    private void TipoDialogoAbrirCliente() {
+        System.out.println("Entro tipo de dialogo");
+        String[] cade = {"Persona", "Cliente", "Cancelar"};
+        int nu = JOptionPane.showOptionDialog(null, "Elija el tipo de edicion que decea realizar.", "Opción de edicion.", 0, JOptionPane.DEFAULT_OPTION, null, cade, "Cancelar");
+        
+        if(nu == 0){
+            System.out.println("Persona");
+            EdicionPersonaClienteCL();
+        }
+        if(nu == 1){
+            System.out.println("Cliente");
+            CargarEdicionCliente();
+        }
         JOptionPane.showMessageDialog(vistaCli, "Hola como esatas");
+        Controlador_Persona conp = new Controlador_Persona();
+        conp.CargarEdicionPersona();
 //        System.out.println("Ingreso");
 //        Vista_Persona viweperson = new Vista_Persona();
 //        Vista_Principal vp = new Vista_Principal();
 //        vp.getDkp_pane_principal().add(viweperson);
+    }
+    private void EdicionPersonaClienteCL(){
+        
     }
 }

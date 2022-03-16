@@ -6,11 +6,13 @@
 package Controlador;
 
 import Modelo.Modelo_Cliente;
+import Modelo.Modelo_Empleado;
 import Modelo.Modelo_Persona;
 import Modelo.Modelo_Servicio;
 import Modelo.Modelo_bodega;
 import Modelo.Modelo_productos;
 import Vista.Vista_Cliente;
+import Vista.Vista_Empleado;
 import Vista.Vista_Persona;
 import Vista.Vista_Servicio;
 import Vista.Vista_Principal;
@@ -33,8 +35,9 @@ public class Control_VistaPrincipal {
         vista_menu.getSubMenu_servicios().addActionListener(l->Crud_Servicios());
         vista_menu.getSub_menupro().addActionListener(l->Crud_productos());
         vista_menu.getSubMenu_Persona().addActionListener(l -> Registro_Persona());
-      vista_menu.getMenuItem_clientes().addActionListener(l -> Registro_Cliente());
-          vista_menu.getBtnbodega().addActionListener(l -> Crud_bodega());
+        vista_menu.getMenuItem_clientes().addActionListener(l -> Registro_Cliente());
+        vista_menu.getBtnbodega().addActionListener(l -> Crud_bodega());
+        vista_menu.getMenuItem_empleados().addActionListener(l->Crud_empleados());
 
     }
     private void Crud_Servicios(){
@@ -72,5 +75,14 @@ public class Control_VistaPrincipal {
         vista_menu.getDkp_pane_principal().add(vista_bo);
         Controlador_bodega conpro= new Controlador_bodega(modelo_bo, vista_bo);
         conpro.iniciaControl();
+    }
+    
+    private void Crud_empleados(){
+        Vista_Empleado vista_emple = new Vista_Empleado();
+        Modelo_Empleado modelo_emple = new Modelo_Empleado();
+        vista_menu.getDkp_pane_principal().add(vista_emple);
+        Controlador_Empleados conemple = new Controlador_Empleados(modelo_emple, vista_emple);
+        conemple.iniciaControl();
+        
     }
 }

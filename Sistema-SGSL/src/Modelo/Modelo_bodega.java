@@ -76,15 +76,21 @@ public class Modelo_bodega extends Bodega{
         }   
     }
       
-    public boolean RemoverServicio(String id){
+    public boolean eliminarbodega(String id){
      String nsql="DELETE FROM bodegas WHERE id_bodega ='" +id+ "'";
      return cpg.accion(nsql);
     }
-    
-
-
-    
-    
-    
-    
+    public int Incrementoodega(){
+        int incremento = 1;
+        try {
+            String sql = "select max(id_bodega) from bodegas";
+            ResultSet rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                incremento = rs.getInt(1) + 1;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return incremento;
+    }
 }

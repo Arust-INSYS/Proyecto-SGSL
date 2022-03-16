@@ -6,8 +6,12 @@
 package Controlador;
 
 import Modelo.CLASES.Persona;
+import Modelo.CLASES.Servicios;
 import Modelo.Modelo_Persona;
+import Modelo.Modelo_Servicio;
 import Vista.Vista_Persona;
+import Vista.Vista_Servicio;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -32,10 +36,9 @@ import javax.xml.ws.Holder;
 
 /**
  *
- * @author DELL
+ * @author lorena
  */
 public class Controlador_Persona {
-
     private Modelo_Persona modelPer;
     private Vista_Persona vistaPer;
     private JFileChooser jfc;
@@ -66,19 +69,7 @@ public class Controlador_Persona {
 
     }
 
-    private void Abrir_DialogosOption() {
-        String[] opciones = {"Persona", "Cliente", "Cancelar"};
-        int numero = JOptionPane.showOptionDialog(vistaPer, "Seleccione cual desea editar", "Edición", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
-        if (numero == 0) {
-            System.out.println("->" + numero);
-        } else {
-            if (numero == 1) {
-                System.out.println("-->" + numero);
-            } else {
-                System.out.println("Salida del JOption.");
-            }
-        }
-    }
+    
 
     private void EventosComponentesVistaPersona() {
         KeyListener buscar = new KeyListener() {
@@ -121,7 +112,7 @@ public class Controlador_Persona {
         }
     }
 
-    public void DialogoCrearEditarPersona(int tipo) {
+    private void DialogoCrearEditarPersona(int tipo) {
         String titulo = null;
         if (tipo == 1) {
             BloqueoTexField();
@@ -234,7 +225,7 @@ public class Controlador_Persona {
         }
     }
 
-    public void EditarPersona() {
+    private void EditarPersona() {
         Modelo_Persona modelPerE = new Modelo_Persona();
         modelPerE.setId_persona(Integer.parseInt(vistaPer.getTxt_ID_Persona().getText()));
         modelPerE.setNombre(vistaPer.getTxtNombrePersona().getText());
@@ -431,4 +422,5 @@ public class Controlador_Persona {
             JOptionPane.showMessageDialog(vistaPer, "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
 }

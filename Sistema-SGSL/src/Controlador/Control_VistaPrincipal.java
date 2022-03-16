@@ -65,8 +65,10 @@ public class Control_VistaPrincipal {
     private void Registro_Cliente(){
         Vista_Cliente viweCliente = new Vista_Cliente();
         Modelo_Cliente modelClien = new Modelo_Cliente();
+        Vista_Persona vistaPerson = new Vista_Persona();
+        Modelo_Persona modelPerson = new Modelo_Persona();
         vista_menu.getDkp_pane_principal().add(viweCliente);
-        Controlador_Cliente ControlPerson = new Controlador_Cliente(modelClien, viweCliente);
+        Controlador_Cliente ControlPerson = new Controlador_Cliente(modelClien, viweCliente, modelPerson, vistaPerson);
         ControlPerson.ControlBotonesCliente();
     }
     private void Crud_bodega(){

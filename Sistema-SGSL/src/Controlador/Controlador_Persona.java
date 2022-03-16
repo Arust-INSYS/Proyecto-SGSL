@@ -379,7 +379,7 @@ public class Controlador_Persona {
                     vistaPer.getTxtCedulaPersona().setText(listaPerFT.get(i).getCedula());
                     vistaPer.getTxtNombrePersona().setText(listaPerFT.get(i).getNombre());
                     vistaPer.getTxtApellidoPersona().setText(listaPerFT.get(i).getApellido());
-                    Date fechan = listaPerFT.get(j).getFecha_nacimiento();
+                    Date fechan = listaPerFT.get(i).getFecha_nacimiento();
                     vistaPer.getFechaNacimientoPer().setDate(fechan);
                     if (listaPerFT.get(i).getGenero().equals("M")) {
                         vistaPer.getRadioBtnMasculino().setSelected(true);
@@ -391,7 +391,7 @@ public class Controlador_Persona {
                     if (listaPerFT.get(i).getFoto() == null) {
                         vistaPer.getLblFotoPersona().setIcon(null);
                     } else {
-                        Image in = listaPerFT.get(j).getFoto();
+                        Image in = listaPerFT.get(i).getFoto();
                         Image img = in.getScaledInstance(133, 147, Image.SCALE_SMOOTH);
                         Icon icono = new ImageIcon(img);
                         vistaPer.getLblFotoPersona().setIcon(icono);

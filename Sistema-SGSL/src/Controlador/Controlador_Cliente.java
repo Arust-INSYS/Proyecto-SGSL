@@ -52,6 +52,8 @@ public class Controlador_Cliente {
         System.out.println("SI ESTOY ANTES DEL OYENTE");
         vistaCli.getBtnBuscarPersona().addActionListener(l -> d());
         System.out.println("Pase el oyente");
+        
+        viewper.getBtnAceptarPer().addActionListener(l ->ingresoDatos());
         EventosComponentesVistaCliente();
     }
 
@@ -59,6 +61,10 @@ public class Controlador_Cliente {
         System.out.println("Si entre");
         JOptionPane.showMessageDialog(vistaCli, "Si valgo");
         System.out.println("Pase");
+    }
+    private void ingresoDatos(){
+        Controlador_Persona conp = new Controlador_Persona();
+        conp.EditarPersona();
     }
 
     private void EventosComponentesVistaCliente() {

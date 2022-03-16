@@ -104,6 +104,39 @@ public class Modelo_Persona extends Persona {
         }
     }
 
+//    public List<Persona> BuscarPersonaID(int idperson) {
+//        List<Persona> lp = new ArrayList<Persona>();
+//        try {
+//            String sql = "select * from persona where id_persona = '"+idperson+"'";
+//            ResultSet rs = cp.colsulta(sql);
+//            byte[] bytea;
+//            while (rs.next()) {
+//                Persona persona = new Persona();
+//                persona.setId_persona(rs.getInt("id_persona"));
+//                persona.setCedula(rs.getString("cedula"));
+//                persona.setNombre(rs.getString("nombre"));
+//                persona.setApellido(rs.getString("apellido"));
+//                persona.setGenero(rs.getString("genero"));
+//                persona.setFecha_nacimiento(rs.getDate("Fecha_nacimiento"));
+//                persona.setDireccion(rs.getString("Dirección"));
+//                bytea = rs.getBytes("foto");
+//                if (bytea != null) {
+//                    try {
+//                        persona.setFoto(obtenerImagen(bytea));
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//                lp.add(persona);
+//            }
+//            rs.close();
+//            return lp;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+//            return null;
+//        }
+//    }
+    
     private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         Iterator it = ImageIO.getImageReadersByFormatName("jpeg");

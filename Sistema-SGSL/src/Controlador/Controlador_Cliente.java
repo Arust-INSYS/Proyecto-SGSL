@@ -6,13 +6,24 @@
 package Controlador;
 
 import Modelo.CLASES.Cliente;
+import Modelo.CLASES.Persona;
 import Modelo.Modelo_Cliente;
+import Modelo.Modelo_Persona;
 import Vista.Vista_Cliente;
 import Vista.Vista_Persona;
 import Vista.Vista_Principal;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -25,10 +36,15 @@ public class Controlador_Cliente {
 
     private Modelo_Cliente modeloCli;
     private Vista_Cliente vistaCli;
+    private Modelo_Persona modelPer;
+    private Vista_Persona viewper;
+    private JFileChooser jfc;
 
-    public Controlador_Cliente(Modelo_Cliente modeloCli, Vista_Cliente vistaCli) {
+    public Controlador_Cliente(Modelo_Cliente modeloCli, Vista_Cliente vistaCli, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modeloCli = modeloCli;
         this.vistaCli = vistaCli;
+        this.modelPer = modelPer;
+        this.viewper = viewper;
         vistaCli.setVisible(true);
         IncremetoID_Cliente();
         CargarTablaCliente();
@@ -36,12 +52,26 @@ public class Controlador_Cliente {
 
     public void ControlBotonesCliente() {
         vistaCli.getBtnCrearCliente().addActionListener(l -> DialogoCrearEditarCliente(1));
-        vistaCli.getBtnEditarCliente().addActionListener(l -> DialogoCrearEditarCliente(2));
+        vistaCli.getBtnEditarCliente().addActionListener(l -> TipoDialogoAbrirCliente());
         vistaCli.getBtnActualizarCliente().addActionListener(l -> CargarTablaCliente());
         vistaCli.getBtnAceptarCli().addActionListener(l -> crearEditarPersona());
-        vistaCli.getBtnBuscarPersona().addActionListener(l -> TipoDialogoAbrirCliente());
+        System.out.println("SI ESTOY ANTES DEL OYENTE");
+        vistaCli.getBtnBuscarPersona().addActionListener(l -> d());
+        System.out.println("Pase el oyente");
+        
+        viewper.getBtnAceptarPer().addActionListener(l ->EditarPersona());
         EventosComponentesVistaCliente();
     }
+
+    private void d() {
+        System.out.println("Si entre");
+        JOptionPane.showMessageDialog(vistaCli, "Si valgo");
+        System.out.println("Pase");
+    }
+//    private void ingresoDatos(){
+//        Controlador_Persona conp = new Controlador_Persona();
+//        conp.EditarPersona();
+//    }
 
     private void EventosComponentesVistaCliente() {
         KeyListener buscar = new KeyListener() {
@@ -75,16 +105,16 @@ public class Controlador_Cliente {
         } else {
             if (tipo == 2) {
                 System.out.println("Ingreso a dos");
-                int i = vistaCli.getTblCliente().getSelectedRow();
-                if (i != -1) {
+//                int i = vistaCli.getTblCliente().getSelectedRow();
+//                if (i != -1) {
                     titulo = "Editar Cliente";
-                    
+
                     vistaCli.getDialogoCliente().setName("Editar");
                     vistaCli.getDialogoCliente().setVisible(true);
                     CargarEdicionCliente();
-                } else {
-                    JOptionPane.showMessageDialog(vistaCli, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
-                }
+//                } else {
+//                    JOptionPane.showMessageDialog(vistaCli, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+//                }
             }
         }
         vistaCli.getDialogoCliente().setLocation(600, 80);
@@ -92,6 +122,100 @@ public class Controlador_Cliente {
         vistaCli.getDialogoCliente().setTitle(titulo);
     }
 
+    private void TipoDialogoAbrirCliente() {
+
+        int i = vistaCli.getTblCliente().getSelectedRow();
+
+        if (i != -1) {
+            int cod = Integer.parseInt(vistaCli.getTblCliente().getValueAt(i, 0).toString());
+            System.out.println("Entro tipo de dialogo");
+            String[] cade = {"Persona", "Cliente", "Cancelar"};
+            int nu = JOptionPane.showOptionDialog(null, "Elija el tipo de edicion que decea realizar.", "Opción de edicion.", 0, JOptionPane.DEFAULT_OPTION, null, cade, "Cancelar");
+            if (nu == 0) {
+                System.out.println("Persona");
+                EdicionPersonaClienteCL(cod);
+                String titulo = "Editar Persona";
+                viewper.getDialogoPersona().setName("Editar");
+                viewper.getDialogoPersona().setVisible(true);
+                viewper.getDialogoPersona().setLocation(600, 80);
+                viewper.getDialogoPersona().setSize(431, 414);
+                viewper.getDialogoPersona().setTitle(titulo);
+            }
+            if (nu == 1) {
+                System.out.println("Cliente");
+//                CargarEdicionCliente();
+                DialogoCrearEditarCliente(2);
+            }
+        } else {
+            JOptionPane.showMessageDialog(vistaCli, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void EdicionPersonaClienteCL(int codigo) {
+        List<Persona> listaBusper = modelPer.listarPersonas();
+        for (int i = 0; i < listaBusper.size(); i++) {
+            if (listaBusper.get(i).getId_persona() == codigo) {
+                viewper.getTxt_ID_Persona().setText(String.valueOf(listaBusper.get(i).getId_persona()));
+                viewper.getTxtCedulaPersona().setText(listaBusper.get(i).getCedula());
+                viewper.getTxtNombrePersona().setText(listaBusper.get(i).getNombre());
+                viewper.getTxtApellidoPersona().setText(listaBusper.get(i).getApellido());
+                Date fechan = listaBusper.get(i).getFecha_nacimiento();
+                viewper.getFechaNacimientoPer().setDate(fechan);
+                if (listaBusper.get(i).getGenero().equals("M")) {
+                    viewper.getRadioBtnMasculino().setSelected(true);
+                }
+                if (listaBusper.get(i).getGenero().equals("F")) {
+                    viewper.getRadioBtnFemenino().setSelected(true);
+                }
+                viewper.getTxtDireccionPersona().setText(listaBusper.get(i).getDireccion());
+                if (listaBusper.get(i).getFoto() == null) {
+                    viewper.getLblFotoPersona().setIcon(null);
+                } else {
+                    Image in = listaBusper.get(i).getFoto();
+                    Image img = in.getScaledInstance(133, 147, Image.SCALE_SMOOTH);
+                    Icon icono = new ImageIcon(img);
+                    viewper.getLblFotoPersona().setIcon(icono);
+                }
+            }
+        }
+    }
+
+    public void EditarPersona() {
+        Controlador_Persona cpe= new Controlador_Persona();
+        Modelo_Persona modelPerE = new Modelo_Persona();
+        modelPerE.setId_persona(Integer.parseInt(viewper.getTxt_ID_Persona().getText()));
+        modelPerE.setNombre(viewper.getTxtNombrePersona().getText());
+        modelPerE.setApellido(viewper.getTxtApellidoPersona().getText());
+        String fechaNacimiento = ((JTextField) viewper.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
+        Date fechaN = java.sql.Date.valueOf(fechaNacimiento);
+        modelPerE.setFecha_nacimiento((java.sql.Date) fechaN);
+        modelPerE.setGenero(cpe.GeneroPersona());
+        modelPerE.setDireccion(viewper.getTxtDireccionPersona().getText());
+        if (jfc == null) {
+            if (modelPerE.ModificarPersonaFT()) {
+                JOptionPane.showMessageDialog(vistaCli, "La Persona a sido modificado satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vistaCli, "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            if (jfc != null) {
+                try {
+                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                    int largo = (int) jfc.getSelectedFile().length();
+                    modelPerE.setImagen(img);
+                    modelPerE.setLargo(largo);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (modelPerE.ModificarPersonaBDA()) {
+                JOptionPane.showMessageDialog(vistaCli, "La Persona a sido modificado satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vistaCli, "Error, no se pudo modificar la Persona.");
+            }
+        }
+
+    }
     private void crearEditarPersona() {
         if (vistaCli.getDialogoCliente().getName().equals("Crear")) {
             CrearCliente();
@@ -175,28 +299,4 @@ public class Controlador_Cliente {
         return idreprtido;
     }
 
-    private void TipoDialogoAbrirCliente() {
-        System.out.println("Entro tipo de dialogo");
-        String[] cade = {"Persona", "Cliente", "Cancelar"};
-        int nu = JOptionPane.showOptionDialog(null, "Elija el tipo de edicion que decea realizar.", "Opción de edicion.", 0, JOptionPane.DEFAULT_OPTION, null, cade, "Cancelar");
-        
-        if(nu == 0){
-            System.out.println("Persona");
-            EdicionPersonaClienteCL();
-        }
-        if(nu == 1){
-            System.out.println("Cliente");
-            CargarEdicionCliente();
-        }
-        JOptionPane.showMessageDialog(vistaCli, "Hola como esatas");
-        Controlador_Persona conp = new Controlador_Persona();
-        conp.CargarEdicionPersona();
-//        System.out.println("Ingreso");
-//        Vista_Persona viweperson = new Vista_Persona();
-//        Vista_Principal vp = new Vista_Principal();
-//        vp.getDkp_pane_principal().add(viweperson);
-    }
-    private void EdicionPersonaClienteCL(){
-        
-    }
 }

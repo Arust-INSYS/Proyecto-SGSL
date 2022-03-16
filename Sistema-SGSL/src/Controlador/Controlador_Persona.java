@@ -6,8 +6,12 @@
 package Controlador;
 
 import Modelo.CLASES.Persona;
+import Modelo.CLASES.Servicios;
 import Modelo.Modelo_Persona;
+import Modelo.Modelo_Servicio;
 import Vista.Vista_Persona;
+import Vista.Vista_Servicio;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -32,7 +36,7 @@ import javax.xml.ws.Holder;
 
 /**
  *
- * @author DELL
+ * @author lorena
  */
 public class Controlador_Persona {
 
@@ -130,27 +134,18 @@ public class Controlador_Persona {
             vistaPer.getDialogoPersona().setVisible(true);
         } else {
             if (tipo == 2) {
-                String[] opciones = {"Persona", "Cliente", "Cancelar"};
-                int numero = JOptionPane.showOptionDialog(vistaPer, "Seleccione cual desea editar", "Edición", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
-                if (numero == 0) {
-                    int i = vistaPer.getTblPersonas().getSelectedRow();
-                    if (i != -1) {
-                        BloqueoTexField();
-                        titulo = "Editar Persona";
-                        vistaPer.getDialogoPersona().setName("Editar");
-                        vistaPer.getDialogoPersona().setVisible(true);
-                        CargarEdicionPersona();
-                    } else {
-                        JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
-                    }
-                    System.out.println("->" + numero);
+
+                int i = vistaPer.getTblPersonas().getSelectedRow();
+                if (i != -1) {
+                    BloqueoTexField();
+                    titulo = "Editar Persona";
+                    vistaPer.getDialogoPersona().setName("Editar");
+                    vistaPer.getDialogoPersona().setVisible(true);
+                    CargarEdicionPersona();
                 } else {
-                    if (numero == 1) {
-                        System.out.println("-->" + numero);
-                    } else {
-                        System.out.println("Salida del JOption.");
-                    }
+                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
                 }
+
 
 //                int i = vistaPer.getTblPersonas().getSelectedRow();
 //                if (i != -1) {
@@ -334,7 +329,7 @@ public class Controlador_Persona {
         });
     }
 
-    private String GeneroPersona() {
+    public String GeneroPersona() {
         String GeneroPerso = "";
         vistaPer.getGrupoBotonGenero().add(vistaPer.getRadioBtnMasculino());
         vistaPer.getGrupoBotonGenero().add(vistaPer.getRadioBtnFemenino());
@@ -384,7 +379,7 @@ public class Controlador_Persona {
                     vistaPer.getTxtCedulaPersona().setText(listaPerFT.get(i).getCedula());
                     vistaPer.getTxtNombrePersona().setText(listaPerFT.get(i).getNombre());
                     vistaPer.getTxtApellidoPersona().setText(listaPerFT.get(i).getApellido());
-                    Date fechan = listaPerFT.get(j).getFecha_nacimiento();
+                    Date fechan = listaPerFT.get(i).getFecha_nacimiento();
                     vistaPer.getFechaNacimientoPer().setDate(fechan);
                     if (listaPerFT.get(i).getGenero().equals("M")) {
                         vistaPer.getRadioBtnMasculino().setSelected(true);
@@ -396,7 +391,7 @@ public class Controlador_Persona {
                     if (listaPerFT.get(i).getFoto() == null) {
                         vistaPer.getLblFotoPersona().setIcon(null);
                     } else {
-                        Image in = listaPerFT.get(j).getFoto();
+                        Image in = listaPerFT.get(i).getFoto();
                         Image img = in.getScaledInstance(133, 147, Image.SCALE_SMOOTH);
                         Icon icono = new ImageIcon(img);
                         vistaPer.getLblFotoPersona().setIcon(icono);

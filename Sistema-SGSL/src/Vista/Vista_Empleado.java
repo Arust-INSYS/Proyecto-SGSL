@@ -411,6 +411,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         );
 
         jLabel1.setText("Buscar");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         BtnCrear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnCrear.setText("Crear");

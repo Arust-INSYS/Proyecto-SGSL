@@ -95,7 +95,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         );
         dkp_pane_principalLayout.setVerticalGroup(
             dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
 
         jLabel1.setText("          SGSL.version.1");

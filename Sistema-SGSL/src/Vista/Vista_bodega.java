@@ -17,29 +17,30 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         return txtfechahoy;
     }
 
-    public JTextField getTxtcantidad() {
-        return txtcantidad;
+    public JSpinner getjSpinnercant() {
+        return jSpinnercant;
     }
 
-    public void setTxtcantidad(JTextField txtcantidad) {
-        this.txtcantidad = txtcantidad;
+    public void setjSpinnercant(JSpinner jSpinnercant) {
+        this.jSpinnercant = jSpinnercant;
     }
 
-    public JTextField getTxtespacio() {
-        return txtespacio;
+    public JSpinner getSpinerespacio() {
+        return spinerespacio;
     }
 
-    public void setTxtespacio(JTextField txtespacio) {
-        this.txtespacio = txtespacio;
+    public void setSpinerespacio(JSpinner spinerespacio) {
+        this.spinerespacio = spinerespacio;
     }
 
-    public JTextField getTxtnumero() {
-        return txtnumero;
+    public JSpinner getSpinernum() {
+        return spinernum;
     }
 
-    public void setTxtnumero(JTextField txtnumero) {
-        this.txtnumero = txtnumero;
+    public void setSpinernum(JSpinner spinernum) {
+        this.spinernum = spinernum;
     }
+    
 
     public JLabel getjLabel4() {
         return jLabel4;
@@ -171,11 +172,12 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txtfecha = new javax.swing.JLabel();
         txtidbodega = new javax.swing.JTextField();
-        txtnumero = new javax.swing.JTextField();
-        txtcantidad = new javax.swing.JTextField();
-        txtespacio = new javax.swing.JTextField();
+        spinernum = new javax.swing.JSpinner();
+        jSpinnercant = new javax.swing.JSpinner();
+        spinerespacio = new javax.swing.JSpinner();
         jScrollPane3 = new javax.swing.JScrollPane();
         areadescripcion = new javax.swing.JTextPane();
+        jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtBuscarServicio = new javax.swing.JTextField();
@@ -204,7 +206,7 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         Dialog_Crearbo.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setText("Cantidad:");
-        Dialog_Crearbo.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        Dialog_Crearbo.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 166, -1, 30));
 
         btnAceptar_pro1.setText("Guardar");
         Dialog_Crearbo.getContentPane().add(btnAceptar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
@@ -219,22 +221,16 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         jLabel10.setText("Id bodega:");
         Dialog_Crearbo.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 66, -1, 30));
 
-        jLabel11.setText("Numero");
-        Dialog_Crearbo.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        jLabel11.setText("Numero:");
+        Dialog_Crearbo.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, 30));
 
         jLabel3.setText("Espacio:");
-        Dialog_Crearbo.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 20));
+        Dialog_Crearbo.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, 20));
         Dialog_Crearbo.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 110, 30));
-        Dialog_Crearbo.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 80, -1));
-        Dialog_Crearbo.getContentPane().add(txtnumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 80, -1));
-        Dialog_Crearbo.getContentPane().add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 154, 80, 20));
-
-        txtespacio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtespacioActionPerformed(evt);
-            }
-        });
-        Dialog_Crearbo.getContentPane().add(txtespacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 194, 80, 30));
+        Dialog_Crearbo.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 40, -1));
+        Dialog_Crearbo.getContentPane().add(spinernum, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 80, -1));
+        Dialog_Crearbo.getContentPane().add(jSpinnercant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 80, -1));
+        Dialog_Crearbo.getContentPane().add(spinerespacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 80, -1));
 
         jScrollPane3.setViewportView(areadescripcion);
 
@@ -394,10 +390,6 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtespacioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtespacioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtespacioActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizarServicio;
@@ -432,12 +424,13 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinnercant;
+    private javax.swing.JSpinner spinerespacio;
+    private javax.swing.JSpinner spinernum;
     private javax.swing.JTable tablita1;
-    private javax.swing.JTextField txtcantidad;
-    private javax.swing.JTextField txtespacio;
     private javax.swing.JLabel txtfecha;
     private javax.swing.JLabel txtfechahoy;
     private javax.swing.JTextField txtidbodega;
-    private javax.swing.JTextField txtnumero;
     // End of variables declaration//GEN-END:variables
 }

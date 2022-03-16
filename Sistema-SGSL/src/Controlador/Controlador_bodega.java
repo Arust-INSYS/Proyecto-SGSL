@@ -75,23 +75,21 @@ public class Controlador_bodega {
             visbo.getTABLABODEGA().setValueAt(q.getEspacio(), i.value, 3);
             i.value++;
         });
-
     }
-
     private void crear() {
         System.out.println("1");
         if (visbo.getDialog_Crearbo().getName() == "crear") {
             String id = visbo.getTxtidbodega().getText();
             System.out.println(id);
-            String num = visbo.getTxtnumero().getText();
-            String ca = visbo.getTxtcantidad().getText();
-            String es= visbo.getTxtespacio().getText();
+            String num = visbo.getSpinernum().getValue().toString();
+            String ca = visbo.getjSpinnercant().getValue().toString();
+            String es= visbo.getSpinerespacio().getValue().toString();
             Modelo_bodega mo = new Modelo_bodega();
             mo.setIdbodega(Integer.parseInt(id));
             mo.setNumero(Integer.parseInt(num));
             mo.setCantidad(Integer.parseInt(ca));
             mo.setEspacio(Integer.parseInt(es));        
-            if (modelbo.creabodega()) {
+            if (mo.creabodega()) {
                 visbo.getDialog_Crearbo().setVisible(false);
                 JOptionPane.showMessageDialog(visbo, "creado Satisfactoriamente");
             } else {
@@ -100,9 +98,9 @@ public class Controlador_bodega {
         } else {
             Modelo_bodega p = new Modelo_bodega();
             String id = visbo.getTxtidbodega().getText();
-            String num = visbo.getTxtnumero().getText();
-            String ca = visbo.getTxtcantidad().getText();
-            String es = visbo.getTxtespacio().getText();  
+            String num = visbo.getSpinernum().getValue().toString();
+            String ca = visbo.getjSpinnercant().getValue().toString();
+            String es = visbo.getSpinerespacio().getValue().toString();  
             p.setIdbodega(Integer.parseInt(id));
             p.setNumero(Integer.parseInt(num));
             p.setCantidad(Integer.parseInt(ca));
@@ -117,17 +115,19 @@ public class Controlador_bodega {
             }
         }
      private void editar() {
-        List<Bodega> lp = modelbo.listarbodegas();
+        //List<Bodega> lp = modelbo.listarbodegas();
         int xx = visbo.getTABLABODEGA().getSelectedRow();
         if (xx != -1) {
             String id = visbo.getTABLABODEGA().getValueAt(xx, 0).toString();
-            visbo.getTxtidbodega().setText(id);
+                visbo.getTxtidbodega().setText( id);
+                        visbo.getTxtidbodega().setEditable(false);
+
             String num =visbo.getTABLABODEGA().getValueAt(xx, 1).toString();
-            visbo.getTxtnumero().setText(num);
+            visbo.getSpinernum().setValue(Integer.parseInt(num));
             String ca = visbo.getTABLABODEGA().getValueAt(xx, 2).toString();
-            visbo.getTxtcantidad().setText(ca);
+            visbo.getjSpinnercant().setValue(Integer.parseInt(ca));
         String es = visbo.getTABLABODEGA().getValueAt(xx, 3).toString();
-            visbo.getTxtespacio().setText(es);
+            visbo.getSpinerespacio().setValue(Integer.parseInt(es));
                 
             
         } else {

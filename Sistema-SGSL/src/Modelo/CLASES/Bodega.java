@@ -15,9 +15,6 @@ private int  espacio;
         this.espacio = espacio;
     }
 
-
-
-
     public int getIdbodega() {
         return idbodega;
     }

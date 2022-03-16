@@ -15,10 +15,15 @@ import Vista.Vista_Principal;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -33,6 +38,7 @@ public class Controlador_Cliente {
     private Vista_Cliente vistaCli;
     private Modelo_Persona modelPer;
     private Vista_Persona viewper;
+    private JFileChooser jfc;
 
     public Controlador_Cliente(Modelo_Cliente modeloCli, Vista_Cliente vistaCli, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modeloCli = modeloCli;
@@ -53,7 +59,7 @@ public class Controlador_Cliente {
         vistaCli.getBtnBuscarPersona().addActionListener(l -> d());
         System.out.println("Pase el oyente");
         
-        viewper.getBtnAceptarPer().addActionListener(l ->ingresoDatos());
+        viewper.getBtnAceptarPer().addActionListener(l ->EditarPersona());
         EventosComponentesVistaCliente();
     }
 
@@ -62,10 +68,10 @@ public class Controlador_Cliente {
         JOptionPane.showMessageDialog(vistaCli, "Si valgo");
         System.out.println("Pase");
     }
-    private void ingresoDatos(){
-        Controlador_Persona conp = new Controlador_Persona();
-        conp.EditarPersona();
-    }
+//    private void ingresoDatos(){
+//        Controlador_Persona conp = new Controlador_Persona();
+//        conp.EditarPersona();
+//    }
 
     private void EventosComponentesVistaCliente() {
         KeyListener buscar = new KeyListener() {
@@ -174,6 +180,42 @@ public class Controlador_Cliente {
         }
     }
 
+    public void EditarPersona() {
+        Controlador_Persona cpe= new Controlador_Persona();
+        Modelo_Persona modelPerE = new Modelo_Persona();
+        modelPerE.setId_persona(Integer.parseInt(viewper.getTxt_ID_Persona().getText()));
+        modelPerE.setNombre(viewper.getTxtNombrePersona().getText());
+        modelPerE.setApellido(viewper.getTxtApellidoPersona().getText());
+        String fechaNacimiento = ((JTextField) viewper.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
+        Date fechaN = java.sql.Date.valueOf(fechaNacimiento);
+        modelPerE.setFecha_nacimiento((java.sql.Date) fechaN);
+        modelPerE.setGenero(cpe.GeneroPersona());
+        modelPerE.setDireccion(viewper.getTxtDireccionPersona().getText());
+        if (jfc == null) {
+            if (modelPerE.ModificarPersonaFT()) {
+                JOptionPane.showMessageDialog(vistaCli, "La Persona a sido modificado satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vistaCli, "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            if (jfc != null) {
+                try {
+                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                    int largo = (int) jfc.getSelectedFile().length();
+                    modelPerE.setImagen(img);
+                    modelPerE.setLargo(largo);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (modelPerE.ModificarPersonaBDA()) {
+                JOptionPane.showMessageDialog(vistaCli, "La Persona a sido modificado satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vistaCli, "Error, no se pudo modificar la Persona.");
+            }
+        }
+
+    }
     private void crearEditarPersona() {
         if (vistaCli.getDialogoCliente().getName().equals("Crear")) {
             CrearCliente();

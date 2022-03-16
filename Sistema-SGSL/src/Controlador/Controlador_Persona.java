@@ -329,7 +329,7 @@ public class Controlador_Persona {
         });
     }
 
-    private String GeneroPersona() {
+    public String GeneroPersona() {
         String GeneroPerso = "";
         vistaPer.getGrupoBotonGenero().add(vistaPer.getRadioBtnMasculino());
         vistaPer.getGrupoBotonGenero().add(vistaPer.getRadioBtnFemenino());

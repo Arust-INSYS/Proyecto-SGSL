@@ -145,7 +145,7 @@ public class Controlador_Persona {
                 } else {
                     JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
                 }
-                System.out.println("->" + numero);
+
 
 //                int i = vistaPer.getTblPersonas().getSelectedRow();
 //                if (i != -1) {

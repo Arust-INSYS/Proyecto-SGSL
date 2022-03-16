@@ -134,27 +134,18 @@ public class Controlador_Persona {
             vistaPer.getDialogoPersona().setVisible(true);
         } else {
             if (tipo == 2) {
-                String[] opciones = {"Persona", "Cliente", "Cancelar"};
-                int numero = JOptionPane.showOptionDialog(vistaPer, "Seleccione cual desea editar", "Edición", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
-                if (numero == 0) {
-                    int i = vistaPer.getTblPersonas().getSelectedRow();
-                    if (i != -1) {
-                        BloqueoTexField();
-                        titulo = "Editar Persona";
-                        vistaPer.getDialogoPersona().setName("Editar");
-                        vistaPer.getDialogoPersona().setVisible(true);
-                        CargarEdicionPersona();
-                    } else {
-                        JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
-                    }
-                    System.out.println("->" + numero);
+
+                int i = vistaPer.getTblPersonas().getSelectedRow();
+                if (i != -1) {
+                    BloqueoTexField();
+                    titulo = "Editar Persona";
+                    vistaPer.getDialogoPersona().setName("Editar");
+                    vistaPer.getDialogoPersona().setVisible(true);
+                    CargarEdicionPersona();
                 } else {
-                    if (numero == 1) {
-                        System.out.println("-->" + numero);
-                    } else {
-                        System.out.println("Salida del JOption.");
-                    }
+                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
                 }
+                System.out.println("->" + numero);
 
 //                int i = vistaPer.getTblPersonas().getSelectedRow();
 //                if (i != -1) {

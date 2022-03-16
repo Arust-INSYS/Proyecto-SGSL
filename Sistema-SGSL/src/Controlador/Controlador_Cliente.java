@@ -39,8 +39,15 @@ public class Controlador_Cliente {
         vistaCli.getBtnEditarCliente().addActionListener(l -> DialogoCrearEditarCliente(2));
         vistaCli.getBtnActualizarCliente().addActionListener(l -> CargarTablaCliente());
         vistaCli.getBtnAceptarCli().addActionListener(l -> crearEditarPersona());
-        //vistaCli.getBtnBuscarPersona().addActionListener(l -> TipoDialogoAbrirCliente());
+        System.out.println("SI ESTOY ANTES DEL OYENTE");
+        vistaCli.getBtnBuscarPersona().addActionListener(l -> d());
+        System.out.println("Pase el oyente");
         EventosComponentesVistaCliente();
+    }
+    private void d(){
+        System.out.println("Si entre");
+        JOptionPane.showMessageDialog(vistaCli, "Si valgo");
+        System.out.println("Pase");
     }
 
     private void EventosComponentesVistaCliente() {

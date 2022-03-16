@@ -53,7 +53,6 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        subMenu_Persona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-persona-femenina-24.png"))); // NOI18N
         subMenu_Persona.setFocusable(false);
         subMenu_Persona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         subMenu_Persona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -80,8 +79,6 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         dkp_pane_principal.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADAORI.jpg"))); // NOI18N
-
         dkp_pane_principal.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dkp_pane_principalLayout = new javax.swing.GroupLayout(dkp_pane_principal);
@@ -95,7 +92,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         );
         dkp_pane_principalLayout.setVerticalGroup(
             dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
 
         jLabel1.setText("          SGSL.version.1");

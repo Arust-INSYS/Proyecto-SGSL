@@ -28,23 +28,23 @@ import javax.imageio.stream.ImageInputStream;
  *
  * @author lorena
  */
-public class Modelo_Empleado extends Empleado{
+public class Modelo_Empleado extends Empleado {
+
     Conexion_BD cpg = new Conexion_BD();
-    
+
     public Modelo_Empleado() {
     }
 
     public Modelo_Empleado(int id_empleado, double sueldo, String estado_civil, Date fecha_contrato, int id_persona) {
         super(id_empleado, sueldo, estado_civil, fecha_contrato, id_persona);
     }
-    
-    
-    public List<Empleado> listarEmpleados(){
-        List<Empleado> lista = new  ArrayList<Empleado>();
+
+    public List<Empleado> listarEmpleados() {
+        List<Empleado> lista = new ArrayList<Empleado>();
         try {
-            String sql ="select * from empleado";
+            String sql = "select * from empleado";
             ResultSet rs = cpg.colsulta(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 Empleado emple = new Empleado();
                 emple.setId_empleado(rs.getInt("id_empleado"));
                 emple.setSueldo(rs.getDouble("sueldo"));
@@ -52,7 +52,7 @@ public class Modelo_Empleado extends Empleado{
                 emple.setFecha_contrato(rs.getDate("fecha_contrato"));
                 emple.setId_persona(rs.getInt("id_persona"));
                 lista.add(emple);
-                
+
             }
             rs.close();
             return lista;
@@ -61,12 +61,12 @@ public class Modelo_Empleado extends Empleado{
             return null;
         }
     }
-    
-    public boolean creaEmpleado(){
+
+    public boolean creaEmpleado() {
         try {
             String sql;
-            sql= "INSERT INTO Empleado (id_empleado, sueldo, estado_civil, fecha_contrato, id_persona)";
-            sql+="VALUES(?,?,?,?,?)";
+            sql = "INSERT INTO Empleado (id_empleado, sueldo, estado_civil, fecha_contrato, id_persona)";
+            sql += "VALUES(?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_empleado());
             ps.setDouble(2, getSueldo());
@@ -78,14 +78,14 @@ public class Modelo_Empleado extends Empleado{
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Servicio.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        }    
+        }
     }
-    
-    public boolean ModificarEmpleado(){
+
+    public boolean ModificarEmpleado() {
         try {
             String sql;
-            sql= "UPDATE producto SET id_empleado=?, sueldo=?, estado_civil=?, fecha_contrato=?, id_persona=? \n" +
-            "WHERE id_empleado = '" +getId_empleado()+ "';";
+            sql = "UPDATE producto SET id_empleado=?, sueldo=?, estado_civil=?, fecha_contrato=?, id_persona=? \n"
+                    + "WHERE id_empleado = '" + getId_empleado() + "';";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_empleado());
             ps.setDouble(2, getSueldo());
@@ -97,29 +97,74 @@ public class Modelo_Empleado extends Empleado{
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Servicio.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        }   
+        }
     }
-      
-    public boolean RemoverEmpleado(String idemple){
-     String nsql="DELETE FROM empleado WHERE id_empleado ='" +idemple+ "'";
-     return cpg.accion(nsql);
+
+    public boolean RemoverEmpleado(String idemple) {
+        String nsql = "DELETE FROM empleado WHERE id_empleado ='" + idemple + "'";
+        return cpg.accion(nsql);
     }
-    
+
     //logeo
-    public boolean ValidarCredencial(String user, String password){
+    public boolean ValidarCredencial(String user, String password) {
         String sql = "select p.cedula, e.contrasenia from empleado e join persona p "
-                + "on e.id_persona=p.id_persona and p.cedula='"+user+ "' and e.contrasenia='"+password+"'";
-            ResultSet rs = cpg.colsulta(sql);
-            
+                + "on e.id_persona=p.id_persona and p.cedula='" + user + "' and e.contrasenia='" + password + "'";
+        ResultSet rs = cpg.colsulta(sql);
+
         try {
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-            
-       
+
     }
+
+    //Registro_Usuario
+    //validacion de la cedula del usuario
+    public int validarUsuario(String user) {
+        int id_empleado = -1;
+        String sql = "select e.id_empleado as id from empleado e join persona p "
+                + "on e.id_persona=p.id_persona and p.cedula='" + user + "'";
+        ResultSet rs = cpg.colsulta(sql);
+
+        try {
+            if (rs.next()) {
+                id_empleado = rs.getInt("id");
+            }
+
+            return id_empleado;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+
+    }
+
+    public boolean GuardarContraseña(String password, int id) {
+        String sql = "update empleado set contrasenia ='" + password + "'"
+                + " where id_empleado= '" + id + "'";
+
+        return cpg.accion(sql);
+
+    }
+
+//para q o se repita el usuario
+    public boolean VerificarU(int id) {
+        String sql = "select contrasenia  from empleado  where id_empleado = '" + id + "'";
+
+        ResultSet rs = cpg.colsulta(sql);
+
+        try {
+            return rs.next();
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
+///////////////////////////
+
     public List<Persona> listarPersonas() {
         List<Persona> lp = new ArrayList<Persona>();
         try {
@@ -149,8 +194,8 @@ public class Modelo_Empleado extends Empleado{
             return null;
         }
     }
-    
-        private Image obtenerImagen(byte[] bytes) throws IOException {
+
+    private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
         ImageReader reader = (ImageReader) it.next();
@@ -161,5 +206,5 @@ public class Modelo_Empleado extends Empleado{
         param.setSourceSubsampling(1, 1, 0, 0);
         return reader.read(0, param);
     }
-    
+
 }

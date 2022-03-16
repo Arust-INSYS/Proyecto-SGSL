@@ -6,13 +6,18 @@
 package Controlador;
 
 import Modelo.CLASES.Empleado;
+import Modelo.CLASES.Persona;
 import Modelo.Modelo_Empleado;
 import Vista.Vista_Empleado;
 import java.awt.Component;
+import java.awt.Image;
 import java.sql.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 
@@ -37,8 +42,10 @@ public class Controlador_Empleados {
         vista_emple.getBtnAceptar().addActionListener(l-> crearEditarEmpleado());
         vista_emple.getBtnRemover().addActionListener(l->EliminarEmpleado());
         vista_emple.getBtnCancelar().addActionListener(l->cancelar_emple());
+        
         //vista.getBtnbuscar_pro().addActionListener(l->Buscarpro());
-            
+        vista_emple.getVerper().addActionListener(l->abrirDialogo(1));
+        vista_emple.getBtningresar().addActionListener(l->modificar_per());
     }
     
     private void abrirDialogo_pro(int ce){
@@ -55,6 +62,25 @@ public class Controlador_Empleados {
         vista_emple.getDialogEmpleado().setTitle(title);
         vista_emple.getDialogEmpleado().setVisible(true); 
     }
+    
+        private void abrirDialogo(int ce){
+        String title;
+        if(ce==1){
+            
+            title="Visualizar Persona";
+            vista_emple.getDialogPersona().setName("Persona");
+            vista_emple.getDialogPersona().setLocationRelativeTo(vista_emple);
+            vista_emple.getDialogPersona().setSize(600,400);
+            vista_emple.getDialogPersona().setTitle(title);
+            vista_emple.getDialogPersona().setVisible(true);
+            CargarPersona();
+        }else{
+        }
+    }
+    
+//    private void mostrar(){
+//    vista_emple.getDestokpersona().add(abrirDialogo(1));
+//    }
     
     private void crearEditarEmpleado(){
         if(vista_emple.getDialogEmpleado().getName()=="crear"){
@@ -118,6 +144,16 @@ public class Controlador_Empleados {
         }
     }
     
+     public void modificar_per() {
+     int seleccionado = vista_emple.getTblPersonas().getSelectedRow();
+      if(seleccionado !=-1){
+          String id= vista_emple.getTblPersonas().getValueAt(seleccionado, 0).toString();
+          int cod = Integer.parseInt(id);
+              vista_emple.getTxtid_persona().setText(id);
+//              vista_emple.getTxtid_persona().setText(vista_emple.getTblPersonas().getValueAt(seleccionado, 0).toString());
+      }
+     }
+     
     public void EliminarEmpleado(){
         int seleccionado = vista_emple.getTblEmpleado().getSelectedRow();
         int respuesta=0;
@@ -189,6 +225,34 @@ public class Controlador_Empleados {
             i.value++;
         });
         
+    }
+    
+        private void CargarPersona() {
+        vista_emple.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
+        vista_emple.getTblPersonas().setRowHeight(100);
+        DefaultTableModel tb = (DefaultTableModel) vista_emple.getTblPersonas().getModel();
+        tb.setNumRows(0);
+        List<Persona> listaPersonas = modelo_emple.listarPersonas();
+        Holder<Integer> i = new Holder<>(0);
+        listaPersonas.stream().forEach(p -> {
+
+            tb.addRow(new Object[5]);
+            vista_emple.getTblPersonas().setValueAt(p.getId_persona(), i.value, 0);
+            vista_emple.getTblPersonas().setValueAt(p.getCedula(), i.value, 1);
+            vista_emple.getTblPersonas().setValueAt(p.getNombre(), i.value, 2);
+            vista_emple.getTblPersonas().setValueAt(p.getApellido(), i.value, 3);
+            Image foto = p.getFoto();
+            if (foto != null) {
+                Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                ImageIcon icono = new ImageIcon(nimg);
+                DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+                renderer.setIcon(icono);
+                vista_emple.getTblPersonas().setValueAt(new JLabel(icono), i.value, 4);
+            } else {
+                vista_emple.getTblPersonas().setValueAt(null, i.value, 4);
+            }
+            i.value++;
+        });
     }
     
     public void cancelar_emple(){

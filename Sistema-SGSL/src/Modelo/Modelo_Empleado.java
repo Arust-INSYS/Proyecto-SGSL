@@ -6,14 +6,23 @@
 package Modelo;
 
 import Modelo.CLASES.Empleado;
+import Modelo.CLASES.Persona;
+import java.awt.Image;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReadParam;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 
 /**
  *
@@ -110,6 +119,47 @@ public class Modelo_Empleado extends Empleado{
         }
             
        
+    }
+    public List<Persona> listarPersonas() {
+        List<Persona> lp = new ArrayList<Persona>();
+        try {
+            String sql = "select *from persona";
+            ResultSet rs = cpg.colsulta(sql);
+            byte[] bytea;
+            while (rs.next()) {
+                Persona persona = new Persona();
+                persona.setId_persona(rs.getInt("id_persona"));
+                persona.setCedula(rs.getString("cedula"));
+                persona.setNombre(rs.getString("nombre"));
+                persona.setApellido(rs.getString("apellido"));
+                bytea = rs.getBytes("foto");
+                if (bytea != null) {
+                    try {
+                        persona.setFoto(obtenerImagen(bytea));
+                    } catch (IOException ex) {
+                        Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                lp.add(persona);
+            }
+            rs.close();
+            return lp;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+        private Image obtenerImagen(byte[] bytes) throws IOException {
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
+        ImageReader reader = (ImageReader) it.next();
+        Object source = bis;
+        ImageInputStream iis = ImageIO.createImageInputStream(source);
+        reader.setInput(iis, true);
+        ImageReadParam param = reader.getDefaultReadParam();
+        param.setSourceSubsampling(1, 1, 0, 0);
+        return reader.read(0, param);
     }
     
 }

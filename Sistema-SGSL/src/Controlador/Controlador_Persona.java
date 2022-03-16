@@ -201,7 +201,7 @@ public class Controlador_Persona {
                     CargarTablaPersona();
                     IncremetoID();
                 } else {
-                    JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+                  JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } else {

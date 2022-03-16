@@ -93,4 +93,33 @@ public class Modelo_bodega extends Bodega{
         }
         return incremento;
     }
+    
+            public List<Bodega> listarperbusquedabodega(String busqueda) {
+        List<Bodega> listbus = new ArrayList<Bodega>();
+        String sql = "";
+        String plb = busqueda;
+        if (busqueda.equalsIgnoreCase("")) {
+            sql = "select *from bodegas";
+        } else if (plb.equalsIgnoreCase(busqueda)) {
+            sql = "select * from bodegas where CAST(id_bodega AS TEXT) LIKE '" + busqueda + "%' ";
+        }
+        ResultSet r = cpg.colsulta(sql);
+        try {
+            while (r.next()) {
+                Bodega bo = new Bodega();
+                bo.setIdbodega(r.getInt("id_bodega"));
+                bo.setNumero(r.getInt("num_bodega"));
+                bo.setCantidad(r.getInt("cantidad_bodega"));
+                bo.setEspacio(r.getInt("espacio_bo"));
+                listbus.add(bo);
+            }
+            r.close();
+            return listbus;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    
 }

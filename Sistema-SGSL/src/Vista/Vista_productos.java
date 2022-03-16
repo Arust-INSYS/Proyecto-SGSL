@@ -18,6 +18,46 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JTextField getTxbuscaidbo() {
+        return txbuscaidbo;
+    }
+
+    public void setTxbuscaidbo(JTextField txbuscaidbo) {
+        this.txbuscaidbo = txbuscaidbo;
+    }
+
+    public JButton getBtnacepidbodega() {
+        return btnacepidbodega;
+    }
+
+    public void setBtnacepidbodega(JButton btnacepidbodega) {
+        this.btnacepidbodega = btnacepidbodega;
+    }
+
+    public JDialog getDialogbodega() {
+        return dialogbodega;
+    }
+
+    public void setDialogbodega(JDialog dialogbodega) {
+        this.dialogbodega = dialogbodega;
+    }
+
+    public JTable getTblabodega() {
+        return tblabodega;
+    }
+
+    public void setTblabodega(JTable tblabodega) {
+        this.tblabodega = tblabodega;
+    }
+
+    public JButton getBtnbuscaridbodega() {
+        return btnbuscaridbodega;
+    }
+
+    public void setBtnbuscaridbodega(JButton btnbuscaridbodega) {
+        this.btnbuscaridbodega = btnbuscaridbodega;
+    }
+
     public JLabel getTxtfechahoy() {
         return txtfechahoy;
     }
@@ -265,8 +305,16 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         btnexaminar = new javax.swing.JButton();
         txtfecha = new javax.swing.JLabel();
+        btnbuscaridbodega = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         areadescripcion = new javax.swing.JTextPane();
+        dialogbodega = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblabodega = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txbuscaidbo = new javax.swing.JTextField();
+        btnacepidbodega = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtBuscarServicio = new javax.swing.JTextField();
@@ -296,7 +344,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Cantidad:");
         Dialog_Crear.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 168, -1, -1));
-        Dialog_Crear.getContentPane().add(txtidproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 64, 140, -1));
+        Dialog_Crear.getContentPane().add(txtidproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 64, 50, -1));
         Dialog_Crear.getContentPane().add(txtnom_pro, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 116, 140, -1));
         Dialog_Crear.getContentPane().add(txtpreciopro, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 244, 140, -1));
 
@@ -321,7 +369,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Id Empleado:");
         Dialog_Crear.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 30));
-        Dialog_Crear.getContentPane().add(txtid_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 140, -1));
+        Dialog_Crear.getContentPane().add(txtid_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 60, -1));
         Dialog_Crear.getContentPane().add(snipercanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 163, 88, -1));
         Dialog_Crear.getContentPane().add(txtmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 207, 141, -1));
 
@@ -330,7 +378,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         jLabel14.setText("Id Bodega:");
         Dialog_Crear.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 326, -1, 30));
-        Dialog_Crear.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 140, -1));
+        Dialog_Crear.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 60, -1));
 
         txtfoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         Dialog_Crear.getContentPane().add(txtfoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 234, 194));
@@ -342,7 +390,71 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         Dialog_Crear.getContentPane().add(btnexaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
         Dialog_Crear.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 110, 30));
 
+        btnbuscaridbodega.setText("buscar");
+        Dialog_Crear.getContentPane().add(btnbuscaridbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+
         jScrollPane3.setViewportView(areadescripcion);
+
+        tblabodega.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NUMERO", "CANTIDAD", "ESPACIO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblabodega);
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
+        jLabel7.setText("BODEGAS");
+
+        jLabel15.setText("Buscar:");
+
+        btnacepidbodega.setText("Aceptar");
+
+        javax.swing.GroupLayout dialogbodegaLayout = new javax.swing.GroupLayout(dialogbodega.getContentPane());
+        dialogbodega.getContentPane().setLayout(dialogbodegaLayout);
+        dialogbodegaLayout.setHorizontalGroup(
+            dialogbodegaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addGroup(dialogbodegaLayout.createSequentialGroup()
+                .addGroup(dialogbodegaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogbodegaLayout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogbodegaLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txbuscaidbo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogbodegaLayout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(btnacepidbodega)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dialogbodegaLayout.setVerticalGroup(
+            dialogbodegaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogbodegaLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(dialogbodegaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txbuscaidbo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnacepidbodega)
+                .addGap(32, 32, 32))
+        );
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -526,7 +638,10 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     private javax.swing.JTextPane areadescripcion;
     private javax.swing.JButton btnAceptar_pro1;
     private javax.swing.JButton btnCancelar_pro1;
+    private javax.swing.JButton btnacepidbodega;
+    private javax.swing.JButton btnbuscaridbodega;
     private javax.swing.JButton btnexaminar;
+    private javax.swing.JDialog dialogbodega;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -534,21 +649,26 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner snipercanti;
     private javax.swing.JTable tablita;
     private javax.swing.JTable tablita1;
+    private javax.swing.JTable tblabodega;
+    private javax.swing.JTextField txbuscaidbo;
     private javax.swing.JLabel txtfecha;
     private javax.swing.JLabel txtfechahoy;
     private javax.swing.JLabel txtfoto;

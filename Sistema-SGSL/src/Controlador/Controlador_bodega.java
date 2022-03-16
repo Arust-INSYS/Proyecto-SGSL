@@ -1,12 +1,9 @@
 package Controlador;
-
 import Modelo.Modelo_bodega;
 import Modelo.CLASES.Bodega;
-import Modelo.CLASES.Productos;
-import Modelo.Modelo_productos;
-
 import Vista.Vista_bodega;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -16,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 
@@ -44,9 +42,9 @@ public class Controlador_bodega {
            visbo.getBtnAceptar_pro1().addActionListener(l ->guardar());
            visbo.getBtnEditarServicio().addActionListener(l ->editar());
            visbo.getBtnRemoverServicio().addActionListener(l ->eli());
-
+                setEventoKeytyped(visbo.getTxtBuscarServicio());
+           
     }
-
     private void abrirDialogo_pro(int ce) {
         String title;
         if (ce == 3) {
@@ -153,11 +151,45 @@ public class Controlador_bodega {
         }
     }   
 
- 
+ void lim(){
+        visbo.getjSpinnercant().setValue(1);
+        visbo.getSpinernum().setValue(1);
+        visbo.getSpinerespacio().setValue(1);
+
+}
+
     void guardar() {
     crear();
+        lim();
     visbo.getTxtidbodega().setText(String.valueOf(modelbo.Incrementoodega()));
 
+    }
+    
+    private void bus(java.awt.event.KeyEvent evt) {
+        visbo.getTABLABODEGA().setDefaultRenderer(Object.class, new Imangentabla());
+        visbo.getTABLABODEGA().setRowHeight(100);
+        DefaultTableModel ta;
+        ta = (DefaultTableModel) visbo.getTABLABODEGA().getModel();
+        ta.setRowCount(0);
+      List<Bodega> lisbo = modelbo.listarperbusquedabodega(visbo.getTxtBuscarServicio().getText());
+        Holder<Integer> i = new Holder<>(0);
+        lisbo.stream().forEach(q -> {
+            ta.addRow(new Object[5]);//cantidad de columna
+            visbo.getTABLABODEGA().setValueAt(q.getIdbodega(), i.value, 0);
+            visbo.getTABLABODEGA().setValueAt(q.getNumero(), i.value, 1);
+            visbo.getTABLABODEGA().setValueAt(q.getCantidad(), i.value, 2);
+            visbo.getTABLABODEGA().setValueAt(q.getEspacio(), i.value, 3);
+            i.value++;
+        });
+    }
+    
+    private void setEventoKeytyped(JTextField txt) {
+        txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                bus(e);
+            }
+        });
     }
 }
 

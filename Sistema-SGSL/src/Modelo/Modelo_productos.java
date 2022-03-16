@@ -1,4 +1,5 @@
 package Modelo;
+import Modelo.CLASES.Bodega;
 import Modelo.CLASES.Productos;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
@@ -93,6 +94,26 @@ public class Modelo_productos extends Productos{
             return false;
         }
     }
+           public boolean crearprocducsinfoto() {
+        try {
+            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,id_empleado,id_bodega)\n" + "VALUES(?,?,?,?,?,?,?)";
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setInt(1, getId_producto());
+            ps.setString(2, getNom_producto());
+            ps.setDouble(3, getPrecio_producto());
+            ps.setInt(4, getCantidad_producto());
+            ps.setString(5, getMarcar_producto());
+            ps.setInt(6, getId_empleado());
+            ps.setInt(7, getId_bodega());
+
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+     
             public boolean edipro(String id) {
         try {
             String sql = "UPDATE productos SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?, foto_producto=?,id_empleado=?,id_bodega=? WHERE id_producto ='" + id + "'";
@@ -142,7 +163,7 @@ public class Modelo_productos extends Productos{
         if (busqueda.equalsIgnoreCase("")) {
             sql = "select *from productos";
         } else if (plb.equalsIgnoreCase(busqueda)) {
-            sql = "select * from productos where CAST(id_producto AS TEXT) LIKE '" + busqueda + "%' or lower(nom_producto) like '"+busqueda  + "%'";
+            sql = "select * from productos where CAST(id_producto AS TEXT) LIKE '" + busqueda + "%' or lower(nom_producto) like '"+busqueda  + "%' or lower(marcar_producto) like '" + busqueda + "%' ";
         }
         ResultSet r = cpg.colsulta(sql);
         byte[] bytes;
@@ -187,5 +208,54 @@ public class Modelo_productos extends Productos{
         return incremento;
     }
 
-            
+//------------------------------------------------------------------------------------------------------------------------
+                public List<Bodega> listarbodegas(){
+        List<Bodega> lista = new  ArrayList<Bodega>();
+        try {
+            String sql ="select * from bodegas";
+            ResultSet rs = cpg.colsulta(sql);
+            while(rs.next()){
+                Bodega bo = new Bodega();
+                bo.setIdbodega(rs.getInt("id_bodega"));
+                bo.setNumero(rs.getInt("num_bodega"));
+                bo.setCantidad(rs.getInt("cantidad_bodega"));
+                bo.setEspacio(rs.getInt("espacio_bo"));
+                lista.add(bo);
+                
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Servicio.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+  
+            public List<Bodega> listarperbusquedabodega(String busqueda) {
+        List<Bodega> listbus = new ArrayList<Bodega>();
+        String sql = "";
+        String plb = busqueda;
+        if (busqueda.equalsIgnoreCase("")) {
+            sql = "select *from bodegas";
+        } else if (plb.equalsIgnoreCase(busqueda)) {
+            sql = "select * from bodegas where CAST(id_bodega AS TEXT) LIKE '" + busqueda + "%' ";
+        }
+        ResultSet r = cpg.colsulta(sql);
+        try {
+            while (r.next()) {
+                Bodega bo = new Bodega();
+                bo.setIdbodega(r.getInt("id_bodega"));
+                bo.setNumero(r.getInt("num_bodega"));
+                bo.setCantidad(r.getInt("cantidad_bodega"));
+                bo.setEspacio(r.getInt("espacio_bo"));
+                listbus.add(bo);
+            }
+            r.close();
+            return listbus;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
 }

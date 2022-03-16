@@ -121,7 +121,7 @@ public class Modelo_Servicio extends Servicios{
     public int IncrementoIdServicio(){
         int incremento = 1;
         try {
-            String sql = "select max(id_servico) from servicios";
+            String sql = "select max(id_servicio) from servicios";
             ResultSet rs = cpg.colsulta(sql);
             int aux = 200;
             while (rs.next()) {

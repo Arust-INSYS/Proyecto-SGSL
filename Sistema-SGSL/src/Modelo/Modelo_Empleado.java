@@ -39,8 +39,8 @@ public class Modelo_Empleado extends Empleado {
         super(id_empleado, sueldo, estado_civil, fecha_contrato, id_persona);
     }
 
-    public List<Empleado> listarEmpleados() {
-        List<Empleado> lista = new ArrayList<Empleado>();
+    public List<Empleado> listarEmpleados(){
+        List<Empleado> lista = new  ArrayList<Empleado>();
         try {
             String sql = "select * from empleado";
             ResultSet rs = cpg.colsulta(sql);
@@ -51,6 +51,7 @@ public class Modelo_Empleado extends Empleado {
                 emple.setEstado_civil(rs.getString("estado_civil"));
                 emple.setFecha_contrato(rs.getDate("fecha_contrato"));
                 emple.setId_persona(rs.getInt("id_persona"));
+//                emple.setRol(rs.getString("rol"));
                 lista.add(emple);
 
             }
@@ -86,6 +87,8 @@ public class Modelo_Empleado extends Empleado {
             String sql;
             sql = "UPDATE producto SET id_empleado=?, sueldo=?, estado_civil=?, fecha_contrato=?, id_persona=? \n"
                     + "WHERE id_empleado = '" + getId_empleado() + "';";
+            sql= "UPDATE Empleado SET id_empleado=?, sueldo=?, estado_civil=?, fecha_contrato=?, id_persona=? \n" +
+            "WHERE id_empleado = '" +getId_empleado()+ "';";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_empleado());
             ps.setDouble(2, getSueldo());
@@ -205,6 +208,21 @@ public class Modelo_Empleado extends Empleado {
         ImageReadParam param = reader.getDefaultReadParam();
         param.setSourceSubsampling(1, 1, 0, 0);
         return reader.read(0, param);
+    }
+        
+        public int IncrementoIdEmpleado(){
+        int incremento = 1;
+        try {
+            String sql = "select max(id_empleado) from empleado";
+            ResultSet rs = cpg.colsulta(sql);
+            int aux = 200;
+            while (rs.next()) {
+                incremento = rs.getInt(1) + 1;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return incremento;
     }
 
 }

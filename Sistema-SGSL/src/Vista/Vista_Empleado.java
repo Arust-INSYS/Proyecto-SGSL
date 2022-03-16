@@ -236,6 +236,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         contratacion = new com.toedter.calendar.JDateChooser();
         destokpersona = new javax.swing.JDesktopPane();
         verper = new javax.swing.JButton();
+        boxrol = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
         DialogPersona = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -284,6 +286,11 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         verper.setText("Ver Persona");
 
+        boxrol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Empleado", "Administrador" }));
+        boxrol.setToolTipText("");
+
+        jLabel3.setText("Rol:");
+
         javax.swing.GroupLayout DialogEmpleadoLayout = new javax.swing.GroupLayout(DialogEmpleado.getContentPane());
         DialogEmpleado.getContentPane().setLayout(DialogEmpleadoLayout);
         DialogEmpleadoLayout.setHorizontalGroup(
@@ -315,11 +322,14 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                                 .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel13))
+                                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel12)
+                                                .addComponent(jLabel13))
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(boxrol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(txtid_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                                             .addComponent(contratacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -357,7 +367,11 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                             .addComponent(txtid_persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
                             .addComponent(verper))
-                        .addGap(89, 89, 89)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boxrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(58, 58, 58)
                         .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCancelar)
                             .addComponent(btnAceptar))))
@@ -514,6 +528,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JDialog DialogPersona;
     private javax.swing.JTextField TxtBuscarServicio;
     private javax.swing.JComboBox<String> boxEstado;
+    private javax.swing.JComboBox<String> boxrol;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btningresar;
@@ -525,6 +540,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

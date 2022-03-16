@@ -35,6 +35,12 @@ public class Controlador_Empleados {
         vista_emple.setVisible(true);
     }
     
+    private void IncremetoID() {
+        int n = modelo_emple.IncrementoIdEmpleado();
+        int metodo = 100+n; 
+        vista_emple.getTxtidempleado().setText(String.valueOf(metodo));
+    }
+    
     public void iniciaControl(){
         vista_emple.getBtnActualizar().addActionListener(l->CargarEmpleados());
         vista_emple.getBtnCrear().addActionListener(l->abrirDialogo_pro(3));
@@ -53,9 +59,13 @@ public class Controlador_Empleados {
         if(ce==3){
             title="Crear nuevo servicio";
             vista_emple.getDialogEmpleado().setName("crear");
+            IncremetoID();
+            vista_emple.getTxtidempleado().setEditable(false);
+            limpiar_emple();
         }else{
             title="Editar servicio";
             vista_emple.getDialogEmpleado().setName("editar");
+            modificar_emple();
         }
         vista_emple.getDialogEmpleado().setLocationRelativeTo(vista_emple);
         vista_emple.getDialogEmpleado().setSize(500,500);
@@ -95,7 +105,7 @@ public class Controlador_Empleados {
                     String fechacontra = ((JTextField)vista_emple.getContratacion().getDateEditor().getUiComponent()).getText();
                     Date contratacion = java.sql.Date.valueOf(fechacontra);
                     String id_per = vista_emple.getTxtid_persona().getText().toString();
-                    
+////                    String rol = vista_emple.getBoxRoles().getSelectedItem().toString();
 
 
                     Modelo_Empleado emple = new Modelo_Empleado();
@@ -103,11 +113,14 @@ public class Controlador_Empleados {
                     emple.setSueldo(Double.parseDouble(String.valueOf(sueldo)));
                     emple.setEstado_civil(estado);
                     emple.setFecha_contrato((java.sql.Date)contratacion);
-                    emple.setId_persona(Integer.parseInt(String.valueOf(id_per)));                    
+                    emple.setId_persona(Integer.parseInt(String.valueOf(id_per)));
+//                    emple.setRol(rol);
 
                     if(emple.creaEmpleado()){
                         JOptionPane.showMessageDialog(vista_emple, "Servicio creado satisfactoriamente");
                         vista_emple.getDialogEmpleado().setVisible(false);
+                        limpiar_emple();
+                        CargarEmpleados();
                     }else{
                         JOptionPane.showMessageDialog(vista_emple, "No se pudo crear el producto");
                     }
@@ -115,7 +128,7 @@ public class Controlador_Empleados {
            
         }else if (vista_emple.getDialogEmpleado().getName()=="editar"){    
                if( vista_emple.getTxtidempleado().getText().equals("")||vista_emple.getTxtsueldo().getText().equals("") ||
-                 vista_emple.getBoxEstado().getSelectedItem().equals("") || vista_emple.getContratacion().getDate().equals("") || vista_emple.getTxtid_persona().getText().equals("")){
+                 vista_emple.getBoxEstado().getSelectedItem().equals("Seleccionar") || vista_emple.getContratacion().getDate().equals("") || vista_emple.getTxtid_persona().getText().equals("")){
                 JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS CAMPOS");
               }else{
                     String id_emple = vista_emple.getTxtidempleado().getText().toString();
@@ -124,6 +137,8 @@ public class Controlador_Empleados {
                     String fechacontra = ((JTextField)vista_emple.getContratacion().getDateEditor().getUiComponent()).getText();
                     Date contratacion = java.sql.Date.valueOf(fechacontra);
                     String id_per = vista_emple.getTxtid_persona().getText().toString();
+//                    String rol = vista_emple.getBoxRoles().getSelectedItem().toString();
+                    
                     
 
 
@@ -133,10 +148,12 @@ public class Controlador_Empleados {
                     emple.setEstado_civil(estado);
                     emple.setFecha_contrato((java.sql.Date)contratacion);
                     emple.setId_persona(Integer.parseInt(String.valueOf(id_per))); 
+//                    emple.setRol(rol);
                       
                     if(emple.ModificarEmpleado()){
                         JOptionPane.showMessageDialog(vista_emple, "Servicio modificado satisfactoriamente");
                         vista_emple.getDialogEmpleado().setVisible(false);
+                        CargarEmpleados();
                     }else{
                         JOptionPane.showMessageDialog(vista_emple, "No se pudo modificar el servicio");
                     }
@@ -152,6 +169,7 @@ public class Controlador_Empleados {
               vista_emple.getTxtid_persona().setText(id);
 //              vista_emple.getTxtid_persona().setText(vista_emple.getTblPersonas().getValueAt(seleccionado, 0).toString());
       }
+      vista_emple.getDialogPersona().setVisible(false);
      }
      
     public void EliminarEmpleado(){
@@ -197,7 +215,7 @@ public class Controlador_Empleados {
    }
     
     public void limpiar_emple(){
-      vista_emple.getTxtidempleado().setText("");
+
       vista_emple.getTxtsueldo().setText("");
       vista_emple.getBoxEstado().setSelectedIndex(0);
       vista_emple.getContratacion().setDate(null);
@@ -220,7 +238,8 @@ public class Controlador_Empleados {
             vista_emple.getTblEmpleado().setValueAt(pe.getSueldo(), i.value, 1);
             vista_emple.getTblEmpleado().setValueAt(pe.getEstado_civil(), i.value, 2);
             vista_emple.getTblEmpleado().setValueAt(pe.getFecha_contrato(), i.value, 3);
-            vista_emple.getTblEmpleado().setValueAt(pe.getId_persona(), i.value, 5);
+            vista_emple.getTblEmpleado().setValueAt(pe.getId_persona(), i.value, 4);
+//            vista_emple.getTblEmpleado().setValueAt(pe.getRol(), i.value, 5);
             
             i.value++;
         });

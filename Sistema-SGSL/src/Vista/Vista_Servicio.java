@@ -29,6 +29,31 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         this.BtnCrearServicio = BtnCrearServicio;
     }
 
+    public JDialog getDialogEmple() {
+        return DialogEmple;
+    }
+
+    public void setDialogEmple(JDialog DialogEmple) {
+        this.DialogEmple = DialogEmple;
+    }
+
+    public JButton getIngreemple() {
+        return ingreemple;
+    }
+
+    public void setIngreemple(JButton ingreemple) {
+        this.ingreemple = ingreemple;
+    }
+
+    public JTable getTblempleados() {
+        return tblempleados;
+    }
+
+    public void setTblempleados(JTable tblempleados) {
+        this.tblempleados = tblempleados;
+    }
+    
+
     public JButton getBtnEditarServicio() {
         return BtnEditarServicio;
     }
@@ -149,6 +174,14 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
     public void setTxtnom_servicio(JTextField txtnom_servicio) {
         this.txtnom_servicio = txtnom_servicio;
     }
+
+    public JButton getBtnveremple() {
+        return btnveremple;
+    }
+
+    public void setBtnveremple(JButton btnveremple) {
+        this.btnveremple = btnveremple;
+    }
     
     
     
@@ -172,8 +205,14 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtid_empleado = new javax.swing.JTextField();
+        btnveremple = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         areadescripcion = new javax.swing.JTextPane();
+        DialogEmple = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblempleados = new javax.swing.JTable();
+        ingreemple = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtBuscarServicio = new javax.swing.JTextField();
@@ -204,6 +243,8 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Id Empleado:");
 
+        btnveremple.setText("ver Empledo");
+
         javax.swing.GroupLayout Dialog_CrearLayout = new javax.swing.GroupLayout(Dialog_Crear.getContentPane());
         Dialog_Crear.getContentPane().setLayout(Dialog_CrearLayout);
         Dialog_CrearLayout.setHorizontalGroup(
@@ -228,7 +269,10 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
                             .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtcosto_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtid_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(Dialog_CrearLayout.createSequentialGroup()
+                                    .addComponent(txtid_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnveremple)))
                             .addGap(20, 20, 20)))
                     .addGroup(Dialog_CrearLayout.createSequentialGroup()
                         .addContainerGap()
@@ -276,15 +320,57 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(txtid_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
+                    .addComponent(txtid_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnveremple))
+                .addGap(66, 66, 66)
                 .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar_pro1)
                     .addComponent(btnCancelar_pro1))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(areadescripcion);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Empleado");
+
+        tblempleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Empleado", "Estado civil", "Fecha de contratación"
+            }
+        ));
+        jScrollPane2.setViewportView(tblempleados);
+
+        ingreemple.setText("Ingre");
+
+        javax.swing.GroupLayout DialogEmpleLayout = new javax.swing.GroupLayout(DialogEmple.getContentPane());
+        DialogEmple.getContentPane().setLayout(DialogEmpleLayout);
+        DialogEmpleLayout.setHorizontalGroup(
+            DialogEmpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DialogEmpleLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(DialogEmpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DialogEmpleLayout.createSequentialGroup()
+                        .addComponent(ingreemple)
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        DialogEmpleLayout.setVerticalGroup(
+            DialogEmpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DialogEmpleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DialogEmpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(ingreemple))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -371,24 +457,30 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnEditarServicio;
     private javax.swing.JButton BtnImprimirServicio;
     private javax.swing.JButton BtnRemoverServicio;
+    private javax.swing.JDialog DialogEmple;
     private javax.swing.JDialog Dialog_Crear;
     private javax.swing.JTextField TxtBuscarServicio;
     private javax.swing.JTextPane areadescripcion;
     private javax.swing.JButton btnAceptar_pro1;
     private javax.swing.JButton btnCancelar_pro1;
+    private javax.swing.JButton btnveremple;
     private javax.swing.JTextPane descri_servicio;
+    private javax.swing.JButton ingreemple;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblServicio;
+    private javax.swing.JTable tblempleados;
     private javax.swing.JTextField txtcosto_servicio;
     private javax.swing.JTextField txtid_empleado;
     private javax.swing.JTextField txtidservicio;

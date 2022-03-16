@@ -457,7 +457,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "id_persona", "Cédula ", "Nombre ", "Apellido ", "Genero ", "Fecha_nacimiento ", "Dirección ", "Foto"
+                "id_persona", "Cédula ", "Nombre ", "Apellido ", "Fecha_nacimiento ", "Genero ", "Dirección ", "Foto"
             }
         ));
         jScrollPane1.setViewportView(TblPersonas);
@@ -505,7 +505,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

@@ -46,7 +46,7 @@ public class Controlador_Cliente {
 
     public void ControlBotonesCliente() {
         vistaCli.getBtnCrearCliente().addActionListener(l -> DialogoCrearEditarCliente(1));
-        vistaCli.getBtnEditarCliente().addActionListener(l -> DialogoCrearEditarCliente(2));
+        vistaCli.getBtnEditarCliente().addActionListener(l -> TipoDialogoAbrirCliente());
         vistaCli.getBtnActualizarCliente().addActionListener(l -> CargarTablaCliente());
         vistaCli.getBtnAceptarCli().addActionListener(l -> crearEditarPersona());
         System.out.println("SI ESTOY ANTES DEL OYENTE");
@@ -93,16 +93,16 @@ public class Controlador_Cliente {
         } else {
             if (tipo == 2) {
                 System.out.println("Ingreso a dos");
-                int i = vistaCli.getTblCliente().getSelectedRow();
-                if (i != -1) {
+//                int i = vistaCli.getTblCliente().getSelectedRow();
+//                if (i != -1) {
                     titulo = "Editar Cliente";
 
                     vistaCli.getDialogoCliente().setName("Editar");
                     vistaCli.getDialogoCliente().setVisible(true);
                     CargarEdicionCliente();
-                } else {
-                    JOptionPane.showMessageDialog(vistaCli, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
-                }
+//                } else {
+//                    JOptionPane.showMessageDialog(vistaCli, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+//                }
             }
         }
         vistaCli.getDialogoCliente().setLocation(600, 80);

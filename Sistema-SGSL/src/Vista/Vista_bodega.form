@@ -91,7 +91,7 @@
         <Component class="javax.swing.JTextField" name="txtidbodega">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="150" y="70" width="80" height="-1"/>
+              <AbsoluteConstraints x="150" y="70" width="40" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

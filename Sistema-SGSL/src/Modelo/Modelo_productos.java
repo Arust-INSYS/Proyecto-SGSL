@@ -1,5 +1,4 @@
 package Modelo;
-
 import Modelo.CLASES.Productos;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;

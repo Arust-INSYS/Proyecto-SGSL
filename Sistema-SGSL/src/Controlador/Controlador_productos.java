@@ -57,7 +57,9 @@ public class Controlador_productos {
        vispro.getBtnbuscaridbodega().addActionListener(j->abrirdialobodega());
           vispro.getBtnacepidbodega().addActionListener(j->acep());
                         sedbucao(vispro.getTxbuscaidbo());
-
+                        validarsololetras(vispro.getTxtnom_pro());
+                                                validarsololetras(vispro.getTxtmarca());
+                                                validarsolonumeros(vispro.getTxtpreciopro());
 
     }
 
@@ -397,4 +399,42 @@ public class Controlador_productos {
             }
         });
     }
+    
+    private void txletras(java.awt.event.KeyEvent evt) {
+        char vali = evt.getKeyChar();
+        if (Character.isDigit(vali)) {
+            vispro.getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, " ingrese solo letras  ");
+        }
+    }
+    
+    private void validarsololetras(JTextField txt) {
+        txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                txletras(e);
+            }
+        });
+    }
+    
+    private void validarnum(java.awt.event.KeyEvent evt) {
+        //Validarcedtamaño(visper.getIdper().getText(),10, evt);
+        char vali = evt.getKeyChar();
+        if (Character.isLetter(vali)) {
+            vispro.getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, " ingrese solo numeros  ");
+        }
+    }
+    
+    private void validarsolonumeros(JTextField txt) {
+        txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarnum(e);
+            }
+        });
+    }
+
 }

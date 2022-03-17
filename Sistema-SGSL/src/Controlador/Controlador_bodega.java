@@ -14,6 +14,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 
@@ -31,6 +32,9 @@ public class Controlador_bodega {
         visbo.setVisible(true);
        cargarbodegas();
        visbo.getTxtfechahoy().setText(fechahoy + "");
+visbo.getjSpinnercant().setModel(new SpinnerNumberModel(1,1,100000, 400000));
+visbo.getSpinerespacio().setModel(new SpinnerNumberModel(1,1,100000, 400000));
+visbo.getSpinernum().setModel(new SpinnerNumberModel(1,1,100000, 400000));
 
     }
 

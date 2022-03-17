@@ -1,4 +1,5 @@
 package Controlador;
+
 import Modelo.CLASES.Bodega;
 import Modelo.CLASES.Productos;
 import Modelo.Modelo_productos;
@@ -21,10 +22,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
+
 public class Controlador_productos {
+
     LocalDate fechahoy = LocalDate.now();
 
     private Modelo_productos modelpro;
@@ -38,10 +42,10 @@ public class Controlador_productos {
         //cargarbodegas();
         cargarproductos();
         vispro.getTxtidproducto().setText(String.valueOf(modelpro.IncrementoIdproducto()));
-    vispro.getTxtidproducto().setEditable(false);
+        vispro.getTxtidproducto().setEditable(false);
         vispro.getTxtfechahoy().setText(fechahoy + "");
         vispro.getTxtfecha().setText(fechahoy + "");
-
+        vispro.getSnipercanti().setModel(new SpinnerNumberModel(1, 1, 100000, 400000));
     }
 
     public void iniciaControl() {
@@ -53,13 +57,13 @@ public class Controlador_productos {
         vispro.getBtnEditarServicio().addActionListener(l -> editar());
         vispro.getBtnRemoverServicio().addActionListener(l -> eli());
         vispro.getBtnCancelar_pro1().addActionListener(l -> cancelar());
-                setEventoKeytyped(vispro.getTxtBuscarServicio());
-       vispro.getBtnbuscaridbodega().addActionListener(j->abrirdialobodega());
-          vispro.getBtnacepidbodega().addActionListener(j->acep());
-                        sedbucao(vispro.getTxbuscaidbo());
-                        validarsololetras(vispro.getTxtnom_pro());
-                                                validarsololetras(vispro.getTxtmarca());
-                                                validarsolonumeros(vispro.getTxtpreciopro());
+        setEventoKeytyped(vispro.getTxtBuscarServicio());
+        vispro.getBtnbuscaridbodega().addActionListener(j -> abrirdialobodega());
+        vispro.getBtnacepidbodega().addActionListener(j -> acep());
+        sedbucao(vispro.getTxbuscaidbo());
+        validarsololetras(vispro.getTxtnom_pro());
+        validarsololetras(vispro.getTxtmarca());
+        validarsolonumeros(vispro.getTxtpreciopro());
 
     }
 
@@ -147,7 +151,7 @@ public class Controlador_productos {
             mopro.setId_empleado(Integer.parseInt(idEM));
             mopro.setId_bodega(Integer.parseInt(idBO));
             System.out.println("2");
-          if (jfch == null) {
+            if (jfch == null) {
                 if (mopro.crearprocducsinfoto()) {
                     JOptionPane.showMessageDialog(vispro, "PRODUCTO CREADO");
                 } else {
@@ -155,21 +159,21 @@ public class Controlador_productos {
                 }
             } else {
                 try {
-                //Foto
-                FileInputStream img = new FileInputStream(jfch.getSelectedFile());
-                int largo = (int) jfch.getSelectedFile().length();
-                mopro.setImagen(img);
-                mopro.setLargo(largo);
+                    //Foto
+                    FileInputStream img = new FileInputStream(jfch.getSelectedFile());
+                    int largo = (int) jfch.getSelectedFile().length();
+                    mopro.setImagen(img);
+                    mopro.setLargo(largo);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            if (mopro.crearprocduc()) {
-                vispro.getDialog_Crear().setVisible(false);
-                JOptionPane.showMessageDialog(vispro, "PRODUCTO Creado Satisfactoriamente");
-            } else {
-                JOptionPane.showMessageDialog(vispro, "Se a producido un error al crear  el producto.", "Error", JOptionPane.ERROR_MESSAGE);
+                if (mopro.crearprocduc()) {
+                    vispro.getDialog_Crear().setVisible(false);
+                    JOptionPane.showMessageDialog(vispro, "PRODUCTO Creado Satisfactoriamente");
+                } else {
+                    JOptionPane.showMessageDialog(vispro, "Se a producido un error al crear  el producto.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
-          }
         } else {
             Modelo_productos p = new Modelo_productos();
             String id = vispro.getTxtidproducto().getText();
@@ -193,21 +197,21 @@ public class Controlador_productos {
                     JOptionPane.showMessageDialog(vispro, "Se a producido un error al modificar el producto.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-
-                try {
-                    //Foto
-                    FileInputStream img = new FileInputStream(jfch.getSelectedFile());
-                    int largo = (int) jfch.getSelectedFile().length();
-                    p.setImagen(img);
-                    p.setLargo(largo);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
+                if (jfch != null) {
+                    try {
+                        //Foto
+                        FileInputStream img = new FileInputStream(jfch.getSelectedFile());
+                        int largo = (int) jfch.getSelectedFile().length();
+                        p.setImagen(img);
+                        p.setLargo(largo);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-
                 if (p.edipro(id)) {
-                 JOptionPane.showMessageDialog(vispro, "PRODUCTO MMODIFICADO");
+                    JOptionPane.showMessageDialog(vispro, "PRODUCTO MMODIFICADO");
                 } else {
-                 JOptionPane.showMessageDialog(vispro, "Se a producido un error al modificar el producto.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(vispro, "Se a producido un error al modificar el producto.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -226,25 +230,31 @@ public class Controlador_productos {
             vispro.getTxtpreciopro().setText(precio);
             String cant = vispro.getTablita().getValueAt(xx, 3).toString();
             vispro.getSnipercanti().setValue(Integer.parseInt(cant));
-  String marca = vispro.getTablita().getValueAt(xx, 4).toString();
-            vispro.getTxtmarca().setText(marca);          
+            String marca = vispro.getTablita().getValueAt(xx, 4).toString();
+            vispro.getTxtmarca().setText(marca);
             String idem = vispro.getTablita().getValueAt(xx, 6).toString();
             vispro.getTxtid_empleado().setText(idem);
             String idbo = vispro.getTablita().getValueAt(xx, 7).toString();
             vispro.getTxtidbodega().setText(idbo);
             for (int i = 0; i < lp.size(); i++) {
                 if (lp.get(i).getId_producto() == pro) {
+                    if(lp.get(i).getFoto()==null ){
+                                        vispro.getTxtfoto().setIcon(null);
+                    }else{
                     Image ft = lp.get(i).getFoto();
                     Image j = ft.getScaledInstance(196, 136, Image.SCALE_SMOOTH);
                     Icon ic = new ImageIcon(j);
                     vispro.getTxtfoto().setIcon(ic);
                 }
+                }
             }
+            
         } else {
             JOptionPane.showMessageDialog(vispro, "error seleccione una fila");
             vispro.getDialog_Crear().dispose();
         }
     }
+
     private void eli() {
         int yy;
         yy = vispro.getTablita().getSelectedRow();
@@ -262,10 +272,12 @@ public class Controlador_productos {
             vispro.getDialog_Crear().dispose();
         }
     }
+
     private void cancelar() {
         vispro.getDialog_Crear().setVisible(false);
     }
-        private void limpiardatos() {
+
+    private void limpiardatos() {
         vispro.getTxtidbodega().setText("");
         vispro.getTxtid_empleado().setText("");
         vispro.getTxtnom_pro().setText("");
@@ -274,13 +286,12 @@ public class Controlador_productos {
         vispro.getTxtpreciopro().setText("");
         vispro.getTxtmarca().setText("");
 
-        }
-        
-    void guardar() {
-    crear();
-    vispro.getTxtidproducto().setText(String.valueOf(modelpro.IncrementoIdproducto()));
+    }
 
-    
+    void guardar() {
+        crear();
+        vispro.getTxtidproducto().setText(String.valueOf(modelpro.IncrementoIdproducto()));
+
     }
 
     private void bus(java.awt.event.KeyEvent evt) {
@@ -305,7 +316,7 @@ public class Controlador_productos {
             if (foto != null) {
                 Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                 ImageIcon icon = new ImageIcon(nimg);
-                
+
                 DefaultTableCellRenderer render = new DefaultTableCellRenderer();
                 render.setIcon(icon);
                 vispro.getTablita().setValueAt(new JLabel(icon), i.value, 5);
@@ -315,8 +326,8 @@ public class Controlador_productos {
             i.value++;
         });
 
-
     }
+
     private void setEventoKeytyped(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -326,7 +337,8 @@ public class Controlador_productos {
         });
     }
 //---------------------------------------------------------------------------------------------------------------------
- private void cargarbodegas() {
+
+    private void cargarbodegas() {
         vispro.getTblabodega().setDefaultRenderer(Object.class, new Imangentabla());
         vispro.getTblabodega().setRowHeight(100);
         DefaultTableModel ta;
@@ -343,10 +355,11 @@ public class Controlador_productos {
             i.value++;
         });
     }
- private void abrirdialobodega() {
+
+    private void abrirdialobodega() {
         vispro.getDialogbodega().setLocationRelativeTo(vispro);
         vispro.getDialogbodega().setSize(450, 430);
-            Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - vispro.getDialogbodega().getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - vispro.getDialogbodega().getHeight()) / 2);
         vispro.getDialogbodega().setLocation(x, y);
@@ -354,12 +367,12 @@ public class Controlador_productos {
         vispro.getDialogbodega().setVisible(true);
         cargarbodegas();
     }
- 
+
     private void datospasar() {
         List<Bodega> lp = modelpro.listarbodegas();
         int xx = vispro.getTblabodega().getSelectedRow();
         if (xx != -1) {
-            String id =vispro.getTblabodega().getValueAt(xx, 0).toString();
+            String id = vispro.getTblabodega().getValueAt(xx, 0).toString();
             int pro = Integer.parseInt(id);
             vispro.getTxtidbodega().setText(id);
             vispro.getTxtidbodega().setEditable(false);
@@ -369,28 +382,29 @@ public class Controlador_productos {
         }
         vispro.getDialogbodega().setVisible(false);
     }
-    void acep(){
-    datospasar();
+
+    void acep() {
+        datospasar();
     }
-    
-     private void busbo(java.awt.event.KeyEvent evt) {
+
+    private void busbo(java.awt.event.KeyEvent evt) {
         vispro.getTblabodega().setDefaultRenderer(Object.class, new Imangentabla());
         vispro.getTblabodega().setRowHeight(100);
         DefaultTableModel ta;
         ta = (DefaultTableModel) vispro.getTblabodega().getModel();
         ta.setRowCount(0);
-      List<Bodega> lisbo = modelpro.listarperbusquedabodega(vispro.getTxbuscaidbo().getText());
+        List<Bodega> lisbo = modelpro.listarperbusquedabodega(vispro.getTxbuscaidbo().getText());
         Holder<Integer> i = new Holder<>(0);
         lisbo.stream().forEach(q -> {
             ta.addRow(new Object[5]);//cantidad de columna
-          vispro.getTblabodega().setValueAt(q.getIdbodega(), i.value, 0);
+            vispro.getTblabodega().setValueAt(q.getIdbodega(), i.value, 0);
             vispro.getTblabodega().setValueAt(q.getNumero(), i.value, 1);
             vispro.getTblabodega().setValueAt(q.getCantidad(), i.value, 2);
-           vispro.getTblabodega().setValueAt(q.getEspacio(), i.value, 3);
+            vispro.getTblabodega().setValueAt(q.getEspacio(), i.value, 3);
             i.value++;
         });
     }
-    
+
     private void sedbucao(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -399,7 +413,7 @@ public class Controlador_productos {
             }
         });
     }
-    
+
     private void txletras(java.awt.event.KeyEvent evt) {
         char vali = evt.getKeyChar();
         if (Character.isDigit(vali)) {
@@ -408,7 +422,7 @@ public class Controlador_productos {
             JOptionPane.showMessageDialog(null, " ingrese solo letras  ");
         }
     }
-    
+
     private void validarsololetras(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -417,7 +431,7 @@ public class Controlador_productos {
             }
         });
     }
-    
+
     private void validarnum(java.awt.event.KeyEvent evt) {
         //Validarcedtamaño(visper.getIdper().getText(),10, evt);
         char vali = evt.getKeyChar();
@@ -427,7 +441,7 @@ public class Controlador_productos {
             JOptionPane.showMessageDialog(null, " ingrese solo numeros  ");
         }
     }
-    
+
     private void validarsolonumeros(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override

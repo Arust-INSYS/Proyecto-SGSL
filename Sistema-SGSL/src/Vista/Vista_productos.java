@@ -370,6 +370,9 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel13.setText("Id Empleado:");
         Dialog_Crear.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 30));
         Dialog_Crear.getContentPane().add(txtid_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 60, -1));
+
+        snipercanti.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        snipercanti.setEditor(new javax.swing.JSpinner.NumberEditor(snipercanti, ""));
         Dialog_Crear.getContentPane().add(snipercanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 163, 88, -1));
         Dialog_Crear.getContentPane().add(txtmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 207, 141, -1));
 

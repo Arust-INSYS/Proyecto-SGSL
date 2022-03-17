@@ -185,6 +185,9 @@
           </AuxValues>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="contratacion">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JDesktopPane" name="destokpersona">
 

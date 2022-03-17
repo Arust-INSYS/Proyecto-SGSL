@@ -273,6 +273,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         boxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero", "Casado", "Divorciado", " ", " " }));
 
+        contratacion.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout destokpersonaLayout = new javax.swing.GroupLayout(destokpersona);
         destokpersona.setLayout(destokpersonaLayout);
         destokpersonaLayout.setHorizontalGroup(

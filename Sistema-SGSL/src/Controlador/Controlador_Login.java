@@ -46,6 +46,7 @@ public class Controlador_Login {
                 vista_login.setVisible(false);
                 Control_VistaPrincipal cvp = new Control_VistaPrincipal(vp);
                 cvp.iniciaControl();
+                cvp.datosUsuario(user);
             }else{
                 vista_login.getTxtUsuarioLogin().setText("");
                 vista_login.getTxt_passwordLogin().setText("");

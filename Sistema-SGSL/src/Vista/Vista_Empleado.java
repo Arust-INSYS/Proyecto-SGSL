@@ -206,6 +206,14 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     public void setTxtsueldo(JTextField txtsueldo) {
         this.txtsueldo = txtsueldo;
     }
+
+    public JComboBox<String> getBoxrol() {
+        return boxrol;
+    }
+
+    public void setBoxrol(JComboBox<String> boxrol) {
+        this.boxrol = boxrol;
+    }
     
     
     @SuppressWarnings("unchecked")

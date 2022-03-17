@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.CLASES.Empleado;
 import Modelo.CLASES.Persona;
+import Modelo.CLASES.Rol;
 import Modelo.Modelo_Empleado;
 import Vista.Vista_Empleado;
 import java.awt.Component;
@@ -314,5 +315,13 @@ public class Controlador_Empleados {
                 
             }
     }
-
+public void ComboRol(){
+        List<Rol> rl = modelo_emple.llenarComboRol();
+         vista_emple.getBoxrol().removeAllItems();
+        vista_emple.getBoxrol().addItem("Seleccione");
+        for (Rol rol : rl) {
+            vista_emple.getBoxrol().addItem(rol.getNombre_rol());
+        }
+    }
+    
 }

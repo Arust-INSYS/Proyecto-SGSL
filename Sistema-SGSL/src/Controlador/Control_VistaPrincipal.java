@@ -5,19 +5,23 @@
  */
 package Controlador;
 
+import Modelo.CLASES.Persona;
 import Modelo.Modelo_Cliente;
 import Modelo.Modelo_Empleado;
 import Modelo.Modelo_Persona;
 import Modelo.Modelo_Servicio;
+import Modelo.Modelo_Usuario;
 import Modelo.Modelo_bodega;
 import Modelo.Modelo_productos;
 import Vista.Vista_Cliente;
 import Vista.Vista_Empleado;
+import Vista.Vista_Login;
 import Vista.Vista_Persona;
 import Vista.Vista_Servicio;
 import Vista.Vista_Principal;
 import Vista.Vista_bodega;
 import Vista.Vista_productos;
+import java.util.List;
 
 /**
  *
@@ -38,6 +42,7 @@ public class Control_VistaPrincipal {
         vista_menu.getMenuItem_clientes().addActionListener(l -> Registro_Cliente());
         vista_menu.getBtnbodega().addActionListener(l -> Crud_bodega());
         vista_menu.getMenuItem_empleados().addActionListener(l->Crud_empleados());
+        vista_menu.getBtnRegresar().addActionListener(l-> Cerrar());
 
     }
     private void Crud_Servicios(){
@@ -85,6 +90,37 @@ public class Control_VistaPrincipal {
         vista_menu.getDkp_pane_principal().add(vista_emple);
         Controlador_Empleados conemple = new Controlador_Empleados(modelo_emple, vista_emple);
         conemple.iniciaControl();
+        conemple.ComboRol();
         
+    }
+    
+    private void Cerrar(){
+        vista_menu.setVisible(false);
+        Vista_Login visL = new Vista_Login();
+        Modelo_Usuario mus = new Modelo_Usuario();
+        Controlador_Login cl= new Controlador_Login(mus, visL);
+        cl.IniciarBoton();
+    }
+    
+    public void datosUsuario(String user){
+        String rol="";
+        
+        Modelo_Persona mp = new Modelo_Persona();
+        List<Persona> listP = mp.DatosUsuario(user);
+        for (Persona persona : listP) {
+            vista_menu.getLblnombreE().setText(persona.getNombre()+" "+ persona.getApellido());
+            vista_menu.getLblrol().setText(persona.getCedula());
+            rol=persona.getCedula();
+        }
+        roles(rol);
+        
+    }
+  
+    public void roles(String rol){
+        String admin="administrador";
+        String empl="Usuario Normal";
+        if(empl.equalsIgnoreCase(rol)){
+            vista_menu.getMenuItem_empleados().setEnabled(false);
+        }
     }
 }

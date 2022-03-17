@@ -11,6 +11,8 @@ import Modelo.Modelo_Empleado;
 import Vista.Vista_Empleado;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -33,6 +35,7 @@ public class Controlador_Empleados {
         this.modelo_emple = modelo_emple;
         this.vista_emple = vista_emple;
         vista_emple.setVisible(true);
+        valida();
     }
     
     private void IncremetoID() {
@@ -54,6 +57,32 @@ public class Controlador_Empleados {
         vista_emple.getBtningresar().addActionListener(l->modificar_per());
     }
     
+    public void valida(){
+        KeyListener vali = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+               char sul = e.getKeyChar();
+               if(sul<'0' || sul>'9'){
+               e.consume();
+               }
+               if(Character.isLetter(sul)){
+               e.consume();
+               JOptionPane.showMessageDialog(vista_emple,"Solo acepta valores numericos", "Validación sueldo", JOptionPane.ERROR_MESSAGE);
+               }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+              
+            }
+        };
+        vista_emple.getTxtsueldo().addKeyListener(vali);
+    }
     private void abrirDialogo_pro(int ce){
       String title;
         if(ce==3){

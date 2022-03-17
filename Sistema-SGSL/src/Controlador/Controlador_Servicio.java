@@ -210,7 +210,7 @@ public class Controlador_Servicio {
             vista_servi.getTblServicio().setValueAt(pe.getNom_servicio(), i.value, 1);
             vista_servi.getTblServicio().setValueAt(pe.getDescri_servicio(), i.value, 2);
             vista_servi.getTblServicio().setValueAt(pe.getCosto_servicio(), i.value, 3);
-            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 5);
+            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 4);
             
             i.value++;
         });

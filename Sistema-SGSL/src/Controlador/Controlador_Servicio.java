@@ -71,6 +71,16 @@ public class Controlador_Servicio {
                e.consume();
                JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores alfabeticos", "Validación de Letras", JOptionPane.ERROR_MESSAGE);
                }
+                if(vista_servi.getTxtnom_servicio().getText().length()<=0){
+                vista_servi.getTxtnom_servicio().setBackground(Color.RED);
+                }else{
+                vista_servi.getTxtnom_servicio().setBackground(Color.white);
+                }
+                if(vista_servi.getDescri_servicio().getText().length()<=0){
+                vista_servi.getDescri_servicio().setBackground(Color.RED);
+                }else{
+                vista_servi.getDescri_servicio().setBackground(Color.white);
+                }
                
                
             }
@@ -97,11 +107,11 @@ public class Controlador_Servicio {
                e.consume();
                JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores numericos", "Validación de Costo", JOptionPane.ERROR_MESSAGE);
                }
-               if(vista_servi.getTxtcosto_servicio().getText().length()<2){
-                vista_servi.getTxtcosto_servicio().setBackground(Color.red);
+                if(vista_servi.getTxtcosto_servicio().getText().length()<=0){   
+                vista_servi.getTxtcosto_servicio().setBackground(Color.RED);
                 }else{
                 vista_servi.getTxtcosto_servicio().setBackground(Color.white);
-                } 
+                }
                
             }
 
@@ -124,17 +134,31 @@ public class Controlador_Servicio {
 
             @Override
             public void focusLost(FocusEvent e) {
-                if(vista_servi.getTxtcosto_servicio().getText().length()<2){
-                vista_servi.getTxtcosto_servicio().setBackground(Color.red);
-                }else{
-                vista_servi.getTxtcosto_servicio().setBackground(Color.white);
-                } 
+             if(vista_servi.getTxtcosto_servicio().getText().length()<=0){
+                   
+             vista_servi.getTxtcosto_servicio().setBackground(Color.RED);
+             }else{
+             vista_servi.getTxtcosto_servicio().setBackground(Color.white);
+             }
+             if(vista_servi.getTxtnom_servicio().getText().length()<=0){
+             vista_servi.getTxtnom_servicio().setBackground(Color.RED);
+             }else{
+             vista_servi.getTxtnom_servicio().setBackground(Color.white);
+             }
+             if(vista_servi.getDescri_servicio().getText().length()<=0){
+             vista_servi.getDescri_servicio().setBackground(Color.RED);
+             }else{
+             vista_servi.getDescri_servicio().setBackground(Color.white);
+             }
+             
             }
          };
         vista_servi.getTxtcosto_servicio().addKeyListener(vali2);
-        vista_servi.getTxtnom_servicio().addKeyListener(vali);
         vista_servi.getDescri_servicio().addKeyListener(vali);
+        vista_servi.getTxtnom_servicio().addKeyListener(vali);
+        vista_servi.getTxtnom_servicio().addFocusListener(focus);
         vista_servi.getTxtcosto_servicio().addFocusListener(focus);
+        vista_servi.getDescri_servicio().addFocusListener(focus);
     }
     
     
@@ -144,6 +168,7 @@ public class Controlador_Servicio {
             title="Crear nuevo servicio";
             vista_servi.getDialog_Crear().setName("crear");
             IncremetoID();
+            vista_servi.getTxtidservicio().setEditable(false);
             limpiar_pro();
         }else{
             title="Editar servicio";
@@ -332,12 +357,14 @@ public class Controlador_Servicio {
     }
     
     public void modificar_emple() {
-    vista_servi.getTxtid_empleado().setEnabled(false);
+    vista_servi.getTxtid_empleado().setEditable(false);
      int seleccionado = vista_servi.getTblempleados().getSelectedRow();
       if(seleccionado !=-1){
           String id= vista_servi.getTblempleados().getValueAt(seleccionado, 0).toString();
           int cod = Integer.parseInt(id);
               vista_servi.getTxtid_empleado().setText(id);
+              vista_servi.getDialogEmple().setVisible(false);
+              
               
     }else{
         JOptionPane.showMessageDialog(vista_servi, "No a seleccionado a niguna persona");

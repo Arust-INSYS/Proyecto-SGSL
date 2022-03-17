@@ -191,6 +191,7 @@ public class Controlador_Empleados {
     }
     
      public void modificar_per() {
+     vista_emple.getTxtid_persona().setEditable(false);
      int seleccionado = vista_emple.getTblPersonas().getSelectedRow();
       if(seleccionado !=-1){
           String id= vista_emple.getTblPersonas().getValueAt(seleccionado, 0).toString();

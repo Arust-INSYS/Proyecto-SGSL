@@ -30,7 +30,7 @@ public class Modelo_productos extends Productos{
     public List<Productos> listarproductos() {
         List<Productos> listaprod = new ArrayList<Productos>();
             System.out.println("1m");
-        String sql = "select * from productos";
+        String sql = "select id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_empleado,id_bodega from productos WHERE estado = 'A'";
         ResultSet r = cpg.colsulta(sql);
         byte[] bytes;
         try {
@@ -76,7 +76,7 @@ public class Modelo_productos extends Productos{
     }
         public boolean crearprocduc() {
         try {
-            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_empleado,id_bodega)\n" + "VALUES(?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_empleado,id_bodega,estado)\n" + "VALUES(?,?,?,?,?,?,?,?,'A')";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
@@ -96,7 +96,7 @@ public class Modelo_productos extends Productos{
     }
            public boolean crearprocducsinfoto() {
         try {
-            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,id_empleado,id_bodega)\n" + "VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,id_empleado,id_bodega,estado)\n" + "VALUES(?,?,?,?,?,?,?,'A')";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
@@ -152,7 +152,9 @@ public class Modelo_productos extends Productos{
         }
     }
         public boolean eliminapro(String id) {
-        String sql = "delete from productos WHERE  id_producto ='" + id + "'";
+        
+            String sql= "UPDATE productos SET estado='I' WHERE id_producto='" + id+ "'";
+           // String sql = "delete from productos WHERE  id_producto ='" + id + "'";
         System.out.println("" + sql);
         return cpg.accion(sql);
     }
@@ -161,9 +163,11 @@ public class Modelo_productos extends Productos{
         String sql = "";
         String plb = busqueda;
         if (busqueda.equalsIgnoreCase("")) {
-            sql = "select *from productos";
+          //  sql = "select *from productos";
+      sql="select * from productos WHERE estado = 'A'";
+        
         } else if (plb.equalsIgnoreCase(busqueda)) {
-            sql = "select * from productos where CAST(id_producto AS TEXT) LIKE '" + busqueda + "%' or lower(nom_producto) like '"+busqueda  + "%' or lower(marcar_producto) like '" + busqueda + "%' ";
+            sql = "select * from productos where  estado='A' and CAST(id_producto AS TEXT) LIKE '" + busqueda + "%' or estado='A' and lower(nom_producto) like '"+busqueda  + "%' or estado='A' and lower(marcar_producto) like '" + busqueda + "%'  ";
         }
         ResultSet r = cpg.colsulta(sql);
         byte[] bytes;

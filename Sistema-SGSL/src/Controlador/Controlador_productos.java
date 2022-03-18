@@ -234,8 +234,11 @@ public class Controlador_productos {
             vispro.getTxtmarca().setText(marca);
             String idem = vispro.getTablita().getValueAt(xx, 6).toString();
             vispro.getTxtid_empleado().setText(idem);
+                        vispro.getTxtid_empleado().setEditable(false);
             String idbo = vispro.getTablita().getValueAt(xx, 7).toString();
             vispro.getTxtidbodega().setText(idbo);
+            vispro.getTxtidbodega().setEditable(false);
+
             for (int i = 0; i < lp.size(); i++) {
                 if (lp.get(i).getId_producto() == pro) {
                     if(lp.get(i).getFoto()==null ){
@@ -256,21 +259,26 @@ public class Controlador_productos {
     }
 
     private void eli() {
-        int yy;
-        yy = vispro.getTablita().getSelectedRow();
-        if (yy != -1) {
-            String nu = vispro.getTablita().getValueAt(yy, 0).toString();
-            if (modelpro.eliminapro(nu)) {
-                JOptionPane.showMessageDialog(vispro, "se elimino correctamente");
-                cargarproductos();
+        int i = vispro.getTablita().getSelectedRow();
+        if (i != -1) {
+            String idpersona = vispro.getTablita().getValueAt(i, 0).toString();
+           // int aux = Integer.parseInt(idpersona);
+            String cedula = vispro.getTablita().getValueAt(i, 1).toString();
+            int result = JOptionPane.showConfirmDialog(vispro, "Esta seguro que desea eliminar al producto con el nombre " + cedula + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (result == JOptionPane.YES_OPTION) {
+                if (modelpro.eliminapro(idpersona)) {
+                    JOptionPane.showMessageDialog(vispro, "El registro a sido eliminado correctamente de la base de datos.");
+                    cargarproductos();
+                } else {
+                    JOptionPane.showMessageDialog(vispro, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(vispro, "no se pudo eliminar");
+                JOptionPane.showMessageDialog(vispro, "Registro cancelado para su eliminación.");
             }
-
         } else {
-            JOptionPane.showMessageDialog(vispro, "error seleccione una fila");
-            vispro.getDialog_Crear().dispose();
+            JOptionPane.showMessageDialog(vispro, "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
         }
+    
     }
 
     private void cancelar() {

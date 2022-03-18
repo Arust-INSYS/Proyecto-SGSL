@@ -7,6 +7,9 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -37,14 +40,6 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
     public void setBtnActualizarCliente(JButton BtnActualizarCliente) {
         this.BtnActualizarCliente = BtnActualizarCliente;
-    }
-
-    public JButton getBtnBuscarPersona() {
-        return BtnBuscarPersona;
-    }
-
-    public void setBtnBuscarPersona(JButton BtnBuscarPersona) {
-        this.BtnBuscarPersona = BtnBuscarPersona;
     }
 
     public JButton getBtnCancelarCli() {
@@ -134,6 +129,46 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     public void setTxt_ID_Persona(JTextField Txt_ID_Persona) {
         this.Txt_ID_Persona = Txt_ID_Persona;
     }
+
+    public JLabel getLblNombresClienteBusqueda() {
+        return LblNombresClienteBusqueda;
+    }
+
+    public void setLblNombresClienteBusqueda(JLabel LblNombresClienteBusqueda) {
+        this.LblNombresClienteBusqueda = LblNombresClienteBusqueda;
+    }
+
+    public JTextField getTxtBuscarCedulaCli() {
+        return TxtBuscarCedulaCli;
+    }
+
+    public void setTxtBuscarCedulaCli(JTextField TxtBuscarCedulaCli) {
+        this.TxtBuscarCedulaCli = TxtBuscarCedulaCli;
+    }
+
+    public JPanel getJpanelInformacionBusqueda() {
+        return JpanelInformacionBusqueda;
+    }
+
+    public void setJpanelInformacionBusqueda(JPanel JpanelInformacionBusqueda) {
+        this.JpanelInformacionBusqueda = JpanelInformacionBusqueda;
+    }
+
+    public JSeparator getSeparatorCliente() {
+        return SeparatorCliente;
+    }
+
+    public void setSeparatorCliente(JSeparator SeparatorCliente) {
+        this.SeparatorCliente = SeparatorCliente;
+    }
+
+    public JLabel getLblNameBuscar() {
+        return LblNameBuscar;
+    }
+
+    public void setLblNameBuscar(JLabel LblNameBuscar) {
+        this.LblNameBuscar = LblNameBuscar;
+    }
     
     
     /**
@@ -152,11 +187,15 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         Txt_ID_Cliente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BtnBuscarPersona = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         BtnAceptarCli = new javax.swing.JButton();
         BtnCancelarCli = new javax.swing.JButton();
+        JpanelInformacionBusqueda = new javax.swing.JPanel();
+        TxtBuscarCedulaCli = new javax.swing.JTextField();
+        LblNameBuscar = new javax.swing.JLabel();
+        SeparatorCliente = new javax.swing.JSeparator();
+        LblNombresClienteBusqueda = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         TxtBuscarCliente = new javax.swing.JTextField();
@@ -176,7 +215,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Telefono:");
 
-        BtnBuscarPersona.setText("Buscar");
+        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Cliente");
@@ -188,7 +227,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(133, 133, 133))
+                .addGap(191, 191, 191))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,13 +241,54 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
         BtnCancelarCli.setText("Cancelar");
 
+        JpanelInformacionBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+
+        TxtBuscarCedulaCli.setBorder(null);
+
+        LblNameBuscar.setText("Buscar:");
+
+        SeparatorCliente.setBackground(new java.awt.Color(0, 0, 102));
+
+        javax.swing.GroupLayout JpanelInformacionBusquedaLayout = new javax.swing.GroupLayout(JpanelInformacionBusqueda);
+        JpanelInformacionBusqueda.setLayout(JpanelInformacionBusquedaLayout);
+        JpanelInformacionBusquedaLayout.setHorizontalGroup(
+            JpanelInformacionBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpanelInformacionBusquedaLayout.createSequentialGroup()
+                .addGroup(JpanelInformacionBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JpanelInformacionBusquedaLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(SeparatorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JpanelInformacionBusquedaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(LblNameBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtBuscarCedulaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LblNombresClienteBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        JpanelInformacionBusquedaLayout.setVerticalGroup(
+            JpanelInformacionBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JpanelInformacionBusquedaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(LblNombresClienteBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SeparatorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(JpanelInformacionBusquedaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JpanelInformacionBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblNameBuscar)
+                    .addComponent(TxtBuscarCedulaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13))
+        );
+
         javax.swing.GroupLayout DialogoClienteLayout = new javax.swing.GroupLayout(DialogoCliente.getContentPane());
         DialogoCliente.getContentPane().setLayout(DialogoClienteLayout);
         DialogoClienteLayout.setHorizontalGroup(
             DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoClienteLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+            .addGroup(DialogoClienteLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
                 .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel10)
@@ -218,38 +298,38 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                     .addComponent(Txt_ID_Persona)
                     .addComponent(Txt_ID_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(BtnBuscarPersona)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoClienteLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(119, Short.MAX_VALUE))
+            .addGroup(DialogoClienteLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
                 .addComponent(BtnAceptarCli)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnCancelarCli)
-                .addGap(75, 75, 75))
+                .addGap(92, 92, 92))
+            .addComponent(JpanelInformacionBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         DialogoClienteLayout.setVerticalGroup(
             DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoClienteLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JpanelInformacionBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(Txt_ID_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(28, 28, 28)
                 .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(25, 25, 25)
                 .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(Txt_ID_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnBuscarPersona))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                    .addComponent(Txt_ID_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnAceptarCli)
                     .addComponent(BtnCancelarCli))
-                .addGap(20, 20, 20))
+                .addGap(26, 26, 26))
         );
 
         setClosable(true);
@@ -310,7 +390,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id Cliente", "Telefono", "Id Persona"
+                "Id Cliente", "Apellido", "Nombre", "Telefono", "Id Persona"
             }
         ));
         jScrollPane1.setViewportView(TblCliente);
@@ -334,12 +414,12 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEstado2)
                     .addComponent(BtnActualizarCliente))
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -358,8 +438,8 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -374,14 +454,18 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptarCli;
     private javax.swing.JButton BtnActualizarCliente;
-    private javax.swing.JButton BtnBuscarPersona;
     private javax.swing.JButton BtnCancelarCli;
     private javax.swing.JButton BtnCrearCliente;
     private javax.swing.JButton BtnEditarCliente;
     private javax.swing.JButton BtnImprimirCliente;
     private javax.swing.JButton BtnRemoverCliente;
     private javax.swing.JDialog DialogoCliente;
+    private javax.swing.JPanel JpanelInformacionBusqueda;
+    private javax.swing.JLabel LblNameBuscar;
+    private javax.swing.JLabel LblNombresClienteBusqueda;
+    private javax.swing.JSeparator SeparatorCliente;
     private javax.swing.JTable TblCliente;
+    private javax.swing.JTextField TxtBuscarCedulaCli;
     private javax.swing.JTextField TxtBuscarCliente;
     private javax.swing.JTextField TxtTelefonoCliente;
     private javax.swing.JTextField Txt_ID_Cliente;

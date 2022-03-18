@@ -57,17 +57,20 @@ public class Controlador_Registro_Usuario {
                             cl.IniciarBoton();
                         } else {
                             System.out.println("Error al crear el usuario");
+                            LimpiarCampos();
                         }
 
                     } else {
 
                         JOptionPane.showMessageDialog(vista_registroU, "Contraseñas no Coinciden", "", JOptionPane.INFORMATION_MESSAGE);
+                        LimpiarCampos();
                     }
 
                 }
 
             } else {
                 JOptionPane.showMessageDialog(vista_registroU, "El Usuario no pertenece a la empresa", "", JOptionPane.ERROR_MESSAGE);
+                LimpiarCampos();
             }
 
         }
@@ -80,6 +83,12 @@ public class Controlador_Registro_Usuario {
         Vista_Login vl = new Vista_Login();
         Controlador_Login cl = new Controlador_Login(m_user, vl);
         cl.IniciarBoton();
+    }
+    
+     public void LimpiarCampos() {
+        vista_registroU.getTxt_NombreUsuario().setText("");
+        vista_registroU.getTxt_Contrasenia().setText("");
+        vista_registroU.getTxt_confirmarContra().setText("");
     }
 
 }

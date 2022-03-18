@@ -276,5 +276,30 @@ public class Modelo_Persona extends Persona {
         return incremento;
     }
     
+      public List<Persona> DatosUsuario(String busqueda) {
+        List<Persona> lp = new ArrayList<Persona>();
+        try {
+            String sql = "select p.nombre as nombre, p.apellido as apellido, r.nombre_rol as rol from persona p "
+                    + "join empleado e "
+                    + "on p.id_persona=e.id_persona "
+                    + "join usuario u "
+                    + "on e.id_empleado=u.id_empleado "
+                    + "join roles r "
+                    + "on u.id_rol=r.id_rol and p.cedula='"+busqueda+"'";
+            ResultSet rs = cp.colsulta(sql);
+            while (rs.next()) {
+                Persona persona = new Persona();
+                persona.setCedula(rs.getString("rol"));
+                persona.setNombre(rs.getString("nombre"));
+                persona.setApellido(rs.getString("apellido"));
+                lp.add(persona);
+            }
+            rs.close();
+            return lp;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     
 }

@@ -10,7 +10,7 @@ package Modelo.CLASES;
  * @author HP
  */
 public class Usuario {
-    private String cedula;
+    private int id_usuario;
     private String contrasenia;
     private int id_empleado;
     private int id_rol;
@@ -18,19 +18,19 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String cedula, String contrasenia, int id_empleado, int id_rol) {
-        this.cedula = cedula;
+    public Usuario(int id_usuario, String contrasenia, int id_empleado, int id_rol) {
+        this.id_usuario = id_usuario;
         this.contrasenia = contrasenia;
         this.id_empleado = id_empleado;
         this.id_rol = id_rol;
     }
 
-    public String getCedula() {
-        return cedula;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getContrasenia() {
@@ -57,5 +57,6 @@ public class Usuario {
         this.id_rol = id_rol;
     }
     
+
     
 }

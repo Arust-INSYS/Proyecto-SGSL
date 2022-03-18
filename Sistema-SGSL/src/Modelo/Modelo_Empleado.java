@@ -7,6 +7,7 @@ package Modelo;
 
 import Modelo.CLASES.Empleado;
 import Modelo.CLASES.Persona;
+import Modelo.CLASES.Rol;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -39,8 +40,8 @@ public class Modelo_Empleado extends Empleado {
         super(id_empleado, sueldo, estado_civil, fecha_contrato, id_persona);
     }
 
-    public List<Empleado> listarEmpleados(){
-        List<Empleado> lista = new  ArrayList<Empleado>();
+    public List<Empleado> listarEmpleados() {
+        List<Empleado> lista = new ArrayList<Empleado>();
         try {
             String sql = "select * from empleado";
             ResultSet rs = cpg.colsulta(sql);
@@ -87,8 +88,8 @@ public class Modelo_Empleado extends Empleado {
             String sql;
             sql = "UPDATE producto SET id_empleado=?, sueldo=?, estado_civil=?, fecha_contrato=?, id_persona=? \n"
                     + "WHERE id_empleado = '" + getId_empleado() + "';";
-            sql= "UPDATE Empleado SET id_empleado=?, sueldo=?, estado_civil=?, fecha_contrato=?, id_persona=? \n" +
-            "WHERE id_empleado = '" +getId_empleado()+ "';";
+            sql = "UPDATE Empleado SET id_empleado=?, sueldo=?, estado_civil=?, fecha_contrato=?, id_persona=? \n"
+                    + "WHERE id_empleado = '" + getId_empleado() + "';";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_empleado());
             ps.setDouble(2, getSueldo());
@@ -107,66 +108,6 @@ public class Modelo_Empleado extends Empleado {
         String nsql = "DELETE FROM empleado WHERE id_empleado ='" + idemple + "'";
         return cpg.accion(nsql);
     }
-
-    //logeo
-    public boolean ValidarCredencial(String user, String password) {
-        String sql = "select p.cedula, e.contrasenia from empleado e join persona p "
-                + "on e.id_persona=p.id_persona and p.cedula='" + user + "' and e.contrasenia='" + password + "'";
-        ResultSet rs = cpg.colsulta(sql);
-
-        try {
-            return rs.next();
-        } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-
-    }
-
-    //Registro_Usuario
-    //validacion de la cedula del usuario
-    public int validarUsuario(String user) {
-        int id_empleado = -1;
-        String sql = "select e.id_empleado as id from empleado e join persona p "
-                + "on e.id_persona=p.id_persona and p.cedula='" + user + "'";
-        ResultSet rs = cpg.colsulta(sql);
-
-        try {
-            if (rs.next()) {
-                id_empleado = rs.getInt("id");
-            }
-
-            return id_empleado;
-        } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
-            return -1;
-        }
-
-    }
-
-    public boolean GuardarContraseña(String password, int id) {
-        String sql = "update empleado set contrasenia ='" + password + "'"
-                + " where id_empleado= '" + id + "'";
-
-        return cpg.accion(sql);
-
-    }
-
-//para q o se repita el usuario
-    public boolean VerificarU(int id) {
-        String sql = "select contrasenia  from empleado  where id_empleado = '" + id + "'";
-
-        ResultSet rs = cpg.colsulta(sql);
-
-        try {
-            return rs.next();
-        } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-
-    }
-///////////////////////////
 
     public List<Persona> listarPersonas() {
         List<Persona> lp = new ArrayList<Persona>();
@@ -209,8 +150,8 @@ public class Modelo_Empleado extends Empleado {
         param.setSourceSubsampling(1, 1, 0, 0);
         return reader.read(0, param);
     }
-        
-        public int IncrementoIdEmpleado(){
+
+    public int IncrementoIdEmpleado() {
         int incremento = 1;
         try {
             String sql = "select max(id_empleado) from empleado";
@@ -225,4 +166,74 @@ public class Modelo_Empleado extends Empleado {
         return incremento;
     }
 
+    public int IdRol(String nombre_rol) {
+        int id_rol = -1;
+        String sql = "select id_rol as id from roles where upper(nombre_rol)=upper('" + nombre_rol + "')";
+
+        ResultSet rs = cpg.colsulta(sql);
+
+        try {
+            if (rs.next()) {
+                id_rol = rs.getInt("id");
+            }
+
+            return id_rol;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public List <Rol> llenarComboRol(){
+        List<Rol> rl = new ArrayList<Rol>();
+        try {
+            String sql = "select *from roles";
+            ResultSet rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Rol r = new Rol();
+                r.setId_rol(rs.getInt("id_rol"));
+                r.setNombre_rol(rs.getString("nombre_rol"));
+                
+                rl.add(r);
+            }
+            rs.close();
+            return rl;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public int IncrementoIdUsuario() {
+        int incremento = 1;
+        try {
+            String sql = "select max(id_usuario) from usuario";
+            ResultSet rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                incremento = rs.getInt(1) + 1;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return incremento;
+    }
+  
+    public boolean CrearUser(int id_empleado, int id_rol, int id_user){
+        try {
+            String sql;
+            sql = "INSERT INTO usuario (id_usuario, pasword, id_empleado, id_rol)";
+            sql += "VALUES(?,?,?,?)";
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setInt(1, id_user);
+            ps.setString(2, "Default");
+            ps.setInt(3, id_empleado);
+            ps.setInt(4, id_rol);
+            
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 }

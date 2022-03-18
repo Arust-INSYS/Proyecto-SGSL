@@ -41,15 +41,14 @@ public class Controlador_Registro_Usuario {
             JOptionPane.showMessageDialog(vista_registroU, "Campos Vacios ", "", JOptionPane.ERROR_MESSAGE);
 
         } else {
-            int id = modelo_user.validarUsuario(user);
-            System.out.println(id);
-            if (-1 != id) {
+            int id_empleado = modelo_user.validarUsuario(user);
+            if (-1 != id_empleado) {
 
-                if (modelo_user.VerificarU(id)) {
+                if (modelo_user.VerificarU(id_empleado)) {
                     JOptionPane.showMessageDialog(vista_registroU, "El usuario ya existe", "", JOptionPane.ERROR_MESSAGE);
                 } else {
                     if (password1.equals(password2)) {
-                        if (modelo_user.GuardarContraseña(password1, id)) {
+                        if (modelo_user.GuardarContraseña(password1, id_empleado)) {
                             JOptionPane.showMessageDialog(vista_registroU, "Usuario Creado", "", JOptionPane.INFORMATION_MESSAGE);
                             vista_registroU.setVisible(false);
                             Modelo_Usuario m_us = new Modelo_Usuario();

@@ -25,9 +25,11 @@ public class Modelo_Usuario extends Usuario {
     public Modelo_Usuario() {
     }
 
-    public Modelo_Usuario(String cedula, String contrasenia, int id_empleado, int id_rol) {
-        super(cedula, contrasenia, id_empleado, id_rol);
+    public Modelo_Usuario(int id_usuario, String contrasenia, int id_empleado, int id_rol) {
+        super(id_usuario, contrasenia, id_empleado, id_rol);
     }
+
+    
 
     public List<Usuario> listarUsuario() {
         List<Usuario> lista = new ArrayList<Usuario>();
@@ -36,10 +38,10 @@ public class Modelo_Usuario extends Usuario {
             ResultSet rs = cpg.colsulta(sql);
             while (rs.next()) {
                 Usuario user = new Usuario();
-                user.setCedula(rs.getString("cedula"));
-                user.setContrasenia(rs.getString("contrasenia"));
+                user.setId_usuario(rs.getInt("id_usuario"));
+                user.setContrasenia(rs.getString("pasword"));
                 user.setId_empleado(rs.getInt("id_empleado"));
-                user.setId_rol(rs.getInt("id_persona"));
+                user.setId_rol(rs.getInt("id_rol"));
                 lista.add(user);
 
             }
@@ -51,24 +53,6 @@ public class Modelo_Usuario extends Usuario {
         }
     }
 
-    public boolean creaUsuario() {
-        try {
-            String sql;
-            sql = "INSERT INTO usuario (pasword, id_empleado, id_rol, id_usuario)";
-            sql += "VALUES(?,?,?,?)";
-            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-            ps.setString(1, getCedula());
-            ps.setString(2, getContrasenia());
-            ps.setInt(3, getId_empleado());
-            ps.setInt(4, getId_rol());
-
-            ps.executeUpdate();
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-    }
 
     //logeo
     public boolean ValidarCredencial(String user, String password) {
@@ -111,7 +95,7 @@ public class Modelo_Usuario extends Usuario {
 
     public boolean GuardarContraseña(String password, int id) {
         String sql = "update usuario set pasword ='" + password + "'"
-                + " where id_usuario= '" + id + "'";
+                + " where id_empleado= '" + id + "'";
 
         return cpg.accion(sql);
 
@@ -120,18 +104,20 @@ public class Modelo_Usuario extends Usuario {
 //para q no se repita el usuario
     public boolean VerificarU(int id) {
         String pass = "";
-        String sql = "select pasword from usuario  where id_empleado = " + id + "";
+        String sql = "select pasword as id from usuario  where id_empleado = " + id + "";
 
         ResultSet rs = cpg.colsulta(sql);
 
         try {
             if (rs.next()) {
-                pass=rs.getString("pasword");
+                pass=rs.getString("id");
             }
-            if(pass.equals("contra")){
-               return true; 
+            System.out.println(pass+"ccco");
+            System.out.println(id+"aa");
+            if(pass.equalsIgnoreCase("Default")){
+               return false; 
             }else{
-                return false;
+                return true;
             }
             
 

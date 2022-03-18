@@ -511,14 +511,13 @@ public class Controlador_Persona {
         } else {
             modelPer.setDireccion(dire);
         }
-//        modelPer.setDireccion(vistaPer.getTxtDireccionPersona().getText());
-
         if (jfc == null) {
             if (modelPer.CrearPersonaFT()) {
-                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
                 CargarTablaPersona();
                 Limpiar_DatosPersona();
                 IncremetoID();
+                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
+                vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -539,6 +538,7 @@ public class Controlador_Persona {
                 IncremetoID();
                 Limpiar_DatosPersona();
                 JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente.");
+                vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.");
             }
@@ -558,8 +558,9 @@ public class Controlador_Persona {
         modelPerE.setDireccion(vistaPer.getTxtDireccionPersona().getText());
         if (jfc == null) {
             if (modelPerE.ModificarPersonaFT()) {
-                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
                 CargarTablaPersona();
+                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+                vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -575,8 +576,9 @@ public class Controlador_Persona {
                 }
             }
             if (modelPerE.ModificarPersonaBDA()) {
-                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
                 CargarTablaPersona();
+                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+                vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.");
             }

@@ -390,7 +390,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Id Cliente", "Telefono", "Id Persona"
+                "Id Cliente", "Apellido", "Nombre", "Telefono", "Id Persona"
             }
         ));
         jScrollPane1.setViewportView(TblCliente);
@@ -426,7 +426,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 844, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()

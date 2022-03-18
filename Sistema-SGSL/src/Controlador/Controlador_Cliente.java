@@ -90,6 +90,17 @@ public class Controlador_Cliente {
         KeyListener buscaP = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (c < '0' || c > '9') {
+                    e.consume();
+                }
+                if (Character.isLetter(c)) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(vistaCli, "Por favor, debe ingresar valores numéricos para la busqueda por cédula.", "Cédula.", JOptionPane.WARNING_MESSAGE);
+                }
+                 if (vistaCli.getTxtBuscarCedulaCli().getText().length() == 10) {
+                    e.consume();
+                }
             }
 
             @Override
@@ -102,9 +113,34 @@ public class Controlador_Cliente {
                 BuscarPersonaCedula(busquedaI);
             }
         };
+
+        KeyListener telefono = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (c < '0' || c > '9') {
+                    e.consume();
+                }
+                if (Character.isLetter(c)) {
+                    e.consume();
+                    JOptionPane.showMessageDialog(vistaCli, "Por favor, debe ingresar valores numéricos.", "Teléfono.", JOptionPane.WARNING_MESSAGE);
+                }
+                if (vistaCli.getTxtTelefonoCliente().getText().length() == 10) {
+                    e.consume();
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
         vistaCli.getTxtBuscarCliente().addKeyListener(buscar);
         vistaCli.getTxtBuscarCedulaCli().addKeyListener(buscaP);
-
+        vistaCli.getTxtTelefonoCliente().addKeyListener(telefono);
     }
 
     private void ControlOcultarComponetesDLG() {
@@ -180,9 +216,7 @@ public class Controlador_Cliente {
 
             }
         }
-//        vistaCli.getDialogoCliente().setLocation(600, 80);
-//        vistaCli.getDialogoCliente().setSize(431, 414);
-//        vistaCli.getDialogoCliente().setTitle(titulo);
+
     }
 
     private void TipoDialogoAbrirCliente() {
@@ -190,12 +224,13 @@ public class Controlador_Cliente {
         int i = vistaCli.getTblCliente().getSelectedRow();
 
         if (i != -1) {
-            int cod = Integer.parseInt(vistaCli.getTblCliente().getValueAt(i, 2).toString());
-            System.out.println("Entro tipo de dialogo");
+            int cod = Integer.parseInt(vistaCli.getTblCliente().getValueAt(i, 4).toString());
+            System.out.println("Entro tipo de dialogo-->" + cod);
             String[] cade = {"Persona", "Cliente", "Cancelar"};
             int nu = JOptionPane.showOptionDialog(null, "Elija el tipo de edicion que decea realizar.", "Opción de edicion.", 0, JOptionPane.DEFAULT_OPTION, null, cade, "Cancelar");
             if (nu == 0) {
                 System.out.println("Persona");
+                viewper.getTxt_ID_Persona().setEditable(false);
                 EdicionPersonaClienteCL(cod);
                 String titulo = "Editar Persona";
                 viewper.getDialogoPersona().setName("Editar");
@@ -218,9 +253,12 @@ public class Controlador_Cliente {
     }
 
     private void EdicionPersonaClienteCL(int codigo) {
+        System.out.println("Codigoooooooo------------>" + codigo);
         List<Persona> listaBusper = modelPer.listarPersonas();
         for (int i = 0; i < listaBusper.size(); i++) {
+            System.out.println("Ingreso al for de edicion persona");
             if (listaBusper.get(i).getId_persona() == codigo) {
+                System.out.println("Ingreso al fi de la edicon de persona");
                 viewper.getTxt_ID_Persona().setText(String.valueOf(listaBusper.get(i).getId_persona()));
                 viewper.getTxtCedulaPersona().setText(listaBusper.get(i).getCedula());
                 viewper.getTxtNombrePersona().setText(listaBusper.get(i).getNombre());
@@ -285,8 +323,11 @@ public class Controlador_Cliente {
 
     private void CrearEditarPersona_Cliente() {
         if (vistaCli.getDialogoCliente().getName().equals("Crear")) {
-
-            CrearCliente();
+            if (vistaCli.getTxt_ID_Persona().getText().isEmpty()) {
+                JOptionPane.showMessageDialog(viewper, "Por favor ingrese el id de persona para su registro.", "Vacio ID", JOptionPane.WARNING_MESSAGE);
+            } else {
+                CrearCliente();
+            }
         } else {
             if (vistaCli.getDialogoCliente().getName().equals("Editar")) {
                 EditarCliente();
@@ -302,15 +343,20 @@ public class Controlador_Cliente {
         modelCli.setId_personaCI(Integer.parseInt(vistaCli.getTxt_ID_Persona().getText()));
         if (ValidaClienteRepetido(Integer.parseInt(vistaCli.getTxt_ID_Persona().getText())) == true) {
             JOptionPane.showMessageDialog(vistaCli, "Cliente Repetido, este id ya existe.", "Cliente Repetido.", JOptionPane.ERROR_MESSAGE);
-
         } else {
             if (modelCli.CrearClienteBDA()) {
                 CargarTablaCliente();
+                LimpiarDatosClienteCrear();
                 JOptionPane.showMessageDialog(vistaCli, "Cliente Creado Satisfactoriamente.");
+                vistaCli.getDialogoCliente().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaCli, "Error no se puedo crear el Cliente.");
             }
         }
+    }
+    private void LimpiarDatosClienteCrear(){
+        vistaCli.getTxtTelefonoCliente().setText("");
+        vistaCli.getTxt_ID_Persona().setText("");
     }
 
     private void EditarCliente() {
@@ -321,8 +367,9 @@ public class Controlador_Cliente {
         if (modelCliED.ModificarClienteBDA()) {
             CargarTablaCliente();
             JOptionPane.showMessageDialog(vistaCli, "Cliente Modificado Satisfactoriamente.");
+            vistaCli.getDialogoCliente().dispose();
         } else {
-            JOptionPane.showMessageDialog(vistaCli, "Error no se puedo Modificar el Cliente.");
+            JOptionPane.showMessageDialog(vistaCli, "Error no se puedo Modificar el Cliente.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -330,8 +377,8 @@ public class Controlador_Cliente {
         int i = vistaCli.getTblCliente().getSelectedRow();
         if (i != -1) {
             vistaCli.getTxt_ID_Cliente().setText(vistaCli.getTblCliente().getValueAt(i, 0).toString());
-            vistaCli.getTxtTelefonoCliente().setText(vistaCli.getTblCliente().getValueAt(i, 1).toString());
-            vistaCli.getTxt_ID_Persona().setText(vistaCli.getTblCliente().getValueAt(i, 2).toString());
+            vistaCli.getTxtTelefonoCliente().setText(vistaCli.getTblCliente().getValueAt(i, 3).toString());
+            vistaCli.getTxt_ID_Persona().setText(vistaCli.getTblCliente().getValueAt(i, 4).toString());
 
         }
     }
@@ -341,7 +388,7 @@ public class Controlador_Cliente {
         tb.setNumRows(0);
         List<Cliente> listaCliente = modeloCli.listarClientesBDA();
         listaCliente.stream().forEach(c -> {
-            String[] cliente = {String.valueOf(c.getId_clienteC()), c.getTelefono(), String.valueOf(c.getId_personaCI())};
+            String[] cliente = {String.valueOf(c.getId_clienteC()), c.getApellido(), c.getNombre(), c.getTelefono(), String.valueOf(c.getId_personaCI())};
             tb.addRow(cliente);
         });
     }
@@ -351,7 +398,7 @@ public class Controlador_Cliente {
         tb.setNumRows(0);
         List<Cliente> listaCliente = modeloCli.BuscarCliente(codigo);
         listaCliente.stream().forEach(c -> {
-            String[] cliente = {String.valueOf(c.getId_clienteC()), c.getTelefono(), String.valueOf(c.getId_personaCI())};
+            String[] cliente = {String.valueOf(c.getId_clienteC()), c.getApellido(), c.getNombre(), c.getTelefono(), String.valueOf(c.getId_personaCI())};
             tb.addRow(cliente);
         });
     }
@@ -490,22 +537,22 @@ public class Controlador_Cliente {
     private void CacelarEdicionPersona() {
         viewper.getDialogoPersona().dispose();
     }
-    
+
     private void EliminarClienteView() {
         int i = vistaCli.getTblCliente().getSelectedRow();
         if (i != -1) {
             String idpersona = vistaCli.getTblCliente().getValueAt(i, 0).toString();
             int aux = Integer.parseInt(idpersona);
             String idc = vistaCli.getTblCliente().getValueAt(i, 0).toString();
-            String idperson = vistaCli.getTblCliente().getValueAt(i, 2).toString();
+            String idperson = vistaCli.getTblCliente().getValueAt(i, 4).toString();
             int auxidp = Integer.parseInt(idperson);
             int result = JOptionPane.showConfirmDialog(vistaCli, "Esta seguro que desea eliminar al cliente con cédula " + idc + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (result == JOptionPane.YES_OPTION) {
                 if (modeloCli.EliminarCliente(aux)) {
                     JOptionPane.showMessageDialog(vistaCli, "El registro a sido eliminado correctamente de la base de datos.");
                     CargarTablaCliente();
-                    if(modelPer.EliminarPersona(auxidp)){
-                        System.out.println("Persona eliminada correctamente con el id: "+auxidp);
+                    if (modelPer.EliminarPersona(auxidp)) {
+                        System.out.println("Persona eliminada correctamente con el id: " + auxidp);
                     }
                 } else {
                     JOptionPane.showMessageDialog(vistaCli, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);

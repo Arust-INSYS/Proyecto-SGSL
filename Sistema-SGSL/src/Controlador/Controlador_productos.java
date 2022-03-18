@@ -87,7 +87,6 @@ public class Controlador_productos {
     private void abrirDialogo_pro(int ce) {
         String title;
         if (ce == 3) {
-            limpiardatos();
             title = "Crear nuevo servicio";
             vispro.getDialog_Crear().setName("crear");
         } else {
@@ -268,7 +267,7 @@ public class Controlador_productos {
             if (result == JOptionPane.YES_OPTION) {
                 if (modelpro.eliminapro(idpersona)) {
                     JOptionPane.showMessageDialog(vispro, "El registro a sido eliminado correctamente de la base de datos.");
-                    cargarproductos();
+                       cargarproductos();
                 } else {
                     JOptionPane.showMessageDialog(vispro, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -290,16 +289,20 @@ public class Controlador_productos {
         vispro.getTxtid_empleado().setText("");
         vispro.getTxtnom_pro().setText("");
         vispro.getSnipercanti().setValue(1);
-        vispro.getTxtfechahoy().setIcon(null);
+        vispro.getTxtfoto().setIcon(null);
         vispro.getTxtpreciopro().setText("");
         vispro.getTxtmarca().setText("");
-
     }
 
     void guardar() {
-        crear();
+        if(vispro.getTxtnom_pro().getText().isEmpty()|| vispro.getTxtmarca().getText().isEmpty()||vispro.getTxtpreciopro().getText().isEmpty()){
+                            JOptionPane.showMessageDialog(vispro, "NO SE PUEDE GUARDAR SI NO SE LLENA TODOS LOS CAMPOS");
+        }else{
+       limpiardatos();
+            crear();
         vispro.getTxtidproducto().setText(String.valueOf(modelpro.IncrementoIdproducto()));
-
+        vispro.getDialog_Crear().setVisible(false);
+        }
     }
 
     private void bus(java.awt.event.KeyEvent evt) {
@@ -383,6 +386,11 @@ public class Controlador_productos {
             String id = vispro.getTblabodega().getValueAt(xx, 0).toString();
             int pro = Integer.parseInt(id);
             vispro.getTxtidbodega().setText(id);
+                 int m=Integer.parseInt( vispro.getTblabodega().getValueAt(xx, 3).toString());
+                    SpinnerNumberModel n=new SpinnerNumberModel();
+                    n.setMaximum(m);
+                    vispro.getSnipercanti().setModel(n);
+               
             vispro.getTxtidbodega().setEditable(false);
         } else {
             JOptionPane.showMessageDialog(vispro, "error seleccione una fila");
@@ -393,8 +401,8 @@ public class Controlador_productos {
 
     void acep() {
         datospasar();
-    }
-
+    }    
+    //----------------------------------------------------------------------------------
     private void busbo(java.awt.event.KeyEvent evt) {
         vispro.getTblabodega().setDefaultRenderer(Object.class, new Imangentabla());
         vispro.getTblabodega().setRowHeight(100);

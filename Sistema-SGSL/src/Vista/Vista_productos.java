@@ -296,7 +296,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtid_empleado = new javax.swing.JTextField();
-        snipercanti = new javax.swing.JSpinner();
         txtmarca = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -306,6 +305,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         btnexaminar = new javax.swing.JButton();
         txtfecha = new javax.swing.JLabel();
         btnbuscaridbodega = new javax.swing.JButton();
+        snipercanti = new javax.swing.JSpinner();
         jScrollPane3 = new javax.swing.JScrollPane();
         areadescripcion = new javax.swing.JTextPane();
         dialogbodega = new javax.swing.JDialog();
@@ -370,10 +370,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel13.setText("Id Empleado:");
         Dialog_Crear.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 30));
         Dialog_Crear.getContentPane().add(txtid_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 60, -1));
-
-        snipercanti.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        snipercanti.setEditor(new javax.swing.JSpinner.NumberEditor(snipercanti, ""));
-        Dialog_Crear.getContentPane().add(snipercanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 163, 88, -1));
         Dialog_Crear.getContentPane().add(txtmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 207, 141, -1));
 
         jLabel3.setText("Marca:");
@@ -395,6 +391,10 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         btnbuscaridbodega.setText("buscar");
         Dialog_Crear.getContentPane().add(btnbuscaridbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+
+        snipercanti.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        snipercanti.setEditor(new javax.swing.JSpinner.NumberEditor(snipercanti, ""));
+        Dialog_Crear.getContentPane().add(snipercanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 80, -1));
 
         jScrollPane3.setViewportView(areadescripcion);
 

@@ -35,7 +35,7 @@ public class Modelo_Cliente extends Cliente {
     public List<Cliente> listarClientesBDA() {
         List<Cliente> listaCli = new ArrayList<Cliente>();
         try {
-            String sql = "select * from cliente";
+            String sql = "select * from cliente where estado = 'A'";
             ResultSet rs = cp.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {
@@ -56,7 +56,7 @@ public class Modelo_Cliente extends Cliente {
     public List<Cliente> BuscarCliente(String id_cli) {
         List<Cliente> listaCli = new ArrayList<Cliente>();
         try {
-            String sql = "select * from cliente where CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or CAST(id_persona AS TEXT) LIKE '" + id_cli + "%'";
+            String sql = "select * from cliente where estado = 'A' and CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
             ResultSet rs = cp.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {
@@ -77,12 +77,13 @@ public class Modelo_Cliente extends Cliente {
     public boolean CrearClienteBDA() {
         try {
             String sql = "INSERT INTO public.cliente(\n"
-                    + "	id_cliente, telefono, id_persona)\n"
-                    + "	VALUES (?, ?, ?);";
+                    + "	id_cliente, telefono, id_persona, estado)\n"
+                    + "	VALUES (?, ?, ?, ?);";
             PreparedStatement ps = cp.getCon().prepareStatement(sql);
             ps.setInt(1, getId_clienteC());
             ps.setString(2, getTelefono());
             ps.setInt(3, getId_personaCI());
+            ps.setString(4, "A");
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -105,6 +106,11 @@ public class Modelo_Cliente extends Cliente {
             Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+    }
+    public boolean EliminarCliente(int idcliente) {
+        String sql = "UPDATE cliente SET estado = 'I' WHERE id_cliente = '" + idcliente + "';";
+        System.out.println("" + sql);
+        return cp.accion(sql);
     }
     public int IncrementoIdCliente(){
         int incremento = 1;

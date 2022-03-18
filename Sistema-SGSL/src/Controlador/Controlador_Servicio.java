@@ -9,8 +9,13 @@ import Modelo.CLASES.Empleado;
 import Modelo.CLASES.Servicios;
 import Modelo.Modelo_Servicio;
 import Vista.Vista_Servicio;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -34,6 +39,7 @@ public class Controlador_Servicio {
         this.modelo_servi = modelo_servi;
         this.vista_servi = vista_servi;
         vista_servi.setVisible(true);
+        valida();
     }
     
     private void IncremetoID() {
@@ -56,12 +62,113 @@ public class Controlador_Servicio {
             
     }
     
+    public void valida(){
+        KeyListener vali = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+               char letra = e.getKeyChar();
+               if(Character.isDigit(letra)){
+               e.consume();
+               JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores alfabeticos", "Validación de Letras", JOptionPane.ERROR_MESSAGE);
+               }
+                if(vista_servi.getTxtnom_servicio().getText().length()<=0){
+                vista_servi.getTxtnom_servicio().setBackground(Color.RED);
+                }else{
+                vista_servi.getTxtnom_servicio().setBackground(Color.white);
+                }
+                if(vista_servi.getDescri_servicio().getText().length()<=0){
+                vista_servi.getDescri_servicio().setBackground(Color.RED);
+                }else{
+                vista_servi.getDescri_servicio().setBackground(Color.white);
+                }
+               
+               
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+               
+            }
+        };
+        
+         KeyListener vali2 = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+               char num = e.getKeyChar();
+               if(num<'0'||num>'9'){
+               e.consume();
+               }
+               if(Character.isLetter(num)){
+               e.consume();
+               JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores numericos", "Validación de Costo", JOptionPane.ERROR_MESSAGE);
+               }
+                if(vista_servi.getTxtcosto_servicio().getText().length()<=0){   
+                vista_servi.getTxtcosto_servicio().setBackground(Color.RED);
+                }else{
+                vista_servi.getTxtcosto_servicio().setBackground(Color.white);
+                }
+               
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+               
+               
+            }
+        };
+         FocusListener focus = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+               
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+             if(vista_servi.getTxtcosto_servicio().getText().length()<=0){
+                   
+             vista_servi.getTxtcosto_servicio().setBackground(Color.RED);
+             }else{
+             vista_servi.getTxtcosto_servicio().setBackground(Color.white);
+             }
+             if(vista_servi.getTxtnom_servicio().getText().length()<=0){
+             vista_servi.getTxtnom_servicio().setBackground(Color.RED);
+             }else{
+             vista_servi.getTxtnom_servicio().setBackground(Color.white);
+             }
+             if(vista_servi.getDescri_servicio().getText().length()<=0){
+             vista_servi.getDescri_servicio().setBackground(Color.RED);
+             }else{
+             vista_servi.getDescri_servicio().setBackground(Color.white);
+             }
+             
+            }
+         };
+        vista_servi.getTxtcosto_servicio().addKeyListener(vali2);
+        vista_servi.getDescri_servicio().addKeyListener(vali);
+        vista_servi.getTxtnom_servicio().addKeyListener(vali);
+        vista_servi.getTxtnom_servicio().addFocusListener(focus);
+        vista_servi.getTxtcosto_servicio().addFocusListener(focus);
+        vista_servi.getDescri_servicio().addFocusListener(focus);
+    }
+    
+    
     private void abrirDialogo_pro(int ce){
       String title;
         if(ce==3){
             title="Crear nuevo servicio";
             vista_servi.getDialog_Crear().setName("crear");
             IncremetoID();
+            vista_servi.getTxtidservicio().setEditable(false);
             limpiar_pro();
         }else{
             title="Editar servicio";
@@ -210,7 +317,7 @@ public class Controlador_Servicio {
             vista_servi.getTblServicio().setValueAt(pe.getNom_servicio(), i.value, 1);
             vista_servi.getTblServicio().setValueAt(pe.getDescri_servicio(), i.value, 2);
             vista_servi.getTblServicio().setValueAt(pe.getCosto_servicio(), i.value, 3);
-            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 5);
+            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 4);
             
             i.value++;
         });
@@ -250,12 +357,14 @@ public class Controlador_Servicio {
     }
     
     public void modificar_emple() {
-    vista_servi.getTxtid_empleado().setEnabled(false);
+    vista_servi.getTxtid_empleado().setEditable(false);
      int seleccionado = vista_servi.getTblempleados().getSelectedRow();
       if(seleccionado !=-1){
           String id= vista_servi.getTblempleados().getValueAt(seleccionado, 0).toString();
           int cod = Integer.parseInt(id);
               vista_servi.getTxtid_empleado().setText(id);
+              vista_servi.getDialogEmple().setVisible(false);
+              
               
     }else{
         JOptionPane.showMessageDialog(vista_servi, "No a seleccionado a niguna persona");

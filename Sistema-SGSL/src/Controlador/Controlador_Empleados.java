@@ -19,6 +19,7 @@ import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,6 +71,7 @@ public class Controlador_Empleados {
         vista_emple.getVerper().addActionListener(l -> abrirDialogo(1));
         vista_emple.getBtningresar().addActionListener(l -> modificar_per());
         viewper.getBtnAceptarPer().addActionListener(l->EditarPersona());
+//        vista_emple.getLblbuscar().addAncestorListener(l->BuscarEmpleado());
     }
 
     public void valida() {
@@ -557,6 +559,15 @@ public class Controlador_Empleados {
         }
         return cedulaCorrecta;
     }
-
+    
+    private void BuscarEmpleado(String codigo) {
+        DefaultTableModel tb = (DefaultTableModel) vista_emple.getTblEmpleado().getModel();
+        tb.setNumRows(0);
+        List<Empleado> listaEmpelado = modelo_emple.BuscarEmple(codigo);
+        listaEmpelado.stream().forEach(c -> {
+            String[] cliente = {String.valueOf(c.getId_empleado()), String.valueOf(c.getSueldo()), c.getEstado_civil(), String.valueOf(c.getFecha_contrato()), String.valueOf(c.getId_persona())};
+            tb.addRow(cliente);
+        });
+    }
 
 }

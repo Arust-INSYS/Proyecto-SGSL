@@ -43,7 +43,10 @@ public class Modelo_Empleado extends Empleado {
     public List<Empleado> listarEmpleados() {
         List<Empleado> lista = new ArrayList<Empleado>();
         try {
-            String sql = "select * from empleado";
+            String sql = "select id_empleado, sueldo, estado_civil, fecha_contrato, p.id_persona \n"
+                    + "from empleado e inner join\n"
+                    + "persona p\n"
+                    + "on e.id_persona=p.id_persona where e.estado = 'A'";
             ResultSet rs = cpg.colsulta(sql);
             while (rs.next()) {
                 Empleado emple = new Empleado();
@@ -247,7 +250,7 @@ public class Modelo_Empleado extends Empleado {
                     + "from empleado e inner join"
                     + "persona p"
                     + "on c.id_persona=p.id_persona"
-                    + "c.estado = 'A' and CAST(id_empleado AS TEXT) LIKE '" + id_cli + "%' or c.estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
+                    + "e.estado = 'A' and CAST(id_empleado AS TEXT) LIKE '" + id_cli + "%' or c.estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
             ResultSet rs = cpg.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {

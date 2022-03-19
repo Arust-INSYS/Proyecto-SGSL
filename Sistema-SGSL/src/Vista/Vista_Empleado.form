@@ -454,7 +454,7 @@
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="lblbuscar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="TxtBuscarServicio" min="-2" pref="319" max="-2" attributes="0"/>
+                  <Component id="TxtBuscarEmpleado" min="-2" pref="319" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="BtnCrear" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -476,7 +476,7 @@
                       <Component id="BtnRemover" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnCrear" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TxtBuscarServicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TxtBuscarEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblbuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -495,7 +495,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TxtBuscarServicio">
+        <Component class="javax.swing.JTextField" name="TxtBuscarEmpleado">
         </Component>
         <Component class="javax.swing.JButton" name="BtnCrear">
           <Properties>

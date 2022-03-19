@@ -111,13 +111,15 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         this.BtnRemover = BtnRemover;
     }
 
-    public JTextField getTxtBuscarServicio() {
-        return TxtBuscarServicio;
+    public JTextField getTxtBuscarEmpleado() {
+        return TxtBuscarEmpleado;
     }
 
-    public void setTxtBuscarServicio(JTextField TxtBuscarServicio) {
-        this.TxtBuscarServicio = TxtBuscarServicio;
+    public void setTxtBuscarEmpleado(JTextField TxtBuscarEmpleado) {
+        this.TxtBuscarEmpleado = TxtBuscarEmpleado;
     }
+
+   
 
     public JLabel getjLabel1() {
         return lblbuscar;
@@ -252,7 +254,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         btningresar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblbuscar = new javax.swing.JLabel();
-        TxtBuscarServicio = new javax.swing.JTextField();
+        TxtBuscarEmpleado = new javax.swing.JTextField();
         BtnCrear = new javax.swing.JButton();
         BtnEditar = new javax.swing.JButton();
         BtnRemover = new javax.swing.JButton();
@@ -462,7 +464,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22)
                 .addComponent(lblbuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(BtnCrear)
                 .addGap(33, 33, 33)
@@ -482,7 +484,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                     .addComponent(BtnRemover)
                     .addComponent(BtnEditar)
                     .addComponent(BtnCrear)
-                    .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblbuscar))
                 .addGap(19, 19, 19))
         );
@@ -541,7 +543,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnRemover;
     private javax.swing.JDialog DialogEmpleado;
     private javax.swing.JDialog DialogPersona;
-    private javax.swing.JTextField TxtBuscarServicio;
+    private javax.swing.JTextField TxtBuscarEmpleado;
     private javax.swing.JComboBox<String> boxEstado;
     private javax.swing.JComboBox<String> boxrol;
     private javax.swing.JButton btnAceptar;

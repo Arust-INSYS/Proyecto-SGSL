@@ -14,6 +14,7 @@ import Vista.Vista_Empleado;
 import Vista.Vista_Persona;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileInputStream;
@@ -73,6 +74,7 @@ public class Controlador_Empleados {
         viewper.getBtnAceptarPer().addActionListener(l->EditarPersona());
 //        vista_emple.getLblbuscar().addAncestorListener(l->BuscarEmpleado());
     }
+    
 
     public void valida() {
         KeyListener vali = new KeyListener() {
@@ -96,6 +98,23 @@ public class Controlador_Empleados {
             @Override
             public void keyReleased(KeyEvent e) {
 
+            }
+        };
+        KeyListener buscar = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+               String busqueda = vista_emple.getTxtBuscarEmpleado().getText();
+                BuscarEmpleado(busqueda);
             }
         };
         vista_emple.getTxtsueldo().addKeyListener(vali);
@@ -158,7 +177,7 @@ public class Controlador_Empleados {
                 viewper.getDialogoPersona().setTitle(titulo);
             }
             if (nu == 1) {
-                System.out.println("Cliente");
+                System.out.println("Empleado");
 //                CargarEdicionCliente();
                 abrirDialogo_pro(2);
 //                viewper.getDialogoPersona().setTitle(titulo);
@@ -264,7 +283,9 @@ public class Controlador_Empleados {
                 emple.setId_persona(Integer.parseInt(String.valueOf(id_per)));
 
                 int idrol = modelo_emple.IdRol(rol);
-
+                if(ValidaEmpleadoRepetido(Integer.parseInt(vista_emple.getTxtid_persona().getText())) == true){
+                    JOptionPane.showMessageDialog(vista_emple, "Empleado Repetido, este id ya existe.", "Empleado Repetido.", JOptionPane.ERROR_MESSAGE);
+                }else{
                if (emple.creaEmpleado()) {
                     int id_user = modelo_emple.IncrementoIdUsuario();
                     if (modelo_emple.CrearUser(Integer.parseInt(id_emple), idrol, id_user)) {
@@ -279,6 +300,7 @@ public class Controlador_Empleados {
                 } else {
                     JOptionPane.showMessageDialog(vista_emple, "No se pudo crear el producto");
                 }
+            }
             }
 
         } else if (vista_emple.getDialogEmpleado().getName() == "editar") {
@@ -568,6 +590,17 @@ public class Controlador_Empleados {
             String[] cliente = {String.valueOf(c.getId_empleado()), String.valueOf(c.getSueldo()), c.getEstado_civil(), String.valueOf(c.getFecha_contrato()), String.valueOf(c.getId_persona())};
             tb.addRow(cliente);
         });
+    }
+    
+     private boolean ValidaEmpleadoRepetido(int idrepetidoC) {
+        boolean idreprtido = false;
+        List<Empleado> listaE = modelo_emple.listarEmpleados();
+        for (int i = 0; i < listaE.size(); i++) {
+            if (listaE.get(i).getId_persona() == idrepetidoC) {
+                idreprtido = true;
+            }
+        }
+        return idreprtido;
     }
 
 }

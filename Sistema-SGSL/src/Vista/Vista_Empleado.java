@@ -73,6 +73,14 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         this.verper = verper;
     }
 
+    public JLabel getLblbuscar() {
+        return lblbuscar;
+    }
+
+    public void setLblbuscar(JLabel lblbuscar) {
+        this.lblbuscar = lblbuscar;
+    }
+    
     
     
     public void setBtnCrear(JButton BtnCrear) {
@@ -103,20 +111,22 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         this.BtnRemover = BtnRemover;
     }
 
-    public JTextField getTxtBuscarServicio() {
-        return TxtBuscarServicio;
+    public JTextField getTxtBuscarEmpleado() {
+        return TxtBuscarEmpleado;
     }
 
-    public void setTxtBuscarServicio(JTextField TxtBuscarServicio) {
-        this.TxtBuscarServicio = TxtBuscarServicio;
+    public void setTxtBuscarEmpleado(JTextField TxtBuscarEmpleado) {
+        this.TxtBuscarEmpleado = TxtBuscarEmpleado;
     }
+
+   
 
     public JLabel getjLabel1() {
-        return jLabel1;
+        return lblbuscar;
     }
 
     public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
+        this.lblbuscar = jLabel1;
     }
 
     public JPanel getjPanel1() {
@@ -243,8 +253,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         tblPersonas = new javax.swing.JTable();
         btningresar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        TxtBuscarServicio = new javax.swing.JTextField();
+        lblbuscar = new javax.swing.JLabel();
+        TxtBuscarEmpleado = new javax.swing.JTextField();
         BtnCrear = new javax.swing.JButton();
         BtnEditar = new javax.swing.JButton();
         BtnRemover = new javax.swing.JButton();
@@ -431,8 +441,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Buscar");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblbuscar.setText("Buscar");
+        lblbuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         BtnCrear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnCrear.setText("Crear");
@@ -452,9 +462,9 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(lblbuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(BtnCrear)
                 .addGap(33, 33, 33)
@@ -474,8 +484,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                     .addComponent(BtnRemover)
                     .addComponent(BtnEditar)
                     .addComponent(BtnCrear)
-                    .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(TxtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblbuscar))
                 .addGap(19, 19, 19))
         );
 
@@ -533,14 +543,13 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnRemover;
     private javax.swing.JDialog DialogEmpleado;
     private javax.swing.JDialog DialogPersona;
-    private javax.swing.JTextField TxtBuscarServicio;
+    private javax.swing.JTextField TxtBuscarEmpleado;
     private javax.swing.JComboBox<String> boxEstado;
     private javax.swing.JComboBox<String> boxrol;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btningresar;
     private com.toedter.calendar.JDateChooser contratacion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -552,6 +561,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblbuscar;
     private javax.swing.JTable tblEmpleado;
     private javax.swing.JTable tblPersonas;
     private javax.swing.JTextField txtid_persona;

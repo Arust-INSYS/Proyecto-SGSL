@@ -9,14 +9,24 @@ import Modelo.CLASES.Empleado;
 import Modelo.CLASES.Persona;
 import Modelo.CLASES.Rol;
 import Modelo.Modelo_Empleado;
+import Modelo.Modelo_Persona;
 import Vista.Vista_Empleado;
+import Vista.Vista_Persona;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -29,13 +39,17 @@ import javax.xml.ws.Holder;
  * @author lorena
  */
 public class Controlador_Empleados {
-
     private Modelo_Empleado modelo_emple;
     private Vista_Empleado vista_emple;
+    private Modelo_Persona modelPer;
+    private JFileChooser jfc;
+    private Vista_Persona viewper;
 
-    public Controlador_Empleados(Modelo_Empleado modelo_emple, Vista_Empleado vista_emple) {
+    public Controlador_Empleados(Modelo_Empleado modelo_emple, Vista_Empleado vista_emple, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modelo_emple = modelo_emple;
         this.vista_emple = vista_emple;
+        this.modelPer = modelPer;
+        this.viewper = viewper;
         vista_emple.setVisible(true);
         valida();
     }
@@ -48,8 +62,8 @@ public class Controlador_Empleados {
 
     public void iniciaControl() {
         vista_emple.getBtnActualizar().addActionListener(l -> CargarEmpleados());
-        vista_emple.getBtnCrear().addActionListener(l -> abrirDialogo_pro(3));
-        vista_emple.getBtnEditar().addActionListener(l -> abrirDialogo_pro(4));
+        vista_emple.getBtnCrear().addActionListener(l -> abrirDialogo_pro(1));
+        vista_emple.getBtnEditar().addActionListener(l -> TipoDialogoAbrirCliente());
         vista_emple.getBtnAceptar().addActionListener(l -> crearEditarEmpleado());
         vista_emple.getBtnRemover().addActionListener(l -> EliminarEmpleado());
         vista_emple.getBtnCancelar().addActionListener(l -> cancelar_emple());
@@ -57,7 +71,10 @@ public class Controlador_Empleados {
         //vista.getBtnbuscar_pro().addActionListener(l->Buscarpro());
         vista_emple.getVerper().addActionListener(l -> abrirDialogo(1));
         vista_emple.getBtningresar().addActionListener(l -> modificar_per());
+        viewper.getBtnAceptarPer().addActionListener(l->EditarPersona());
+//        vista_emple.getLblbuscar().addAncestorListener(l->BuscarEmpleado());
     }
+    
 
     public void valida() {
         KeyListener vali = new KeyListener() {
@@ -83,21 +100,40 @@ public class Controlador_Empleados {
 
             }
         };
+        KeyListener buscar = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+               String busqueda = vista_emple.getTxtBuscarEmpleado().getText();
+                BuscarEmpleado(busqueda);
+            }
+        };
         vista_emple.getTxtsueldo().addKeyListener(vali);
     }
 
     private void abrirDialogo_pro(int ce) {
-        String title;
-        if (ce == 3) {
-            title = "Crear nuevo servicio";
+        String title = null;
+        if (ce == 1) {
+            title = "Crear nuevo empleado";
             vista_emple.getDialogEmpleado().setName("crear");
             IncremetoID();
             vista_emple.getTxtidempleado().setEditable(false);
             limpiar_emple();
         } else {
-            title = "Editar servicio";
+            if(ce==2){
+            title = "Editar empleado";
             vista_emple.getDialogEmpleado().setName("editar");
             modificar_emple();
+            }
         }
         vista_emple.getDialogEmpleado().setLocationRelativeTo(vista_emple);
         vista_emple.getDialogEmpleado().setSize(500, 500);
@@ -119,6 +155,107 @@ public class Controlador_Empleados {
         } else {
         }
     }
+    
+    private void TipoDialogoAbrirCliente() {
+
+        int i = vista_emple.getTblEmpleado().getSelectedRow();
+
+        if (i != -1) {
+            int cod = Integer.parseInt(vista_emple.getTblEmpleado().getValueAt(i, 4).toString());
+            System.out.println("Entro tipo de dialogo-->" + cod);
+            String[] cade = {"Persona", "Empleado", "Cancelar"};
+            int nu = JOptionPane.showOptionDialog(null, "Elija el tipo de edicion que decea realizar.", "Opción de edicion.", 0, JOptionPane.DEFAULT_OPTION, null, cade, "Cancelar");
+            if (nu == 0) {
+                System.out.println("Persona");
+                viewper.getTxt_ID_Persona().setEditable(false);
+                EdicionPersonaClienteCL(cod);
+                String titulo = "Editar Persona";
+                viewper.getDialogoPersona().setName("Editar");
+                viewper.getDialogoPersona().setVisible(true);
+                viewper.getDialogoPersona().setLocation(600, 80);
+                viewper.getDialogoPersona().setSize(490, 543);
+                viewper.getDialogoPersona().setTitle(titulo);
+            }
+            if (nu == 1) {
+                System.out.println("Empleado");
+//                CargarEdicionCliente();
+                abrirDialogo_pro(2);
+//                viewper.getDialogoPersona().setTitle(titulo);
+            }
+        } else {
+            JOptionPane.showMessageDialog(vista_emple, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void EdicionPersonaClienteCL(int codigo) {
+        System.out.println("Codigoooooooo------------>" + codigo);
+        List<Persona> listaBusper = modelPer.listarPersonas();
+        for (int i = 0; i < listaBusper.size(); i++) {
+            System.out.println("Ingreso al for de edicion persona");
+            if (listaBusper.get(i).getId_persona() == codigo) {
+                System.out.println("Ingreso al fi de la edicon de persona");
+                viewper.getTxt_ID_Persona().setText(String.valueOf(listaBusper.get(i).getId_persona()));
+                viewper.getTxtCedulaPersona().setText(listaBusper.get(i).getCedula());
+                viewper.getTxtNombrePersona().setText(listaBusper.get(i).getNombre());
+                viewper.getTxtApellidoPersona().setText(listaBusper.get(i).getApellido());
+                Date fechan = listaBusper.get(i).getFecha_nacimiento();
+                viewper.getFechaNacimientoPer().setDate(fechan);
+                if (listaBusper.get(i).getGenero().equals("M")) {
+                    viewper.getRadioBtnMasculino().setSelected(true);
+                }
+                if (listaBusper.get(i).getGenero().equals("F")) {
+                    viewper.getRadioBtnFemenino().setSelected(true);
+                }
+                viewper.getTxtDireccionPersona().setText(listaBusper.get(i).getDireccion());
+                if (listaBusper.get(i).getFoto() == null) {
+                    viewper.getLblFotoPersona().setIcon(null);
+                } else {
+                    Image in = listaBusper.get(i).getFoto();
+                    Image img = in.getScaledInstance(133, 147, Image.SCALE_SMOOTH);
+                    Icon icono = new ImageIcon(img);
+                    viewper.getLblFotoPersona().setIcon(icono);
+                }
+            }
+        }
+    }
+    
+    public void EditarPersona() {
+        Modelo_Persona modelPerE = new Modelo_Persona();
+        modelPerE.setId_persona(Integer.parseInt(viewper.getTxt_ID_Persona().getText()));
+        modelPerE.setCedula(viewper.getTxtCedulaPersona().getText());
+        modelPerE.setNombre(viewper.getTxtNombrePersona().getText());
+        modelPerE.setApellido(viewper.getTxtApellidoPersona().getText());
+        String fechaNacimiento = ((JTextField) viewper.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
+        Date fechaN = java.sql.Date.valueOf(fechaNacimiento);
+        modelPerE.setFecha_nacimiento((java.sql.Date) fechaN);
+        modelPerE.setGenero(GeneroPersona());
+        modelPerE.setDireccion(viewper.getTxtDireccionPersona().getText());
+        if (jfc == null) {
+            if (modelPerE.ModificarPersonaFT()) {
+                JOptionPane.showMessageDialog(vista_emple, "La Persona a sido modificado satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vista_emple, "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            if (jfc != null) {
+                try {
+                    FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                    int largo = (int) jfc.getSelectedFile().length();
+                    modelPerE.setImagen(img);
+                    modelPerE.setLargo(largo);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (modelPerE.ModificarPersonaBDA()) {
+                JOptionPane.showMessageDialog(vista_emple, "La Persona a sido modificado satisfactoriamente.");
+            } else {
+                JOptionPane.showMessageDialog(vista_emple, "Error, no se pudo modificar la Persona.");
+            }
+        }
+
+    }
+
 
 //    private void mostrar(){
 //    vista_emple.getDestokpersona().add(abrirDialogo(1));
@@ -146,7 +283,9 @@ public class Controlador_Empleados {
                 emple.setId_persona(Integer.parseInt(String.valueOf(id_per)));
 
                 int idrol = modelo_emple.IdRol(rol);
-
+                if(ValidaEmpleadoRepetido(Integer.parseInt(vista_emple.getTxtid_persona().getText())) == true){
+                    JOptionPane.showMessageDialog(vista_emple, "Empleado Repetido, este id ya existe.", "Empleado Repetido.", JOptionPane.ERROR_MESSAGE);
+                }else{
                if (emple.creaEmpleado()) {
                     int id_user = modelo_emple.IncrementoIdUsuario();
                     if (modelo_emple.CrearUser(Integer.parseInt(id_emple), idrol, id_user)) {
@@ -161,6 +300,7 @@ public class Controlador_Empleados {
                 } else {
                     JOptionPane.showMessageDialog(vista_emple, "No se pudo crear el producto");
                 }
+            }
             }
 
         } else if (vista_emple.getDialogEmpleado().getName() == "editar") {
@@ -325,6 +465,142 @@ public class Controlador_Empleados {
         for (Rol rol : rl) {
             vista_emple.getBoxrol().addItem(rol.getNombre_rol());
         }
+    }
+    
+     private void EdicionPersonaControl() {
+        boolean verificoED = true;
+        String fec = ((JTextField) viewper.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
+        if (viewper.getDialogoPersona().getName().equals("Editar")) {
+            if (viewper.getTxtCedulaPersona().getText().isEmpty()) {
+                viewper.getLblCedulaRojo().setVisible(true);
+            } else {
+                viewper.getLblCedulaRojo().setVisible(false);
+
+                if (viewper.getTxtNombrePersona().getText().isEmpty()) {
+                    viewper.getLblNombreRojo().setVisible(true);
+
+                } else {
+                    viewper.getLblNombreRojo().setVisible(false);
+
+                    if (viewper.getTxtApellidoPersona().getText().isEmpty()) {
+
+                        viewper.getLblApellido().setVisible(true);
+                    } else {
+                        viewper.getLblApellido().setVisible(false);
+                        if (fec.isEmpty()) {
+                            viewper.getLbLFechaRojo().setVisible(true);
+
+                        } else {
+                            viewper.getLbLFechaRojo().setVisible(false);
+                            if (viewper.getGrupoBotonGenero().isSelected(null)) {
+                                viewper.getLblGeneroRojo().setVisible(true);
+
+                            } else {
+                                viewper.getLblGeneroRojo().setVisible(false);
+                                if (validadorDeCedula(viewper.getTxtCedulaPersona().getText()) == false) {
+                                    JOptionPane.showMessageDialog(viewper, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
+                                    viewper.getLblCedulaRojo().setVisible(true);
+                                } else {
+                                    viewper.getLblCedulaRojo().setVisible(false);
+                                    EditarPersona();
+                                    verificoED = true;
+                                    System.out.println("Ingreso a metodo de la modificasión.");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    public String GeneroPersona() {
+        String GeneroPerso = "";
+        viewper.getGrupoBotonGenero().add(viewper.getRadioBtnMasculino());
+        viewper.getGrupoBotonGenero().add(viewper.getRadioBtnFemenino());
+        if (viewper.getRadioBtnMasculino().isSelected()) {
+            GeneroPerso = "M";
+        }
+        if (viewper.getRadioBtnFemenino().isSelected()) {
+            GeneroPerso = "F";
+        }
+        return GeneroPerso;
+    }
+
+    private void ControlLblPrincipalesActivos() {
+        viewper.getLblCedulaRojo().setVisible(false);
+        viewper.getLblNombreRojo().setVisible(false);
+        viewper.getLblApellido().setVisible(false);
+        viewper.getLbLFechaRojo().setVisible(false);
+        viewper.getLblGeneroRojo().setVisible(false);
+    }
+    
+    public boolean validadorDeCedula(String cedula) {
+        boolean cedulaCorrecta = false;
+
+        try {
+
+            if (cedula.length() == 10) // ConstantesApp.LongitudCedula
+            {
+                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+                if (tercerDigito < 6) {
+                    // Coeficientes de validación cédula
+                    // El decimo digito se lo considera dígito verificador
+                    int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+                    int verificador = Integer.parseInt(cedula.substring(9, 10));
+                    int suma = 0;
+                    int digito = 0;
+                    for (int i = 0; i < (cedula.length() - 1); i++) {
+                        digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
+                        suma += ((digito % 10) + (digito / 10));
+                    }
+
+                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
+                        cedulaCorrecta = true;
+                    } else if ((10 - (suma % 10)) == verificador) {
+                        cedulaCorrecta = true;
+                    } else {
+                        cedulaCorrecta = false;
+                    }
+                } else {
+                    cedulaCorrecta = false;
+                }
+            } else {
+                cedulaCorrecta = false;
+            }
+        } catch (NumberFormatException nfe) {
+            cedulaCorrecta = false;
+        } catch (Exception err) {
+            System.out.println("Una excepcion ocurrio en el proceso de validadcion");
+            cedulaCorrecta = false;
+        }
+
+        if (!cedulaCorrecta) {
+            System.out.println("La Cédula ingresada es Incorrecta");
+        }
+        return cedulaCorrecta;
+    }
+    
+    private void BuscarEmpleado(String codigo) {
+        DefaultTableModel tb = (DefaultTableModel) vista_emple.getTblEmpleado().getModel();
+        tb.setNumRows(0);
+        List<Empleado> listaEmpelado = modelo_emple.BuscarEmple(codigo);
+        listaEmpelado.stream().forEach(c -> {
+            String[] cliente = {String.valueOf(c.getId_empleado()), String.valueOf(c.getSueldo()), c.getEstado_civil(), String.valueOf(c.getFecha_contrato()), String.valueOf(c.getId_persona())};
+            tb.addRow(cliente);
+        });
+    }
+    
+     private boolean ValidaEmpleadoRepetido(int idrepetidoC) {
+        boolean idreprtido = false;
+        List<Empleado> listaE = modelo_emple.listarEmpleados();
+        for (int i = 0; i < listaE.size(); i++) {
+            if (listaE.get(i).getId_persona() == idrepetidoC) {
+                idreprtido = true;
+            }
+        }
+        return idreprtido;
     }
 
 }

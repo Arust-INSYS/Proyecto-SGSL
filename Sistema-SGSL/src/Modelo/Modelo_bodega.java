@@ -23,7 +23,7 @@ public class Modelo_bodega extends Bodega{
     public List<Bodega> listarbodegas(){
         List<Bodega> lista = new  ArrayList<Bodega>();
         try {
-            String sql ="select * from bodegas";
+            String sql ="select * from bodegas WHERE estado = 'A'";
             ResultSet rs = cpg.colsulta(sql);
             while(rs.next()){
                 Bodega bo = new Bodega();
@@ -44,7 +44,7 @@ public class Modelo_bodega extends Bodega{
     public boolean creabodega(){
         try {
             String sql;
-            sql= "INSERT INTO bodegas (id_bodega,num_bodega,cantidad_bodega,espacio_bo )VALUES(?,?,?,?)";
+            sql= "INSERT INTO bodegas (id_bodega,num_bodega,cantidad_bodega,espacio_bo,estado)VALUES(?,?,?,?,'A')";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getIdbodega());
             ps.setInt(2, getNumero());
@@ -77,9 +77,10 @@ public class Modelo_bodega extends Bodega{
     }
       
     public boolean eliminarbodega(String id){
-     String nsql="DELETE FROM bodegas WHERE id_bodega ='" +id+ "'";
-     return cpg.accion(nsql);
+                String sql= "UPDATE  bodegas  SET estado='I' WHERE id_bodega ='" + id+ "'";
+     return cpg.accion(sql);
     }
+    
     public int Incrementoodega(){
         int incremento = 1;
         try {
@@ -101,7 +102,7 @@ public class Modelo_bodega extends Bodega{
         if (busqueda.equalsIgnoreCase("")) {
             sql = "select *from bodegas";
         } else if (plb.equalsIgnoreCase(busqueda)) {
-            sql = "select * from bodegas where CAST(id_bodega AS TEXT) LIKE '" + busqueda + "%' ";
+            sql = "select * from bodegas where estado='A' and CAST(id_bodega AS TEXT) LIKE '" + busqueda + "%' ";
         }
         ResultSet r = cpg.colsulta(sql);
         try {

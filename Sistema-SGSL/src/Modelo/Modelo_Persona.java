@@ -42,7 +42,40 @@ public class Modelo_Persona extends Persona {
     public List<Persona> listarPersonas() {
         List<Persona> lp = new ArrayList<Persona>();
         try {
-            String sql = "select *from persona";
+            String sql = "select *from persona where estado = 'A'";
+            ResultSet rs = cp.colsulta(sql);
+            byte[] bytea;
+            while (rs.next()) {
+                Persona persona = new Persona();
+                persona.setId_persona(rs.getInt("id_persona"));
+                persona.setCedula(rs.getString("cedula"));
+                persona.setNombre(rs.getString("nombre"));
+                persona.setApellido(rs.getString("apellido"));
+                persona.setGenero(rs.getString("genero"));
+                persona.setFecha_nacimiento(rs.getDate("Fecha_nacimiento"));
+                persona.setDireccion(rs.getString("Dirección"));
+                bytea = rs.getBytes("foto");
+                if (bytea != null) {
+                    try {
+                        persona.setFoto(obtenerImagen(bytea));
+                    } catch (IOException ex) {
+                        Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                lp.add(persona);
+            }
+            rs.close();
+            return lp;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public List<Persona> listarPersonasAC() {
+        List<Persona> lp = new ArrayList<Persona>();
+        try {
+            String sql = "select * from persona";
             ResultSet rs = cp.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {
@@ -74,7 +107,7 @@ public class Modelo_Persona extends Persona {
     public List<Persona> BuscarPersonas(String busqueda) {
         List<Persona> lp = new ArrayList<Persona>();
         try {
-            String sql = "select * from persona where CAST(id_persona AS TEXT) LIKE '" + busqueda + "%' or cedula like '" + busqueda + "%' or lower(nombre) like '" + busqueda + "%' or lower(apellido) like '" + busqueda + "%';";
+            String sql = "select * from persona where estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + busqueda + "%' or estado = 'A' and cedula like '" + busqueda + "%' or estado = 'A' and lower(nombre) like '" + busqueda + "%' or estado = 'A' and lower(apellido) like '" + busqueda + "%';";
             ResultSet rs = cp.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {
@@ -103,40 +136,29 @@ public class Modelo_Persona extends Persona {
             return null;
         }
     }
-
-//    public List<Persona> BuscarPersonaID(int idperson) {
-//        List<Persona> lp = new ArrayList<Persona>();
-//        try {
-//            String sql = "select * from persona where id_persona = '"+idperson+"'";
-//            ResultSet rs = cp.colsulta(sql);
-//            byte[] bytea;
-//            while (rs.next()) {
-//                Persona persona = new Persona();
-//                persona.setId_persona(rs.getInt("id_persona"));
-//                persona.setCedula(rs.getString("cedula"));
-//                persona.setNombre(rs.getString("nombre"));
-//                persona.setApellido(rs.getString("apellido"));
-//                persona.setGenero(rs.getString("genero"));
-//                persona.setFecha_nacimiento(rs.getDate("Fecha_nacimiento"));
-//                persona.setDireccion(rs.getString("Dirección"));
-//                bytea = rs.getBytes("foto");
-//                if (bytea != null) {
-//                    try {
-//                        persona.setFoto(obtenerImagen(bytea));
-//                    } catch (IOException ex) {
-//                        Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                }
-//                lp.add(persona);
-//            }
-//            rs.close();
-//            return lp;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
-//            return null;
-//        }
-//    }
     
+    public List<Persona> BuscarPersonasCedula(String cedula) {
+        List<Persona> lp = new ArrayList<Persona>();
+        try {
+            String sql = "select id_persona, cedula, nombre, apellido from persona where cedula like '" + cedula + "%' or estado = 'A';";
+            ResultSet rs = cp.colsulta(sql);
+            while (rs.next()) {
+                Persona persona2 = new Persona();
+                persona2.setId_persona(rs.getInt("id_persona"));
+                persona2.setCedula(rs.getString("cedula"));
+                persona2.setNombre(rs.getString("nombre"));
+                persona2.setApellido(rs.getString("apellido"));
+                lp.add(persona2);
+            }
+            rs.close();
+            return lp;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+
     private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
@@ -152,8 +174,8 @@ public class Modelo_Persona extends Persona {
     public boolean CrearPersonaBDA() {
         try {
             String sql = "INSERT INTO public.persona(\n"
-                    + "	id_persona, cedula, nombre, apellido, genero, fecha_nacimiento, dirección, foto)\n"
-                    + "	VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                    + "	id_persona, cedula, nombre, apellido, genero, fecha_nacimiento, dirección, foto, estado)\n"
+                    + "	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = cp.getCon().prepareStatement(sql);
             ps.setInt(1, getId_persona());
             ps.setString(2, getCedula());
@@ -163,6 +185,7 @@ public class Modelo_Persona extends Persona {
             ps.setDate(6, getFecha_nacimiento());
             ps.setString(7, getDireccion());
             ps.setBinaryStream(8, getImagen(), getLargo());
+            ps.setString(9, "A");
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -173,8 +196,8 @@ public class Modelo_Persona extends Persona {
     public boolean CrearPersonaFT() {
         try {
             String sql = "INSERT INTO public.persona(\n"
-                    + "	id_persona, cedula, nombre, apellido, genero, fecha_nacimiento, dirección)\n"
-                    + "	VALUES (?, ?, ?, ?, ?, ?, ?);";
+                    + "	id_persona, cedula, nombre, apellido, genero, fecha_nacimiento, dirección, estado)\n"
+                    + "	VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = cp.getCon().prepareStatement(sql);
             ps.setInt(1, getId_persona());
             ps.setString(2, getCedula());
@@ -183,6 +206,7 @@ public class Modelo_Persona extends Persona {
             ps.setString(5, getGenero());
             ps.setDate(6, getFecha_nacimiento());
             ps.setString(7, getDireccion());
+            ps.setString(8, "A");
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -195,15 +219,16 @@ public class Modelo_Persona extends Persona {
     public boolean ModificarPersonaBDA() {
         try {
             String sql = "UPDATE public.persona\n"
-                    + "	SET nombre=?, apellido=?, genero=?, fecha_nacimiento=?, dirección=?, foto=?\n"
+                    + "	SET cedula=?, nombre=?, apellido=?, genero=?, fecha_nacimiento=?, dirección=?, foto=?\n"
                     + "	WHERE id_persona='"+getId_persona()+"';";
             PreparedStatement ps = cp.getCon().prepareStatement(sql);
-            ps.setString(1, getNombre());
-            ps.setString(2, getApellido());
-            ps.setString(3, getGenero());
-            ps.setDate(4, getFecha_nacimiento());
-            ps.setString(5, getDireccion());
-            ps.setBinaryStream(6, getImagen(), getLargo());
+            ps.setString(1, getCedula());
+            ps.setString(2, getNombre());
+            ps.setString(3, getApellido());
+            ps.setString(4, getGenero());
+            ps.setDate(5, getFecha_nacimiento());
+            ps.setString(6, getDireccion());
+            ps.setBinaryStream(7, getImagen(), getLargo());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -214,14 +239,15 @@ public class Modelo_Persona extends Persona {
     public boolean ModificarPersonaFT() {
         try {
             String sql = "UPDATE public.persona\n"
-                    + "	SET nombre=?, apellido=?, genero=?, fecha_nacimiento=?, dirección=?\n"
+                    + "	SET cedula=?, nombre=?, apellido=?, genero=?, fecha_nacimiento=?, dirección=?\n"
                     + "	WHERE id_persona='"+getId_persona()+"';";
             PreparedStatement ps = cp.getCon().prepareStatement(sql);
-            ps.setString(1, getNombre());
-            ps.setString(2, getApellido());
-            ps.setString(3, getGenero());
-            ps.setDate(4, getFecha_nacimiento());
-            ps.setString(5, getDireccion());
+            ps.setString(1, getCedula());
+            ps.setString(2, getNombre());
+            ps.setString(3, getApellido());
+            ps.setString(4, getGenero());
+            ps.setDate(5, getFecha_nacimiento());
+            ps.setString(6, getDireccion());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -231,7 +257,7 @@ public class Modelo_Persona extends Persona {
     }
     
     public boolean EliminarPersona(int idperosna) {
-        String sql = "DELETE FROM persona WHERE id_persona = '" + idperosna + "';";
+        String sql = "UPDATE persona SET estado = 'I' WHERE id_persona = '" + idperosna + "';";
         System.out.println("" + sql);
         return cp.accion(sql);
     }
@@ -250,5 +276,30 @@ public class Modelo_Persona extends Persona {
         return incremento;
     }
     
+      public List<Persona> DatosUsuario(String busqueda) {
+        List<Persona> lp = new ArrayList<Persona>();
+        try {
+            String sql = "select p.nombre as nombre, p.apellido as apellido, r.nombre_rol as rol from persona p "
+                    + "join empleado e "
+                    + "on p.id_persona=e.id_persona "
+                    + "join usuario u "
+                    + "on e.id_empleado=u.id_empleado "
+                    + "join roles r "
+                    + "on u.id_rol=r.id_rol and p.cedula='"+busqueda+"'";
+            ResultSet rs = cp.colsulta(sql);
+            while (rs.next()) {
+                Persona persona = new Persona();
+                persona.setCedula(rs.getString("rol"));
+                persona.setNombre(rs.getString("nombre"));
+                persona.setApellido(rs.getString("apellido"));
+                lp.add(persona);
+            }
+            rs.close();
+            return lp;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     
 }

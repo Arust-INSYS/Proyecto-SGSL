@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Modelo.CLASES.Empleado;
 import Modelo.CLASES.Servicios;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -73,7 +74,7 @@ public class Modelo_Servicio extends Servicios{
     public boolean ModificarServicio(){
         try {
             String sql;
-            sql= "UPDATE producto SET id_servicio=?, nom_servicio=?, descri_servicio=?, costo_servicio=?, id_empleado=? \n" +
+            sql= "UPDATE servicios SET id_servicio=?, nom_servicio=?, descri_servicio=?, costo_servicio=?, id_empleado=? \n" +
             "WHERE id_servicio = '" +getId_servicio()+ "';";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_servicio());
@@ -92,6 +93,44 @@ public class Modelo_Servicio extends Servicios{
     public boolean RemoverServicio(String idservi){
      String nsql="DELETE FROM servicios WHERE id_servicio ='" +idservi+ "'";
      return cpg.accion(nsql);
+    }
+    
+    
+        public List<Empleado> listarEmpleados(){
+        List<Empleado> lista = new  ArrayList<Empleado>();
+        try {
+            String sql ="select * from empleado";
+            ResultSet rs = cpg.colsulta(sql);
+            while(rs.next()){
+                Empleado emple = new Empleado();
+                emple.setId_empleado(rs.getInt("id_empleado"));
+                emple.setEstado_civil(rs.getString("estado_civil"));
+                emple.setFecha_contrato(rs.getDate("fecha_contrato"));
+//                emple.setRol(rs.getString("rol"));
+                lista.add(emple);
+                
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+        
+    public int IncrementoIdServicio(){
+        int incremento = 1;
+        try {
+            String sql = "select max(id_servicio) from servicios";
+            ResultSet rs = cpg.colsulta(sql);
+            int aux = 200;
+            while (rs.next()) {
+                incremento = rs.getInt(1) + 1;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return incremento;
     }
     
 }

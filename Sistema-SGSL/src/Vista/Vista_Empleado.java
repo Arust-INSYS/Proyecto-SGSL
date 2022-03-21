@@ -8,6 +8,7 @@ package Vista;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDesktopPane;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -39,9 +40,49 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     public void setBtnActualizar(JButton BtnActualizar) {
         this.BtnActualizar = BtnActualizar;
     }
-    
-    
 
+    public JDialog getDialogPersona() {
+        return DialogPersona;
+    }
+
+    public void setDialogPersona(JDialog DialogPersona) {
+        this.DialogPersona = DialogPersona;
+    }
+
+    public JButton getBtningresar() {
+        return btningresar;
+    }
+
+    public void setBtningresar(JButton btningresar) {
+        this.btningresar = btningresar;
+    }
+
+    public JTable getTblPersonas() {
+        return tblPersonas;
+    }
+
+    public void setTblPersonas(JTable tblPersonas) {
+        this.tblPersonas = tblPersonas;
+    }
+
+    public JButton getVerper() {
+        return verper;
+    }
+
+    public void setVerper(JButton verper) {
+        this.verper = verper;
+    }
+
+    public JLabel getLblbuscar() {
+        return lblbuscar;
+    }
+
+    public void setLblbuscar(JLabel lblbuscar) {
+        this.lblbuscar = lblbuscar;
+    }
+    
+    
+    
     public void setBtnCrear(JButton BtnCrear) {
         this.BtnCrear = BtnCrear;
     }
@@ -70,20 +111,22 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         this.BtnRemover = BtnRemover;
     }
 
-    public JTextField getTxtBuscarServicio() {
-        return TxtBuscarServicio;
+    public JTextField getTxtBuscarEmpleado() {
+        return TxtBuscarEmpleado;
     }
 
-    public void setTxtBuscarServicio(JTextField TxtBuscarServicio) {
-        this.TxtBuscarServicio = TxtBuscarServicio;
+    public void setTxtBuscarEmpleado(JTextField TxtBuscarEmpleado) {
+        this.TxtBuscarEmpleado = TxtBuscarEmpleado;
     }
+
+   
 
     public JLabel getjLabel1() {
-        return jLabel1;
+        return lblbuscar;
     }
 
     public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
+        this.lblbuscar = jLabel1;
     }
 
     public JPanel getjPanel1() {
@@ -173,6 +216,14 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     public void setTxtsueldo(JTextField txtsueldo) {
         this.txtsueldo = txtsueldo;
     }
+
+    public JComboBox<String> getBoxrol() {
+        return boxrol;
+    }
+
+    public void setBoxrol(JComboBox<String> boxrol) {
+        this.boxrol = boxrol;
+    }
     
     
     @SuppressWarnings("unchecked")
@@ -193,9 +244,17 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         txtid_persona = new javax.swing.JTextField();
         boxEstado = new javax.swing.JComboBox<>();
         contratacion = new com.toedter.calendar.JDateChooser();
+        verper = new javax.swing.JButton();
+        boxrol = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        DialogPersona = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPersonas = new javax.swing.JTable();
+        btningresar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        TxtBuscarServicio = new javax.swing.JTextField();
+        lblbuscar = new javax.swing.JLabel();
+        TxtBuscarEmpleado = new javax.swing.JTextField();
         BtnCrear = new javax.swing.JButton();
         BtnEditar = new javax.swing.JButton();
         BtnRemover = new javax.swing.JButton();
@@ -211,17 +270,45 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         btnCancelar.setText("CANCELAR");
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Id Empleado:");
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("Sueldo:");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Estado Civil:");
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("Fecha de contratación:");
 
+        txtidempleado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtidempleado.setForeground(new java.awt.Color(51, 51, 255));
+        txtidempleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("Id Persona:");
 
+        txtsueldo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        txtid_persona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtid_persona.setForeground(new java.awt.Color(51, 51, 255));
+        txtid_persona.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         boxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero", "Casado", "Divorciado", " ", " " }));
+        boxEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        contratacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        contratacion.setDateFormatString("yyyy-MM-dd");
+
+        verper.setText("Ver Persona");
+
+        boxrol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Empleado", "Administrador" }));
+        boxrol.setToolTipText("");
+        boxrol.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Rol:");
 
         javax.swing.GroupLayout DialogEmpleadoLayout = new javax.swing.GroupLayout(DialogEmpleado.getContentPane());
         DialogEmpleado.getContentPane().setLayout(DialogEmpleadoLayout);
@@ -250,17 +337,23 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                                    .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel12)
-                                        .addComponent(jLabel13))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtid_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                        .addComponent(contratacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-                .addContainerGap(131, Short.MAX_VALUE))
+                            .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel12)
+                                                .addComponent(jLabel13))
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(boxrol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtid_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                            .addComponent(contratacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(verper)))))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         DialogEmpleadoLayout.setVerticalGroup(
             DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,32 +363,86 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel12))
+                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(contratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12)
-                    .addComponent(contratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtid_persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(91, 91, 91)
+                    .addComponent(txtid_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(verper))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boxrol, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(58, 58, 58)
                 .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnAceptar))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Buscar");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Persona");
+
+        tblPersonas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Persona", "Cedula", "Nombre", "Apellido", "Foto"
+            }
+        ));
+        jScrollPane2.setViewportView(tblPersonas);
+
+        btningresar.setText("Ingre");
+
+        javax.swing.GroupLayout DialogPersonaLayout = new javax.swing.GroupLayout(DialogPersona.getContentPane());
+        DialogPersona.getContentPane().setLayout(DialogPersonaLayout);
+        DialogPersonaLayout.setHorizontalGroup(
+            DialogPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DialogPersonaLayout.createSequentialGroup()
+                .addGroup(DialogPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DialogPersonaLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btningresar)
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DialogPersonaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        DialogPersonaLayout.setVerticalGroup(
+            DialogPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DialogPersonaLayout.createSequentialGroup()
+                .addGroup(DialogPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DialogPersonaLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel2))
+                    .addGroup(DialogPersonaLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(btningresar)))
+                .addGap(53, 53, 53)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblbuscar.setText("Buscar");
+        lblbuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         BtnCrear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnCrear.setText("Crear");
@@ -315,9 +462,9 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addComponent(lblbuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(BtnCrear)
                 .addGap(33, 33, 33)
@@ -337,8 +484,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                     .addComponent(BtnRemover)
                     .addComponent(BtnEditar)
                     .addComponent(BtnCrear)
-                    .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(TxtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblbuscar))
                 .addGap(19, 19, 19))
         );
 
@@ -395,23 +542,31 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnImprimir;
     private javax.swing.JButton BtnRemover;
     private javax.swing.JDialog DialogEmpleado;
-    private javax.swing.JTextField TxtBuscarServicio;
+    private javax.swing.JDialog DialogPersona;
+    private javax.swing.JTextField TxtBuscarEmpleado;
     private javax.swing.JComboBox<String> boxEstado;
+    private javax.swing.JComboBox<String> boxrol;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btningresar;
     private com.toedter.calendar.JDateChooser contratacion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblbuscar;
     private javax.swing.JTable tblEmpleado;
+    private javax.swing.JTable tblPersonas;
     private javax.swing.JTextField txtid_persona;
     private javax.swing.JTextField txtidempleado;
     private javax.swing.JTextField txtsueldo;
+    private javax.swing.JButton verper;
     // End of variables declaration//GEN-END:variables
 }

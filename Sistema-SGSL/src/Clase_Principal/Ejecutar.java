@@ -8,6 +8,7 @@ package Clase_Principal;
 import Controlador.Control_VistaPrincipal;
 import Controlador.Controlador_Login;
 import Modelo.Modelo_Empleado;
+import Modelo.Modelo_Usuario;
 import Vista.Vista_Login;
 import Vista.Vista_Principal;
 
@@ -30,8 +31,8 @@ public class Ejecutar {
         
         //logeo
         Vista_Login vl = new Vista_Login();
-        Modelo_Empleado me = new Modelo_Empleado();
-        Controlador_Login cl = new Controlador_Login(me, vl);
+        Modelo_Usuario mu = new Modelo_Usuario();
+        Controlador_Login cl = new Controlador_Login(mu, vl);
         cl.IniciarBoton();
         //
     }

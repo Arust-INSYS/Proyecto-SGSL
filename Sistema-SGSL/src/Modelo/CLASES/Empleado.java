@@ -17,7 +17,7 @@ public class Empleado {
     private String estado_civil;
     private Date fecha_contrato;
     private int id_persona;
-    private String contrasenia;
+//    private String contrasenia;
 
     public Empleado() {
     }
@@ -30,23 +30,7 @@ public class Empleado {
         this.id_persona = id_persona;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
-    }
-
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
-    public Empleado(int id_empleado, double sueldo, String estado_civil, Date fecha_contrato, int id_persona, String contrasenia) {
-        this.id_empleado = id_empleado;
-        this.sueldo = sueldo;
-        this.estado_civil = estado_civil;
-        this.fecha_contrato = fecha_contrato;
-        this.id_persona = id_persona;
-        this.contrasenia = contrasenia;
-    }
-
+   
     public int getId_empleado() {
         return id_empleado;
     }

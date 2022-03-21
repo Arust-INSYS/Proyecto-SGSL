@@ -228,9 +228,15 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         Dialog_Crearbo.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, 20));
         Dialog_Crearbo.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 110, 30));
         Dialog_Crearbo.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 40, -1));
-        Dialog_Crearbo.getContentPane().add(spinernum, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 80, -1));
-        Dialog_Crearbo.getContentPane().add(jSpinnercant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 80, -1));
-        Dialog_Crearbo.getContentPane().add(spinerespacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 80, -1));
+
+        spinernum.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        Dialog_Crearbo.getContentPane().add(spinernum, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 100, -1));
+
+        jSpinnercant.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        Dialog_Crearbo.getContentPane().add(jSpinnercant, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 100, -1));
+
+        spinerespacio.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        Dialog_Crearbo.getContentPane().add(spinerespacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 100, -1));
 
         jScrollPane3.setViewportView(areadescripcion);
 

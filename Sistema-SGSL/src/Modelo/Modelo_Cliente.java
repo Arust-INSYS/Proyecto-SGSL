@@ -30,17 +30,26 @@ public class Modelo_Cliente extends Cliente {
     public Modelo_Cliente(int id_clienteC, String telefono, int id_personaCI) {
         super(id_clienteC, telefono, id_personaCI);
     }
-    
+
+    public Modelo_Cliente(int id_clienteC, String telefono, int id_personaCI, String apellido, String nombre) {
+        super(id_clienteC, telefono, id_personaCI, apellido, nombre);
+    }
 
     public List<Cliente> listarClientesBDA() {
         List<Cliente> listaCli = new ArrayList<Cliente>();
         try {
-            String sql = "select * from cliente";
+//            String sql = "select * from cliente where estado = 'A'";
+            String sql = "select id_cliente, apellido, nombre, telefono, p.id_persona \n"
+                    + "from cliente c inner join\n"
+                    + "persona p\n"
+                    + "on c.id_persona=p.id_persona where c.estado = 'A'";
             ResultSet rs = cp.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {
                 Cliente client = new Cliente();
                 client.setId_clienteC(rs.getInt("id_cliente"));
+                client.setApellido(rs.getString("apellido"));
+                client.setNombre(rs.getString("nombre"));
                 client.setTelefono(rs.getString("telefono"));
                 client.setId_personaCI(rs.getInt("id_persona"));
                 listaCli.add(client);
@@ -56,7 +65,13 @@ public class Modelo_Cliente extends Cliente {
     public List<Cliente> BuscarCliente(String id_cli) {
         List<Cliente> listaCli = new ArrayList<Cliente>();
         try {
-            String sql = "select * from cliente where CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or CAST(id_persona AS TEXT) LIKE '" + id_cli + "%'";
+//            String sql = "select * from cliente where estado = 'A' and CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
+
+            String sql = "select * from cliente where "
+                    + "from cliente c inner join"
+                    + "persona p"
+                    + "on c.id_persona=p.id_persona"
+                    + "c.estado = 'A' and CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or c.estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
             ResultSet rs = cp.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {
@@ -77,12 +92,13 @@ public class Modelo_Cliente extends Cliente {
     public boolean CrearClienteBDA() {
         try {
             String sql = "INSERT INTO public.cliente(\n"
-                    + "	id_cliente, telefono, id_persona)\n"
-                    + "	VALUES (?, ?, ?);";
+                    + "	id_cliente, telefono, id_persona, estado)\n"
+                    + "	VALUES (?, ?, ?, ?);";
             PreparedStatement ps = cp.getCon().prepareStatement(sql);
             ps.setInt(1, getId_clienteC());
             ps.setString(2, getTelefono());
             ps.setInt(3, getId_personaCI());
+            ps.setString(4, "A");
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -95,7 +111,7 @@ public class Modelo_Cliente extends Cliente {
         try {
             String sql = "UPDATE public.cliente\n"
                     + "	SET telefono=?, id_persona=?\n"
-                    + "	WHERE id_cliente ='"+getId_clienteC()+"';";
+                    + "	WHERE id_cliente ='" + getId_clienteC() + "';";
             PreparedStatement ps = cp.getCon().prepareStatement(sql);
             ps.setString(1, getTelefono());
             ps.setInt(2, getId_personaCI());
@@ -106,7 +122,14 @@ public class Modelo_Cliente extends Cliente {
             return false;
         }
     }
-    public int IncrementoIdCliente(){
+
+    public boolean EliminarCliente(int idcliente) {
+        String sql = "UPDATE cliente SET estado = 'I' WHERE id_cliente = '" + idcliente + "';";
+        System.out.println("" + sql);
+        return cp.accion(sql);
+    }
+
+    public int IncrementoIdCliente() {
         int incremento = 1;
         try {
             String sql = "select max(id_cliente) from cliente";

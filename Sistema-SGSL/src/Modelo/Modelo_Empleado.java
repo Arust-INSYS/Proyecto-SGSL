@@ -108,8 +108,8 @@ public class Modelo_Empleado extends Empleado {
         }
     }
 
-    public boolean RemoverEmpleado(String idemple) {
-        String nsql = "DELETE FROM empleado WHERE id_empleado ='" + idemple + "'";
+    public boolean RemoverEmpleado(int idemple) {
+        String nsql = "UPDATE empleado SET estado = 'I' WHERE id_empleado = '" + idemple + "';";
         return cpg.accion(nsql);
     }
 

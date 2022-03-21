@@ -48,6 +48,11 @@ public class Vista_Principal extends javax.swing.JFrame {
         menu_servicos = new javax.swing.JMenu();
         menu_pedidos = new javax.swing.JMenu();
         menu_productos = new javax.swing.JMenu();
+        menuReportes = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +141,24 @@ public class Vista_Principal extends javax.swing.JFrame {
         menu_productos.setText("Productos");
         menu_principal.add(menu_productos);
 
+        menuReportes.setText("Reportes");
+
+        jMenu2.setText("jMenu2");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenu2.add(jMenuItem1);
+
+        menuReportes.add(jMenu2);
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem2.setText("jMenuItem2");
+        jMenu1.add(jMenuItem2);
+
+        menuReportes.add(jMenu1);
+
+        menu_principal.add(menuReportes);
+
         setJMenuBar(menu_principal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,11 +237,16 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane dkp_pane_principal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuItem menuItem_clientes;
     private javax.swing.JMenuItem menuItem_empleados;
+    private javax.swing.JMenu menuReportes;
     private javax.swing.JMenu menu_pedidos;
     private javax.swing.JMenu menu_persona;
     private javax.swing.JMenuBar menu_principal;

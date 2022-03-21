@@ -123,8 +123,16 @@ public class Modelo_Cliente extends Cliente {
         }
     }
 
+    //Eliminado logico de cliente. 
     public boolean EliminarCliente(int idcliente) {
         String sql = "UPDATE cliente SET estado = 'I' WHERE id_cliente = '" + idcliente + "';";
+        System.out.println("" + sql);
+        return cp.accion(sql);
+    }
+    
+    //Eliminado logico de persona hacia la tabla de cliente.
+    public boolean EliminarPersonaCli(int idperosna) {
+        String sql = "UPDATE cliente SET estado = 'I' WHERE id_persona = '" + idperosna + "';";
         System.out.println("" + sql);
         return cp.accion(sql);
     }

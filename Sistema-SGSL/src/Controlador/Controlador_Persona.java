@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.CLASES.Persona;
 import Modelo.CLASES.Servicios;
+import Modelo.Modelo_Cliente;
 import Modelo.Modelo_Persona;
 import Modelo.Modelo_Servicio;
 import Vista.Vista_Persona;
@@ -733,6 +734,10 @@ public class Controlador_Persona {
             int result = JOptionPane.showConfirmDialog(vistaPer, "Esta seguro que desea eliminar a la persona con cédula " + cedula + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (result == JOptionPane.YES_OPTION) {
                 if (modelPer.EliminarPersona(aux)) {
+                    Modelo_Cliente mc = new Modelo_Cliente();
+                    if(mc.EliminarPersonaCli(aux)){
+                        System.out.println("Eliminacion correcta, cliente empleado.");
+                    }
                     JOptionPane.showMessageDialog(vistaPer, "El registro a sido eliminado correctamente de la base de datos.");
                     CargarTablaPersona();
                 } else {

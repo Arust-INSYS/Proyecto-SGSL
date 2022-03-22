@@ -65,7 +65,7 @@ public class Controlador_Empleados {
         vista_emple.getBtnCrear().addActionListener(l -> abrirDialogo_pro(1));
         vista_emple.getBtnEditar().addActionListener(l -> TipoDialogoAbrirCliente());
         vista_emple.getBtnAceptar().addActionListener(l -> crearEditarEmpleado());
-        vista_emple.getBtnRemover().addActionListener(l -> EliminarEmpleado());
+        vista_emple.getBtnRemover().addActionListener(l -> EliminarEmpleadoView());
         vista_emple.getBtnCancelar().addActionListener(l -> cancelar_emple());
 
         //vista.getBtnbuscar_pro().addActionListener(l->Buscarpro());
@@ -347,25 +347,47 @@ public class Controlador_Empleados {
         vista_emple.getDialogPersona().setVisible(false);
     }
 
-    public void EliminarEmpleado() {
-        int seleccionado = vista_emple.getTblEmpleado().getSelectedRow();
-        int respuesta = 0;
-        Component rootPane = null;
-        Modelo_Empleado empleli = new Modelo_Empleado();
-        if (seleccionado != -1) {
-            String idemple = vista_emple.getTblEmpleado().getValueAt(seleccionado, 0).toString();
-
-            respuesta = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro que deseas eliminar este servicio?");
-            if (respuesta == 0) {
-                if (empleli.RemoverEmpleado(idemple)) {
-                    JOptionPane.showMessageDialog(rootPane, "El registro del servicio a sido eliminado");
+//    public void EliminarEmpleado() {
+//        int seleccionado = vista_emple.getTblEmpleado().getSelectedRow();
+//        int respuesta = 0;
+//        Component rootPane = null;
+//        Modelo_Empleado empleli = new Modelo_Empleado();
+//        if (seleccionado != -1) {
+//            String idemple = vista_emple.getTblEmpleado().getValueAt(seleccionado, 0).toString();
+//
+//            respuesta = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro que deseas eliminar este servicio?");
+//            if (respuesta == 0) {
+//                if (empleli.RemoverEmpleado(idemple)) {
+//                    JOptionPane.showMessageDialog(rootPane, "El registro del servicio a sido eliminado");
+//                } else {
+//                    JOptionPane.showMessageDialog(rootPane, "Error al eliminar");
+//                }
+//
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(rootPane, "No hay datos a eliminar");
+//        }
+//    }
+    
+     private void EliminarEmpleadoView() {
+        int i = vista_emple.getTblEmpleado().getSelectedRow();
+        if (i != -1) {
+            String idpersona = vista_emple.getTblEmpleado().getValueAt(i, 0).toString();
+            int aux = Integer.parseInt(idpersona);
+            String ide = vista_emple.getTblEmpleado().getValueAt(i, 0).toString();
+            int result = JOptionPane.showConfirmDialog(vista_emple, "Esta seguro que desea eliminar al empleado con codigo " + ide + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (result == JOptionPane.YES_OPTION) {
+                if (modelo_emple.RemoverEmpleado(aux)) {
+                    JOptionPane.showMessageDialog(vista_emple, "El Empleado a sido eliminado correctamente de la base de datos.");
+                    CargarEmpleados();
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Error al eliminar");
+                    JOptionPane.showMessageDialog(vista_emple, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
-
+            } else {
+                JOptionPane.showMessageDialog(vista_emple, "Registro cancelado para su eliminación.");
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "No hay datos a eliminar");
+            JOptionPane.showMessageDialog(vista_emple, "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
         }
     }
 

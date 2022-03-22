@@ -12,13 +12,12 @@ public class Productos {
     //Guardar la foto
     private FileInputStream imagen;
     private int largo;
-  private int id_empleado; 
   private int id_bodega;
 
     public Productos() {
     }
 
-    public Productos(int id_producto, String nom_producto, double precio_producto, int cantidad_producto, String marcar_producto, Image foto, FileInputStream imagen, int largo, int id_empleado, int id_bodega) {
+    public Productos(int id_producto, String nom_producto, double precio_producto, int cantidad_producto, String marcar_producto, Image foto, FileInputStream imagen, int largo, int id_bodega) {
         this.id_producto = id_producto;
         this.nom_producto = nom_producto;
         this.precio_producto = precio_producto;
@@ -27,7 +26,6 @@ public class Productos {
         this.foto = foto;
         this.imagen = imagen;
         this.largo = largo;
-        this.id_empleado = id_empleado;
         this.id_bodega = id_bodega;
     }
 
@@ -93,14 +91,6 @@ public class Productos {
 
     public void setLargo(int largo) {
         this.largo = largo;
-    }
-
-    public int getId_empleado() {
-        return id_empleado;
-    }
-
-    public void setId_empleado(int id_empleado) {
-        this.id_empleado = id_empleado;
     }
 
     public int getId_bodega() {

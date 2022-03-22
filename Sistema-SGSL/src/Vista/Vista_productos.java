@@ -105,15 +105,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     public void setBtnEditarServicio(JButton BtnEditarServicio) {
         this.BtnEditarServicio = BtnEditarServicio;
     }
-
-    public JButton getBtnImprimirServicio() {
-        return BtnImprimirServicio;
-    }
-
-    public void setBtnImprimirServicio(JButton BtnImprimirServicio) {
-        this.BtnImprimirServicio = BtnImprimirServicio;
-    }
-
     public JButton getBtnRemoverServicio() {
         return BtnRemoverServicio;
     }
@@ -252,14 +243,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         this.txtpreciopro = txtcosto_servicio;
     }
 
-    public JTextField getTxtid_empleado() {
-        return txtid_empleado;
-    }
-
-    public void setTxtid_empleado(JTextField txtid_empleado) {
-        this.txtid_empleado = txtid_empleado;
-    }
-
     public JTextField getTxtidservicio() {
         return txtidproducto;
     }
@@ -294,8 +277,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtid_empleado = new javax.swing.JTextField();
         txtmarca = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -321,7 +302,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         BtnCrearServicio = new javax.swing.JButton();
         BtnEditarServicio = new javax.swing.JButton();
         BtnRemoverServicio = new javax.swing.JButton();
-        BtnImprimirServicio = new javax.swing.JButton();
         BtnActualizarServicio = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -343,10 +323,10 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         Dialog_Crear.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setText("Cantidad:");
-        Dialog_Crear.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 168, -1, -1));
+        Dialog_Crear.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
         Dialog_Crear.getContentPane().add(txtidproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 64, 50, -1));
-        Dialog_Crear.getContentPane().add(txtnom_pro, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 116, 140, -1));
-        Dialog_Crear.getContentPane().add(txtpreciopro, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 244, 140, -1));
+        Dialog_Crear.getContentPane().add(txtnom_pro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 140, 30));
+        Dialog_Crear.getContentPane().add(txtpreciopro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 140, -1));
 
         btnAceptar_pro1.setText("Guardar");
         Dialog_Crear.getContentPane().add(btnAceptar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
@@ -362,22 +342,18 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         Dialog_Crear.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 68, -1, -1));
 
         jLabel11.setText("Nombre:");
-        Dialog_Crear.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 120, -1, -1));
+        Dialog_Crear.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 50, 20));
 
         jLabel12.setText("PRECIO:");
-        Dialog_Crear.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 248, -1, -1));
-
-        jLabel13.setText("Id Empleado:");
-        Dialog_Crear.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 30));
-        Dialog_Crear.getContentPane().add(txtid_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 60, -1));
-        Dialog_Crear.getContentPane().add(txtmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 207, 141, -1));
+        Dialog_Crear.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        Dialog_Crear.getContentPane().add(txtmarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 141, -1));
 
         jLabel3.setText("Marca:");
-        Dialog_Crear.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 211, -1, -1));
+        Dialog_Crear.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 20));
 
         jLabel14.setText("Id Bodega:");
-        Dialog_Crear.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 326, -1, 30));
-        Dialog_Crear.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 60, -1));
+        Dialog_Crear.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, 30));
+        Dialog_Crear.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 60, -1));
 
         txtfoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
         Dialog_Crear.getContentPane().add(txtfoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 234, 194));
@@ -390,11 +366,11 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         Dialog_Crear.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 110, 30));
 
         btnbuscaridbodega.setText("buscar");
-        Dialog_Crear.getContentPane().add(btnbuscaridbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+        Dialog_Crear.getContentPane().add(btnbuscaridbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, 40));
 
         snipercanti.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         snipercanti.setEditor(new javax.swing.JSpinner.NumberEditor(snipercanti, ""));
-        Dialog_Crear.getContentPane().add(snipercanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 80, -1));
+        Dialog_Crear.getContentPane().add(snipercanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 80, 40));
 
         jScrollPane3.setViewportView(areadescripcion);
 
@@ -459,6 +435,10 @@ public class Vista_productos extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32))
         );
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Buscar");
@@ -472,9 +452,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         BtnRemoverServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnRemoverServicio.setText("Remover");
 
-        BtnImprimirServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnImprimirServicio.setText("Imprimir");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -485,34 +462,36 @@ public class Vista_productos extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(BtnCrearServicio)
-                .addGap(33, 33, 33)
-                .addComponent(BtnEditarServicio)
-                .addGap(34, 34, 34)
-                .addComponent(BtnRemoverServicio)
-                .addGap(46, 46, 46)
-                .addComponent(BtnImprimirServicio)
-                .addGap(194, 194, 194))
+                .addComponent(BtnCrearServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtnEditarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtnRemoverServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(275, 275, 275))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnImprimirServicio)
-                    .addComponent(BtnRemoverServicio)
-                    .addComponent(BtnEditarServicio)
-                    .addComponent(BtnCrearServicio)
-                    .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(19, 19, 19))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(BtnCrearServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BtnEditarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1))))
+                    .addComponent(BtnRemoverServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 840, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 840, -1));
 
         BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnActualizarServicio.setText("Actualizar");
-        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, -1, -1));
+        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 110, 50));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
         jLabel2.setText("PRODUCTOS");
@@ -523,17 +502,9 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID_PRODUCTOS", "NOMBRE", "PRECIO", "CANTIDAD", "MARCA ", "FOTO", "ID_Empleafo", "ID_BODEGA"
+                "ID_PRODUCTOS", "NOMBRE", "PRECIO", "CANTIDAD", "MARCA ", "FOTO", "ID_BODEGA"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane2.setViewportView(tablita);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 850, 270));
@@ -617,7 +588,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         jInternalFrame1.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 850, 270));
 
-        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
         getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 110, 20));
 
         pack();
@@ -631,7 +602,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnCrearServicio1;
     private javax.swing.JButton BtnEditarServicio;
     private javax.swing.JButton BtnEditarServicio1;
-    private javax.swing.JButton BtnImprimirServicio;
     private javax.swing.JButton BtnImprimirServicio1;
     private javax.swing.JButton BtnRemoverServicio;
     private javax.swing.JButton BtnRemoverServicio1;
@@ -650,7 +620,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -675,7 +644,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txtfecha;
     private javax.swing.JLabel txtfechahoy;
     private javax.swing.JLabel txtfoto;
-    private javax.swing.JTextField txtid_empleado;
     private javax.swing.JTextField txtidbodega;
     private javax.swing.JTextField txtidproducto;
     private javax.swing.JTextField txtmarca;

@@ -26,13 +26,15 @@ public class Modelo_productos extends Productos{
 
     public Modelo_productos() {
     }
-    public Modelo_productos(int id_producto, String nom_producto, double precio_producto, int cantidad_producto, String marcar_producto, Image foto, FileInputStream imagen, int largo, int id_empleado, int id_bodega) {
-        super(id_producto, nom_producto, precio_producto, cantidad_producto, marcar_producto, foto, imagen, largo, id_empleado, id_bodega);
-    }   
+
+    public Modelo_productos(int id_producto, String nom_producto, double precio_producto, int cantidad_producto, String marcar_producto, Image foto, FileInputStream imagen, int largo, int id_bodega) {
+        super(id_producto, nom_producto, precio_producto, cantidad_producto, marcar_producto, foto, imagen, largo, id_bodega);
+    }
+   
     public List<Productos> listarproductos() {
         List<Productos> listaprod = new ArrayList<Productos>();
             System.out.println("1m");
-        String sql = "select id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_empleado,id_bodega from productos WHERE estado = 'A'";
+        String sql = "select id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_bodega from productos WHERE estado = 'A'";
         ResultSet r = cpg.colsulta(sql);
         byte[] bytes;
         try {
@@ -44,7 +46,6 @@ public class Modelo_productos extends Productos{
                 producto.setCantidad_producto(r.getInt("cantidad_producto"));
                 producto.setMarcar_producto(r.getString("marcar_producto"));
                 bytes = r.getBytes("foto_producto");
-                 producto.setId_empleado(r.getInt("id_empleado"));
                 producto.setId_bodega(r.getInt("id_bodega"));
                         if (bytes != null) {
                     try {
@@ -78,7 +79,7 @@ public class Modelo_productos extends Productos{
     }
         public boolean crearprocduc() {
         try {
-            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_empleado,id_bodega,estado)\n" + "VALUES(?,?,?,?,?,?,?,?,'A')";
+            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_bodega,estado)\n" + "VALUES(?,?,?,?,?,?,?,'A')";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
@@ -86,8 +87,7 @@ public class Modelo_productos extends Productos{
             ps.setInt(4, getCantidad_producto());
             ps.setString(5, getMarcar_producto());
             ps.setBinaryStream(6, getImagen(), getLargo());
-            ps.setInt(7, getId_empleado());
-            ps.setInt(8, getId_bodega());
+            ps.setInt(7, getId_bodega());
 
             ps.executeUpdate();
             return true;
@@ -98,15 +98,14 @@ public class Modelo_productos extends Productos{
     }
            public boolean crearprocducsinfoto() {
         try {
-            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,id_empleado,id_bodega,estado)\n" + "VALUES(?,?,?,?,?,?,?,'A')";
+            String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,id_bodega,estado)\n" + "VALUES(?,?,?,?,?,?,'A')";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
             ps.setDouble(3, getPrecio_producto());
             ps.setInt(4, getCantidad_producto());
             ps.setString(5, getMarcar_producto());
-            ps.setInt(6, getId_empleado());
-            ps.setInt(7, getId_bodega());
+            ps.setInt(6, getId_bodega());
 
             ps.executeUpdate();
             return true;
@@ -118,7 +117,7 @@ public class Modelo_productos extends Productos{
      
             public boolean edipro(String id) {
         try {
-            String sql = "UPDATE productos SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?, foto_producto=?,id_empleado=?,id_bodega=? WHERE id_producto ='" + id + "'";
+            String sql = "UPDATE productos SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?, foto_producto=?,id_bodega=? WHERE id_producto ='" + id + "'";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
@@ -126,8 +125,7 @@ public class Modelo_productos extends Productos{
             ps.setInt(4, getCantidad_producto());
             ps.setString(5, getMarcar_producto());
             ps.setBinaryStream(6, getImagen(), getLargo());
-            ps.setInt(7, getId_empleado());
-            ps.setInt(8, getId_bodega());
+            ps.setInt(7, getId_bodega());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -137,15 +135,14 @@ public class Modelo_productos extends Productos{
     }
              public boolean editarpro(String id) {
         try {
-            String sql = "UPDATE productos SET id_producto=?, nom_producto=?, precio_producto=?, cantidad_producto=?, marcar_producto=?, id_empleado=?, id_bodega=? WHERE id_producto ='" + id + "'";
+            String sql = "UPDATE productos SET id_producto=?, nom_producto=?, precio_producto=?, cantidad_producto=?, marcar_producto=?, id_bodega=? WHERE id_producto ='" + id + "'";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());
             ps.setDouble(3, getPrecio_producto());
             ps.setInt(4, getCantidad_producto());
             ps.setString(5, getMarcar_producto());
-            ps.setInt(6, getId_empleado());
-            ps.setInt(7, getId_bodega());
+            ps.setInt(6, getId_bodega());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -182,7 +179,6 @@ public class Modelo_productos extends Productos{
                 producto.setCantidad_producto(r.getInt("cantidad_producto"));
                 producto.setMarcar_producto(r.getString("marcar_producto"));
                 bytes = r.getBytes("foto_producto");
-                producto.setId_empleado(r.getInt("id_empleado"));
                 producto.setId_bodega(r.getInt("id_bodega"));
                 if (bytes != null) {
                     try {

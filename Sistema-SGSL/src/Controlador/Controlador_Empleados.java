@@ -52,6 +52,7 @@ public class Controlador_Empleados {
         this.viewper = viewper;
         vista_emple.setVisible(true);
         valida();
+        CargarEmpleados();
     }
 
     private void IncremetoID() {
@@ -113,8 +114,14 @@ public class Controlador_Empleados {
 
             @Override
             public void keyReleased(KeyEvent e) {
-               String busqueda = vista_emple.getTxtBuscarEmpleado().getText();
-                BuscarEmpleado(busqueda);
+               String busqueda = vista_emple.getTxtBuscarEmpleado().getText().toLowerCase();
+                if (vista_emple.getTxtBuscarEmpleado().getText().trim().isEmpty()) {
+                    CargarEmpleados();
+                } else {
+                   BuscarEmpleado(busqueda);
+                }
+
+            
             }
         };
         vista_emple.getTxtsueldo().addKeyListener(vali);
@@ -608,9 +615,9 @@ public class Controlador_Empleados {
         DefaultTableModel tb = (DefaultTableModel) vista_emple.getTblEmpleado().getModel();
         tb.setNumRows(0);
         List<Empleado> listaEmpelado = modelo_emple.BuscarEmple(codigo);
-        listaEmpelado.stream().forEach(c -> {
-            String[] cliente = {String.valueOf(c.getId_empleado()), String.valueOf(c.getSueldo()), c.getEstado_civil(), String.valueOf(c.getFecha_contrato()), String.valueOf(c.getId_persona())};
-            tb.addRow(cliente);
+        listaEmpelado.stream().forEach(e -> {
+            String[] empleado = {String.valueOf(e.getId_empleado()), String.valueOf(e.getSueldo()), e.getEstado_civil(), String.valueOf(e.getFecha_contrato()), String.valueOf(e.getId_persona())};
+            tb.addRow(empleado);
         });
     }
     

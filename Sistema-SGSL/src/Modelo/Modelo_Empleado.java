@@ -246,13 +246,8 @@ public class Modelo_Empleado extends Empleado {
         try {
 //            String sql = "select * from cliente where estado = 'A' and CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
 
-            String sql = "select * from empleado where "
-                    + "from empleado e inner join"
-                    + "persona p"
-                    + "on c.id_persona=p.id_persona"
-                    + "e.estado = 'A' and CAST(id_empleado AS TEXT) LIKE '" + id_cli + "%' or c.estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
+            String sql = "select e.id_empleado, e.sueldo, e.estado_civil, e.fecha_contrato, e.id_persona from empleado e inner join persona p on e.id_persona = p.id_persona where e.estado = 'A' and CAST(e.id_empleado AS TEXT) LIKE '" + id_cli + "%' or e.estado = 'A' and CAST(e.id_persona AS TEXT) LIKE '" + id_cli + "%';";
             ResultSet rs = cpg.colsulta(sql);
-            byte[] bytea;
             while (rs.next()) {
                 Empleado emple = new Empleado();
                 emple.setId_empleado(rs.getInt("id_empleado"));
@@ -265,7 +260,7 @@ public class Modelo_Empleado extends Empleado {
             rs.close();
             return listaEmple;
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

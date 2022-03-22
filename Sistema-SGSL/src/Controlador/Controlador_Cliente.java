@@ -544,16 +544,11 @@ public class Controlador_Cliente {
             String idpersona = vistaCli.getTblCliente().getValueAt(i, 0).toString();
             int aux = Integer.parseInt(idpersona);
             String idc = vistaCli.getTblCliente().getValueAt(i, 0).toString();
-            String idperson = vistaCli.getTblCliente().getValueAt(i, 4).toString();
-            int auxidp = Integer.parseInt(idperson);
             int result = JOptionPane.showConfirmDialog(vistaCli, "Esta seguro que desea eliminar al cliente con cédula " + idc + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (result == JOptionPane.YES_OPTION) {
                 if (modeloCli.EliminarCliente(aux)) {
-                    JOptionPane.showMessageDialog(vistaCli, "El registro a sido eliminado correctamente de la base de datos.");
+                    JOptionPane.showMessageDialog(vistaCli, "El Cliente a sido eliminado correctamente de la base de datos.");
                     CargarTablaCliente();
-                    if (modelPer.EliminarPersona(auxidp)) {
-                        System.out.println("Persona eliminada correctamente con el id: " + auxidp);
-                    }
                 } else {
                     JOptionPane.showMessageDialog(vistaCli, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }

@@ -525,6 +525,11 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20))
         );
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jLabel1.setText("Buscar");
 
         BtnCrearPersona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N

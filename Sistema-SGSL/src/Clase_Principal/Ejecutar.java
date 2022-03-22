@@ -6,9 +6,11 @@
 package Clase_Principal;
 
 import Controlador.Control_VistaPrincipal;
+import Controlador.Controlador_Carga;
 import Controlador.Controlador_Login;
 import Modelo.Modelo_Empleado;
 import Modelo.Modelo_Usuario;
+import Vista.Vista_Carga;
 import Vista.Vista_Login;
 import Vista.Vista_Principal;
 
@@ -30,11 +32,14 @@ public class Ejecutar {
 //        controlador.iniciaControl();
         
         //logeo
-        Vista_Login vl = new Vista_Login();
-        Modelo_Usuario mu = new Modelo_Usuario();
-        Controlador_Login cl = new Controlador_Login(mu, vl);
-        cl.IniciarBoton();
-        //
+//        Vista_Login vl = new Vista_Login();
+//        Modelo_Usuario mu = new Modelo_Usuario();
+//        Controlador_Login cl = new Controlador_Login(mu, vl);
+//        cl.IniciarBoton();
+//        //
+        Vista_Carga viewcarga = new Vista_Carga();
+        Controlador_Carga conC = new Controlador_Carga(viewcarga);
+        conC.inicia_Control_Carga();
     }
     
 }

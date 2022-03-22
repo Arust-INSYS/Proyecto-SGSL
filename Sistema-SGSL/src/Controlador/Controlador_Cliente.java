@@ -84,7 +84,12 @@ public class Controlador_Cliente {
             @Override
             public void keyReleased(KeyEvent e) {
                 String busqueda = vistaCli.getTxtBuscarCliente().getText().toLowerCase();
-                BuscarCliente(busqueda);
+                if (vistaCli.getTxtBuscarCliente().getText().trim().isEmpty()) {
+                    CargarTablaCliente();
+                } else {
+                    BuscarCliente(busqueda);
+                }
+
             }
         };
         KeyListener buscaP = new KeyListener() {
@@ -98,7 +103,7 @@ public class Controlador_Cliente {
                     e.consume();
                     JOptionPane.showMessageDialog(vistaCli, "Por favor, debe ingresar valores numéricos para la busqueda por cédula.", "Cédula.", JOptionPane.WARNING_MESSAGE);
                 }
-                 if (vistaCli.getTxtBuscarCedulaCli().getText().length() == 10) {
+                if (vistaCli.getTxtBuscarCedulaCli().getText().length() == 10) {
                     e.consume();
                 }
             }
@@ -354,7 +359,8 @@ public class Controlador_Cliente {
             }
         }
     }
-    private void LimpiarDatosClienteCrear(){
+
+    private void LimpiarDatosClienteCrear() {
         vistaCli.getTxtTelefonoCliente().setText("");
         vistaCli.getTxt_ID_Persona().setText("");
     }

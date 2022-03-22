@@ -67,16 +67,16 @@ public class Modelo_Cliente extends Cliente {
         try {
 //            String sql = "select * from cliente where estado = 'A' and CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
 
-            String sql = "select * from cliente where "
-                    + "from cliente c inner join"
-                    + "persona p"
-                    + "on c.id_persona=p.id_persona"
-                    + "c.estado = 'A' and CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or c.estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
+            //String sql = "select c.id_cliente, p.apellido, p.nombre, c.telefono, c.id_persona from cliente c inner join persona p on c.id_persona = p.id_persona and c.estado = 'A' and CAST(c.id_cliente AS TEXT) LIKE '" + id_cli + "%' or c.estado = 'A' and CAST(c.id_persona AS TEXT) LIKE '" + id_cli + "%';";
+            String sql = "select c.id_cliente, p.apellido, p.nombre, c.telefono, c.id_persona from cliente c inner join persona p on c.id_persona = p.id_persona where c.estado = 'A' and CAST(c.id_cliente AS TEXT) LIKE '" + id_cli + "%' or c.estado = 'A' and CAST(c.id_persona AS TEXT) LIKE '" + id_cli + "%';";
+
             ResultSet rs = cp.colsulta(sql);
             byte[] bytea;
             while (rs.next()) {
                 Cliente client = new Cliente();
                 client.setId_clienteC(rs.getInt("id_cliente"));
+                client.setApellido(rs.getString("apellido"));
+                client.setNombre(rs.getString("nombre"));
                 client.setTelefono(rs.getString("telefono"));
                 client.setId_personaCI(rs.getInt("id_persona"));
                 listaCli.add(client);
@@ -129,7 +129,7 @@ public class Modelo_Cliente extends Cliente {
         System.out.println("" + sql);
         return cp.accion(sql);
     }
-    
+
     //Eliminado logico de persona hacia la tabla de cliente.
     public boolean EliminarPersonaCli(int idperosna) {
         String sql = "UPDATE cliente SET estado = 'I' WHERE id_persona = '" + idperosna + "';";

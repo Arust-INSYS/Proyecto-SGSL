@@ -65,13 +65,6 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         this.BtnEditarPersona = BtnEditarPersona;
     }
 
-    public JButton getBtnImprimirPersona() {
-        return BtnImprimirPersona;
-    }
-
-    public void setBtnImprimirPersona(JButton BtnImprimirPersona) {
-        this.BtnImprimirPersona = BtnImprimirPersona;
-    }
 
     public JButton getBtnRemoverPersona() {
         return BtnRemoverPersona;
@@ -269,18 +262,18 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         GrupoBotonGenero = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        TxtBuscarPersona = new javax.swing.JTextField();
         BtnCrearPersona = new javax.swing.JButton();
         BtnEditarPersona = new javax.swing.JButton();
         BtnRemoverPersona = new javax.swing.JButton();
-        BtnImprimirPersona = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblPersonas = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        lblEstado = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        TxtBuscarPersona = new javax.swing.JTextField();
         BtnActualizarPersona = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         jPanel3.setBackground(new java.awt.Color(0, 255, 204));
 
@@ -529,53 +522,35 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-
-        jLabel1.setText("Buscar");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnCrearPersona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnCrearPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-añadir-usuario-masculino-48.png"))); // NOI18N
         BtnCrearPersona.setText("Crear");
+        BtnCrearPersona.setToolTipText("Cear");
+        BtnCrearPersona.setBorder(null);
+        BtnCrearPersona.setContentAreaFilled(false);
+        BtnCrearPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCrearPersonaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnCrearPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 140, 70));
 
         BtnEditarPersona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnEditarPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-persona-de-sexo-masculino-48.png"))); // NOI18N
         BtnEditarPersona.setText("Editar");
+        BtnEditarPersona.setContentAreaFilled(false);
+        getContentPane().add(BtnEditarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 120, 60));
 
         BtnRemoverPersona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnRemoverPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-retire-hombre-usuario-48.png"))); // NOI18N
         BtnRemoverPersona.setText("Remover");
+        BtnRemoverPersona.setContentAreaFilled(false);
+        getContentPane().add(BtnRemoverPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 140, 60));
 
-        BtnImprimirPersona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnImprimirPersona.setText("Imprimir");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TxtBuscarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(BtnCrearPersona)
-                .addGap(78, 78, 78)
-                .addComponent(BtnEditarPersona)
-                .addGap(77, 77, 77)
-                .addComponent(BtnRemoverPersona)
-                .addGap(77, 77, 77)
-                .addComponent(BtnImprimirPersona)
-                .addGap(94, 94, 94))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnImprimirPersona)
-                    .addComponent(BtnRemoverPersona)
-                    .addComponent(BtnEditarPersona)
-                    .addComponent(BtnCrearPersona)
-                    .addComponent(TxtBuscarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(19, 19, 19))
-        );
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Imagen4F.png"))); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 200, 270));
 
         TblPersonas.setBackground(new java.awt.Color(235, 238, 238));
         TblPersonas.setModel(new javax.swing.table.DefaultTableModel(
@@ -588,53 +563,42 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TblPersonas);
 
-        jPanel2.setBackground(new java.awt.Color(220, 220, 220));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 860, 300));
 
-        lblEstado.setText("Personas 1.0");
-
-        BtnActualizarPersona.setText("Actualizar");
+        jPanel2.setBackground(new java.awt.Color(78, 199, 229));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnActualizarPersona)
-                .addContainerGap())
+            .addGap(0, 1170, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BtnActualizarPersona)
-                    .addComponent(lblEstado))
-                .addGap(23, 23, 23))
+            .addGap(0, 57, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1265, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 1170, -1));
+
+        jLabel1.setText("Buscar");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
+        getContentPane().add(TxtBuscarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 319, -1));
+
+        BtnActualizarPersona.setText("Actualizar");
+        getContentPane().add(BtnActualizarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Servicios_Logo_150.png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 160, 170));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnCrearPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCrearPersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCrearPersonaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -643,7 +607,6 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnCancelarPer;
     private javax.swing.JButton BtnCrearPersona;
     private javax.swing.JButton BtnEditarPersona;
-    private javax.swing.JButton BtnImprimirPersona;
     private javax.swing.JButton BtnRemoverPersona;
     private javax.swing.JButton BtnSeleccionarFoto;
     private javax.swing.JDialog DialogoPersona;
@@ -666,6 +629,9 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JTextField Txt_ID_Persona;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -674,12 +640,10 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblEstado;
     // End of variables declaration//GEN-END:variables
 }

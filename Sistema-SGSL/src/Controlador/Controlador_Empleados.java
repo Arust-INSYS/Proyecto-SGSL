@@ -14,6 +14,8 @@ import Vista.Vista_Empleado;
 import Vista.Vista_Persona;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -44,6 +46,7 @@ public class Controlador_Empleados {
     private Modelo_Persona modelPer;
     private JFileChooser jfc;
     private Vista_Persona viewper;
+    Controlador_Fecha  conf = new  Controlador_Fecha();
 
     public Controlador_Empleados(Modelo_Empleado modelo_emple, Vista_Empleado vista_emple, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modelo_emple = modelo_emple;
@@ -87,7 +90,12 @@ public class Controlador_Empleados {
                 }
                 if (Character.isLetter(sul)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vista_emple, "Solo acepta valores numericos", "Validación sueldo", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(vista_emple, "Solo acepta valores numericos", "Validación sueldo", JOptionPane.WARNING_MESSAGE);
+                }
+                if (vista_emple.getTxtsueldo().getText().length() >= 1) {
+                    vista_emple.getLblSueldoRojo().setVisible(false);
+                } else {
+                    vista_emple.getLblSueldoRojo().setVisible(true);
                 }
             }
 
@@ -122,6 +130,36 @@ public class Controlador_Empleados {
                 }
 
             
+            }
+        };
+        FocusListener focosuel = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+             if (vista_emple.getTxtsueldo().getText().length() >= 1) {
+                    vista_emple.getLblSueldoRojo().setVisible(false);
+                } else {
+                    vista_emple.getLblSueldoRojo().setVisible(true);
+                }
+            }
+        };
+        FocusListener focosesta = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (vista_emple.getBoxEstado().getSelectedItem()== "Seleccionar") {
+                    vista_emple.getLblEstadoRojo().setVisible(false);
+                } else {
+                    vista_emple.getLblEstadoRojo().setVisible(true);
+                }
             }
         };
         vista_emple.getTxtsueldo().addKeyListener(vali);
@@ -271,7 +309,7 @@ public class Controlador_Empleados {
         if (vista_emple.getDialogEmpleado().getName() == "crear") {
             //Insertar
             if (vista_emple.getTxtidempleado().getText().equals("") || vista_emple.getTxtsueldo().getText().equals("")
-                    || vista_emple.getBoxEstado().getSelectedItem().equals("") || vista_emple.getBoxrol().getSelectedItem().equals("")|| vista_emple.getContratacion().getDate().equals("") || vista_emple.getTxtid_persona().getText().equals("")) {
+                    || vista_emple.getBoxEstado().getSelectedItem().equals("") || vista_emple.getBoxrol().getSelectedItem().equals("")|| vista_emple.getTxtid_persona().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS CAMPOS");
             } else {
                 String id_emple = vista_emple.getTxtidempleado().getText().toString();
@@ -288,7 +326,9 @@ public class Controlador_Empleados {
                 emple.setEstado_civil(estado);
                 emple.setFecha_contrato((java.sql.Date) contratacion);
                 emple.setId_persona(Integer.parseInt(String.valueOf(id_per)));
-
+                if(fechacontra.isEmpty() || conf.FechaNacimiento(vista_emple.getContratacion()) == false){
+      
+                }else{
                 int idrol = modelo_emple.IdRol(rol);
                 if(ValidaEmpleadoRepetido(Integer.parseInt(vista_emple.getTxtid_persona().getText())) == true){
                     JOptionPane.showMessageDialog(vista_emple, "Empleado Repetido, este id ya existe.", "Empleado Repetido.", JOptionPane.ERROR_MESSAGE);
@@ -306,6 +346,7 @@ public class Controlador_Empleados {
 
                 } else {
                     JOptionPane.showMessageDialog(vista_emple, "No se pudo crear el producto");
+                }
                 }
             }
             }

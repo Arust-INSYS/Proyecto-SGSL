@@ -40,6 +40,7 @@ public class Controlador_Servicio {
         this.vista_servi = vista_servi;
         vista_servi.setVisible(true);
         valida();
+        CargarProductos();
     }
     
     private void IncremetoID() {
@@ -69,7 +70,7 @@ public class Controlador_Servicio {
                char letra = e.getKeyChar();
                if(Character.isDigit(letra)){
                e.consume();
-               JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores alfabeticos", "Validación de Letras", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores alfabeticos", "Validación de Letras", JOptionPane.WARNING_MESSAGE);
                }
 //                if(vista_servi.getTxtnom_servicio().getText().length()<=0){
 //                vista_servi.getTxtnom_servicio().setBackground(Color.RED);
@@ -115,7 +116,7 @@ public class Controlador_Servicio {
                }
                if(Character.isLetter(num)){
                e.consume();
-               JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores numericos", "Validación de Costo", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores numericos", "Validación de Costo", JOptionPane.WARNING_MESSAGE);
                }
 //                if(vista_servi.getTxtcosto_servicio().getText().length()<=0){   
 //                vista_servi.getTxtcosto_servicio().setBackground(Color.RED);

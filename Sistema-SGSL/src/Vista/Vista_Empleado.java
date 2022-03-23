@@ -37,6 +37,14 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         return BtnActualizar;
     }
 
+    public JLabel getLblFechaRojo() {
+        return LblFechaRojo;
+    }
+
+    public void setLblFechaRojo(JLabel LblFechaRojo) {
+        this.LblFechaRojo = LblFechaRojo;
+    }
+
     public JLabel getLblEstadoRojo() {
         return LblEstadoRojo;
     }
@@ -267,6 +275,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         LblSueldoRojo = new javax.swing.JLabel();
         LblEstadoRojo = new javax.swing.JLabel();
+        LblFechaRojo = new javax.swing.JLabel();
         DialogPersona = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -338,6 +347,10 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         LblEstadoRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblEstadoRojo.setText("*");
 
+        LblFechaRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LblFechaRojo.setForeground(new java.awt.Color(255, 0, 0));
+        LblFechaRojo.setText("*");
+
         javax.swing.GroupLayout DialogEmpleadoLayout = new javax.swing.GroupLayout(DialogEmpleado.getContentPane());
         DialogEmpleado.getContentPane().setLayout(DialogEmpleadoLayout);
         DialogEmpleadoLayout.setHorizontalGroup(
@@ -385,7 +398,9 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                                             .addComponent(txtid_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                                             .addComponent(contratacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(verper)))))
+                                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(verper)
+                                    .addComponent(LblFechaRojo))))))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         DialogEmpleadoLayout.setVerticalGroup(
@@ -407,13 +422,17 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                     .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(LblEstadoRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel12))
-                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(contratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LblFechaRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                            .addGap(27, 27, 27)
+                            .addComponent(jLabel12))
+                        .addGroup(DialogEmpleadoLayout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(contratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtid_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -579,6 +598,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JDialog DialogEmpleado;
     private javax.swing.JDialog DialogPersona;
     private javax.swing.JLabel LblEstadoRojo;
+    private javax.swing.JLabel LblFechaRojo;
     private javax.swing.JLabel LblSueldoRojo;
     private javax.swing.JTextField TxtBuscarEmpleado;
     private javax.swing.JComboBox<String> boxEstado;

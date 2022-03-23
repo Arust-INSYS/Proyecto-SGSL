@@ -737,7 +737,7 @@ public class Controlador_Persona {
             String idpersona = vistaPer.getTblPersonas().getValueAt(i, 0).toString();
             int aux = Integer.parseInt(idpersona);
             String cedula = vistaPer.getTblPersonas().getValueAt(i, 1).toString();
-            int result = JOptionPane.showConfirmDialog(vistaPer, "Esta seguro que desea eliminar a la persona con cédula " + cedula + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(vistaPer, "Esta seguro que desea eliminar a la persona con cédula " + cedula + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
             if (result == JOptionPane.YES_OPTION) {
                 if (modelPer.EliminarPersona(aux)) {
                     Modelo_Cliente mc = new Modelo_Cliente();
@@ -759,7 +759,7 @@ public class Controlador_Persona {
                 JOptionPane.showMessageDialog(vistaPer, "Registro cancelado para su eliminación.");
             }
         } else {
-            JOptionPane.showMessageDialog(vistaPer, "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vistaPer, "Debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.WARNING_MESSAGE);
         }
     }
 

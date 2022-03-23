@@ -390,7 +390,7 @@ public class Controlador_productos {
         int xx = vispro.getTblabodega().getSelectedRow();
         if (xx != -1) {
             String id = vispro.getTblabodega().getValueAt(xx, 0).toString();
-            int pro = Integer.parseInt(id);
+            //int pro = Integer.parseInt(id);
             vispro.getTxtidbodega().setText(id);
             int m = Integer.parseInt(vispro.getTblabodega().getValueAt(xx, 3).toString());
             SpinnerNumberModel n = new SpinnerNumberModel();

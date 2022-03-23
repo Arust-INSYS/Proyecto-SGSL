@@ -67,8 +67,6 @@ public class Controlador_bodega {
     }
 
     private void cargarbodegas() {
-        visbo.getTABLABODEGA().setDefaultRenderer(Object.class, new Imangentabla());
-        visbo.getTABLABODEGA().setRowHeight(100);
         DefaultTableModel ta;
         ta = (DefaultTableModel) visbo.getTABLABODEGA().getModel();
         ta.setNumRows(0);
@@ -137,7 +135,7 @@ public class Controlador_bodega {
             String es = visbo.getTABLABODEGA().getValueAt(xx, 3).toString();
             visbo.getSpinerespacio().setValue(Integer.parseInt(es));
         } else {
-            JOptionPane.showMessageDialog(visbo, "error seleccione una fila");
+                        JOptionPane.showMessageDialog(visbo, "Error debe seleccionar una fila ", "Validación.", JOptionPane.WARNING_MESSAGE);
             visbo.getDialog_Crearbo().dispose();
         }
     }
@@ -147,7 +145,7 @@ public class Controlador_bodega {
         yy = visbo.getTABLABODEGA().getSelectedRow();
         if (yy != -1) {
             String nu = visbo.getTABLABODEGA().getValueAt(yy, 0).toString();
-            int result = JOptionPane.showConfirmDialog(visbo, "Esta seguro que desea eliminar la bodega con el ID " + nu + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(visbo, "Esta seguro que desea eliminar la bodega con el ID " + nu + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
             if (result == JOptionPane.YES_OPTION) {
                 if (modelbo.eliminarbodega(nu)) {
                     JOptionPane.showMessageDialog(visbo, "se elimino correctamente");
@@ -179,8 +177,6 @@ public class Controlador_bodega {
     }
 
     private void bus(java.awt.event.KeyEvent evt) {
-        visbo.getTABLABODEGA().setDefaultRenderer(Object.class, new Imangentabla());
-        visbo.getTABLABODEGA().setRowHeight(100);
         DefaultTableModel ta;
         ta = (DefaultTableModel) visbo.getTABLABODEGA().getModel();
         ta.setRowCount(0);

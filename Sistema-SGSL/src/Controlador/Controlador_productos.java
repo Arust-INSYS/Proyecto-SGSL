@@ -263,7 +263,7 @@ public class Controlador_productos {
             }
 
         } else {
-            JOptionPane.showMessageDialog(vispro, "error seleccione una fila");
+                        JOptionPane.showMessageDialog(vispro, "Error debe seleccionar una fila ", "Validación.", JOptionPane.WARNING_MESSAGE);
             vispro.getDialog_Crear().dispose();
         }
     }
@@ -273,7 +273,7 @@ public class Controlador_productos {
         if (i != -1) {
             String idpersona = vispro.getTablita().getValueAt(i, 0).toString();
             String cedula = vispro.getTablita().getValueAt(i, 1).toString();
-            int result = JOptionPane.showConfirmDialog(vispro, "Esta seguro que desea eliminar al producto con el nombre " + cedula + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(vispro, "Esta seguro que desea eliminar al producto con el nombre " + cedula + "?", "ERROR", JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE );
             if (result == JOptionPane.YES_OPTION) {
                 if (modelpro.eliminapro(idpersona)) {
                     JOptionPane.showMessageDialog(vispro, "El registro a sido eliminado correctamente de la base de datos.");
@@ -358,8 +358,6 @@ public class Controlador_productos {
 //---------------------------------------------------------------------------------------------------------------------
 
     private void cargarbodegas() {
-        vispro.getTblabodega().setDefaultRenderer(Object.class, new Imangentabla());
-        vispro.getTblabodega().setRowHeight(100);
         DefaultTableModel ta;
         ta = (DefaultTableModel) vispro.getTblabodega().getModel();
         ta.setNumRows(0);
@@ -401,7 +399,7 @@ public class Controlador_productos {
 
             vispro.getTxtidbodega().setEditable(false);
         } else {
-            JOptionPane.showMessageDialog(vispro, "error seleccione una fila");
+            JOptionPane.showMessageDialog(vispro, "Error debe seleccionar una fila ", "Validación.", JOptionPane.WARNING_MESSAGE);
             vispro.getDialogbodega().dispose();
         }
         vispro.getDialogbodega().setVisible(false);
@@ -413,8 +411,6 @@ public class Controlador_productos {
 
     //----------------------------------------------------------------------------------
     private void busbo(java.awt.event.KeyEvent evt) {
-        vispro.getTblabodega().setDefaultRenderer(Object.class, new Imangentabla());
-        vispro.getTblabodega().setRowHeight(100);
         DefaultTableModel ta;
         ta = (DefaultTableModel) vispro.getTblabodega().getModel();
         ta.setRowCount(0);

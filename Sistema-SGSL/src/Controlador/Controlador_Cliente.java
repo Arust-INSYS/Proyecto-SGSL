@@ -41,7 +41,7 @@ public class Controlador_Cliente {
     private JFileChooser jfc;
     private String nombres = null;
     private int idperonaClassciente = 0;
-
+    Controlador_Fecha  conf = new  Controlador_Fecha();
     public Controlador_Cliente(Modelo_Cliente modeloCli, Vista_Cliente vistaCli, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modeloCli = modeloCli;
         this.vistaCli = vistaCli;
@@ -268,7 +268,7 @@ public class Controlador_Cliente {
                 viewper.getTxtCedulaPersona().setText(listaBusper.get(i).getCedula());
                 viewper.getTxtNombrePersona().setText(listaBusper.get(i).getNombre());
                 viewper.getTxtApellidoPersona().setText(listaBusper.get(i).getApellido());
-                Date fechan = listaBusper.get(i).getFecha_nacimiento();
+                Date fechan = (Date) listaBusper.get(i).getFecha_nacimiento();
                 viewper.getFechaNacimientoPer().setDate(fechan);
                 if (listaBusper.get(i).getGenero().equals("M")) {
                     viewper.getRadioBtnMasculino().setSelected(true);
@@ -441,7 +441,7 @@ public class Controlador_Cliente {
                         viewper.getLblApellido().setVisible(true);
                     } else {
                         viewper.getLblApellido().setVisible(false);
-                        if (fec.isEmpty()) {
+                        if (fec.isEmpty() || conf.FechaNacimiento(viewper.getFechaNacimientoPer()) == false) {
                             viewper.getLbLFechaRojo().setVisible(true);
 
                         } else {

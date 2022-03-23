@@ -41,6 +41,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /**
  *
  * @author lorena
@@ -51,7 +52,8 @@ public class Controlador_Persona {
     private Vista_Persona vistaPer;
     private JFileChooser jfc;
 
-    Controlador_Fecha  conf = new  Controlador_Fecha();
+    Controlador_Fecha conf = new Controlador_Fecha();
+
     public Controlador_Persona(Modelo_Persona modelPer, Vista_Persona vistaPer) {
         this.modelPer = modelPer;
         this.vistaPer = vistaPer;
@@ -257,10 +259,10 @@ public class Controlador_Persona {
 
         vistaPer.getTxtNombrePersona().addKeyListener(nombre);
         vistaPer.getTxtNombrePersona().addFocusListener(nomPerson);
-        
+
         vistaPer.getTxtApellidoPersona().addKeyListener(apellido);
         vistaPer.getTxtApellidoPersona().addFocusListener(aPerson);
-        
+
         vistaPer.getFechaNacimientoPer().addKeyListener(fnaci);
     }
 
@@ -354,28 +356,31 @@ public class Controlador_Persona {
                         } else {
                             vistaPer.getLblApellido().setVisible(false);
                             if (fecha.isEmpty() || conf.FechaNacimiento(vistaPer.getFechaNacimientoPer()) == false) {
-                                
                                 vistaPer.getLbLFechaRojo().setVisible(true);
-                                
                             } else {
                                 vistaPer.getLbLFechaRojo().setVisible(false);
-                                if (vistaPer.getGrupoBotonGenero().isSelected(null)) {
-                                    vistaPer.getLblGeneroRojo().setVisible(true);
-
+                                if (conf.FechaNacimientoMayor(fecha) == false) {
+                                    vistaPer.getLbLFechaRojo().setVisible(true);
                                 } else {
-                                    vistaPer.getLblGeneroRojo().setVisible(false);
-                                    if (validadorDeCedula(vistaPer.getTxtCedulaPersona().getText()) == false) {
-                                        JOptionPane.showMessageDialog(vistaPer, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
-                                        vistaPer.getLblCedulaRojo().setVisible(true);
+                                    vistaPer.getLbLFechaRojo().setVisible(false);
+                                    if (vistaPer.getGrupoBotonGenero().isSelected(null)) {
+                                        vistaPer.getLblGeneroRojo().setVisible(true);
+
                                     } else {
-                                        vistaPer.getLblCedulaRojo().setVisible(false);
-                                        if (ValidarUsuarioRepetido(vistaPer.getTxtCedulaPersona().getText()) == true) {
-                                            JOptionPane.showMessageDialog(vistaPer, "Error la cédula ya existe en la base de datos.", "Cédula Duplicada.", JOptionPane.ERROR_MESSAGE);
-                                            vistaPer.getTxtCedulaPersona().setBackground(Color.red);
+                                        vistaPer.getLblGeneroRojo().setVisible(false);
+                                        if (validadorDeCedula(vistaPer.getTxtCedulaPersona().getText()) == false) {
+                                            JOptionPane.showMessageDialog(vistaPer, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
+                                            vistaPer.getLblCedulaRojo().setVisible(true);
                                         } else {
-                                            vistaPer.getTxtCedulaPersona().setBackground(Color.white);
-                                            CrearPersona();
-                                            verifico = true;
+                                            vistaPer.getLblCedulaRojo().setVisible(false);
+                                            if (ValidarUsuarioRepetido(vistaPer.getTxtCedulaPersona().getText()) == true) {
+                                                JOptionPane.showMessageDialog(vistaPer, "Error la cédula ya existe en la base de datos.", "Cédula Duplicada.", JOptionPane.ERROR_MESSAGE);
+                                                vistaPer.getTxtCedulaPersona().setBackground(Color.red);
+                                            } else {
+                                                vistaPer.getTxtCedulaPersona().setBackground(Color.white);
+                                                CrearPersona();
+                                                verifico = true;
+                                            }
                                         }
                                     }
                                 }
@@ -416,19 +421,24 @@ public class Controlador_Persona {
 
                                 } else {
                                     vistaPer.getLbLFechaRojo().setVisible(false);
-                                    if (vistaPer.getGrupoBotonGenero().isSelected(null)) {
-                                        vistaPer.getLblGeneroRojo().setVisible(true);
-
+                                    if (conf.FechaNacimientoMayor(fecha) == false) {
+                                        vistaPer.getLbLFechaRojo().setVisible(true);
                                     } else {
-                                        vistaPer.getLblGeneroRojo().setVisible(false);
-                                        if (validadorDeCedula(vistaPer.getTxtCedulaPersona().getText()) == false) {
-                                            JOptionPane.showMessageDialog(vistaPer, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
-                                            vistaPer.getLblCedulaRojo().setVisible(true);
+                                         vistaPer.getLbLFechaRojo().setVisible(false);
+                                        if (vistaPer.getGrupoBotonGenero().isSelected(null)) {
+                                            vistaPer.getLblGeneroRojo().setVisible(true);
+
                                         } else {
-                                            vistaPer.getLblCedulaRojo().setVisible(false);
-                                            EditarPersona();
-                                            verificoED = true;
-                                            System.out.println("Ingreso a metodo de la modificasión.");
+                                            vistaPer.getLblGeneroRojo().setVisible(false);
+                                            if (validadorDeCedula(vistaPer.getTxtCedulaPersona().getText()) == false) {
+                                                JOptionPane.showMessageDialog(vistaPer, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
+                                                vistaPer.getLblCedulaRojo().setVisible(true);
+                                            } else {
+                                                vistaPer.getLblCedulaRojo().setVisible(false);
+                                                EditarPersona();
+                                                verificoED = true;
+                                                System.out.println("Ingreso a metodo de la modificasión.");
+                                            }
                                         }
                                     }
                                 }
@@ -591,7 +601,6 @@ public class Controlador_Persona {
         }
 
     }
-    
 
     private void CargarTablaPersona() {
         vistaPer.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
@@ -742,16 +751,16 @@ public class Controlador_Persona {
                 if (modelPer.EliminarPersona(aux)) {
                     Modelo_Cliente mc = new Modelo_Cliente();
                     Modelo_Empleado me = new Modelo_Empleado();
-                    if(mc.EliminarPersonaCli(aux)){
+                    if (mc.EliminarPersonaCli(aux)) {
                         System.out.println("Eliminacion correcta, cliente.");
                     }
-                    
-                    if(me.RemoverEmpleado(aux)){
+
+                    if (me.RemoverEmpleado(aux)) {
                         System.out.println("Eliminacion correcta, empleado.");
                     }
                     JOptionPane.showMessageDialog(vistaPer, "El registro a sido eliminado correctamente de la base de datos.");
                     CargarTablaPersona();
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(vistaPer, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }

@@ -121,14 +121,6 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         this.BtnEditar = BtnEditar;
     }
 
-    public JButton getBtnImprimir() {
-        return BtnImprimir;
-    }
-
-    public void setBtnImprimir(JButton BtnImprimir) {
-        this.BtnImprimir = BtnImprimir;
-    }
-
     public JButton getBtnRemover() {
         return BtnRemover;
     }
@@ -282,15 +274,15 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         tblPersonas = new javax.swing.JTable();
         btningresar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        lblbuscar = new javax.swing.JLabel();
-        TxtBuscarEmpleado = new javax.swing.JTextField();
         BtnCrear = new javax.swing.JButton();
         BtnEditar = new javax.swing.JButton();
         BtnRemover = new javax.swing.JButton();
-        BtnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmpleado = new javax.swing.JTable();
         BtnActualizar = new javax.swing.JButton();
+        TxtBuscarEmpleado = new javax.swing.JTextField();
+        lblbuscar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         btnAceptar.setText("ACEPTAR");
 
@@ -495,53 +487,23 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lblbuscar.setText("Buscar");
-        lblbuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnCrear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnCrear.setText("Crear");
+        jPanel1.add(BtnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         BtnEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnEditar.setText("Editar");
+        jPanel1.add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         BtnRemover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnRemover.setText("Remover");
+        jPanel1.add(BtnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        BtnImprimir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnImprimir.setText("Imprimir");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblbuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TxtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(BtnCrear)
-                .addGap(33, 33, 33)
-                .addComponent(BtnEditar)
-                .addGap(34, 34, 34)
-                .addComponent(BtnRemover)
-                .addGap(46, 46, 46)
-                .addComponent(BtnImprimir)
-                .addGap(194, 194, 194))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnImprimir)
-                    .addComponent(BtnRemover)
-                    .addComponent(BtnEditar)
-                    .addComponent(BtnCrear)
-                    .addComponent(TxtBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblbuscar))
-                .addGap(19, 19, 19))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 140, 230));
 
         tblEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -553,37 +515,17 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblEmpleado);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 824, 229));
+
         BtnActualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnActualizar.setText("Actualizar");
+        getContentPane().add(BtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, -1, -1));
+        getContentPane().add(TxtBuscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 319, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnActualizar, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(BtnActualizar)
-                .addGap(26, 26, 26))
-        );
+        lblbuscar.setText("Buscar");
+        lblbuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(lblbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 4, 1010, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -593,7 +535,6 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnActualizar;
     private javax.swing.JButton BtnCrear;
     private javax.swing.JButton BtnEditar;
-    private javax.swing.JButton BtnImprimir;
     private javax.swing.JButton BtnRemover;
     private javax.swing.JDialog DialogEmpleado;
     private javax.swing.JDialog DialogPersona;
@@ -607,6 +548,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btningresar;
     private com.toedter.calendar.JDateChooser contratacion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

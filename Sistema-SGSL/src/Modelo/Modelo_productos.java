@@ -214,7 +214,7 @@ public class Modelo_productos extends Productos{
                 public List<Bodega> listarbodegas(){
         List<Bodega> lista = new  ArrayList<Bodega>();
         try {
-            String sql ="select * from bodegas";
+            String sql ="select * from bodegas where estado='A'";
             ResultSet rs = cpg.colsulta(sql);
             while(rs.next()){
                 Bodega bo = new Bodega();
@@ -238,9 +238,9 @@ public class Modelo_productos extends Productos{
         String sql = "";
         String plb = busqueda;
         if (busqueda.equalsIgnoreCase("")) {
-            sql = "select *from bodegas";
+            sql = "select *from bodegas where estado='A'";
         } else if (plb.equalsIgnoreCase(busqueda)) {
-            sql = "select * from bodegas where CAST(id_bodega AS TEXT) LIKE '" + busqueda + "%' ";
+            sql = "select * from bodegas where estado='A' and CAST(id_bodega AS TEXT) LIKE '" + busqueda + "%' ";
         }
         ResultSet r = cpg.colsulta(sql);
         try {

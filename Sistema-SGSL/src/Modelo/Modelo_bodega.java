@@ -100,7 +100,7 @@ public class Modelo_bodega extends Bodega{
         String sql = "";
         String plb = busqueda;
         if (busqueda.equalsIgnoreCase("")) {
-            sql = "select *from bodegas";
+            sql = "select *from bodegas where estado ='A' ";
         } else if (plb.equalsIgnoreCase(busqueda)) {
             sql = "select * from bodegas where estado='A' and CAST(id_bodega AS TEXT) LIKE '" + busqueda + "%' ";
         }

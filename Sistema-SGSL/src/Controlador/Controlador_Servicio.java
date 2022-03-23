@@ -71,15 +71,25 @@ public class Controlador_Servicio {
                e.consume();
                JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores alfabeticos", "Validación de Letras", JOptionPane.ERROR_MESSAGE);
                }
-                if(vista_servi.getTxtnom_servicio().getText().length()<=0){
-                vista_servi.getTxtnom_servicio().setBackground(Color.RED);
-                }else{
-                vista_servi.getTxtnom_servicio().setBackground(Color.white);
+//                if(vista_servi.getTxtnom_servicio().getText().length()<=0){
+//                vista_servi.getTxtnom_servicio().setBackground(Color.RED);
+//                }else{
+//                vista_servi.getTxtnom_servicio().setBackground(Color.white);
+//                }
+//                if(vista_servi.getDescri_servicio().getText().length()<=0){
+//                vista_servi.getDescri_servicio().setBackground(Color.RED);
+//                }else{
+//                vista_servi.getDescri_servicio().setBackground(Color.white);
+//                }
+                if (vista_servi.getDescri_servicio().getText().length() >= 1) {
+                    vista_servi.getLblDescripcionRojo1().setVisible(false);
+                } else {
+                    vista_servi.getLblDescripcionRojo1().setVisible(true);
                 }
-                if(vista_servi.getDescri_servicio().getText().length()<=0){
-                vista_servi.getDescri_servicio().setBackground(Color.RED);
-                }else{
-                vista_servi.getDescri_servicio().setBackground(Color.white);
+                if (vista_servi.getTxtnom_servicio().getText().length() >= 1) {
+                    vista_servi.getLblNombreRojo().setVisible(false);
+                } else {
+                    vista_servi.getLblNombreRojo().setVisible(true);
                 }
                
                
@@ -107,10 +117,15 @@ public class Controlador_Servicio {
                e.consume();
                JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores numericos", "Validación de Costo", JOptionPane.ERROR_MESSAGE);
                }
-                if(vista_servi.getTxtcosto_servicio().getText().length()<=0){   
-                vista_servi.getTxtcosto_servicio().setBackground(Color.RED);
-                }else{
-                vista_servi.getTxtcosto_servicio().setBackground(Color.white);
+//                if(vista_servi.getTxtcosto_servicio().getText().length()<=0){   
+//                vista_servi.getTxtcosto_servicio().setBackground(Color.RED);
+//                }else{
+//                vista_servi.getTxtcosto_servicio().setBackground(Color.white);
+//                }
+                if (vista_servi.getTxtcosto_servicio().getText().length() >= 1) {
+                    vista_servi.getLblCostoRojo().setVisible(false);
+                } else {
+                    vista_servi.getLblCostoRojo().setVisible(true);
                 }
                
             }
@@ -134,31 +149,68 @@ public class Controlador_Servicio {
 
             @Override
             public void focusLost(FocusEvent e) {
-             if(vista_servi.getTxtcosto_servicio().getText().length()<=0){
-                   
-             vista_servi.getTxtcosto_servicio().setBackground(Color.RED);
-             }else{
-             vista_servi.getTxtcosto_servicio().setBackground(Color.white);
-             }
-             if(vista_servi.getTxtnom_servicio().getText().length()<=0){
-             vista_servi.getTxtnom_servicio().setBackground(Color.RED);
-             }else{
-             vista_servi.getTxtnom_servicio().setBackground(Color.white);
-             }
-             if(vista_servi.getDescri_servicio().getText().length()<=0){
-             vista_servi.getDescri_servicio().setBackground(Color.RED);
-             }else{
-             vista_servi.getDescri_servicio().setBackground(Color.white);
-             }
+//             if(vista_servi.getTxtcosto_servicio().getText().length()<=0){
+//                   
+//             vista_servi.getTxtcosto_servicio().setBackground(Color.RED);
+//             }else{
+//             vista_servi.getTxtcosto_servicio().setBackground(Color.white);
+//             }
+//             if(vista_servi.getTxtnom_servicio().getText().length()<=0){
+//             vista_servi.getTxtnom_servicio().setBackground(Color.RED);
+//             }else{
+//             vista_servi.getTxtnom_servicio().setBackground(Color.white);
+//             }
+//             if(vista_servi.getDescri_servicio().getText().length()<=0){
+//             vista_servi.getDescri_servicio().setBackground(Color.RED);
+//             }else{
+//             vista_servi.getDescri_servicio().setBackground(Color.white);
+//             }
+
+                if (vista_servi.getTxtnom_servicio().getText().length() >= 1) {
+                    vista_servi.getLblNombreRojo().setVisible(false);
+                } else {
+                    vista_servi.getLblNombreRojo().setVisible(true);
+                }
+                
              
+            }
+         };
+         FocusListener focoscosto = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+               
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (vista_servi.getTxtcosto_servicio().getText().length() >= 1) {
+                    vista_servi.getLblCostoRojo().setVisible(false);
+                } else {
+                    vista_servi.getLblCostoRojo().setVisible(true);
+                }
+            }
+         };
+         FocusListener focosdescri = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (vista_servi.getDescri_servicio().getText().length() >= 1) {
+                    vista_servi.getLblDescripcionRojo1().setVisible(false);
+                } else {
+                    vista_servi.getLblDescripcionRojo1().setVisible(true);
+                }
             }
          };
         vista_servi.getTxtcosto_servicio().addKeyListener(vali2);
         vista_servi.getDescri_servicio().addKeyListener(vali);
         vista_servi.getTxtnom_servicio().addKeyListener(vali);
         vista_servi.getTxtnom_servicio().addFocusListener(focus);
-        vista_servi.getTxtcosto_servicio().addFocusListener(focus);
-        vista_servi.getDescri_servicio().addFocusListener(focus);
+        vista_servi.getTxtcosto_servicio().addFocusListener(focoscosto);
+        vista_servi.getDescri_servicio().addFocusListener(focosdescri);
     }
     
     
@@ -169,6 +221,7 @@ public class Controlador_Servicio {
             vista_servi.getDialog_Crear().setName("crear");
             IncremetoID();
             vista_servi.getTxtidservicio().setEditable(false);
+            vista_servi.getTxtid_empleado().setEditable(false);
             limpiar_pro();
         }else{
             title="Editar servicio";
@@ -300,6 +353,13 @@ public class Controlador_Servicio {
       vista_servi.getDescri_servicio().setText("");
       vista_servi.getTxtid_empleado().setText("");
     }
+    
+    private void ControlLblPrincipalesActivos() {
+        vista_servi.getLblCostoRojo().setVisible(false);
+        vista_servi.getLblNombreRojo().setVisible(false);
+        vista_servi.getLblDescripcionRojo1().setVisible(false);
+    }
+
     
     private void CargarProductos(){
         

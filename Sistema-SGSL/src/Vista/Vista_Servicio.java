@@ -7,6 +7,7 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -29,6 +30,32 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         this.BtnCrearServicio = BtnCrearServicio;
     }
 
+
+    public JLabel getLblCostoRojo() {
+        return LblCostoRojo;
+    }
+
+    public void setLblCostoRojo(JLabel LblCostoRojo) {
+        this.LblCostoRojo = LblCostoRojo;
+    }
+
+    public JLabel getLblDescripcionRojo1() {
+        return LblDescripcionRojo1;
+    }
+
+    public void setLblDescripcionRojo1(JLabel LblDescripcionRojo1) {
+        this.LblDescripcionRojo1 = LblDescripcionRojo1;
+    }
+
+    public JLabel getLblNombreRojo() {
+        return LblNombreRojo;
+    }
+
+    public void setLblNombreRojo(JLabel LblNombreRojo) {
+        this.LblNombreRojo = LblNombreRojo;
+    }
+    
+    
     public JDialog getDialogEmple() {
         return DialogEmple;
     }
@@ -206,6 +233,9 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         txtid_empleado = new javax.swing.JTextField();
         btnveremple = new javax.swing.JButton();
+        LblNombreRojo = new javax.swing.JLabel();
+        LblDescripcionRojo1 = new javax.swing.JLabel();
+        LblCostoRojo = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         areadescripcion = new javax.swing.JTextPane();
         DialogEmple = new javax.swing.JDialog();
@@ -263,12 +293,50 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         btnveremple.setText("ver Empledo");
 
+        LblNombreRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LblNombreRojo.setForeground(new java.awt.Color(255, 0, 0));
+        LblNombreRojo.setText("*");
+
+        LblDescripcionRojo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LblDescripcionRojo1.setForeground(new java.awt.Color(255, 0, 0));
+        LblDescripcionRojo1.setText("*");
+
+        LblCostoRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LblCostoRojo.setForeground(new java.awt.Color(255, 0, 0));
+        LblCostoRojo.setText("*");
+
         javax.swing.GroupLayout Dialog_CrearLayout = new javax.swing.GroupLayout(Dialog_Crear.getContentPane());
         Dialog_Crear.getContentPane().setLayout(Dialog_CrearLayout);
         Dialog_CrearLayout.setHorizontalGroup(
             Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dialog_CrearLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(203, 203, 203))
             .addGroup(Dialog_CrearLayout.createSequentialGroup()
                 .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Dialog_CrearLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Dialog_CrearLayout.createSequentialGroup()
+                                .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Dialog_CrearLayout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtnom_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Dialog_CrearLayout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtidservicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(LblNombreRojo))
+                            .addComponent(jLabel12)
+                            .addGroup(Dialog_CrearLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtid_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnveremple))))
                     .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(Dialog_CrearLayout.createSequentialGroup()
                             .addGap(48, 48, 48)
@@ -277,40 +345,18 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
                             .addComponent(btnCancelar_pro1))
                         .addGroup(Dialog_CrearLayout.createSequentialGroup()
                             .addContainerGap()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dialog_CrearLayout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                 .addGroup(Dialog_CrearLayout.createSequentialGroup()
-                                    .addComponent(jLabel12)
-                                    .addGap(30, 30, 30)))
-                            .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtcosto_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(20, 20, 20)))
-                    .addGroup(Dialog_CrearLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Dialog_CrearLayout.createSequentialGroup()
-                                    .addComponent(jLabel11)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtnom_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Dialog_CrearLayout.createSequentialGroup()
-                                    .addComponent(jLabel10)
+                                    .addComponent(txtcosto_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtidservicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(Dialog_CrearLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtid_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnveremple)))))
-                .addContainerGap(129, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dialog_CrearLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(203, 203, 203))
+                                    .addComponent(LblCostoRojo))
+                                .addGroup(Dialog_CrearLayout.createSequentialGroup()
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(LblDescripcionRojo1))))))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         Dialog_CrearLayout.setVerticalGroup(
             Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,24 +370,29 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnom_servicio, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(LblNombreRojo))
                 .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Dialog_CrearLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel8))
                     .addGroup(Dialog_CrearLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Dialog_CrearLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(LblDescripcionRojo1)))
+                .addGap(20, 20, 20)
                 .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
                     .addComponent(txtcosto_servicio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addGap(18, 18, 18)
+                    .addComponent(LblCostoRojo))
+                .addGap(20, 20, 20)
                 .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(txtid_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnveremple))
-                .addGap(66, 66, 66)
+                .addGap(98, 98, 98)
                 .addGroup(Dialog_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar_pro1)
                     .addComponent(btnCancelar_pro1))
@@ -478,6 +529,9 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnRemoverServicio;
     private javax.swing.JDialog DialogEmple;
     private javax.swing.JDialog Dialog_Crear;
+    private javax.swing.JLabel LblCostoRojo;
+    private javax.swing.JLabel LblDescripcionRojo1;
+    private javax.swing.JLabel LblNombreRojo;
     private javax.swing.JTextField TxtBuscarServicio;
     private javax.swing.JTextPane areadescripcion;
     private javax.swing.JButton btnAceptar_pro1;

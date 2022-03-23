@@ -41,7 +41,8 @@ public class Controlador_Cliente {
     private JFileChooser jfc;
     private String nombres = null;
     private int idperonaClassciente = 0;
-    Controlador_Fecha  conf = new  Controlador_Fecha();
+    Controlador_Fecha conf = new Controlador_Fecha();
+
     public Controlador_Cliente(Modelo_Cliente modeloCli, Vista_Cliente vistaCli, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modeloCli = modeloCli;
         this.vistaCli = vistaCli;
@@ -446,19 +447,24 @@ public class Controlador_Cliente {
 
                         } else {
                             viewper.getLbLFechaRojo().setVisible(false);
-                            if (viewper.getGrupoBotonGenero().isSelected(null)) {
-                                viewper.getLblGeneroRojo().setVisible(true);
-
+                            if (conf.FechaNacimientoMayor(fec) == false) {
+                                viewper.getLbLFechaRojo().setVisible(true);
                             } else {
-                                viewper.getLblGeneroRojo().setVisible(false);
-                                if (validadorDeCedula(viewper.getTxtCedulaPersona().getText()) == false) {
-                                    JOptionPane.showMessageDialog(viewper, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
-                                    viewper.getLblCedulaRojo().setVisible(true);
+                                viewper.getLbLFechaRojo().setVisible(false);
+                                if (viewper.getGrupoBotonGenero().isSelected(null)) {
+                                    viewper.getLblGeneroRojo().setVisible(true);
+
                                 } else {
-                                    viewper.getLblCedulaRojo().setVisible(false);
-                                    EditarPersona();
-                                    verificoED = true;
-                                    System.out.println("Ingreso a metodo de la modificasión.");
+                                    viewper.getLblGeneroRojo().setVisible(false);
+                                    if (validadorDeCedula(viewper.getTxtCedulaPersona().getText()) == false) {
+                                        JOptionPane.showMessageDialog(viewper, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
+                                        viewper.getLblCedulaRojo().setVisible(true);
+                                    } else {
+                                        viewper.getLblCedulaRojo().setVisible(false);
+                                        EditarPersona();
+                                        verificoED = true;
+                                        System.out.println("Ingreso a metodo de la modificasión.");
+                                    }
                                 }
                             }
                         }

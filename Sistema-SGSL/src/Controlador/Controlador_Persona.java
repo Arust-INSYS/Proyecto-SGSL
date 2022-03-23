@@ -13,6 +13,7 @@ import Modelo.Modelo_Persona;
 import Modelo.Modelo_Servicio;
 import Vista.Vista_Persona;
 import Vista.Vista_Servicio;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
@@ -38,7 +39,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author lorena
@@ -49,6 +51,7 @@ public class Controlador_Persona {
     private Vista_Persona vistaPer;
     private JFileChooser jfc;
 
+    Controlador_Fecha  conf = new  Controlador_Fecha();
     public Controlador_Persona(Modelo_Persona modelPer, Vista_Persona vistaPer) {
         this.modelPer = modelPer;
         this.vistaPer = vistaPer;
@@ -107,11 +110,11 @@ public class Controlador_Persona {
                 }
                 if (Character.isLetter(c)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "Por favor, debe ingresar solo números en este campo.", "Cédula.", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaPer, "Por favor, debe ingresar solo números en este campo.");
                 }
                 if (vistaPer.getTxtCedulaPersona().getText().length() == 10) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "Ya están los 10 dígitos de la cedula.", "Numero de dígitos.", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaPer, "Ya están los 10 dígitos de la cedula.");
                 }
             }
 
@@ -135,7 +138,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.", "Validación.", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
                 }
             }
 
@@ -160,7 +163,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.", "Validación.", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
                 }
             }
 
@@ -184,7 +187,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.", "Validación.", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
                 }
             }
 
@@ -313,7 +316,7 @@ public class Controlador_Persona {
                     vistaPer.getDialogoPersona().setVisible(true);
                     CargarEdicionPersona();
                 } else {
-                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaPer, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.WARNING_MESSAGE);
                 }
 
             }
@@ -350,9 +353,10 @@ public class Controlador_Persona {
                             vistaPer.getLblApellido().setVisible(true);
                         } else {
                             vistaPer.getLblApellido().setVisible(false);
-                            if (fecha.isEmpty()) {
+                            if (fecha.isEmpty() || conf.FechaNacimiento(vistaPer.getFechaNacimientoPer()) == false) {
+                                
                                 vistaPer.getLbLFechaRojo().setVisible(true);
-
+                                
                             } else {
                                 vistaPer.getLbLFechaRojo().setVisible(false);
                                 if (vistaPer.getGrupoBotonGenero().isSelected(null)) {
@@ -407,7 +411,7 @@ public class Controlador_Persona {
                                 vistaPer.getLblApellido().setVisible(true);
                             } else {
                                 vistaPer.getLblApellido().setVisible(false);
-                                if (fec.isEmpty()) {
+                                if (fecha.isEmpty() || conf.FechaNacimiento(vistaPer.getFechaNacimientoPer()) == false) {
                                     vistaPer.getLbLFechaRojo().setVisible(true);
 
                                 } else {
@@ -587,6 +591,7 @@ public class Controlador_Persona {
         }
 
     }
+    
 
     private void CargarTablaPersona() {
         vistaPer.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
@@ -700,7 +705,7 @@ public class Controlador_Persona {
                     vistaPer.getTxtCedulaPersona().setText(listaPerFT.get(i).getCedula());
                     vistaPer.getTxtNombrePersona().setText(listaPerFT.get(i).getNombre());
                     vistaPer.getTxtApellidoPersona().setText(listaPerFT.get(i).getApellido());
-                    Date fechan = listaPerFT.get(i).getFecha_nacimiento();
+                    Date fechan = (Date) listaPerFT.get(i).getFecha_nacimiento();
                     vistaPer.getFechaNacimientoPer().setDate(fechan);
                     if (listaPerFT.get(i).getGenero().equals("M")) {
                         vistaPer.getRadioBtnMasculino().setSelected(true);

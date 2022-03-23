@@ -10,7 +10,7 @@ import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -182,7 +182,7 @@ public class Modelo_Persona extends Persona {
             ps.setString(3, getNombre());
             ps.setString(4, getApellido());
             ps.setString(5, getGenero());
-            ps.setDate(6, getFecha_nacimiento());
+            ps.setDate(6, (java.sql.Date) getFecha_nacimiento());
             ps.setString(7, getDireccion());
             ps.setBinaryStream(8, getImagen(), getLargo());
             ps.setString(9, "A");
@@ -204,7 +204,7 @@ public class Modelo_Persona extends Persona {
             ps.setString(3, getNombre());
             ps.setString(4, getApellido());
             ps.setString(5, getGenero());
-            ps.setDate(6, getFecha_nacimiento());
+            ps.setDate(6, (java.sql.Date) getFecha_nacimiento());
             ps.setString(7, getDireccion());
             ps.setString(8, "A");
             ps.executeUpdate();
@@ -226,7 +226,7 @@ public class Modelo_Persona extends Persona {
             ps.setString(2, getNombre());
             ps.setString(3, getApellido());
             ps.setString(4, getGenero());
-            ps.setDate(5, getFecha_nacimiento());
+            ps.setDate(5, (java.sql.Date) getFecha_nacimiento());
             ps.setString(6, getDireccion());
             ps.setBinaryStream(7, getImagen(), getLargo());
             ps.executeUpdate();
@@ -246,7 +246,7 @@ public class Modelo_Persona extends Persona {
             ps.setString(2, getNombre());
             ps.setString(3, getApellido());
             ps.setString(4, getGenero());
-            ps.setDate(5, getFecha_nacimiento());
+            ps.setDate(5, (java.sql.Date) getFecha_nacimiento());
             ps.setString(6, getDireccion());
             ps.executeUpdate();
             return true;

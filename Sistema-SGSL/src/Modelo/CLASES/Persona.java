@@ -7,7 +7,7 @@ package Modelo.CLASES;
 
 import java.awt.Image;
 import java.io.FileInputStream;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *

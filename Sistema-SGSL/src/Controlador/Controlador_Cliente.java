@@ -268,7 +268,7 @@ public class Controlador_Cliente {
                 viewper.getTxtCedulaPersona().setText(listaBusper.get(i).getCedula());
                 viewper.getTxtNombrePersona().setText(listaBusper.get(i).getNombre());
                 viewper.getTxtApellidoPersona().setText(listaBusper.get(i).getApellido());
-                Date fechan = listaBusper.get(i).getFecha_nacimiento();
+                Date fechan = (Date) listaBusper.get(i).getFecha_nacimiento();
                 viewper.getFechaNacimientoPer().setDate(fechan);
                 if (listaBusper.get(i).getGenero().equals("M")) {
                     viewper.getRadioBtnMasculino().setSelected(true);

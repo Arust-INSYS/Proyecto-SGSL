@@ -31,11 +31,13 @@ public class Vista_Principal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jToolBar1 = new javax.swing.JToolBar();
         subMenu_Persona = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         subMenu_servicios = new javax.swing.JButton();
+        submenu_Pedidos = new javax.swing.JButton();
         sub_menupro = new javax.swing.JButton();
         btnbodega = new javax.swing.JButton();
         dkp_pane_principal = new javax.swing.JDesktopPane();
@@ -75,6 +77,12 @@ public class Vista_Principal extends javax.swing.JFrame {
         subMenu_servicios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(subMenu_servicios);
 
+        submenu_Pedidos.setText("Pedidos");
+        submenu_Pedidos.setFocusable(false);
+        submenu_Pedidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        submenu_Pedidos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(submenu_Pedidos);
+
         sub_menupro.setText("Productos");
         sub_menupro.setFocusable(false);
         sub_menupro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -88,24 +96,16 @@ public class Vista_Principal extends javax.swing.JFrame {
         jToolBar1.add(btnbodega);
 
         dkp_pane_principal.setBackground(new java.awt.Color(255, 255, 255));
+        dkp_pane_principal.setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADAORI.jpg"))); // NOI18N
-
-        dkp_pane_principal.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout dkp_pane_principalLayout = new javax.swing.GroupLayout(dkp_pane_principal);
-        dkp_pane_principal.setLayout(dkp_pane_principalLayout);
-        dkp_pane_principalLayout.setHorizontalGroup(
-            dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkp_pane_principalLayout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(148, 148, 148))
-        );
-        dkp_pane_principalLayout.setVerticalGroup(
-            dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 184, 0, 148);
+        dkp_pane_principal.add(jLabel2, gridBagConstraints);
 
         jLabel1.setText("          SGSL.version.1");
 
@@ -116,7 +116,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(243, 243, 243))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -140,15 +140,16 @@ public class Vista_Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        menu_principal.setBackground(new java.awt.Color(74, 234, 234));
         menu_principal.setPreferredSize(new java.awt.Dimension(236, 50));
 
         menu_persona.setText("Persona");
 
-        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menuItem_clientes.setText("Clientes");
         menu_persona.add(menuItem_clientes);
 
-        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
+        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menuItem_empleados.setText("Empleados");
         menu_persona.add(menuItem_empleados);
 
@@ -187,7 +188,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 962, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(dkp_pane_principal)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -195,9 +196,9 @@ public class Vista_Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(dkp_pane_principal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -276,6 +277,14 @@ public class Vista_Principal extends javax.swing.JFrame {
     public void setBtnRegresar(JButton btnRegresar) {
         this.btnRegresar = btnRegresar;
     }
+
+    public JButton getSubmenu_Pedidos() {
+        return submenu_Pedidos;
+    }
+
+    public void setSubmenu_Pedidos(JButton submenu_Pedidos) {
+        this.submenu_Pedidos = submenu_Pedidos;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -304,6 +313,7 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JButton subMenu_Persona;
     private javax.swing.JButton subMenu_servicios;
     private javax.swing.JButton sub_menupro;
+    private javax.swing.JButton submenu_Pedidos;
     // End of variables declaration//GEN-END:variables
 
     public JButton getSub_menupro() {

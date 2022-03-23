@@ -31,7 +31,6 @@ public class Vista_Principal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jToolBar1 = new javax.swing.JToolBar();
         subMenu_Persona = new javax.swing.JButton();
@@ -96,16 +95,23 @@ public class Vista_Principal extends javax.swing.JFrame {
         jToolBar1.add(btnbodega);
 
         dkp_pane_principal.setBackground(new java.awt.Color(255, 255, 255));
-        dkp_pane_principal.setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADAORI.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 184, 0, 148);
-        dkp_pane_principal.add(jLabel2, gridBagConstraints);
+
+        dkp_pane_principal.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout dkp_pane_principalLayout = new javax.swing.GroupLayout(dkp_pane_principal);
+        dkp_pane_principal.setLayout(dkp_pane_principalLayout);
+        dkp_pane_principalLayout.setHorizontalGroup(
+            dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dkp_pane_principalLayout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        dkp_pane_principalLayout.setVerticalGroup(
+            dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2)
+        );
 
         jLabel1.setText("          SGSL.version.1");
 

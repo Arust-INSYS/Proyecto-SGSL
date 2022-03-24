@@ -86,8 +86,10 @@ public class Controlador_productos {
     private void abrirDialogo_pro(int ce) {
         String title = null;
         if (ce == 3) {
+            limpiardatos();
             title = "Crear nuevo producto";
             vispro.getDialog_Crear().setName("crear");
+               vispro.getTxtidproducto().setText(String.valueOf(modelpro.IncrementoIdproducto()));
             Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
             int x = (int) ((dimension.getWidth() - vispro.getDialog_Crear().getWidth()) / 2);
             int y = (int) ((dimension.getHeight() - vispro.getDialog_Crear().getHeight()) / 2);
@@ -255,7 +257,7 @@ public class Controlador_productos {
                         vispro.getTxtfoto().setIcon(null);
                     } else {
                         Image ft = lp.get(i).getFoto();
-                        Image j = ft.getScaledInstance(196, 136, Image.SCALE_SMOOTH);
+                        Image j = ft.getScaledInstance(234, 194, Image.SCALE_SMOOTH);
                         Icon ic = new ImageIcon(j);
                         vispro.getTxtfoto().setIcon(ic);
                     }
@@ -390,7 +392,7 @@ public class Controlador_productos {
         int xx = vispro.getTblabodega().getSelectedRow();
         if (xx != -1) {
             String id = vispro.getTblabodega().getValueAt(xx, 0).toString();
-            int pro = Integer.parseInt(id);
+            //int pro = Integer.parseInt(id);
             vispro.getTxtidbodega().setText(id);
             int m = Integer.parseInt(vispro.getTblabodega().getValueAt(xx, 3).toString());
             SpinnerNumberModel n = new SpinnerNumberModel();

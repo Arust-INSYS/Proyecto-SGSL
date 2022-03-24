@@ -25,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,7 +63,7 @@ public class Controlador_Persona {
         IncremetoID();
         EventosComponentesVistaPersona();
         ControlesInformacionPrincipal();
-
+        this.vistaPer.getLblFechaAcutualVP().setText(LocalDate.now() + "");
     }
 
     public Controlador_Persona() {

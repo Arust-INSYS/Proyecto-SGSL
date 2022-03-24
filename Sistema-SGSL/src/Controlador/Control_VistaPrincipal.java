@@ -102,6 +102,7 @@ public class Control_VistaPrincipal {
         Modelo_Usuario mus = new Modelo_Usuario();
         Controlador_Login cl= new Controlador_Login(mus, visL);
         cl.IniciarBoton();
+        visL.setVisible(true);
     }
     
     public void datosUsuario(String user){

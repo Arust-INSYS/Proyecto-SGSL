@@ -72,7 +72,7 @@ public class Vista_Carga extends javax.swing.JFrame {
         LblPorcentajeVC.setText("0 %");
         jPanel1.add(LblPorcentajeVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(658, 360, -1, -1));
 
-        ProgressLoadingVC.setForeground(new java.awt.Color(153, 255, 153));
+        ProgressLoadingVC.setForeground(new java.awt.Color(0, 153, 0));
         jPanel1.add(ProgressLoadingVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 384, 700, 10));
 
         LblLoadingTextVC.setForeground(new java.awt.Color(255, 255, 255));

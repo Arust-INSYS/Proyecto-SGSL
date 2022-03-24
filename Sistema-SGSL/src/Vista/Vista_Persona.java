@@ -226,6 +226,14 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         this.LblNombreRojo = LblNombreRojo;
     }
 
+    public JLabel getLblFechaAcutualVP() {
+        return LblFechaAcutualVP;
+    }
+
+    public void setLblFechaAcutualVP(JLabel LblFechaAcutualVP) {
+        this.LblFechaAcutualVP = LblFechaAcutualVP;
+    }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -265,15 +273,20 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         BtnCrearPersona = new javax.swing.JButton();
         BtnEditarPersona = new javax.swing.JButton();
         BtnRemoverPersona = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblPersonas = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         TxtBuscarPersona = new javax.swing.JTextField();
         BtnActualizarPersona = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lblbuscar = new javax.swing.JLabel();
+        LblFechaAcutualVP = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel15 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+
+        DialogoPersona.setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(0, 255, 204));
 
@@ -520,8 +533,6 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnCrearPersona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -540,17 +551,16 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         BtnEditarPersona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnEditarPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-persona-de-sexo-masculino-48.png"))); // NOI18N
         BtnEditarPersona.setText("Editar");
+        BtnEditarPersona.setBorder(null);
         BtnEditarPersona.setContentAreaFilled(false);
         getContentPane().add(BtnEditarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 120, 60));
 
         BtnRemoverPersona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnRemoverPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-retire-hombre-usuario-48.png"))); // NOI18N
         BtnRemoverPersona.setText("Remover");
+        BtnRemoverPersona.setBorder(null);
         BtnRemoverPersona.setContentAreaFilled(false);
-        getContentPane().add(BtnRemoverPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 140, 60));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Imagen4F.png"))); // NOI18N
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 200, 270));
+        getContentPane().add(BtnRemoverPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 140, 60));
 
         TblPersonas.setBackground(new java.awt.Color(235, 238, 238));
         TblPersonas.setModel(new javax.swing.table.DefaultTableModel(
@@ -563,7 +573,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TblPersonas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 860, 300));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 820, 300));
 
         jPanel2.setBackground(new java.awt.Color(78, 199, 229));
 
@@ -571,27 +581,40 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1170, Short.MAX_VALUE)
+            .addGap(0, 1090, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 57, Short.MAX_VALUE)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 1170, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 1090, 30));
+        getContentPane().add(TxtBuscarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 370, -1));
 
-        jLabel1.setText("Buscar");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
-        getContentPane().add(TxtBuscarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 319, -1));
-
+        BtnActualizarPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
         BtnActualizarPersona.setText("Actualizar");
-        getContentPane().add(BtnActualizarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, -1, -1));
+        BtnActualizarPersona.setBorder(null);
+        BtnActualizarPersona.setContentAreaFilled(false);
+        getContentPane().add(BtnActualizarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Servicios_Logo_150.png"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 160, 170));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 160, 170));
+
+        jLabel13.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel13.setText("REGISTRO PERSONA");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 340, 40));
+
+        lblbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
+        getContentPane().add(lblbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, 40));
+        getContentPane().add(LblFechaAcutualVP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, 120, 20));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 330, 10));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, 280));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 470));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -615,6 +638,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JLabel LbLFechaRojo;
     private javax.swing.JLabel LblApellido;
     private javax.swing.JLabel LblCedulaRojo;
+    private javax.swing.JLabel LblFechaAcutualVP;
     private javax.swing.JLabel LblFotoPersona;
     private javax.swing.JLabel LblGeneroRojo;
     private javax.swing.JLabel LblNombreRojo;
@@ -627,11 +651,11 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtDireccionPersona;
     private javax.swing.JTextField TxtNombrePersona;
     private javax.swing.JTextField Txt_ID_Persona;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -645,5 +669,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblbuscar;
     // End of variables declaration//GEN-END:variables
 }

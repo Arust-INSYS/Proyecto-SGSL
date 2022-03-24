@@ -89,13 +89,6 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         this.BtnEditarServicio = BtnEditarServicio;
     }
 
-    public JButton getBtnImprimirServicio() {
-        return BtnImprimirServicio;
-    }
-
-    public void setBtnImprimirServicio(JButton BtnImprimirServicio) {
-        this.BtnImprimirServicio = BtnImprimirServicio;
-    }
 
     public JButton getBtnRemoverServicio() {
         return BtnRemoverServicio;
@@ -249,7 +242,6 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         BtnCrearServicio = new javax.swing.JButton();
         BtnEditarServicio = new javax.swing.JButton();
         BtnRemoverServicio = new javax.swing.JButton();
-        BtnImprimirServicio = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblServicio = new javax.swing.JTable();
         BtnActualizarServicio = new javax.swing.JButton();
@@ -455,9 +447,6 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         BtnRemoverServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnRemoverServicio.setText("Remover");
 
-        BtnImprimirServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnImprimirServicio.setText("Imprimir");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -473,16 +462,13 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
                 .addComponent(BtnEditarServicio)
                 .addGap(34, 34, 34)
                 .addComponent(BtnRemoverServicio)
-                .addGap(46, 46, 46)
-                .addComponent(BtnImprimirServicio)
-                .addGap(194, 194, 194))
+                .addGap(323, 323, 323))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnImprimirServicio)
                     .addComponent(BtnRemoverServicio)
                     .addComponent(BtnEditarServicio)
                     .addComponent(BtnCrearServicio)
@@ -525,7 +511,6 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnActualizarServicio;
     private javax.swing.JButton BtnCrearServicio;
     private javax.swing.JButton BtnEditarServicio;
-    private javax.swing.JButton BtnImprimirServicio;
     private javax.swing.JButton BtnRemoverServicio;
     private javax.swing.JDialog DialogEmple;
     private javax.swing.JDialog Dialog_Crear;

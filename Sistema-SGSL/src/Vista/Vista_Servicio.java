@@ -236,15 +236,17 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblempleados = new javax.swing.JTable();
         ingreemple = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        TxtBuscarServicio = new javax.swing.JTextField();
-        BtnCrearServicio = new javax.swing.JButton();
-        BtnEditarServicio = new javax.swing.JButton();
-        BtnRemoverServicio = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblServicio = new javax.swing.JTable();
         BtnActualizarServicio = new javax.swing.JButton();
+        TxtBuscarServicio = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        BtnCrearServicio = new javax.swing.JButton();
+        BtnEditarServicio = new javax.swing.JButton();
+        BtnRemoverServicio = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Descripción:");
@@ -436,49 +438,6 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Buscar");
-
-        BtnCrearServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnCrearServicio.setText("Crear");
-
-        BtnEditarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnEditarServicio.setText("Editar");
-
-        BtnRemoverServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnRemoverServicio.setText("Remover");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(BtnCrearServicio)
-                .addGap(33, 33, 33)
-                .addComponent(BtnEditarServicio)
-                .addGap(34, 34, 34)
-                .addComponent(BtnRemoverServicio)
-                .addGap(323, 323, 323))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnRemoverServicio)
-                    .addComponent(BtnEditarServicio)
-                    .addComponent(BtnCrearServicio)
-                    .addComponent(TxtBuscarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(19, 19, 19))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 840, -1));
-
         tblServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -497,11 +456,48 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblServicio);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 824, 257));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 640, 270));
 
         BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnActualizarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-escudo-48.png"))); // NOI18N
         BtnActualizarServicio.setText("Actualizar");
-        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, -1, -1));
+        BtnActualizarServicio.setBorder(null);
+        BtnActualizarServicio.setContentAreaFilled(false);
+        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 130, 70));
+        getContentPane().add(TxtBuscarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 330, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
+
+        BtnCrearServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnCrearServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48.png"))); // NOI18N
+        BtnCrearServicio.setText("Crear");
+        BtnCrearServicio.setBorder(null);
+        BtnCrearServicio.setContentAreaFilled(false);
+        getContentPane().add(BtnCrearServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        BtnEditarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48 (2).png"))); // NOI18N
+        BtnEditarServicio.setText("Editar");
+        BtnEditarServicio.setBorder(null);
+        BtnEditarServicio.setContentAreaFilled(false);
+        getContentPane().add(BtnEditarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+
+        BtnRemoverServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnRemoverServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48 (1).png"))); // NOI18N
+        BtnRemoverServicio.setText("Remover");
+        BtnRemoverServicio.setBorder(null);
+        BtnRemoverServicio.setContentAreaFilled(false);
+        getContentPane().add(BtnRemoverServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 190, 280));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/SERVICAP22.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 320, 180));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, -6, 860, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -530,9 +526,11 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

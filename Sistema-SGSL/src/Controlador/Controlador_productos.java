@@ -419,7 +419,7 @@ public class Controlador_productos {
         List<Bodega> lisbo = modelpro.listarperbusquedabodega(vispro.getTxbuscaidbo().getText());
         Holder<Integer> i = new Holder<>(0);
         lisbo.stream().forEach(q -> {
-            ta.addRow(new Object[5]);//cantidad de columna
+            ta.addRow(new Object[5]);//cantidad de colu¿mna
             vispro.getTblabodega().setValueAt(q.getIdbodega(), i.value, 0);
             vispro.getTblabodega().setValueAt(q.getNumero(), i.value, 1);
             vispro.getTblabodega().setValueAt(q.getCantidad(), i.value, 2);

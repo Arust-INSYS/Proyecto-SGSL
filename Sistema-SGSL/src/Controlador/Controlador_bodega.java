@@ -40,6 +40,7 @@ public class Controlador_bodega {
         visbo.getBtnEditarServicio().addActionListener(l -> abrirDialogo_pro(4));
         visbo.getBtnActualizarServicio().addActionListener(l -> cargarbodegas());
         visbo.getBtnAceptar_pro1().addActionListener(l -> guardar());
+        visbo.getBtnCancelar_pro1().addActionListener(j-> cancelar());
         visbo.getBtnEditarServicio().addActionListener(l -> editar());
         visbo.getBtnRemoverServicio().addActionListener(l -> eli());
         setEventoKeytyped(visbo.getTxtBuscarServicio());
@@ -49,10 +50,12 @@ public class Controlador_bodega {
     private void abrirDialogo_pro(int ce) {
         String title = null;
         if (ce == 3) {
-            //limpiardatos();
+            lim();
             title = "Crear nueva bodega";
             visbo.getDialog_Crearbo().setName("crear");
             visbo.getDialog_Crearbo().setVisible(true);
+        visbo.getTxtidbodega().setText(String.valueOf(modelbo.Incrementoodega()));
+            
         } else {
             int h = visbo.getTABLABODEGA().getSelectedRow();
             if (h != -1) {
@@ -175,7 +178,11 @@ public class Controlador_bodega {
         visbo.getDialog_Crearbo().setVisible(false);
 
     }
+void cancelar(){
+    lim();
+    visbo.getDialog_Crearbo().setVisible(false);
 
+}
     private void bus(java.awt.event.KeyEvent evt) {
         DefaultTableModel ta;
         ta = (DefaultTableModel) visbo.getTABLABODEGA().getModel();

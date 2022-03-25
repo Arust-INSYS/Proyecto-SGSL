@@ -268,13 +268,12 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         btningresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmpleado = new javax.swing.JTable();
-        BtnActualizar = new javax.swing.JButton();
         TxtBuscarEmpleado = new javax.swing.JTextField();
         lblbuscar = new javax.swing.JLabel();
         BtnEditar = new javax.swing.JButton();
         BtnRemover = new javax.swing.JButton();
         BtnCrear = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        BtnActualizar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -494,32 +493,25 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblEmpleado);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 680, 180));
-
-        BtnActualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
-        BtnActualizar.setText("Actualizar");
-        BtnActualizar.setBorder(null);
-        BtnActualizar.setContentAreaFilled(false);
-        getContentPane().add(BtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 30, 110, 50));
-        getContentPane().add(TxtBuscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 319, 30));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 680, 270));
+        getContentPane().add(TxtBuscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 319, 30));
 
         lblbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
-        getContentPane().add(lblbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
+        getContentPane().add(lblbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
 
         BtnEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-grupo-de-usuarios-hombre-y-mujer-48 (2).png"))); // NOI18N
         BtnEditar.setText("Editar");
         BtnEditar.setBorder(null);
         BtnEditar.setContentAreaFilled(false);
-        getContentPane().add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
+        getContentPane().add(BtnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
 
         BtnRemover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-grupo-de-usuarios-hombre-y-mujer-48 (1).png"))); // NOI18N
         BtnRemover.setText("Remover");
         BtnRemover.setBorder(null);
         BtnRemover.setContentAreaFilled(false);
-        getContentPane().add(BtnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+        getContentPane().add(BtnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
 
         BtnCrear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-grupo-de-usuarios-hombre-y-mujer-48.png"))); // NOI18N
@@ -531,19 +523,23 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
                 BtnCrearActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+        getContentPane().add(BtnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Servicios_Logo_150.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 160));
+        BtnActualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-PRO{-48.png"))); // NOI18N
+        BtnActualizar.setText("Actualizar");
+        BtnActualizar.setBorder(null);
+        BtnActualizar.setContentAreaFilled(false);
+        getContentPane().add(BtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, 60));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Cap3.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 250, 150));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/EMPLECAP22.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, 190));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 190, 280));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 190, 280));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 470));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -577,7 +573,6 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

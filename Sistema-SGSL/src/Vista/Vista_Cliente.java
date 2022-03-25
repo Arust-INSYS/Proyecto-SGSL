@@ -66,13 +66,6 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         this.BtnEditarCliente = BtnEditarCliente;
     }
 
-    public JButton getBtnImprimirCliente() {
-        return BtnImprimirCliente;
-    }
-
-    public void setBtnImprimirCliente(JButton BtnImprimirCliente) {
-        this.BtnImprimirCliente = BtnImprimirCliente;
-    }
 
     public JButton getBtnRemoverCliente() {
         return BtnRemoverCliente;
@@ -169,7 +162,16 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     public void setLblNameBuscar(JLabel LblNameBuscar) {
         this.LblNameBuscar = LblNameBuscar;
     }
+
+    public JLabel getLblFechaAcutualVC() {
+        return LblFechaAcutualVC;
+    }
+
+    public void setLblFechaAcutualVC(JLabel LblFechaAcutualVC) {
+        this.LblFechaAcutualVC = LblFechaAcutualVC;
+    }
     
+   
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -196,18 +198,22 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         LblNameBuscar = new javax.swing.JLabel();
         SeparatorCliente = new javax.swing.JSeparator();
         LblNombresClienteBusqueda = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        TxtBuscarCliente = new javax.swing.JTextField();
-        BtnCrearCliente = new javax.swing.JButton();
-        BtnEditarCliente = new javax.swing.JButton();
-        BtnRemoverCliente = new javax.swing.JButton();
-        BtnImprimirCliente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblCliente = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         lblEstado2 = new javax.swing.JLabel();
+        BtnCrearCliente = new javax.swing.JButton();
+        BtnEditarCliente = new javax.swing.JButton();
+        BtnRemoverCliente = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         BtnActualizarCliente = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        TxtBuscarCliente = new javax.swing.JTextField();
+        lblbuscar = new javax.swing.JLabel();
+        LblFechaAcutualVC = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel10.setText("Id_Cliente:");
 
@@ -335,55 +341,8 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
-
-        jLabel1.setText("Buscar");
-
-        BtnCrearCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnCrearCliente.setText("Crear");
-
-        BtnEditarCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnEditarCliente.setText("Editar");
-
-        BtnRemoverCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnRemoverCliente.setText("Remover");
-
-        BtnImprimirCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnImprimirCliente.setText("Imprimir");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TxtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(BtnCrearCliente)
-                .addGap(33, 33, 33)
-                .addComponent(BtnEditarCliente)
-                .addGap(34, 34, 34)
-                .addComponent(BtnRemoverCliente)
-                .addGap(46, 46, 46)
-                .addComponent(BtnImprimirCliente)
-                .addGap(194, 194, 194))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnImprimirCliente)
-                    .addComponent(BtnRemoverCliente)
-                    .addComponent(BtnEditarCliente)
-                    .addComponent(BtnCrearCliente)
-                    .addComponent(TxtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(25, 25, 25))
-        );
+        setFocusable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -395,11 +354,11 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TblCliente);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 770, 310));
+
         jPanel4.setBackground(new java.awt.Color(220, 220, 220));
 
         lblEstado2.setText("Clientes 1.0");
-
-        BtnActualizarCliente.setText("Actualizar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -408,40 +367,65 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblEstado2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnActualizarCliente)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEstado2)
-                    .addComponent(BtnActualizarCliente))
+                .addComponent(lblEstado2)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 844, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 1040, 30));
+
+        BtnCrearCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnCrearCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-grupo-de-usuarios-hombre-y-mujer-48.png"))); // NOI18N
+        BtnCrearCliente.setText("Crear");
+        BtnCrearCliente.setBorder(null);
+        BtnCrearCliente.setContentAreaFilled(false);
+        getContentPane().add(BtnCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 140, -1));
+
+        BtnEditarCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-grupo-de-usuarios-hombre-y-mujer-48 (2).png"))); // NOI18N
+        BtnEditarCliente.setText("Editar");
+        BtnEditarCliente.setBorder(null);
+        BtnEditarCliente.setContentAreaFilled(false);
+        getContentPane().add(BtnEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 140, -1));
+
+        BtnRemoverCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnRemoverCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-grupo-de-usuarios-hombre-y-mujer-48 (1).png"))); // NOI18N
+        BtnRemoverCliente.setText("Remover");
+        BtnRemoverCliente.setBorder(null);
+        BtnRemoverCliente.setContentAreaFilled(false);
+        getContentPane().add(BtnRemoverCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 140, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, 280));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Servicios_Logo_150.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 150, 160));
+
+        BtnActualizarCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnActualizarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
+        BtnActualizarCliente.setText("Actualizar");
+        BtnActualizarCliente.setBorder(null);
+        BtnActualizarCliente.setContentAreaFilled(false);
+        getContentPane().add(BtnActualizarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel8.setText("REGISTRO CLIENTE");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 320, 40));
+        getContentPane().add(TxtBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 370, 20));
+
+        lblbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
+        getContentPane().add(lblbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, 40));
+        getContentPane().add(LblFechaAcutualVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 120, 20));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 320, 10));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -457,10 +441,10 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnCancelarCli;
     private javax.swing.JButton BtnCrearCliente;
     private javax.swing.JButton BtnEditarCliente;
-    private javax.swing.JButton BtnImprimirCliente;
     private javax.swing.JButton BtnRemoverCliente;
     private javax.swing.JDialog DialogoCliente;
     private javax.swing.JPanel JpanelInformacionBusqueda;
+    private javax.swing.JLabel LblFechaAcutualVC;
     private javax.swing.JLabel LblNameBuscar;
     private javax.swing.JLabel LblNombresClienteBusqueda;
     private javax.swing.JSeparator SeparatorCliente;
@@ -470,15 +454,19 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtTelefonoCliente;
     private javax.swing.JTextField Txt_ID_Cliente;
     private javax.swing.JTextField Txt_ID_Persona;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblEstado2;
+    private javax.swing.JLabel lblbuscar;
     // End of variables declaration//GEN-END:variables
 }

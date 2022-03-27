@@ -582,7 +582,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
 
         BtnEditarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnEditarServicio.setForeground(new java.awt.Color(0, 0, 0));

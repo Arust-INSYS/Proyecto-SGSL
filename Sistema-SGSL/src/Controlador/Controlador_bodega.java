@@ -65,7 +65,7 @@ public class Controlador_bodega {
             }
         }
         visbo.getDialog_Crearbo().setLocationRelativeTo(visbo);
-        visbo.getDialog_Crearbo().setSize(480, 400);
+        visbo.getDialog_Crearbo().setSize(540, 420);
         visbo.getDialog_Crearbo().setTitle(title);
     }
 

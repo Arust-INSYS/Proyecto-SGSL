@@ -33,6 +33,8 @@ public class Controlador_bodega {
         visbo.setVisible(true);
         cargarbodegas();
         visbo.getTxtfechahoy().setText(fechahoy + "");
+                visbo.getTxtfecha().setText(fechahoy + "");
+
     }
 
     public void iniciaControl() {

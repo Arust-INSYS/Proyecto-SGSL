@@ -33,9 +33,9 @@ public class Modelo_Pedido extends Pedidos {
     public List<Pedidos> listarPedidos() {
         List<Pedidos> lista = new ArrayList<Pedidos>();
         try {
-            String sql = "select * from servicios";
+            String sql = "select * from pedido";
             ResultSet rs = cpg.colsulta(sql);
-            byte[] bytea;
+            
             while (rs.next()) {
                 Pedidos pedido = new Pedidos();
                 pedido.setId_pedido(rs.getInt("id_pedido"));
@@ -57,19 +57,18 @@ public class Modelo_Pedido extends Pedidos {
         }
     }
 
-    public boolean creaPedido() {
+    public boolean Insertar_Pedido() {
         try {
             String sql;
-            sql = "INSERT INTO Pedido (id_pedido, fecha_pedido, direccion, cantida_servicios, total_servicios, id_cliente, id_servicio)";
-            sql += "VALUES(?,?,?,?,?,?,?)";
+            sql = "INSERT INTO Pedido (id_pedido, direccion,cantidad_servicios, total_servicios, id_cliente, id_servicio)";
+            sql += "VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_pedido());
-//            ps.setDate(2, getFecha_pedido());
-            ps.setString(3, getDireccion());
-            ps.setDouble(4, getCantidad_servicios());
-            ps.setFloat(5, getTotal_servicios());
-            ps.setInt(6, getId_cliente());
-            ps.setInt(7, getId_servicio());
+            ps.setString(2, getDireccion());
+            ps.setDouble(3, getCantidad_servicios());
+            ps.setFloat(4, getTotal_servicios());
+            ps.setInt(5, getId_cliente());
+            ps.setInt(6, getId_servicio());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {

@@ -27,9 +27,9 @@ public class Ejecutar {
         // TODO code application logic here
         
        
-//        Vista_Principal vista = new Vista_Principal();
-//        Control_VistaPrincipal controlador = new Control_VistaPrincipal(vista);
-//        controlador.iniciaControl();
+        Vista_Principal vista = new Vista_Principal();
+        Control_VistaPrincipal controlador = new Control_VistaPrincipal(vista);
+        controlador.iniciaControl();
         
         //logeo
 //        Vista_Login vl = new Vista_Login();
@@ -37,9 +37,9 @@ public class Ejecutar {
 //        Controlador_Login cl = new Controlador_Login(mu, vl);
 //        cl.IniciarBoton();
 //        //
-        Vista_Carga viewcarga = new Vista_Carga();
-        Controlador_Carga conC = new Controlador_Carga(viewcarga);
-        conC.inicia_Control_Carga();
+//        Vista_Carga viewcarga = new Vista_Carga();
+//        Controlador_Carga conC = new Controlador_Carga(viewcarga);
+//        conC.inicia_Control_Carga();
     }
     
 }

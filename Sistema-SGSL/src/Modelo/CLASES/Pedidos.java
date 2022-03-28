@@ -16,7 +16,7 @@ public class Pedidos {
     private Date fecha_pedido;
     private String direccion;
     private int cantidad_servicios;
-     private float total_servicios;
+    private float total_servicios;
     private int id_cliente;
     private int id_servicio;
 

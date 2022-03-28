@@ -9,61 +9,103 @@ import Modelo.CLASES.Pedidos;
 import Modelo.Modelo_Pedido;
 import Vista.Vista_Pedidos;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.xml.ws.Holder;
-
 /**
  *
  * @author HP
  */
 public class Controlador_Pedido {
+    
+    private Modelo_Pedido modelo;
+    private Vista_Pedidos vista;
+    DefaultTableModel modelo_tabla;
 
-    private Modelo_Pedido modelo_pedido;
-    private Vista_Pedidos vista_pedido;
-
-    public Controlador_Pedido(Modelo_Pedido modelo_pedido, Vista_Pedidos vista_pedido) {
-        this.modelo_pedido = modelo_pedido;
-        this.vista_pedido = vista_pedido;
-        vista_pedido.setVisible(true);
+    public Controlador_Pedido(Modelo_Pedido modelo, Vista_Pedidos vista) {
+        this.modelo = modelo;
+        this.vista = vista;
+        vista.setVisible(true);
+        
     }
     
-     
-  
-    public void cargarPedidos(String id) {
-//        vista_pedido.getTablaPedidos().setDefaultRenderer();//La manera de renderizar la tabla.
-        vista_pedido.getTablaPedidos().setRowHeight(100);
-
-        //enlazar el modelo de a tabla con mi controlador 
-        DefaultTableModel tblModel;
-        tblModel = (DefaultTableModel) vista_pedido.getTablaPedidos().getModel();
-        tblModel.setNumRows(0); // limpio las filas de la tabla
-        Modelo_Pedido mp = new Modelo_Pedido();
-        List<Pedidos> listap = mp.listarPedidos(id); // enlazo al modelo y obtengo los datos
-        Holder<Integer> i = new Holder<>(0);//contador para el no. fila
-
-        listap.stream().forEach(pe -> {
-
-            tblModel.addRow(new Object[5]);//Creo una fila vacia/
-            
-            vista_pedido.getTablaPedidos().setValueAt(pe.getId_cliente(), i.value, 0);
-            vista_pedido.getTablaPedidos().setValueAt(pe.getDireccion(), i.value, 1);
-            vista_pedido.getTablaPedidos().setValueAt(pe.getFecha_pedido(), i.value, 2);
-            vista_pedido.getTablaPedidos().setValueAt(pe.getCantidad_servicios(), i.value, 3);
-            vista_pedido.getTablaPedidos().setValueAt(pe.getTotal_servicios(), i.value, 4);
-          
-            i.value++;
-
-        });
+    
+    public void incioControl(){
+        
+//        vista.getBtnActualizar().addActionListener(l->cargarPedido());
+        agregar_datos();
+        vista.getBtnAgregar().addActionListener(l->agregar_fila());
+        vista.getBtnEliminar().addActionListener(l->eliminar());
+        
     }
+    private void agregar_datos(){
+        
+        modelo_tabla = (DefaultTableModel) vista.getTablaPedidos().getModel();
+        modelo_tabla.addColumn("ID_PEDIDO");
+        modelo_tabla.addColumn("DIRECCIÓN");
+        modelo_tabla.addColumn("CANTIDAD");
+        modelo_tabla.addColumn("TOTAL");
+        modelo_tabla.addColumn("ID_CLIENTE");
+        modelo_tabla.addColumn("ID_SERVICIO");
+        this.vista.getTablaPedidos().setModel(modelo_tabla);
+    }
+    private void agregar_fila(){
+        String [] info = new String[6];
+        info[0] = vista.getTxtIdPedido().getText();
+        info[1] = vista.getTxtDireccion().getText();
+        info[2] = vista.getTxtCantidad().getText();
+        info[3] = vista.getTxtValor().getText();
+        info[4] = vista.getTxtIdClientes().getText();
+        info[5] = vista.getTxtServicio().getText();
+        modelo_tabla.addRow(info);
+        vista.getTxtIdPedido().setText("");
+        vista.getTxtIdClientes().setText("");
+        vista.getTxtDireccion().setText("");
+        vista.getTxtValor().setText("");
+        vista.getTxtServicio().setText("");
+          
+                
+    }
+    private void eliminar(){
+        int fila=vista.getTablaPedidos().getSelectedRow();
+        if(fila>=0){
+            modelo_tabla.removeRow(fila);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccionar Fila");
+        }
+    }
+     
+//   private void cargarPedido() {
+//        
+//        DefaultTableModel tblModel;
+//        tblModel = (DefaultTableModel) vista.getTablaPedidos().getModel();
+//        tblModel.setNumRows(0);
+//        List<Pedidos> listarPedido=modelo.listarPedidos();
+//        listarPedido.stream().forEach(ped->{
+//            
+//            String id_pedido = Integer.toString(ped.getId_pedido());
+//            String id_cliente = Integer.toString(ped.getId_cliente());
+//            String cantidad_serv = Integer.toString(ped.getCantidad_servicios());
+//            String total_serv = Double.toString(ped.getTotal_servicios());
+//            String id_serv = Integer.toString(ped.getId_servicio());        
+//                String[] filap={
+//                id_pedido, ped.getDireccion(), cantidad_serv,total_serv,
+//                    id_cliente,id_serv
+//                 
+//            };
+//                tblModel.addRow(filap);
+//            
+//      });  
+//        }
+    
 
     
 
      public void limpiar_pedido(){
-      vista_pedido.getTxtIdPedido().setText("");
-      vista_pedido.getTxtIdClientes().setText("");
-      vista_pedido.getTxtDirección().setText("");
-      vista_pedido.getFechapedido().setDate(null);
-      vista_pedido.getNumeroServicios().setValue(0);
+      vista.getTxtIdPedido().setText("");
+      vista.getTxtIdClientes().setText("");
+      vista.getTxtDireccion().setText("");
+//      vista.getFechapedido().setDate(null);
+//      vista.getNumeroServicios().setValue(0);
      
     }
 }

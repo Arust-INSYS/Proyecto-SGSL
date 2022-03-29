@@ -8,7 +8,12 @@ package Controlador;
 import Modelo.CLASES.Pedidos;
 import Modelo.Modelo_Pedido;
 import Vista.Vista_Pedidos;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -34,8 +39,9 @@ public class Controlador_Pedido {
 //        vista.getBtnActualizar().addActionListener(l->cargarPedido());
         agregar_datos();
         vista.getBtnAgregar().addActionListener(l->agregar_fila());
-        vista.getBtnEliminar().addActionListener(l->eliminar());
-        
+        vista.getBtnEliminar().addActionListener(l->eliminar_fila());
+        vista.getBtnEnviar().addActionListener(l-> guardar());
+        vista.getBtnGuardar2().addActionListener(l->guardar3());
     }
     private void agregar_datos(){
         
@@ -65,7 +71,7 @@ public class Controlador_Pedido {
           
                 
     }
-    private void eliminar(){
+    private void eliminar_fila(){
         int fila=vista.getTablaPedidos().getSelectedRow();
         if(fila>=0){
             modelo_tabla.removeRow(fila);
@@ -73,6 +79,92 @@ public class Controlador_Pedido {
             JOptionPane.showMessageDialog(null, "Seleccionar Fila");
         }
     }
+    private void guardar2(){
+        
+//        List<Pedidos> ped =new ArrayList<Pedidos>();
+//        ped.stream().forEach(pd->{
+//        
+//            });
+        
+        
+          for (int i = 0; i < vista.getTablaPedidos().getRowCount(); i++) {
+          
+          System.out.println("#Lista: "+i+
+                " "+"ID_Pedido: "+vista.getTablaPedidos().getValueAt(i, 0)+
+                " "+"Direccion: "+vista.getTablaPedidos().getValueAt(i, 1)+
+                " "+"Cantidad: "+vista.getTablaPedidos().getValueAt(i, 2)+
+                " "+"Valor: "+vista.getTablaPedidos().getValueAt(i, 3)+
+                " "+"Id_cliente: "+vista.getTablaPedidos().getValueAt(i, 4)+
+                " "+"Id_Servicio: "+vista.getTablaPedidos().getValueAt(i, 5));
+          
+ 
+          }      
+        
+    }
+    private void guardar3(){
+        for (int i = 0; i < vista.getTablaPedidos().getRowCount(); i++) {
+            //Se pretende leer las filas de la tabla y luego guardarlas
+            
+          int id_pedido=Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 0));
+          String direccion=(String) vista.getTablaPedidos().getValueAt(i, 1);
+          int cantidad = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 2));
+          double valor = Double.parseDouble((String) vista.getTablaPedidos().getValueAt(i, 3));
+          int id_cliente = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 4));
+          int id_servicio = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 5));
+          
+           Modelo_Pedido pedido = new Modelo_Pedido();
+           pedido.setId_pedido(id_pedido);
+            pedido.setDireccion(direccion);
+            pedido.setCantidad_servicios(cantidad);
+            pedido.setTotal_servicios((float) valor);
+            pedido.setId_cliente(id_cliente);
+            pedido.setId_servicio(id_servicio);
+            
+           if(pedido.Insertar_Pedido()){
+               
+                JOptionPane.showMessageDialog(vista,"Producto Creada Correctamente");
+               
+            }else{
+            
+                 JOptionPane.showMessageDialog(vista,"No se pudo crear el producto");
+                 
+    };
+           
+          System.out.println("#Lista: "+i+
+                " "+"ID_Pedido: "+vista.getTablaPedidos().getValueAt(i, 0)+
+                " "+"Direccion: "+vista.getTablaPedidos().getValueAt(i, 1)+
+                " "+"Cantidad: "+vista.getTablaPedidos().getValueAt(i, 2)+
+                " "+"Valor: "+vista.getTablaPedidos().getValueAt(i, 3)+
+                " "+"Id_cliente: "+vista.getTablaPedidos().getValueAt(i, 4)+
+                " "+"Id_Servicio: "+vista.getTablaPedidos().getValueAt(i, 5));
+          
+ 
+          }
+    }
+    
+    private void guardar(){
+         int id_pedido=Integer.parseInt(vista.getTxtIdPedido().getText());
+            String direccion=vista.getTxtDireccion().getText();
+            int cantidad = Integer.parseInt(vista.getTxtCantidad().getText());
+            double valor = Double.parseDouble(vista.getTxtValor().getText());
+            int id_cliente = Integer.parseInt(vista.getTxtIdClientes().getText());
+            int id_servicio = Integer.parseInt(vista.getTxtServicio().getText());
+            
+            Modelo_Pedido pedido = new Modelo_Pedido();
+              
+            pedido.setId_pedido(id_pedido);
+            pedido.setDireccion(direccion);
+            pedido.setCantidad_servicios(cantidad);
+            pedido.setTotal_servicios((float) valor);
+            pedido.setId_cliente(id_cliente);
+            pedido.setId_servicio(id_servicio);
+            
+            if(pedido.Insertar_Pedido()){
+                JOptionPane.showMessageDialog(vista,"Producto Creada Correctamente");
+            }else{
+            
+                 JOptionPane.showMessageDialog(vista,"No se pudo crear el producto");
+    };
      
 //   private void cargarPedido() {
 //        
@@ -95,7 +187,7 @@ public class Controlador_Pedido {
 //                tblModel.addRow(filap);
 //            
 //      });  
-//        }
+        }
     
 
     

@@ -54,7 +54,8 @@ public class Controlador_Persona {
     private JFileChooser jfc;
 
     Controlador_Fecha conf = new Controlador_Fecha();
-
+    
+    //Constructor de la clase Controlador de persona.
     public Controlador_Persona(Modelo_Persona modelPer, Vista_Persona vistaPer) {
         this.modelPer = modelPer;
         this.vistaPer = vistaPer;
@@ -69,14 +70,17 @@ public class Controlador_Persona {
     public Controlador_Persona() {
     }
 
+    //Método que llama otro método con los controles activos.
     private void ControlesInformacionPrincipal() {
         ControlLblPrincipalesActivos();
     }
-
+    
+    //Método que permite visualizar el incremento del ID en la vista persona.
     private void IncremetoID() {
         vistaPer.getTxt_ID_Persona().setText(String.valueOf(modelPer.IncrementoIdPersona()));
     }
-
+    
+    //Método de control de todos los botones iniciales.
     public void ControlBotonesPrincipales() {
         vistaPer.getBtnCrearPersona().addActionListener(l -> DialogoCrearEditarPersona(1));
         vistaPer.getBtnEditarPersona().addActionListener(l -> DialogoCrearEditarPersona(2));
@@ -87,6 +91,7 @@ public class Controlador_Persona {
         vistaPer.getBtnCancelarPer().addActionListener(l -> CancelarViewPersona());
     }
 
+    //Método que controla los eventos.
     private void EventosComponentesVistaPersona() {
         KeyListener buscar = new KeyListener() {
             @Override
@@ -267,6 +272,7 @@ public class Controlador_Persona {
         vistaPer.getFechaNacimientoPer().addKeyListener(fnaci);
     }
 
+    //Método que pinta los labios de color rojo cuando los datos están mal ingresados.
     private void ControlLblPrincipalesActivos() {
         vistaPer.getLblCedulaRojo().setVisible(false);
         vistaPer.getLblNombreRojo().setVisible(false);
@@ -275,6 +281,7 @@ public class Controlador_Persona {
         vistaPer.getLblGeneroRojo().setVisible(false);
     }
 
+    //Método que permite abrir un FileChooser para escoger una imagen.
     private void ExaminarFoto() {
         jfc = new JFileChooser();
         FileNameExtensionFilter tipo = new FileNameExtensionFilter("JPG, JPEG", "jpg", "jpeg");
@@ -297,6 +304,7 @@ public class Controlador_Persona {
         }
     }
 
+    //Método que abre el diálogo dependiendo de del botón.
     public void DialogoCrearEditarPersona(int tipo) {
         String titulo = null;
         if (tipo == 1) {
@@ -329,10 +337,12 @@ public class Controlador_Persona {
         vistaPer.getDialogoPersona().setTitle(titulo);
     }
 
+    //Método que bloquea el TextFiel de la vista persona.
     private void BloqueoTexField() {
         vistaPer.getTxt_ID_Persona().setEnabled(false);
     }
 
+    //Método de validación de todos los datos ingresados por el usuario.
     private void crearEditarPersona() {
         boolean verifico = false;
         String fecha = ((JTextField) vistaPer.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
@@ -466,6 +476,7 @@ public class Controlador_Persona {
         return validac;
     }
 
+    //Método que permite validar una cédula válida.
     public boolean validadorDeCedula(String cedula) {
         boolean cedulaCorrecta = false;
 
@@ -512,6 +523,7 @@ public class Controlador_Persona {
         return cedulaCorrecta;
     }
 
+    //Método que permite crear una persona.
     private void CrearPersona() {
         Modelo_Persona modelPer = new Modelo_Persona();
         modelPer.setId_persona(Integer.parseInt(vistaPer.getTxt_ID_Persona().getText()));
@@ -562,6 +574,7 @@ public class Controlador_Persona {
         }
     }
 
+    //Método que permite modificar los datos de una persona.Método que permite cargar todos los registros en la tabla 
     public void EditarPersona() {
         Modelo_Persona modelPerE = new Modelo_Persona();
         modelPerE.setId_persona(Integer.parseInt(vistaPer.getTxt_ID_Persona().getText()));
@@ -603,6 +616,7 @@ public class Controlador_Persona {
 
     }
 
+    //Método que permite cargar todos los registros de la tabla.
     private void CargarTablaPersona() {
         vistaPer.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
         vistaPer.getTblPersonas().setRowHeight(100);
@@ -634,6 +648,7 @@ public class Controlador_Persona {
         });
     }
 
+    //Método que permite cargar los datos en la tabla mediante la búsqueda.
     private void BuscarPersonaLista(String busqueda) {
         vistaPer.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
         vistaPer.getTblPersonas().setRowHeight(100);
@@ -665,6 +680,7 @@ public class Controlador_Persona {
         });
     }
 
+    //Método que permite escoger el género.
     public String GeneroPersona() {
         String GeneroPerso = "";
         vistaPer.getGrupoBotonGenero().add(vistaPer.getRadioBtnMasculino());
@@ -678,6 +694,7 @@ public class Controlador_Persona {
         return GeneroPerso;
     }
 
+    //Método que permite limpiar los datos de la vista persona.
     private void Limpiar_DatosPersona() {
         vistaPer.getTxtCedulaPersona().setText("");
         vistaPer.getTxtNombrePersona().setText("");
@@ -688,6 +705,7 @@ public class Controlador_Persona {
         vistaPer.getLblFotoPersona().setIcon(null);
     }
 
+    //Método que permite validar si una cédula ya está registrada en la base de datos.
     private boolean ValidarUsuarioRepetido(String cedula) {
         boolean cedulaRepetida = false;
         List<Persona> ValidoListaP = modelPer.listarPersonasAC();
@@ -699,6 +717,7 @@ public class Controlador_Persona {
         return cedulaRepetida;
     }
 
+    //Método que me permite cargar los datos en los diálogos mediante los eventos de tabla.
     public void CargarEdicionPersona() {
 
         int j = vistaPer.getTblPersonas().getSelectedRow();
@@ -741,6 +760,7 @@ public class Controlador_Persona {
         }
     }
 
+    //Método que permite el hacer un eliminado lógico de la base de datos.
     private void EliminarPersona() {
         int i = vistaPer.getTblPersonas().getSelectedRow();
         if (i != -1) {
@@ -773,6 +793,7 @@ public class Controlador_Persona {
         }
     }
 
+    //Método que permite cancelar ya sea la creación o edición de una persona.
     private void CancelarViewPersona() {
         if (vistaPer.getDialogoPersona().getName().equals("Crear")) {
             int confirmar = JOptionPane.showConfirmDialog(vistaPer, "¿Está seguro que desea cancelar la creación de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

@@ -44,6 +44,7 @@ public class Controlador_Cliente {
     private int idperonaClassciente = 0;
     Controlador_Fecha conf = new Controlador_Fecha();
     
+    //Constructor de la clase Controlador de cliente.
     public Controlador_Cliente(Modelo_Cliente modeloCli, Vista_Cliente vistaCli, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modeloCli = modeloCli;
         this.vistaCli = vistaCli;
@@ -56,6 +57,7 @@ public class Controlador_Cliente {
         this.vistaCli.getLblFechaAcutualVC().setText(LocalDate.now() + "");
     }
     
+    //Método de control de todos los botones iniciales de la vista.
     public void ControlBotonesCliente() {
         vistaCli.getBtnCrearCliente().addActionListener(l -> DialogoCrearEditarCliente(1));
         vistaCli.getBtnEditarCliente().addActionListener(l -> TipoDialogoAbrirCliente());
@@ -68,12 +70,14 @@ public class Controlador_Cliente {
         EventosComponentesVistaCliente();
     }
     
+    //Método que permite bloquear los campos para que no se ingrese un valor 
     private void ControlesSecundariosCliente() {
         vistaCli.getTxt_ID_Cliente().setEnabled(false);
         vistaCli.getTxt_ID_Persona().setEnabled(false);
         ControlLblPrincipalesActivos();
     }
     
+    //Método que controla los eventos de la vista cliente. 
     private void EventosComponentesVistaCliente() {
         KeyListener buscar = new KeyListener() {
             @Override
@@ -150,7 +154,8 @@ public class Controlador_Cliente {
         vistaCli.getTxtBuscarCedulaCli().addKeyListener(buscaP);
         vistaCli.getTxtTelefonoCliente().addKeyListener(telefono);
     }
-    
+ 
+    //Método que permite ocultar los componentes de la vista cuando El diálogo sea de creación, el cual se haga ocultos . 
     private void ControlOcultarComponetesDLG() {
         vistaCli.getLblNombresClienteBusqueda().setVisible(false);
         vistaCli.getSeparatorCliente().setVisible(false);
@@ -159,6 +164,7 @@ public class Controlador_Cliente {
         vistaCli.getLblNameBuscar().setVisible(false);
     }
     
+    //Método que permite Visualizar  los componentes de la vista cuando el diálogo sea de Edicion.
     private void ControlHabilitarComponetesDLG() {
         vistaCli.getLblNombresClienteBusqueda().setVisible(true);
         vistaCli.getSeparatorCliente().setVisible(true);
@@ -167,6 +173,7 @@ public class Controlador_Cliente {
         vistaCli.getLblNameBuscar().setVisible(true);
     }
     
+    //Método que permite buscar por cédula para que se carguen los datos de la persona. 
     private void BuscarPersonaCedula(String Cedula) {
         if (Cedula.equals("")) {
             nombres = "";
@@ -192,10 +199,12 @@ public class Controlador_Cliente {
         
     }
     
+    //Método que permite incrementar el idp para la vista cliente 
     private void IncremetoID_Cliente() {
         vistaCli.getTxt_ID_Cliente().setText(String.valueOf(modeloCli.IncrementoIdCliente()));
     }
     
+    //Método que permite abrir el diálogo dependiendo de creación o edición en la vista cliente 
     private void DialogoCrearEditarCliente(int tipo) {
         String titulo = null;
         if (tipo == 1) {
@@ -227,6 +236,7 @@ public class Controlador_Cliente {
         
     }
     
+    //Método que permite abrir el diálogo de la vista clientes para su edición. 
     private void TipoDialogoAbrirCliente() {
         
         int i = vistaCli.getTblCliente().getSelectedRow();
@@ -260,6 +270,7 @@ public class Controlador_Cliente {
         }
     }
     
+    //Método que permite modificar los elementos del diálogo de persona cuando esta en la vista de clientes. 
     private void EdicionPersonaClienteCL(int codigo) {
         System.out.println("Codigoooooooo------------>" + codigo);
         List<Persona> listaBusper = modelPer.listarPersonas();
@@ -292,6 +303,7 @@ public class Controlador_Cliente {
         }
     }
     
+    //Método que permite editar los elementos de la persona estando en la vista de clientes. 
     public void EditarPersona() {
         Modelo_Persona modelPerE = new Modelo_Persona();
         modelPerE.setId_persona(Integer.parseInt(viewper.getTxt_ID_Persona().getText()));
@@ -329,6 +341,7 @@ public class Controlador_Cliente {
         
     }
     
+    //Método que cargará el diferente dialogo a partir de la selección de crear o editar 
     private void CrearEditarPersona_Cliente() {
         if (vistaCli.getDialogoCliente().getName().equals("Crear")) {
             if (vistaCli.getTxt_ID_Persona().getText().isEmpty()) {
@@ -344,6 +357,7 @@ public class Controlador_Cliente {
         }
     }
     
+    //Método que permite la creación del cliente 
     private void CrearCliente() {
         Modelo_Cliente modelCli = new Modelo_Cliente();
         modelCli.setId_clienteC(Integer.parseInt(vistaCli.getTxt_ID_Cliente().getText()));
@@ -363,11 +377,13 @@ public class Controlador_Cliente {
         }
     }
     
+    //Limpiar los campos de la vista del diálogo cliente. 
     private void LimpiarDatosClienteCrear() {
         vistaCli.getTxtTelefonoCliente().setText("");
         vistaCli.getTxt_ID_Persona().setText("");
     }
     
+    //Método que permite la edición de los comapos del cliente. 
     private void EditarCliente() {
         Modelo_Cliente modelCliED = new Modelo_Cliente();
         modelCliED.setId_clienteC(Integer.parseInt(vistaCli.getTxt_ID_Cliente().getText()));
@@ -382,6 +398,7 @@ public class Controlador_Cliente {
         }
     }
     
+    //Método que permite cargar los elementos en el diálogo cliente 
     private void CargarEdicionCliente() {
         int i = vistaCli.getTblCliente().getSelectedRow();
         if (i != -1) {
@@ -392,6 +409,7 @@ public class Controlador_Cliente {
         }
     }
     
+    //Método que permite cargar los datos en la tabla de la vista cliente. 
     private void CargarTablaCliente() {
         DefaultTableModel tb = (DefaultTableModel) vistaCli.getTblCliente().getModel();
         tb.setNumRows(0);
@@ -402,6 +420,7 @@ public class Controlador_Cliente {
         });
     }
     
+    //Método que permite buscar un cliente. 
     private void BuscarCliente(String codigo) {
         DefaultTableModel tb = (DefaultTableModel) vistaCli.getTblCliente().getModel();
         tb.setNumRows(0);
@@ -412,6 +431,7 @@ public class Controlador_Cliente {
         });
     }
     
+    //Método que permite validar el idp de un cliente repetido. 
     private boolean ValidaClienteRepetido(int idrepetidoC) {
         boolean idreprtido = false;
         List<Cliente> listaC = modeloCli.listarClientesBDA();
@@ -423,7 +443,7 @@ public class Controlador_Cliente {
         return idreprtido;
     }
 
-    //Controles De persona.
+    //Método que controla la edición de la persona estando en la vista cliente. 
     private void EdicionPersonaControl() {
         boolean verificoED = true;
         String fec = ((JTextField) viewper.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
@@ -477,6 +497,7 @@ public class Controlador_Cliente {
         
     }
     
+    //Metodo que escoge un género 
     public String GeneroPersona() {
         String GeneroPerso = "";
         viewper.getGrupoBotonGenero().add(viewper.getRadioBtnMasculino());
@@ -498,10 +519,12 @@ public class Controlador_Cliente {
         viewper.getLblGeneroRojo().setVisible(false);
     }
     
+    //Método que permite al botón aceptar la cancelación. 
     private void CancelarEdicionCliente() {
         vistaCli.getDialogoCliente().dispose();
     }
     
+    //Método que permite la validación de una cédula verdadera. 
     public boolean validadorDeCedula(String cedula) {
         boolean cedulaCorrecta = false;
         
@@ -552,6 +575,7 @@ public class Controlador_Cliente {
         viewper.getDialogoPersona().dispose();
     }
     
+    //Método que permite la eliminación de un cliente de manera lógica. 
     private void EliminarClienteView() {
         int i = vistaCli.getTblCliente().getSelectedRow();
         if (i != -1) {

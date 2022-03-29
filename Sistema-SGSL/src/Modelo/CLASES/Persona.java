@@ -13,7 +13,9 @@ import java.util.Date;
  *
  * @author DELL
  */
+//Creación de la clase persona.
 public class Persona {
+    //Creación de los atributos de la persona.
     private int id_persona;
     private String cedula;
     private String nombre;
@@ -27,6 +29,7 @@ public class Persona {
     private FileInputStream imagen;
     private int largo;
 
+    //Constructores de la clase persona.
     public Persona() {
     }
 
@@ -40,7 +43,9 @@ public class Persona {
         this.Direccion = Direccion;
         this.foto = foto;
     }
+    //Fin de Constructores de la clase persona.
 
+    //Creación de los getter y setters.
     public String getGenero() {
         return genero;
     }

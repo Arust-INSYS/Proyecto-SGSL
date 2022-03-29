@@ -22,8 +22,10 @@ import java.util.logging.Logger;
  */
 public class Modelo_Cliente extends Cliente {
 
+    //Instancia de la clase conexión de la base de datos.
     Conexion_BD cp = new Conexion_BD();
 
+    //Constructores.
     public Modelo_Cliente() {
     }
 
@@ -35,6 +37,7 @@ public class Modelo_Cliente extends Cliente {
         super(id_clienteC, telefono, id_personaCI, apellido, nombre);
     }
 
+    //Método que permite traer todos los atributos de la base de todos cuando su estado sea activo.
     public List<Cliente> listarClientesBDA() {
         List<Cliente> listaCli = new ArrayList<Cliente>();
         try {
@@ -62,6 +65,7 @@ public class Modelo_Cliente extends Cliente {
         }
     }
 
+    //Método que permite buscar a una persona mediante diferentes atributos.
     public List<Cliente> BuscarCliente(String id_cli) {
         List<Cliente> listaCli = new ArrayList<Cliente>();
         try {
@@ -89,6 +93,7 @@ public class Modelo_Cliente extends Cliente {
         }
     }
 
+    //Método que permite crear un cliente.
     public boolean CrearClienteBDA() {
         try {
             String sql = "INSERT INTO public.cliente(\n"
@@ -107,6 +112,7 @@ public class Modelo_Cliente extends Cliente {
         }
     }
 
+    //Método que permite modificar un cliente.
     public boolean ModificarClienteBDA() {
         try {
             String sql = "UPDATE public.cliente\n"
@@ -137,6 +143,7 @@ public class Modelo_Cliente extends Cliente {
         return cp.accion(sql);
     }
 
+    //Método que permite incrementar el ID del atributo de la entidad Cliente.
     public int IncrementoIdCliente() {
         int incremento = 1;
         try {

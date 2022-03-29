@@ -30,8 +30,10 @@ import javax.imageio.stream.ImageInputStream;
  */
 public class Modelo_Persona extends Persona {
 
+    //Instancia de la clase conexión de la base de datos.
     Conexion_BD cp = new Conexion_BD();
 
+    //Constructores.
     public Modelo_Persona() {
     }
 
@@ -39,6 +41,7 @@ public class Modelo_Persona extends Persona {
         super(id_persona, cedula, nombre, apellido, genero, fecha_nacimiento, Direccion, foto);
     }
 
+    //Método que permite traer todos los atributos de la base de todos cuando su estado sea activo.
     public List<Persona> listarPersonas() {
         List<Persona> lp = new ArrayList<Persona>();
         try {
@@ -104,6 +107,8 @@ public class Modelo_Persona extends Persona {
             return null;
         }
     }
+    
+    //Método que permite buscar a una persona mediante diferentes atributos.
     public List<Persona> BuscarPersonas(String busqueda) {
         List<Persona> lp = new ArrayList<Persona>();
         try {
@@ -137,6 +142,7 @@ public class Modelo_Persona extends Persona {
         }
     }
     
+    //Método que permite buscar a una persona.
     public List<Persona> BuscarPersonasCedula(String cedula) {
         List<Persona> lp = new ArrayList<Persona>();
         try {
@@ -158,7 +164,7 @@ public class Modelo_Persona extends Persona {
         }
     }
 
-
+    //Método que permite la renderización una imagen obtenida desde la base de datos.
     private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
@@ -171,6 +177,7 @@ public class Modelo_Persona extends Persona {
         return reader.read(0, param);
     }
 
+    //Método que permite crear una persona, con una foto.
     public boolean CrearPersonaBDA() {
         try {
             String sql = "INSERT INTO public.persona(\n"
@@ -193,6 +200,8 @@ public class Modelo_Persona extends Persona {
             return false;
         }
     }
+    
+    //Método que permite modificar una persona, con una foto.
     public boolean CrearPersonaFT() {
         try {
             String sql = "INSERT INTO public.persona(\n"
@@ -216,6 +225,7 @@ public class Modelo_Persona extends Persona {
     }
     
 
+    //Método que permite modificar una persona, sin una foto.
     public boolean ModificarPersonaBDA() {
         try {
             String sql = "UPDATE public.persona\n"
@@ -256,12 +266,14 @@ public class Modelo_Persona extends Persona {
         }
     }
     
+    //Método que permite hacer un eliminado lógico de la base de datos.
     public boolean EliminarPersona(int idperosna) {
         String sql = "UPDATE persona SET estado = 'I' WHERE id_persona = '" + idperosna + "';";
         System.out.println("" + sql);
         return cp.accion(sql);
     }
     
+    //Método que permite incrementar el ID del atributo de la entidad Persona.
     public int IncrementoIdPersona(){
         int incremento = 1;
         try {

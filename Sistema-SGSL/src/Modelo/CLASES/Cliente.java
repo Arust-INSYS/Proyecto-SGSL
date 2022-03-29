@@ -12,12 +12,15 @@ import java.sql.Date;
  *
  * @author DELL
  */
+//Creación de la clase Cliente.
 public class Cliente{
+    //Creación de los atributos de la cliente.
     private int id_clienteC;
     private String telefono;
     private int id_personaCI;
     private String apellido, nombre;
 
+    //Constructores de la clase cliente.
     public Cliente() {
     }    
 
@@ -35,6 +38,7 @@ public class Cliente{
         this.nombre = nombre;
     }
 
+    //Creación de los getter y setters.
     public String getApellido() {
         return apellido;
     }

@@ -179,7 +179,7 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         menuReportes.add(jMenu2);
 
-        jMenu1.setText("jMenu1");
+        jMenu1.setText("Reportes Gráficos");
 
         jMenuItem2.setText("jMenuItem2");
         jMenu1.add(jMenuItem2);

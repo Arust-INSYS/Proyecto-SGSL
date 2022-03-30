@@ -1,5 +1,4 @@
 package Controlador;
-
 import Modelo.CLASES.Bodega;
 import Modelo.CLASES.Productos;
 import Modelo.Modelo_productos;
@@ -28,13 +27,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 
 public class Controlador_productos {
-
+//se crea un objeto para la fecha, el modelo y vista
     LocalDate fechahoy = LocalDate.now();
-
     private Modelo_productos modelpro;
     private Vista_productos vispro;
     private JFileChooser jfch;
-
+//constructor
     public Controlador_productos(Modelo_productos modelpro, Vista_productos vispro) {
         this.modelpro = modelpro;
         this.vispro = vispro;
@@ -46,7 +44,7 @@ public class Controlador_productos {
         vispro.getTxtfechahoy().setText(fechahoy + "");
         vispro.getTxtfecha().setText(fechahoy + "");
     }
-
+//metodo pára los botones
     public void iniciaControl() {
         vispro.getBtnCrearServicio().addActionListener(l -> abrirDialogo_pro(3));
         vispro.getBtnEditarServicio().addActionListener(l -> abrirDialogo_pro(4));
@@ -65,7 +63,7 @@ public class Controlador_productos {
         validarsolonumeros(vispro.getTxtpreciopro());
 
     }
-
+//metodo para buscar una foto en la computadora
     private void examifoto() {
         jfch = new JFileChooser();
         jfch.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -82,7 +80,7 @@ public class Controlador_productos {
 
         }
     }
-
+//metodo para abrir el dialog
     private void abrirDialogo_pro(int ce) {
         String title = null;
         if (ce == 3) {
@@ -113,7 +111,7 @@ public class Controlador_productos {
         vispro.getDialog_Crear().setSize(620, 500);
         vispro.getDialog_Crear().setTitle(title);
     }
-
+//metodo para cargar los productos en la tabla
     private void cargarproductos() {
         vispro.getTablita().setDefaultRenderer(Object.class, new Imangentabla());
         vispro.getTablita().setRowHeight(100);
@@ -144,7 +142,7 @@ public class Controlador_productos {
         });
 
     }
-
+//metodo para crear y editar productos
     private void crear() {
         System.out.println("1");
         if (vispro.getDialog_Crear().getName() == "crear") {
@@ -231,7 +229,7 @@ public class Controlador_productos {
             }
         }
     }
-
+//metodo para editar y pasar los datos a su componente correspondiete 
     private void editar() {
         List<Productos> lp = modelpro.listarproductos();
         int xx = vispro.getTablita().getSelectedRow();
@@ -269,7 +267,7 @@ public class Controlador_productos {
             vispro.getDialog_Crear().dispose();
         }
     }
-
+//metodo eliminar productos
     private void eli() {
         int i = vispro.getTablita().getSelectedRow();
         if (i != -1) {
@@ -291,11 +289,12 @@ public class Controlador_productos {
         }
 
     }
-
+//metodo para el boton cancelar si se crea o se edita 
     private void cancelar() {
+        limpiardatos();
         vispro.getDialog_Crear().setVisible(false);
     }
-
+//metodo limpiar los componentes 
     private void limpiardatos() {
         vispro.getTxtidbodega().setText("");
         vispro.getTxtnom_pro().setText("");
@@ -304,7 +303,7 @@ public class Controlador_productos {
         vispro.getTxtpreciopro().setText("");
         vispro.getTxtmarca().setText("");
     }
-
+//metodo para el boton guardar si se crea o se edita 
     void guardar() {
         if (vispro.getTxtnom_pro().getText().isEmpty() || vispro.getTxtmarca().getText().isEmpty() || vispro.getTxtpreciopro().getText().isEmpty() || vispro.getTxtidbodega().getText().isEmpty()) {
             JOptionPane.showMessageDialog(vispro, "NO SE PUEDE GUARDAR SI NO SE LLENA TODOS LOS CAMPOS");
@@ -315,7 +314,7 @@ public class Controlador_productos {
             vispro.getDialog_Crear().setVisible(false);
         }
     }
-
+//metodo para buscar productos en la tabla
     private void bus(java.awt.event.KeyEvent evt) {
         vispro.getTablita().setDefaultRenderer(Object.class, new Imangentabla());
         vispro.getTablita().setRowHeight(100);
@@ -348,7 +347,7 @@ public class Controlador_productos {
         });
 
     }
-
+//aqui se llama al metodo buscar para el evento keytype
     private void setEventoKeytyped(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -357,8 +356,8 @@ public class Controlador_productos {
             }
         });
     }
-//---------------------------------------------------------------------------------------------------------------------
-
+//-----------separacion de bodegas -----------------------------------------------------------------------------
+//carga todas las bodegas en la tabla
     private void cargarbodegas() {
         DefaultTableModel ta;
         ta = (DefaultTableModel) vispro.getTblabodega().getModel();
@@ -374,7 +373,7 @@ public class Controlador_productos {
             i.value++;
         });
     }
-
+//abre el dialog de bodegas 
     private void abrirdialobodega() {
         vispro.getDialogbodega().setLocationRelativeTo(vispro);
         vispro.getDialogbodega().setSize(600, 430);
@@ -386,7 +385,7 @@ public class Controlador_productos {
         vispro.getDialogbodega().setVisible(true);
         cargarbodegas();
     }
-
+//pasa los datos necesarios para la creacion de productos 
     private void datospasar() {
         List<Bodega> lp = modelpro.listarbodegas();
         int xx = vispro.getTblabodega().getSelectedRow();
@@ -406,13 +405,12 @@ public class Controlador_productos {
         }
         vispro.getDialogbodega().setVisible(false);
     }
-
+//metodo para el boton aceptar 
     void acep() {
         datospasar();
     }
-
-    //----------------------------------------------------------------------------------
-    private void busbo(java.awt.event.KeyEvent evt) {
+//metodo buscar bodegas 
+private void busbo(java.awt.event.KeyEvent evt) {
         DefaultTableModel ta;
         ta = (DefaultTableModel) vispro.getTblabodega().getModel();
         ta.setRowCount(0);
@@ -427,7 +425,7 @@ public class Controlador_productos {
             i.value++;
         });
     }
-
+//aqui se llama al metodo buscar para el evento keytype
     private void sedbucao(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -436,7 +434,8 @@ public class Controlador_productos {
             }
         });
     }
-
+//----------------VALIDACIONES----------------
+// metodo validacion solo letras
     private void txletras(java.awt.event.KeyEvent evt) {
         char vali = evt.getKeyChar();
         if (Character.isDigit(vali)) {
@@ -445,7 +444,7 @@ public class Controlador_productos {
             JOptionPane.showMessageDialog(null, " ingrese solo letras  ");
         }
     }
-
+//evento para poner la validacion
     private void validarsololetras(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -454,7 +453,7 @@ public class Controlador_productos {
             }
         });
     }
-
+// metodo validacion solo numeros
     private void validarnum(java.awt.event.KeyEvent evt) {
         //Validarcedtamaño(visper.getIdper().getText(),10, evt);
         char vali = evt.getKeyChar();
@@ -464,7 +463,7 @@ public class Controlador_productos {
             JOptionPane.showMessageDialog(null, " ingrese solo numeros  ");
         }
     }
-
+//evento para poner la validacion
     private void validarsolonumeros(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override

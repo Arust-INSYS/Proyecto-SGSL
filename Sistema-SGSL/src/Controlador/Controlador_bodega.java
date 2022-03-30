@@ -20,11 +20,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 
 public class Controlador_bodega {
-
+//se crea un objeto para la fecha, el modelo y vista
     LocalDate fechahoy = LocalDate.now();
     private Modelo_bodega modelbo;
     private Vista_bodega visbo;
-
+//contructor
     public Controlador_bodega(Modelo_bodega modelbo, Vista_bodega visbo) {
         this.modelbo = modelbo;
         this.visbo = visbo;
@@ -36,7 +36,7 @@ public class Controlador_bodega {
                 visbo.getTxtfecha().setText(fechahoy + "");
 
     }
-
+//metodo pára los botones
     public void iniciaControl() {
         visbo.getBtnCrearServicio().addActionListener(l -> abrirDialogo_pro(3));
         visbo.getBtnEditarServicio().addActionListener(l -> abrirDialogo_pro(4));
@@ -48,7 +48,7 @@ public class Controlador_bodega {
         setEventoKeytyped(visbo.getTxtBuscarServicio());
 
     }
-
+//metodo para abrir el dialog
     private void abrirDialogo_pro(int ce) {
         String title = null;
         if (ce == 3) {
@@ -70,7 +70,7 @@ public class Controlador_bodega {
         visbo.getDialog_Crearbo().setSize(540, 420);
         visbo.getDialog_Crearbo().setTitle(title);
     }
-
+//metodo para cargar las bodegas en la tabla
     private void cargarbodegas() {
         DefaultTableModel ta;
         ta = (DefaultTableModel) visbo.getTABLABODEGA().getModel();
@@ -86,7 +86,7 @@ public class Controlador_bodega {
             i.value++;
         });
     }
-
+//metodo para crear y editar bodegas
     private void crear() {
         System.out.println("1");
         if (visbo.getDialog_Crearbo().getName() == "crear") {
@@ -125,7 +125,7 @@ public class Controlador_bodega {
 
         }
     }
-
+//metodo para editar y pasar los datos a su componente correspondiete 
     private void editar() {
         //List<Bodega> lp = modelbo.listarbodegas();
         int xx = visbo.getTABLABODEGA().getSelectedRow();
@@ -144,7 +144,7 @@ public class Controlador_bodega {
             visbo.getDialog_Crearbo().dispose();
         }
     }
-
+//metodo eliminar bodegas
     private void eli() {
         int yy;
         yy = visbo.getTABLABODEGA().getSelectedRow();
@@ -165,14 +165,14 @@ public class Controlador_bodega {
             JOptionPane.showMessageDialog(visbo, "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+//metodo limpiar los componentes 
     void lim() {
         visbo.getjSpinnercant().setValue(1);
         visbo.getSpinernum().setValue(1);
         visbo.getSpinerespacio().setValue(1);
 
     }
-
+//metodo para el boton guardar si se crea o se edita 
     void guardar() {
         crear();
         lim();
@@ -180,11 +180,13 @@ public class Controlador_bodega {
         visbo.getDialog_Crearbo().setVisible(false);
 
     }
-void cancelar(){
+//metodo para el boton cancelar si se crea o se edita 
+    void cancelar(){
     lim();
     visbo.getDialog_Crearbo().setVisible(false);
 
 }
+//metodo para buscar bodegas en la tabla
     private void bus(java.awt.event.KeyEvent evt) {
         DefaultTableModel ta;
         ta = (DefaultTableModel) visbo.getTABLABODEGA().getModel();
@@ -200,7 +202,7 @@ void cancelar(){
             i.value++;
         });
     }
-
+//aqui se llama al metodo buscar para el evento keytype
     private void setEventoKeytyped(JTextField txt) {
         txt.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override

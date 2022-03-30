@@ -22,6 +22,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="txtidproducto">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtidproductoActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="90" y="64" width="50" height="30"/>
@@ -48,7 +51,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/icons8-guardar-pro-48.png"/>
+              <Image iconType="3" name="/Vista/Iconos/icons8-guardar- bodfega48.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
             <Property name="toolTipText" type="java.lang.String" value="Guardar"/>
@@ -85,7 +88,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/icons8-cancelar-pro-2-48.png"/>
+              <Image iconType="3" name="/Vista/Iconos/icons8-cancelar-bodega2-48.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
             <Property name="toolTipText" type="java.lang.String" value="Cancelar"/>
@@ -208,11 +211,14 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnexaminar">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="12" style="3"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/icons8-verificar-documento-48.png"/>
+              <Image iconType="3" name="/Vista/Iconos/icons8-carpeta-de-documentos-48.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Examinar"/>
             <Property name="toolTipText" type="java.lang.String" value="Examinar"/>
@@ -223,7 +229,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="430" y="320" width="-1" height="-1"/>
+              <AbsoluteConstraints x="420" y="320" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -274,7 +280,7 @@
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/images.jpg"/>
+              <Image iconType="3" name="/Vista/Iconos/fondo_lin.jpg"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
@@ -374,7 +380,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/icons8-comprobado-bo-48.png"/>
+              <Image iconType="3" name="/Vista/Iconos/icons8-check visto-mark-48.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Aceptar"/>
             <Property name="toolTipText" type="java.lang.String" value="Aceptar"/>
@@ -392,7 +398,7 @@
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/images.jpg"/>
+              <Image iconType="3" name="/Vista/Iconos/fondo_lin.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -711,7 +717,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Vista/Iconos/icons8-editar-pro-propiedad-48.png"/>
+          <Image iconType="3" name="/Vista/Iconos/icons8-servicio-de-limpieza-48 (2).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Editar"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -735,7 +741,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Vista/Iconos/icons8-agregar-pro-propiedad-48 (1).png"/>
+          <Image iconType="3" name="/Vista/Iconos/icons8-servicio-de-limpieza-48.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Crear"/>
         <Property name="toolTipText" type="java.lang.String" value="CREAR"/>
@@ -759,7 +765,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Vista/Iconos/icons8-eliminar-propiedad-48.png"/>
+          <Image iconType="3" name="/Vista/Iconos/icons8-servicio-de-limpieza-48 (1).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Remover"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

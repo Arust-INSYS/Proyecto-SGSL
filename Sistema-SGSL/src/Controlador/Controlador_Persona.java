@@ -24,7 +24,8 @@ import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
@@ -346,6 +347,7 @@ public class Controlador_Persona {
     private void crearEditarPersona() {
         boolean verifico = false;
         String fecha = ((JTextField) vistaPer.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
+        Date fechaV = vistaPer.getFechaNacimientoPer().getDate();
         if (vistaPer.getDialogoPersona().getName().equals("Crear")) {
             if (vistaPer.getTxtCedulaPersona().getText().isEmpty()) {
                 vistaPer.getLblCedulaRojo().setVisible(true);
@@ -366,7 +368,7 @@ public class Controlador_Persona {
                             vistaPer.getLblApellido().setVisible(true);
                         } else {
                             vistaPer.getLblApellido().setVisible(false);
-                            if (fecha.isEmpty() || conf.FechaNacimiento(vistaPer.getFechaNacimientoPer()) == false) {
+                            if (fechaV == null || conf.FechaNacimiento(vistaPer.getFechaNacimientoPer()) == false) {
                                 vistaPer.getLbLFechaRojo().setVisible(true);
                             } else {
                                 vistaPer.getLbLFechaRojo().setVisible(false);
@@ -427,7 +429,7 @@ public class Controlador_Persona {
                                 vistaPer.getLblApellido().setVisible(true);
                             } else {
                                 vistaPer.getLblApellido().setVisible(false);
-                                if (fecha.isEmpty() || conf.FechaNacimiento(vistaPer.getFechaNacimientoPer()) == false) {
+                                if (fechaV == null || conf.FechaNacimiento(vistaPer.getFechaNacimientoPer()) == false) {
                                     vistaPer.getLbLFechaRojo().setVisible(true);
 
                                 } else {

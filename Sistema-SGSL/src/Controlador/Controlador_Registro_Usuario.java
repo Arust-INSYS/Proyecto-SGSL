@@ -20,18 +20,19 @@ public class Controlador_Registro_Usuario {
     private Modelo_Usuario modelo_user;
     private Vista_Registro_Usuario vista_registroU;
 
+     //Constructor de la clase Controlador de Registo Usuario.
     public Controlador_Registro_Usuario(Modelo_Usuario modelo_user, Vista_Registro_Usuario vista_registroU) {
         this.modelo_user = modelo_user;
         this.vista_registroU = vista_registroU;
         vista_registroU.setVisible(true);
     }
     
-
+//Método de control de todos los botones iniciales.
     public void InicaBoton() {
         vista_registroU.getBtn_registrarUsuario().addActionListener(l -> Registrar());
         vista_registroU.getBtn_cancelarRegistroUsuario().addActionListener(l -> Cancelar());
     }
-
+ //Método de validación de todos los datos ingresados por el usuario.
     public void Registrar() {
         String user = vista_registroU.getTxt_NombreUsuario().getText();
         String password1 = String.valueOf(vista_registroU.getTxt_Contrasenia().getPassword());
@@ -76,7 +77,7 @@ public class Controlador_Registro_Usuario {
         }
 
     }
-
+ //Método para cancelar accion.
     public void Cancelar() {
         vista_registroU.setVisible(false);
         Modelo_Usuario m_user = new Modelo_Usuario();
@@ -84,7 +85,7 @@ public class Controlador_Registro_Usuario {
         Controlador_Login cl = new Controlador_Login(m_user, vl);
         cl.IniciarBoton();
     }
-    
+     //Método para limpiar los campos
      public void LimpiarCampos() {
         vista_registroU.getTxt_NombreUsuario().setText("");
         vista_registroU.getTxt_Contrasenia().setText("");

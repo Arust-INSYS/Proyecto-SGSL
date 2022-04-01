@@ -40,19 +40,21 @@ public class Controlador_Servicio {
         this.vista_servi = vista_servi;
         vista_servi.setVisible(true);
         valida();
-        CargarProductos();
+        CargarServicios();
     }
     
+    //Metodo de incremento de id de empleado automatico
     private void IncremetoID() {
         int n = modelo_servi.IncrementoIdServicio();
         int metodo = 10000+n; 
         vista_servi.getTxtidservicio().setText(String.valueOf(metodo));
     }
     
+    //Metodo de control inicial para llamar a las acciones.
     public void iniciaControl(){
-        vista_servi.getBtnActualizarServicio().addActionListener(l->CargarProductos());
-        vista_servi.getBtnCrearServicio().addActionListener(l->abrirDialogo_pro(3));
-        vista_servi.getBtnEditarServicio().addActionListener(l->abrirDialogo_pro(4));
+        vista_servi.getBtnActualizarServicio().addActionListener(l->CargarServicios());
+        vista_servi.getBtnCrearServicio().addActionListener(l->abrirDialogo_servi(3));
+        vista_servi.getBtnEditarServicio().addActionListener(l->abrirDialogo_servi(4));
         vista_servi.getBtnAceptar_pro1().addActionListener(l-> crearEditarServicio());
         vista_servi.getBtnRemoverServicio().addActionListener(l->EliminarServicio());
         vista_servi.getBtnCancelar_pro1().addActionListener(l->cancelar_pro());
@@ -63,6 +65,7 @@ public class Controlador_Servicio {
             
     }
     
+    //Validaciones para los campos de la interfaz mediante la accion key.
     public void valida(){
         KeyListener vali = new KeyListener() {
             @Override
@@ -206,16 +209,40 @@ public class Controlador_Servicio {
                 }
             }
          };
+         KeyListener buscar = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+               String busqueda = vista_servi.getTxtBuscarServicio().getText().toLowerCase();
+                if (vista_servi.getTxtBuscarServicio().getText().trim().isEmpty()) {
+                    CargarServicios();
+                } else {
+                   BuscarServicio(busqueda);
+                }
+
+            
+            }
+        };
         vista_servi.getTxtcosto_servicio().addKeyListener(vali2);
         vista_servi.getDescri_servicio().addKeyListener(vali);
         vista_servi.getTxtnom_servicio().addKeyListener(vali);
         vista_servi.getTxtnom_servicio().addFocusListener(focus);
         vista_servi.getTxtcosto_servicio().addFocusListener(focoscosto);
         vista_servi.getDescri_servicio().addFocusListener(focosdescri);
+        vista_servi.getTxtBuscarServicio().addKeyListener(buscar);
     }
     
-    
-    private void abrirDialogo_pro(int ce){
+    // Abre el dialogo para crear y editar el servicio
+    private void abrirDialogo_servi(int ce){
       String title;
         if(ce==3){
             title="Crear nuevo servicio";
@@ -234,6 +261,8 @@ public class Controlador_Servicio {
         vista_servi.getDialog_Crear().setTitle(title);
         vista_servi.getDialog_Crear().setVisible(true); 
     }
+    
+    //Abre el dialogo para vizualizar al empleado mediante la tabla de carga de datos.
      private void abrirDialogo(int ce){
         String title;
         if(ce==1){
@@ -249,6 +278,7 @@ public class Controlador_Servicio {
         }
     }
     
+    //Metodo para validar la creacion y el editar de un servicio mediante el ingreso de datos en el dialog.
     private void crearEditarServicio(){
         if(vista_servi.getDialog_Crear().getName()=="crear"){
             //Insertar
@@ -306,6 +336,7 @@ public class Controlador_Servicio {
         }
     }
     
+     //Metodo para cambiar el estado de servicio de activo a inactivo.
     public void EliminarServicio(){
         int seleccionado = vista_servi.getTblServicio().getSelectedRow();
         int respuesta=0;
@@ -328,7 +359,7 @@ public class Controlador_Servicio {
             }
     }
     
-    
+    //Metodo para modificar el servicio que a sido seleccionado
     public void modificar_servi() {
      vista_servi.getTxtidservicio().setEnabled(false);
      int seleccionado = vista_servi.getTblServicio().getSelectedRow();
@@ -347,6 +378,7 @@ public class Controlador_Servicio {
     }
    }
     
+    //Metodo para limpiar los campos de el dialogo.
     public void limpiar_pro(){
 //      vista_servi.getTxtidservicio().setText("");
       vista_servi.getTxtnom_servicio().setText("");
@@ -355,14 +387,15 @@ public class Controlador_Servicio {
       vista_servi.getTxtid_empleado().setText("");
     }
     
+    //Metodo para cel control de colores de los labels de cada seccion.
     private void ControlLblPrincipalesActivos() {
         vista_servi.getLblCostoRojo().setVisible(false);
         vista_servi.getLblNombreRojo().setVisible(false);
         vista_servi.getLblDescripcionRojo1().setVisible(false);
     }
 
-    
-    private void CargarProductos(){
+    //Metodo para cargar los servicios dentro de la tabla de la vista principal.
+    private void CargarServicios(){
         
         //Enlazar el modelo de tabla con mi controlador.
         DefaultTableModel tblModel;
@@ -385,6 +418,8 @@ public class Controlador_Servicio {
         
     }
     
+    
+    //Metodo para el boton de cancelar la opcion dentro del dialogo.
     public void cancelar_pro(){
         int respuesta = 0;
         respuesta = JOptionPane.showConfirmDialog(null,"¿Estas seguro que deseas cancelar?");
@@ -396,6 +431,7 @@ public class Controlador_Servicio {
             }
     }
     
+    //Metodo para cargar los empleados dentro de la tabla de la vista del dialog.
     private void CargarEmpleados(){
         
         //Enlazar el modelo de tabla con mi controlador.
@@ -417,6 +453,7 @@ public class Controlador_Servicio {
         
     }
     
+    //Metodod para llevar el empleado seleccionado al txt correspondiente.
     public void modificar_emple() {
     vista_servi.getTxtid_empleado().setEditable(false);
      int seleccionado = vista_servi.getTblempleados().getSelectedRow();
@@ -431,4 +468,14 @@ public class Controlador_Servicio {
         JOptionPane.showMessageDialog(vista_servi, "No a seleccionado a niguna persona");
     }
    }
+    
+        private void BuscarServicio(String codigo) {
+        DefaultTableModel tb = (DefaultTableModel) vista_servi.getTblServicio().getModel();
+        tb.setNumRows(0);
+        List<Servicios> listaServicio = modelo_servi.BuscarServi(codigo);
+        listaServicio.stream().forEach(e -> {
+            String[] servicio = {String.valueOf(e.getId_servicio()), String.valueOf(e.getNom_servicio()), e.getDescri_servicio(), String.valueOf(e.getCosto_servicio()), String.valueOf(e.getId_empleado())};
+            tb.addRow(servicio);
+        });
+    }
 }

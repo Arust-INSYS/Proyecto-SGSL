@@ -39,7 +39,8 @@ public class Modelo_Empleado extends Empleado {
     public Modelo_Empleado(int id_empleado, double sueldo, String estado_civil, Date fecha_contrato, int id_persona) {
         super(id_empleado, sueldo, estado_civil, fecha_contrato, id_persona);
     }
-
+    
+    //Meodo par listar a los empleados existentes.
     public List<Empleado> listarEmpleados() {
         List<Empleado> lista = new ArrayList<Empleado>();
         try {
@@ -66,7 +67,8 @@ public class Modelo_Empleado extends Empleado {
             return null;
         }
     }
-
+    
+    //Metodo para crear a un empleado 
     public boolean creaEmpleado() {
         try {
             String sql;
@@ -87,6 +89,7 @@ public class Modelo_Empleado extends Empleado {
         }
     }
 
+    //Metodo para modificar a un empleado
     public boolean ModificarEmpleado() {
         try {
             String sql;
@@ -107,12 +110,15 @@ public class Modelo_Empleado extends Empleado {
             return false;
         }
     }
-
+    
+    
+    // Metodo para cambiar de estado a un empleado 
     public boolean RemoverEmpleado(int idemple) {
         String nsql = "UPDATE empleado SET estado = 'I' WHERE id_empleado = '" + idemple + "';";
         return cpg.accion(nsql);
     }
 
+    //Metodo para listar a las personas existentes.
     public List<Persona> listarPersonas() {
         List<Persona> lp = new ArrayList<Persona>();
         try {
@@ -142,7 +148,8 @@ public class Modelo_Empleado extends Empleado {
             return null;
         }
     }
-
+    
+    //Metodo para obtener la imagen para la persona.
     private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
@@ -155,6 +162,7 @@ public class Modelo_Empleado extends Empleado {
         return reader.read(0, param);
     }
 
+    //Metodo para el incremento de el id.
     public int IncrementoIdEmpleado() {
         int incremento = 1;
         try {
@@ -170,6 +178,7 @@ public class Modelo_Empleado extends Empleado {
         return incremento;
     }
 
+    //Metodo para la asignacion de rol.
     public int IdRol(String nombre_rol) {
         int id_rol = -1;
         String sql = "select id_rol as id from roles where upper(nombre_rol)=upper('" + nombre_rol + "')";
@@ -187,7 +196,8 @@ public class Modelo_Empleado extends Empleado {
             return -1;
         }
     }
-
+    
+    //Metodo para listar todos los roles.
     public List <Rol> llenarComboRol(){
         List<Rol> rl = new ArrayList<Rol>();
         try {
@@ -208,6 +218,7 @@ public class Modelo_Empleado extends Empleado {
         }
     }
 
+    //Metodo para el incremento del id usuario.
     public int IncrementoIdUsuario() {
         int incremento = 1;
         try {
@@ -222,6 +233,7 @@ public class Modelo_Empleado extends Empleado {
         return incremento;
     }
   
+    //Metodo para crear usuario
     public boolean CrearUser(int id_empleado, int id_rol, int id_user){
         try {
             String sql;
@@ -241,12 +253,13 @@ public class Modelo_Empleado extends Empleado {
         }
     }
     
+    //Metodo para buscar a un empleado en la base.
       public List<Empleado> BuscarEmple(String id_cli) {
         List<Empleado> listaEmple = new ArrayList<Empleado>();
         try {
 //            String sql = "select * from cliente where estado = 'A' and CAST(id_cliente AS TEXT) LIKE '" + id_cli + "%' or estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
 
-            String sql = "select e.id_empleado, e.sueldo, e.estado_civil, e.fecha_contrato, e.id_persona from empleado e inner join persona p on e.id_persona = p.id_persona where e.estado = 'A' and CAST(e.id_empleado AS TEXT) LIKE '" + id_cli + "%' or e.estado = 'A' and CAST(e.id_persona AS TEXT) LIKE '" + id_cli + "%';";
+            String sql = "select * from empleado where estado = 'A' and CAST(id_empleado AS TEXT) LIKE '" + id_cli + "%' or estado = 'A' and CAST(id_persona AS TEXT) LIKE '" + id_cli + "%';";
             ResultSet rs = cpg.colsulta(sql);
             while (rs.next()) {
                 Empleado emple = new Empleado();

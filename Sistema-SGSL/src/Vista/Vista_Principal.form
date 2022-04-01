@@ -75,6 +75,11 @@
                     <Property name="text" type="java.lang.String" value="Servicios"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="JmenuClientesVP">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Clientes"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -85,6 +90,11 @@
                 <MenuItem class="javax.swing.JMenuItem" name="JmenuPersonasGeneroVP">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Genero"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="JmenuClientesMorePedidoVP">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="More Pedidos"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>

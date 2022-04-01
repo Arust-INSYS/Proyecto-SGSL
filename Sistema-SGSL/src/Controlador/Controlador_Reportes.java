@@ -37,6 +37,8 @@ public class Controlador_Reportes {
     public void IniciarControlReportes() {
         viewP.getJmenuPersonasVP().addActionListener(l -> ImprimirPersonasActivasInactivas());
         viewP.getJmenuPersonasGeneroVP().addActionListener(l -> ImprimirGeneroCantidad());
+        viewP.getJmenuClientesVP().addActionListener(l -> ImprimirClientesActivosInactivos());
+        viewP.getJmenuClientesMorePedidoVP().addActionListener(l -> ImprimirClienteMorePedidos());
     }
 
     //Métodos que nos permiten hacer los reportes de persona general y gráficos.
@@ -64,7 +66,7 @@ public class Controlador_Reportes {
                 JasperViewer jv = new JasperViewer(jp, false);
                 jv.setVisible(true);
             } catch (JRException ex) {
-                Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -81,8 +83,52 @@ public class Controlador_Reportes {
             JasperViewer jv = new JasperViewer(jp, false);
             jv.setVisible(true);
         } catch (JRException ex) {
-            Logger.getLogger(Controlador_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    //Métodos que nos permiten hacer los reportes de clientes activos e inactivos y los gráficos.
+    private void ImprimirClientesActivosInactivos() {
+        String estado = null;
+        String[] cade = {"Activos", "Inactivos"};
+        String tipos = (String) JOptionPane.showInputDialog(null, "Selecciones el tipo de estado que desea filtrar\n", "ESTADO", JOptionPane.DEFAULT_OPTION, null, cade, cade[0]);
+        System.out.println("-->" + tipos);
+        if (tipos == null) {
+
+        } else {
+            if (tipos.equals("Activos")) {
+                estado = "A";
+            } else {
+                estado = "I";
+            }
+            Conexion_BD cp = new Conexion_BD();
+            try {
+                JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/ReporteClientesSGSL.jasper"));
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("logo", "Servlog.png");
+                map.put("estado", estado);
+                JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());
+                JasperViewer jv = new JasperViewer(jp, false);
+                jv.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+    
+    private void ImprimirClienteMorePedidos() {
+
+        Conexion_BD cp = new Conexion_BD();
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/ReporteClientesPedidosSGSL.jasper"));
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("logo", "Servlog.png");
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

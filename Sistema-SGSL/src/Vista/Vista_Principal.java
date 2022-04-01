@@ -59,8 +59,10 @@ public class Vista_Principal extends javax.swing.JFrame {
         JmenuPersonasVP = new javax.swing.JMenuItem();
         MnEmpleado = new javax.swing.JMenuItem();
         MnServicio = new javax.swing.JMenuItem();
+        JmenuClientesVP = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         JmenuPersonasGeneroVP = new javax.swing.JMenuItem();
+        JmenuClientesMorePedidoVP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,11 +156,11 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         menu_persona.setText("Persona");
 
-        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         menuItem_clientes.setText("Clientes");
         menu_persona.add(menuItem_clientes);
 
-        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         menuItem_empleados.setText("Empleados");
         menu_persona.add(menuItem_empleados);
 
@@ -186,12 +188,18 @@ public class Vista_Principal extends javax.swing.JFrame {
         MnServicio.setText("Servicios");
         jMenu2.add(MnServicio);
 
+        JmenuClientesVP.setText("Clientes");
+        jMenu2.add(JmenuClientesVP);
+
         menuReportes.add(jMenu2);
 
         jMenu1.setText("Reportes Gráficos");
 
         JmenuPersonasGeneroVP.setText("Genero");
         jMenu1.add(JmenuPersonasGeneroVP);
+
+        JmenuClientesMorePedidoVP.setText("More Pedidos");
+        jMenu1.add(JmenuClientesMorePedidoVP);
 
         menuReportes.add(jMenu1);
 
@@ -333,10 +341,28 @@ public class Vista_Principal extends javax.swing.JFrame {
         this.MnServicio = MnServicio;
     }
 
+    public JMenuItem getJmenuClientesMorePedidoVP() {
+        return JmenuClientesMorePedidoVP;
+    }
+
+    public void setJmenuClientesMorePedidoVP(JMenuItem JmenuClientesMorePedidoVP) {
+        this.JmenuClientesMorePedidoVP = JmenuClientesMorePedidoVP;
+    }
+
+    public JMenuItem getJmenuClientesVP() {
+        return JmenuClientesVP;
+    }
+
+    public void setJmenuClientesVP(JMenuItem JmenuClientesVP) {
+        this.JmenuClientesVP = JmenuClientesVP;
+    }
+
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JmenuClientesMorePedidoVP;
+    private javax.swing.JMenuItem JmenuClientesVP;
     private javax.swing.JMenuItem JmenuPersonasGeneroVP;
     private javax.swing.JMenuItem JmenuPersonasVP;
     private javax.swing.JMenuItem MnEmpleado;

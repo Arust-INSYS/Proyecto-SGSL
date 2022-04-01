@@ -8,10 +8,12 @@ package Controlador;
 import Modelo.CLASES.Empleado;
 import Modelo.CLASES.Persona;
 import Modelo.CLASES.Rol;
+import Modelo.Conexion_BD;
 import Modelo.Modelo_Empleado;
 import Modelo.Modelo_Persona;
 import Vista.Vista_Empleado;
 import Vista.Vista_Persona;
+import Vista.Vista_Principal;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.FocusEvent;
@@ -23,7 +25,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -35,6 +39,12 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -46,13 +56,15 @@ public class Controlador_Empleados {
     private Modelo_Persona modelPer;
     private JFileChooser jfc;
     private Vista_Persona viewper;
+    private Vista_Principal principal;
     Controlador_Fecha  conf = new  Controlador_Fecha();
 
-    public Controlador_Empleados(Modelo_Empleado modelo_emple, Vista_Empleado vista_emple, Modelo_Persona modelPer, Vista_Persona viewper) {
+    public Controlador_Empleados(Modelo_Empleado modelo_emple, Vista_Empleado vista_emple, Modelo_Persona modelPer, Vista_Persona viewper, Vista_Principal principal) {
         this.modelo_emple = modelo_emple;
         this.vista_emple = vista_emple;
         this.modelPer = modelPer;
         this.viewper = viewper;
+        this.principal= principal;
         vista_emple.setVisible(true);
         valida();
         CargarEmpleados();
@@ -78,6 +90,8 @@ public class Controlador_Empleados {
         vista_emple.getVerper().addActionListener(l -> abrirDialogo(1));
         vista_emple.getBtningresar().addActionListener(l -> modificar_per());
         viewper.getBtnAceptarPer().addActionListener(l->EditarPersona());
+        principal.getMnEmpleado().addActionListener(l->reporteempleado_gene());
+        
 //        vista_emple.getLblbuscar().addAncestorListener(l->BuscarEmpleado());
     }
     
@@ -674,6 +688,19 @@ public class Controlador_Empleados {
             }
         }
         return idreprtido;
+    }
+     
+    private void reporteempleado_gene(){      
+       Conexion_BD cpg = new Conexion_BD();
+            try {
+            JasperReport jr =(JasperReport)JRLoader.loadObject(getClass().getResource("/Vista/Resportes/Repo_emple.jasper"));
+            JasperPrint jp= JasperFillManager.fillReport(jr, null, cpg.getCon());
+            JasperViewer jv= new JasperViewer(jp);
+            jv.setVisible(true);
+            } catch (JRException e) {
+            Logger.getLogger(Controlador_Empleados.class.getName()).log(Level.SEVERE, null, e);
+            }
+       
     }
 
 }

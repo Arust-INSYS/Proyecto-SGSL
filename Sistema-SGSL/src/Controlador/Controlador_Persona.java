@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.CLASES.Persona;
 import Modelo.CLASES.Servicios;
+import Modelo.Conexion_BD;
 import Modelo.Modelo_Cliente;
 import Modelo.Modelo_Empleado;
 import Modelo.Modelo_Persona;
@@ -27,7 +28,9 @@ import java.io.IOException;
 //import java.sql.Date;
 import java.util.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -43,6 +46,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -55,7 +64,7 @@ public class Controlador_Persona {
     private JFileChooser jfc;
 
     Controlador_Fecha conf = new Controlador_Fecha();
-    
+
     //Constructor de la clase Controlador de persona.
     public Controlador_Persona(Modelo_Persona modelPer, Vista_Persona vistaPer) {
         this.modelPer = modelPer;
@@ -75,12 +84,12 @@ public class Controlador_Persona {
     private void ControlesInformacionPrincipal() {
         ControlLblPrincipalesActivos();
     }
-    
+
     //Método que permite visualizar el incremento del ID en la vista persona.
     private void IncremetoID() {
         vistaPer.getTxt_ID_Persona().setText(String.valueOf(modelPer.IncrementoIdPersona()));
     }
-    
+
     //Método de control de todos los botones iniciales.
     public void ControlBotonesPrincipales() {
         vistaPer.getBtnCrearPersona().addActionListener(l -> DialogoCrearEditarPersona(1));
@@ -437,7 +446,7 @@ public class Controlador_Persona {
                                     if (conf.FechaNacimientoMayor(fecha) == false) {
                                         vistaPer.getLbLFechaRojo().setVisible(true);
                                     } else {
-                                         vistaPer.getLbLFechaRojo().setVisible(false);
+                                        vistaPer.getLbLFechaRojo().setVisible(false);
                                         if (vistaPer.getGrupoBotonGenero().isSelected(null)) {
                                             vistaPer.getLblGeneroRojo().setVisible(true);
 
@@ -810,4 +819,6 @@ public class Controlador_Persona {
         }
 
     }
+
+    
 }

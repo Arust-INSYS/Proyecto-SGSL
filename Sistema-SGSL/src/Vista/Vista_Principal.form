@@ -60,9 +60,9 @@
                 <Property name="text" type="java.lang.String" value="Reportes Generales"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                <MenuItem class="javax.swing.JMenuItem" name="JmenuPersonasVP">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+                    <Property name="text" type="java.lang.String" value="Personas"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
@@ -72,9 +72,9 @@
                 <Property name="text" type="java.lang.String" value="Reportes Gr&#xe1;ficos"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                <MenuItem class="javax.swing.JMenuItem" name="JmenuPersonasGeneroVP">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+                    <Property name="text" type="java.lang.String" value="Genero"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>

@@ -8,6 +8,7 @@ package Controlador;
 import Modelo.CLASES.Persona;
 import Modelo.Modelo_Cliente;
 import Modelo.Modelo_Empleado;
+import Modelo.Modelo_Pedido;
 import Modelo.Modelo_Persona;
 import Modelo.Modelo_Servicio;
 import Modelo.Modelo_Usuario;
@@ -16,6 +17,7 @@ import Modelo.Modelo_productos;
 import Vista.Vista_Cliente;
 import Vista.Vista_Empleado;
 import Vista.Vista_Login;
+import Vista.Vista_Pedidos;
 import Vista.Vista_Persona;
 import Vista.Vista_Servicio;
 import Vista.Vista_Principal;
@@ -33,6 +35,7 @@ public class Control_VistaPrincipal {
     public Control_VistaPrincipal(Vista_Principal vista_menu){
         this.vista_menu=vista_menu;
         vista_menu.setVisible(true);
+        ReportesSGSL();
     }
     
     public void iniciaControl(){
@@ -43,6 +46,7 @@ public class Control_VistaPrincipal {
         vista_menu.getBtnbodega().addActionListener(l -> Crud_bodega());
         vista_menu.getMenuItem_empleados().addActionListener(l->Crud_empleados());
         vista_menu.getBtnRegresar().addActionListener(l-> Cerrar());
+        vista_menu.getSubmenu_Pedidos().addActionListener(l->Crud_pedidos());
 
     }
     private void Crud_Servicios(){
@@ -126,4 +130,19 @@ public class Control_VistaPrincipal {
             vista_menu.getMenuItem_empleados().setEnabled(false);
         }
     }
+     private void Crud_pedidos(){
+        Vista_Pedidos vista = new Vista_Pedidos();
+        Modelo_Pedido modelo = new Modelo_Pedido();        
+        vista_menu.getDkp_pane_principal().add(vista);
+        
+        Controlador_Pedido control = new Controlador_Pedido(modelo,vista);
+        control.incioControl();
+    }
+     
+    private void ReportesSGSL(){
+        Controlador_Reportes cr = new Controlador_Reportes(vista_menu);
+        cr.IniciarControlReportes();
+    }
+    
+    
 }

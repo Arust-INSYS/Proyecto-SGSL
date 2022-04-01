@@ -48,6 +48,7 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         TxtServicio = new javax.swing.JTextField();
         TxtCantidad = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        btnGuardar2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnEnviar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -106,6 +107,9 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         jLabel10.setText("Cantidad");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
 
+        btnGuardar2.setText("Guardar2");
+        jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 230));
 
         btnEnviar.setText("Enviar");
@@ -163,7 +167,8 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public JButton setBtnEnviar() {
+   
+    public JButton getBtnEnviar() {
         return btnEnviar;
     }
 
@@ -261,6 +266,15 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
     public void setTxtValor(JTextField TxtValor) {
         this.TxtValor = TxtValor;
     }
+
+    public JButton getBtnGuardar2() {
+        return btnGuardar2;
+    }
+
+    public void setBtnGuardar2(JButton btnGuardar2) {
+        this.btnGuardar2 = btnGuardar2;
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -272,6 +286,7 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnGuardar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

@@ -162,6 +162,8 @@ public class Controlador_Cliente {
         vistaCli.getTxtBuscarCedulaCli().setVisible(false);
         vistaCli.getJpanelInformacionBusqueda().setVisible(false);
         vistaCli.getLblNameBuscar().setVisible(false);
+        vistaCli.getSeparatorMedioVC().setVisible(false);
+        vistaCli.getSeparatorResultVC().setVisible(false);
     }
     
     //Método que permite Visualizar  los componentes de la vista cuando el diálogo sea de Edicion.
@@ -171,6 +173,8 @@ public class Controlador_Cliente {
         vistaCli.getTxtBuscarCedulaCli().setVisible(true);
         vistaCli.getJpanelInformacionBusqueda().setVisible(true);
         vistaCli.getLblNameBuscar().setVisible(true);
+        vistaCli.getSeparatorMedioVC().setVisible(true);
+        vistaCli.getSeparatorResultVC().setVisible(true);
     }
     
     //Método que permite buscar por cédula para que se carguen los datos de la persona. 
@@ -210,6 +214,9 @@ public class Controlador_Cliente {
         if (tipo == 1) {
             ControlHabilitarComponetesDLG();
             titulo = "Crear nuevo Cliente";
+            IncremetoID_Cliente();
+            vistaCli.getTxtBuscarCedulaCli().setText("");
+            vistaCli.getLblNombresClienteBusqueda().setText("");
             vistaCli.getTxtTelefonoCliente().setText("");
             vistaCli.getTxt_ID_Persona().setText("");
             vistaCli.getDialogoCliente().setName("Crear");
@@ -277,7 +284,7 @@ public class Controlador_Cliente {
         for (int i = 0; i < listaBusper.size(); i++) {
             System.out.println("Ingreso al for de edicion persona");
             if (listaBusper.get(i).getId_persona() == codigo) {
-                System.out.println("Ingreso al fi de la edicon de persona");
+                System.out.println("Ingreso al if de la edicon de persona-->"+codigo);
                 viewper.getTxt_ID_Persona().setText(String.valueOf(listaBusper.get(i).getId_persona()));
                 viewper.getTxtCedulaPersona().setText(listaBusper.get(i).getCedula());
                 viewper.getTxtNombrePersona().setText(listaBusper.get(i).getNombre());

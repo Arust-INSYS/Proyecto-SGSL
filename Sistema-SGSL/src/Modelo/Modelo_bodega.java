@@ -11,15 +11,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Modelo_bodega extends Bodega{
+    //conexion objeto
         Conexion_BD  cpg = new Conexion_BD();
-
+//contructor vacio
     public Modelo_bodega() {
     }
-
+//contructor full de la clase bodega
     public Modelo_bodega(int idbodega, int numero, int cantidad, int espacio) {
         super(idbodega, numero, cantidad, espacio);
     }
-    
+ //metodo sql para llamar a todas las bodegas   
     public List<Bodega> listarbodegas(){
         List<Bodega> lista = new  ArrayList<Bodega>();
         try {
@@ -41,6 +42,7 @@ public class Modelo_bodega extends Bodega{
             return null;
         }
     }
+    //metodo sql para crear a todas las bodegas   
     public boolean creabodega(){
         try {
             String sql;
@@ -57,7 +59,7 @@ public class Modelo_bodega extends Bodega{
             return false;
         }    
     }
-    
+     //metodo sql para editar a todas las bodegas   
     public boolean editarbo(){
         try {
             String sql;
@@ -75,12 +77,12 @@ public class Modelo_bodega extends Bodega{
             return false;
         }   
     }
-      
+    //metodo sql para eliminar a todas las bodegas      
     public boolean eliminarbodega(String id){
                 String sql= "UPDATE  bodegas  SET estado='I' WHERE id_bodega ='" + id+ "'";
      return cpg.accion(sql);
     }
-    
+     //metodo sql para el id se incremente solo  
     public int Incrementoodega(){
         int incremento = 1;
         try {
@@ -94,7 +96,7 @@ public class Modelo_bodega extends Bodega{
         }
         return incremento;
     }
-    
+     //metodo sql para buscar a todas las bodegas   
             public List<Bodega> listarperbusquedabodega(String busqueda) {
         List<Bodega> listbus = new ArrayList<Bodega>();
         String sql = "";

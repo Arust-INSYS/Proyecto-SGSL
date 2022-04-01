@@ -21,16 +21,16 @@ import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
 public class Modelo_productos extends Productos{
-    
+//conexion    
         Conexion_BD  cpg = new Conexion_BD();
-
+//construtor vacio
     public Modelo_productos() {
     }
-
+//construtor vacio
     public Modelo_productos(int id_producto, String nom_producto, double precio_producto, int cantidad_producto, String marcar_producto, Image foto, FileInputStream imagen, int largo, int id_bodega) {
         super(id_producto, nom_producto, precio_producto, cantidad_producto, marcar_producto, foto, imagen, largo, id_bodega);
     }
-   
+//metodo sql para llamar a los productos con foto a la tabla
     public List<Productos> listarproductos() {
         List<Productos> listaprod = new ArrayList<Productos>();
             System.out.println("1m");
@@ -65,7 +65,7 @@ public class Modelo_productos extends Productos{
             return null;
         }
         }
-        
+//metodo para obtener la foto de la pc       
     private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
@@ -77,7 +77,8 @@ public class Modelo_productos extends Productos{
         param.setSourceSubsampling(1, 1, 0, 0);
         return reader.read(0, param);
     }
-        public boolean crearprocduc() {
+//metodo sql para crear a los productos con foto 
+    public boolean crearprocduc() {
         try {
             String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,foto_producto,id_bodega,estado)\n" + "VALUES(?,?,?,?,?,?,?,'A')";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
@@ -96,7 +97,8 @@ public class Modelo_productos extends Productos{
             return false;
         }
     }
-           public boolean crearprocducsinfoto() {
+//metodo sql para crear a los productos sin foto 
+    public boolean crearprocducsinfoto() {
         try {
             String sql = "INSERT INTO productos(id_producto,nom_producto,precio_producto,cantidad_producto,marcar_producto,id_bodega,estado)\n" + "VALUES(?,?,?,?,?,?,'A')";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
@@ -114,7 +116,7 @@ public class Modelo_productos extends Productos{
             return false;
         }
     }
-     
+//metodo sql para editar a los productos con foto 
             public boolean edipro(String id) {
         try {
             String sql = "UPDATE productos SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?, foto_producto=?,id_bodega=? WHERE id_producto ='" + id + "'";
@@ -133,7 +135,8 @@ public class Modelo_productos extends Productos{
             return false;
         }
     }
-             public boolean editarpro(String id) {
+//metodo sql para editar a los productos sin foto 
+            public boolean editarpro(String id) {
         try {
             String sql = "UPDATE productos SET id_producto=?, nom_producto=?, precio_producto=?, cantidad_producto=?, marcar_producto=?, id_bodega=? WHERE id_producto ='" + id + "'";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
@@ -150,13 +153,14 @@ public class Modelo_productos extends Productos{
             return false;
         }
     }
-        public boolean eliminapro(String id) {
-        
+//metodo sql para eliminar a los productos 
+            public boolean eliminapro(String id) {
             String sql= "UPDATE productos SET estado='I' WHERE id_producto='" + id+ "'";
            // String sql = "delete from productos WHERE  id_producto ='" + id + "'";
         System.out.println("" + sql);
         return cpg.accion(sql);
     }
+    //metodo sql para buscar a los productos 
             public List<Productos> listarperbusqueda(String busqueda) {
         List<Productos> listbus = new ArrayList<Productos>();
         String sql = "";
@@ -196,7 +200,8 @@ public class Modelo_productos extends Productos{
             return null;
         }
     }
-                public int IncrementoIdproducto(){
+     //metodo sql para el id se incremente solo  
+            public int IncrementoIdproducto(){
         int incremento = 1;
         try {
             String sql = "select max(id_producto) from productos";
@@ -210,8 +215,9 @@ public class Modelo_productos extends Productos{
         return incremento;
     }
 
-//------------------------------------------------------------------------------------------------------------------------
-                public List<Bodega> listarbodegas(){
+//------------bodegas--------------------------------------------------------------
+//metodo para listar bodegas en la tabla   
+            public List<Bodega> listarbodegas(){
         List<Bodega> lista = new  ArrayList<Bodega>();
         try {
             String sql ="select * from bodegas where estado='A'";
@@ -232,7 +238,7 @@ public class Modelo_productos extends Productos{
             return null;
         }
     }
-  
+       //metodo sql para buscar a todas las bodegas   
             public List<Bodega> listarperbusquedabodega(String busqueda) {
         List<Bodega> listbus = new ArrayList<Bodega>();
         String sql = "";

@@ -170,6 +170,22 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     public void setLblFechaAcutualVC(JLabel LblFechaAcutualVC) {
         this.LblFechaAcutualVC = LblFechaAcutualVC;
     }
+
+    public JSeparator getSeparatorMedioVC() {
+        return SeparatorMedioVC;
+    }
+
+    public void setSeparatorMedioVC(JSeparator SeparatorMedioVC) {
+        this.SeparatorMedioVC = SeparatorMedioVC;
+    }
+
+    public JSeparator getSeparatorResultVC() {
+        return SeparatorResultVC;
+    }
+
+    public void setSeparatorResultVC(JSeparator SeparatorResultVC) {
+        this.SeparatorResultVC = SeparatorResultVC;
+    }
     
    
     
@@ -197,7 +213,9 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         TxtBuscarCedulaCli = new javax.swing.JTextField();
         LblNameBuscar = new javax.swing.JLabel();
         SeparatorCliente = new javax.swing.JSeparator();
+        SeparatorMedioVC = new javax.swing.JSeparator();
         LblNombresClienteBusqueda = new javax.swing.JLabel();
+        SeparatorResultVC = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblCliente = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -255,6 +273,11 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
         SeparatorCliente.setBackground(new java.awt.Color(0, 0, 102));
 
+        SeparatorMedioVC.setBackground(new java.awt.Color(51, 0, 255));
+        SeparatorMedioVC.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        SeparatorResultVC.setBackground(new java.awt.Color(0, 0, 102));
+
         javax.swing.GroupLayout JpanelInformacionBusquedaLayout = new javax.swing.GroupLayout(JpanelInformacionBusqueda);
         JpanelInformacionBusqueda.setLayout(JpanelInformacionBusquedaLayout);
         JpanelInformacionBusquedaLayout.setHorizontalGroup(
@@ -269,8 +292,12 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                         .addComponent(LblNameBuscar)
                         .addGap(18, 18, 18)
                         .addComponent(TxtBuscarCedulaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LblNombresClienteBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(SeparatorMedioVC, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JpanelInformacionBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LblNombresClienteBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SeparatorResultVC))
                 .addContainerGap())
         );
         JpanelInformacionBusquedaLayout.setVerticalGroup(
@@ -279,13 +306,16 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(LblNombresClienteBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SeparatorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(JpanelInformacionBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SeparatorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SeparatorResultVC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(JpanelInformacionBusquedaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(JpanelInformacionBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblNameBuscar)
                     .addComponent(TxtBuscarCedulaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
+            .addComponent(SeparatorMedioVC)
         );
 
         javax.swing.GroupLayout DialogoClienteLayout = new javax.swing.GroupLayout(DialogoCliente.getContentPane());
@@ -448,6 +478,8 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel LblNameBuscar;
     private javax.swing.JLabel LblNombresClienteBusqueda;
     private javax.swing.JSeparator SeparatorCliente;
+    private javax.swing.JSeparator SeparatorMedioVC;
+    private javax.swing.JSeparator SeparatorResultVC;
     private javax.swing.JTable TblCliente;
     private javax.swing.JTextField TxtBuscarCedulaCli;
     private javax.swing.JTextField TxtBuscarCliente;

@@ -27,7 +27,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/icons8-guardar-pro-48.png"/>
+              <Image iconType="3" name="/Vista/Iconos/icons8-guardar- bodfega48.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
             <Property name="toolTipText" type="java.lang.String" value="Guardar"/>
@@ -64,7 +64,7 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/icons8-cancelar-pro-2-48.png"/>
+              <Image iconType="3" name="/Vista/Iconos/icons8-cancelar-bodega2-48.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CANCELAR"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -175,12 +175,12 @@
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Vista/Iconos/images.jpg"/>
+              <Image iconType="3" name="/Vista/Iconos/fondo_lin.jpg"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="550" height="420"/>
+              <AbsoluteConstraints x="0" y="0" width="580" height="420"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -465,7 +465,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Vista/Iconos/icons8-agregar-pro-propiedad-48 (1).png"/>
+          <Image iconType="3" name="/Vista/Iconos/icons8-agregar bodega-propiedad-48 (1).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Crear"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -475,7 +475,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="210" width="90" height="50"/>
+          <AbsoluteConstraints x="50" y="212" width="100" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -488,7 +488,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Vista/Iconos/icons8-editar-pro-propiedad-48_1.png"/>
+          <Image iconType="3" name="/Vista/Iconos/icons8-editar-bodeaspropiedad-48.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Editar"/>
         <Property name="toolTipText" type="java.lang.String" value="Editar"/>
@@ -499,7 +499,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="290" width="90" height="50"/>
+          <AbsoluteConstraints x="50" y="290" width="100" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -512,7 +512,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Vista/Iconos/icons8-eliminar-propiedad-48.png"/>
+          <Image iconType="3" name="/Vista/Iconos/icons8-eliminar-bodega-propiedad-48 (1).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
         <Property name="toolTipText" type="java.lang.String" value="Eliminar"/>
@@ -554,7 +554,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="0" width="190" height="190"/>
+          <AbsoluteConstraints x="30" y="0" width="190" height="190"/>
         </Constraint>
       </Constraints>
     </Component>

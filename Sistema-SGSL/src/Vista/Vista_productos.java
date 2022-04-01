@@ -7,12 +7,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-
-/**
- *
- * @author lorena
- */
 public class Vista_productos extends javax.swing.JInternalFrame {
+    //SE CREA LOS GETTER Y SETTER  
     
     public Vista_productos() {
         initComponents();
@@ -331,12 +327,18 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Cantidad:");
         Dialog_Crear.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        txtidproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidproductoActionPerformed(evt);
+            }
+        });
         Dialog_Crear.getContentPane().add(txtidproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 64, 50, 30));
         Dialog_Crear.getContentPane().add(txtnom_pro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 140, 30));
         Dialog_Crear.getContentPane().add(txtpreciopro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 140, 30));
 
         btnAceptar_pro1.setForeground(new java.awt.Color(0, 0, 0));
-        btnAceptar_pro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-guardar-pro-48.png"))); // NOI18N
+        btnAceptar_pro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-guardar- bodfega48.png"))); // NOI18N
         btnAceptar_pro1.setText("Guardar");
         btnAceptar_pro1.setToolTipText("Guardar");
         btnAceptar_pro1.setBorder(null);
@@ -349,7 +351,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         Dialog_Crear.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 158, 32));
 
         btnCancelar_pro1.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar_pro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-cancelar-pro-2-48.png"))); // NOI18N
+        btnCancelar_pro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-cancelar-bodega2-48.png"))); // NOI18N
         btnCancelar_pro1.setText("Cancelar");
         btnCancelar_pro1.setToolTipText("Cancelar");
         btnCancelar_pro1.setBorder(null);
@@ -385,13 +387,14 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel5.setText("FOTO");
         Dialog_Crear.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
+        btnexaminar.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
         btnexaminar.setForeground(new java.awt.Color(0, 0, 0));
-        btnexaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-verificar-documento-48.png"))); // NOI18N
+        btnexaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-carpeta-de-documentos-48.png"))); // NOI18N
         btnexaminar.setText("Examinar");
         btnexaminar.setToolTipText("Examinar");
         btnexaminar.setBorder(null);
         btnexaminar.setContentAreaFilled(false);
-        Dialog_Crear.getContentPane().add(btnexaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
+        Dialog_Crear.getContentPane().add(btnexaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, -1, -1));
 
         txtfecha.setForeground(new java.awt.Color(0, 0, 0));
         Dialog_Crear.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 110, 30));
@@ -406,7 +409,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         snipercanti.setEditor(new javax.swing.JSpinner.NumberEditor(snipercanti, ""));
         Dialog_Crear.getContentPane().add(snipercanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 80, 40));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/images.jpg"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/fondo_lin.jpg"))); // NOI18N
         jLabel18.setToolTipText("");
         Dialog_Crear.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 480));
 
@@ -446,14 +449,14 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         dialogbodega.getContentPane().add(txbuscaidbo, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 94, 347, -1));
 
         btnacepidbodega.setForeground(new java.awt.Color(0, 0, 0));
-        btnacepidbodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-comprobado-bo-48.png"))); // NOI18N
+        btnacepidbodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-check visto-mark-48.png"))); // NOI18N
         btnacepidbodega.setText("Aceptar");
         btnacepidbodega.setToolTipText("Aceptar");
         btnacepidbodega.setBorder(null);
         btnacepidbodega.setContentAreaFilled(false);
         dialogbodega.getContentPane().add(btnacepidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 340, 120, -1));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/images.jpg"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/fondo_lin.jpg"))); // NOI18N
         dialogbodega.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 410));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -586,7 +589,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         BtnEditarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnEditarServicio.setForeground(new java.awt.Color(0, 0, 0));
-        BtnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-editar-pro-propiedad-48.png"))); // NOI18N
+        BtnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48 (2).png"))); // NOI18N
         BtnEditarServicio.setText("Editar");
         BtnEditarServicio.setToolTipText("");
         BtnEditarServicio.setBorder(null);
@@ -595,7 +598,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         BtnCrearServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnCrearServicio.setForeground(new java.awt.Color(0, 0, 0));
-        BtnCrearServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-agregar-pro-propiedad-48 (1).png"))); // NOI18N
+        BtnCrearServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48.png"))); // NOI18N
         BtnCrearServicio.setText("Crear");
         BtnCrearServicio.setToolTipText("CREAR");
         BtnCrearServicio.setBorder(null);
@@ -604,7 +607,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         BtnRemoverServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnRemoverServicio.setForeground(new java.awt.Color(0, 0, 0));
-        BtnRemoverServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-eliminar-propiedad-48.png"))); // NOI18N
+        BtnRemoverServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48 (1).png"))); // NOI18N
         BtnRemoverServicio.setText("Remover");
         BtnRemoverServicio.setBorder(null);
         BtnRemoverServicio.setContentAreaFilled(false);
@@ -624,6 +627,10 @@ public class Vista_productos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtidproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidproductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidproductoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

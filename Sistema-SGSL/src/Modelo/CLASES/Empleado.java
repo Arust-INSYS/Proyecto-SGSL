@@ -29,6 +29,8 @@ public class Empleado {
         this.fecha_contrato = fecha_contrato;
         this.id_persona = id_persona;
     }
+    
+    
 
    
     public int getId_empleado() {

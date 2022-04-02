@@ -28,6 +28,8 @@ public class Modelo_Servicio extends Servicios{
         super(id_servicio, nom_servicio, descri_servicio, costo_servicio, id_empleado);
     }
     
+    
+    //Metodo para listar a todos los servicios.
     public List<Servicios> listarServicios(){
         List<Servicios> lista = new  ArrayList<Servicios>();
         try {
@@ -52,6 +54,7 @@ public class Modelo_Servicio extends Servicios{
         }
     }
     
+    //Metodo para crear un nuevo servicio
     public boolean creaServicio(){
         try {
             String sql;
@@ -71,6 +74,7 @@ public class Modelo_Servicio extends Servicios{
         }    
     }
     
+    //Metodo para modificar un servicio
     public boolean ModificarServicio(){
         try {
             String sql;
@@ -95,8 +99,8 @@ public class Modelo_Servicio extends Servicios{
      return cpg.accion(nsql);
     }
     
-    
-        public List<Empleado> listarEmpleados(){
+    //Metodo para listar a los empleados existentes.
+    public List<Empleado> listarEmpleados(){
         List<Empleado> lista = new  ArrayList<Empleado>();
         try {
             String sql ="select * from empleado";
@@ -117,7 +121,8 @@ public class Modelo_Servicio extends Servicios{
             return null;
         }
     }
-        
+    
+    //Metodo para el incremento de el id.
     public int IncrementoIdServicio(){
         int incremento = 1;
         try {
@@ -131,6 +136,29 @@ public class Modelo_Servicio extends Servicios{
             System.out.println(e.getMessage());
         }
         return incremento;
+    }
+    
+    //Metodo para buscar un servicio
+     public List<Servicios> BuscarServi(String id_servi) {
+        List<Servicios> listaservi = new ArrayList<Servicios>();
+        try {
+            String sql = "select * from servicios where CAST(id_servicio AS TEXT) LIKE '" + id_servi + "%' and CAST(id_empleado AS TEXT) LIKE '" + id_servi + "%';";
+            ResultSet rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Servicios servi = new Servicios();
+                servi.setId_servicio(rs.getInt("id_servicio"));
+                servi.setNom_servicio(rs.getString("nom_servicio"));
+                servi.setDescri_servicio(rs.getString("descri_servicio"));
+                servi.setCosto_servicio(rs.getDouble("costo_servicio"));
+                servi.setId_empleado(rs.getInt("id_empleado"));
+                listaservi.add(servi);
+            }
+            rs.close();
+            return listaservi;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
     
 }

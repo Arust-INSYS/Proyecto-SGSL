@@ -156,16 +156,15 @@ public class Controlador_productos {
             mopro.setId_producto(Integer.parseInt(id));
             mopro.setNom_producto(nom);
             mopro.setMarcar_producto(marca);
-            System.out.println("hola" + precio);
             mopro.setPrecio_producto(Double.parseDouble(precio));
-            System.out.println("´paso");
-
             mopro.setCantidad_producto(Integer.parseInt(cant));
             mopro.setId_bodega(Integer.parseInt(idBO));
             System.out.println("2");
             if (jfch == null) {
                 if (mopro.crearprocducsinfoto()) {
+                    
                     JOptionPane.showMessageDialog(vispro, "PRODUCTO CREADO");
+                    jfch=null;
                 } else {
                     JOptionPane.showMessageDialog(vispro, "Se a producido un error al crear  el producto.", "Error", JOptionPane.ERROR_MESSAGE);
                 }

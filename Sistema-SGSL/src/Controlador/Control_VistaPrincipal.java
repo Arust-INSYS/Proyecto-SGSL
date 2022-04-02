@@ -93,9 +93,8 @@ public class Control_VistaPrincipal {
         Modelo_Empleado modelo_emple = new Modelo_Empleado();
         Vista_Persona vistaPerson = new Vista_Persona();
         Modelo_Persona modelPerson = new Modelo_Persona();
-        Vista_Principal principal = new Vista_Principal();
         vista_menu.getDkp_pane_principal().add(vista_emple);
-        Controlador_Empleados conemple = new Controlador_Empleados(modelo_emple, vista_emple, modelPerson, vistaPerson, principal);
+        Controlador_Empleados conemple = new Controlador_Empleados(modelo_emple, vista_emple, modelPerson, vistaPerson);
         conemple.iniciaControl();
         conemple.ComboRol();
         

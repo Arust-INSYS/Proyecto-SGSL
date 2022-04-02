@@ -68,7 +68,7 @@ public class Modelo_productos extends Productos{
 //metodo para obtener la foto de la pc       
     private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
-        Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
+        Iterator it = ImageIO.getImageReadersByFormatName("png");
         ImageReader reader = (ImageReader) it.next();
         Object source = bis;
         ImageInputStream iis = ImageIO.createImageInputStream(source);
@@ -108,7 +108,6 @@ public class Modelo_productos extends Productos{
             ps.setInt(4, getCantidad_producto());
             ps.setString(5, getMarcar_producto());
             ps.setInt(6, getId_bodega());
-
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -119,7 +118,7 @@ public class Modelo_productos extends Productos{
 //metodo sql para editar a los productos con foto 
             public boolean edipro(String id) {
         try {
-            String sql = "UPDATE productos SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marca_producto=?, foto_producto=?,id_bodega=? WHERE id_producto ='" + id + "'";
+            String sql = "UPDATE productos SET id_producto=?, nom_producto=?,precio_producto=?,cantidad_producto=?, marcar_producto=?, foto_producto=?,id_bodega=? WHERE id_producto ='" + id + "'";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_producto());
             ps.setString(2, getNom_producto());

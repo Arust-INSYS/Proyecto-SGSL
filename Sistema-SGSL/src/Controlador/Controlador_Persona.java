@@ -583,6 +583,7 @@ public class Controlador_Persona {
                 JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.");
             }
         }
+        jfc = null;//jfc null
     }
 
     //Método que permite modificar los datos de una persona.Método que permite cargar todos los registros en la tabla 
@@ -624,7 +625,7 @@ public class Controlador_Persona {
                 JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.");
             }
         }
-
+        jfc = null;
     }
 
     //Método que permite cargar todos los registros de la tabla.

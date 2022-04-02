@@ -345,7 +345,7 @@ public class Controlador_Cliente {
                 JOptionPane.showMessageDialog(vistaCli, "Error, no se pudo modificar la Persona.");
             }
         }
-        
+        jfc = null;
     }
     
     //Método que cargará el diferente dialogo a partir de la selección de crear o editar 

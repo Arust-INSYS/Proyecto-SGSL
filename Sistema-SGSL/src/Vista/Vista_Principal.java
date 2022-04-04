@@ -60,6 +60,8 @@ public class Vista_Principal extends javax.swing.JFrame {
         MnEmpleado = new javax.swing.JMenuItem();
         MnServicio = new javax.swing.JMenuItem();
         JmenuClientesVP = new javax.swing.JMenuItem();
+        jMenuproductosvp = new javax.swing.JMenuItem();
+        jMenubodegvb = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         JmenuPersonasGeneroVP = new javax.swing.JMenuItem();
         JmenuClientesMorePedidoVP = new javax.swing.JMenuItem();
@@ -191,6 +193,12 @@ public class Vista_Principal extends javax.swing.JFrame {
         JmenuClientesVP.setText("Clientes");
         jMenu2.add(JmenuClientesVP);
 
+        jMenuproductosvp.setText("Productos");
+        jMenu2.add(jMenuproductosvp);
+
+        jMenubodegvb.setText("Bodegas");
+        jMenu2.add(jMenubodegvb);
+
         menuReportes.add(jMenu2);
 
         jMenu1.setText("Reportes Gráficos");
@@ -271,6 +279,22 @@ public class Vista_Principal extends javax.swing.JFrame {
 
     public JMenuItem getMenuItem_empleados() {
         return menuItem_empleados;
+    }
+
+    public JMenuItem getjMenubodegvb() {
+        return jMenubodegvb;
+    }
+
+    public void setjMenubodegvb(JMenuItem jMenubodegvb) {
+        this.jMenubodegvb = jMenubodegvb;
+    }
+
+    public JMenuItem getjMenuproductosvp() {
+        return jMenuproductosvp;
+    }
+
+    public void setjMenuproductosvp(JMenuItem jMenuproductosvp) {
+        this.jMenuproductosvp = jMenuproductosvp;
     }
 
     public void setMenuItem_empleados(JMenuItem menuItem_empleados) {
@@ -374,6 +398,8 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenubodegvb;
+    private javax.swing.JMenuItem jMenuproductosvp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;

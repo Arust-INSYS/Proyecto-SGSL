@@ -41,6 +41,9 @@ public class Controlador_Reportes {
         viewP.getJmenuClientesMorePedidoVP().addActionListener(l -> ImprimirClienteMorePedidos());
         viewP.getMnEmpleado().addActionListener(l->ImprimirEmpleadosActivosInactivos());
         viewP.getMnServicio().addActionListener(l->ImprimirServicios());
+        viewP.getjMenuproductosvp().addActionListener(l->ImprimiPRODUCTOS());
+        viewP.getjMenubodegvb().addActionListener(l->ImprimiBODEGA());
+
     }
 
     //Métodos que nos permiten hacer los reportes de persona general y gráficos.
@@ -178,4 +181,31 @@ public class Controlador_Reportes {
             Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        private void ImprimiPRODUCTOS() {
+        Conexion_BD cp = new Conexion_BD();
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/reportepro.jasper"));
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("logo", "Servlog.png");
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
+        
+        private void ImprimiBODEGA() {
+        Conexion_BD cp = new Conexion_BD();
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/reportebodega.jasper"));
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("logo", "Servlog.png");
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
 }

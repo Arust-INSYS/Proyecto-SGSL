@@ -164,7 +164,7 @@ public class Controlador_productos {
                 if (mopro.crearprocducsinfoto()) {
                     
                     JOptionPane.showMessageDialog(vispro, "PRODUCTO CREADO");
-                    jfch=null;
+                  
                 } else {
                     JOptionPane.showMessageDialog(vispro, "Se a producido un error al crear  el producto.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -185,6 +185,7 @@ public class Controlador_productos {
                     JOptionPane.showMessageDialog(vispro, "Se a producido un error al crear  el producto.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
+              jfch = null;//jfc null
         } else {
             Modelo_productos p = new Modelo_productos();
             String id = vispro.getTxtidproducto().getText();
@@ -227,6 +228,7 @@ public class Controlador_productos {
                 }
             }
         }
+     jfch = null;//jfc null
     }
 //metodo para editar y pasar los datos a su componente correspondiete 
     private void editar() {

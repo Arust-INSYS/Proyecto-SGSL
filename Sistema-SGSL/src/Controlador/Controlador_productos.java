@@ -1,6 +1,7 @@
 package Controlador;
 import Modelo.CLASES.Bodega;
 import Modelo.CLASES.Productos;
+import Modelo.Modelo_bodega;
 import Modelo.Modelo_productos;
 import Vista.Vista_productos;
 import java.awt.Dimension;
@@ -104,7 +105,6 @@ public class Controlador_productos {
                 vispro.getDialogbodega().setLocation(x, y);
                 vispro.getDialog_Crear().setVisible(true);
             } else {
-                System.out.println("vea bien");
             }
         }
         vispro.getDialog_Crear().setLocationRelativeTo(vispro);
@@ -144,7 +144,6 @@ public class Controlador_productos {
     }
 //metodo para crear y editar productos
     private void crear() {
-        System.out.println("1");
         if (vispro.getDialog_Crear().getName() == "crear") {
             String id = vispro.getTxtidproducto().getText();
             String nom = vispro.getTxtnom_pro().getText();
@@ -159,10 +158,10 @@ public class Controlador_productos {
             mopro.setPrecio_producto(Double.parseDouble(precio));
             mopro.setCantidad_producto(Integer.parseInt(cant));
             mopro.setId_bodega(Integer.parseInt(idBO));
-            System.out.println("2");
             if (jfch == null) {
                 if (mopro.crearprocducsinfoto()) {
-                    
+                      INCREMENTOCANTIDA(Integer.parseInt(idBO));
+                DescargarCantidad(Integer.parseInt(idBO));
                     JOptionPane.showMessageDialog(vispro, "PRODUCTO CREADO");
                   
                 } else {
@@ -179,7 +178,9 @@ public class Controlador_productos {
                     Logger.getLogger(Modelo_productos.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 if (mopro.crearprocduc()) {
-                    vispro.getDialog_Crear().setVisible(false);
+                INCREMENTOCANTIDA(Integer.parseInt(idBO));
+                DescargarCantidad(Integer.parseInt(idBO));    
+                vispro.getDialog_Crear().setVisible(false);
                     JOptionPane.showMessageDialog(vispro, "PRODUCTO Creado Satisfactoriamente");
                 } else {
                     JOptionPane.showMessageDialog(vispro, "Se a producido un error al crear  el producto.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -202,6 +203,8 @@ public class Controlador_productos {
             p.setId_bodega(Integer.parseInt(idbo));
             if (jfch == null) {
                 if (p.editarpro(id)) {
+                    INCREMENTOCANTIDA(Integer.parseInt(idbo));
+                  DescargarCantidad(Integer.parseInt(idbo));
                     JOptionPane.showMessageDialog(vispro, "PRODUCTO MMODIFICADO");
                 } else {
                     JOptionPane.showMessageDialog(vispro, "Se a producido un error al modificar el producto.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -219,7 +222,9 @@ public class Controlador_productos {
                     }
                 }
                 if (p.edipro(id)) {
-                    limpiardatos();
+                  INCREMENTOCANTIDA(Integer.parseInt(idbo));
+     DescargarCantidad(Integer.parseInt(idbo));
+                  limpiardatos();
                     vispro.getDialog_Crear().setVisible(false);
                     JOptionPane.showMessageDialog(vispro, "PRODUCTO MMODIFICADO");
 
@@ -473,5 +478,39 @@ private void busbo(java.awt.event.KeyEvent evt) {
             }
         });
     }
-
+//-------------------------------------------------
+     private void INCREMENTOCANTIDA(int idbo){
+        Modelo_bodega modb = new Modelo_bodega();
+        List<Bodega> listbod = modb.listarbodegas();
+        for (int i = 0; i < listbod.size(); i++) {
+            if(listbod.get(i).getIdbodega() == idbo){
+                int cantidad = listbod.get(i).getCantidad();
+                int cantv = Integer.parseInt(vispro.getSnipercanti().getValue().toString());
+                int nuevac = cantidad+cantv;
+                modb.setCantidad(nuevac);
+                if(modb.modificarBodegaCant(idbo)){
+                    System.out.println("positivo");
+                }
+            }
+            
+        }
+    }
+   private void DescargarCantidad(int idbo){
+        Modelo_bodega modbo = new Modelo_bodega();
+        List<Bodega> listbod = modbo.listarbodegas();
+        for (int i = 0; i < listbod.size(); i++) {
+            if(listbod.get(i).getIdbodega() == idbo){
+                int espacioBG = listbod.get(i).getEspacio();
+                System.out.println("-->"+espacioBG);
+                int cantiB = listbod.get(i).getCantidad();  
+                int nuevac = espacioBG - cantiB;
+                System.out.println("final-->"+nuevac);
+                modbo.setEspacio(nuevac);
+                if(modbo.modificarBodegaAlmacenamiento(idbo)){
+                    System.out.println("positivo");
+                }
+            }
+            
+        }
+    }
 }

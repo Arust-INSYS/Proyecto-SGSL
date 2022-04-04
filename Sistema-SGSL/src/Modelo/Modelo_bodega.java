@@ -123,6 +123,14 @@ public class Modelo_bodega extends Bodega{
             return null;
         }
     }
-    
-    
+     public boolean modificarBodegaCant(int id_bode) {
+        String sql = "update bodegas set cantidad_bodega = '"+getCantidad()+"' where id_bodega='"+id_bode+"';";
+        System.out.println("" + sql);
+        return cpg.accion(sql);
+    }
+     public boolean modificarBodegaAlmacenamiento(int id_bode) {
+        String sql = "update bodegas set espacio_bo = '"+getEspacio()+"'  where id_bodega = '"+id_bode+"';";
+        System.out.println("" + sql);
+        return cpg.accion(sql);
+    }
 }

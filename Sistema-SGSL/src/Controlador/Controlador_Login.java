@@ -21,18 +21,19 @@ public class Controlador_Login {
     private Modelo_Usuario modelo_user;
     private Vista_Login vista_login;
 
+    //Constructor de la clase Controlador de Login.
     public Controlador_Login(Modelo_Usuario modelo_user, Vista_Login vista_login) {
         this.modelo_user = modelo_user;
         this.vista_login = vista_login;
 //        vista_login.setVisible(true);
     }
-
+//Método de control de todos los botones iniciales.
     public void IniciarBoton() {
     vista_login.getBtnLogin().addActionListener(l-> logeo());
     vista_login.getBtnRegistrar().addActionListener(l-> AbrirVregistro());
     
     }
-
+ //Método de validación de todos los datos ingresados por el usuario.
     public void logeo() {
         String user = vista_login.getTxtUsuarioLogin().getText();
         String password = String.valueOf(vista_login.getTxt_passwordLogin().getPassword());
@@ -55,7 +56,7 @@ public class Controlador_Login {
         }
 
     }
-
+//Metodo para abrir la ventana de Vista_Registro_Usuario
     public void AbrirVregistro() {
         Vista_Registro_Usuario vru = new Vista_Registro_Usuario();
         Modelo_Usuario user = new Modelo_Usuario();

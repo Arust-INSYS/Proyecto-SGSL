@@ -8,10 +8,12 @@ package Controlador;
 import Modelo.CLASES.Empleado;
 import Modelo.CLASES.Persona;
 import Modelo.CLASES.Rol;
+import Modelo.Conexion_BD;
 import Modelo.Modelo_Empleado;
 import Modelo.Modelo_Persona;
 import Vista.Vista_Empleado;
 import Vista.Vista_Persona;
+import Vista.Vista_Principal;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.FocusEvent;
@@ -23,7 +25,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -35,6 +39,12 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -58,16 +68,18 @@ public class Controlador_Empleados {
         CargarEmpleados();
     }
 
+    //Metodo de incremento de id de empleado automatico
     private void IncremetoID() {
         int n = modelo_emple.IncrementoIdEmpleado();
         int metodo = 100 + n;
         vista_emple.getTxtidempleado().setText(String.valueOf(metodo));
     }
 
+    //Metodo de control inicial para llamar a las acciones.
     public void iniciaControl() {
         vista_emple.getBtnActualizar().addActionListener(l -> CargarEmpleados());
-        vista_emple.getBtnCrear().addActionListener(l -> abrirDialogo_pro(1));
-        vista_emple.getBtnEditar().addActionListener(l -> TipoDialogoAbrirCliente());
+        vista_emple.getBtnCrear().addActionListener(l -> abrirDialogo_emple(1));
+        vista_emple.getBtnEditar().addActionListener(l -> TipoDialogoAbrirEmpleado());
         vista_emple.getBtnAceptar().addActionListener(l -> crearEditarEmpleado());
         vista_emple.getBtnRemover().addActionListener(l -> EliminarEmpleadoView());
         vista_emple.getBtnCancelar().addActionListener(l -> cancelar_emple());
@@ -76,10 +88,11 @@ public class Controlador_Empleados {
         vista_emple.getVerper().addActionListener(l -> abrirDialogo(1));
         vista_emple.getBtningresar().addActionListener(l -> modificar_per());
         viewper.getBtnAceptarPer().addActionListener(l->EditarPersona());
+        
 //        vista_emple.getLblbuscar().addAncestorListener(l->BuscarEmpleado());
     }
     
-
+//Validaciones para los campos de la interfaz mediante la accion key.
     public void valida() {
         KeyListener vali = new KeyListener() {
             @Override
@@ -162,10 +175,12 @@ public class Controlador_Empleados {
                 }
             }
         };
+        vista_emple.getTxtBuscarEmpleado().addKeyListener(buscar);
         vista_emple.getTxtsueldo().addKeyListener(vali);
     }
 
-    private void abrirDialogo_pro(int ce) {
+   // Abre el dialogo para crear y editar empleado
+    private void abrirDialogo_emple(int ce) {
         String title = null;
         if (ce == 1) {
             title = "Crear nuevo empleado";
@@ -182,10 +197,12 @@ public class Controlador_Empleados {
         }
         vista_emple.getDialogEmpleado().setLocationRelativeTo(vista_emple);
         vista_emple.getDialogEmpleado().setSize(500, 500);
+        vista_emple.getDialogEmpleado().setLocation(600, 80);
         vista_emple.getDialogEmpleado().setTitle(title);
         vista_emple.getDialogEmpleado().setVisible(true);
     }
-
+    
+//Abre el dialogo para vizualizar a la persona mediante la tabla de carga de datos.
     private void abrirDialogo(int ce) {
         String title;
         if (ce == 1) {
@@ -201,7 +218,9 @@ public class Controlador_Empleados {
         }
     }
     
-    private void TipoDialogoAbrirCliente() {
+    
+ // Metodo de opcion, que realiza el llamado al dialogo persona o empleado segun elija.   
+    private void TipoDialogoAbrirEmpleado() {
 
         int i = vista_emple.getTblEmpleado().getSelectedRow();
 
@@ -213,7 +232,7 @@ public class Controlador_Empleados {
             if (nu == 0) {
                 System.out.println("Persona");
                 viewper.getTxt_ID_Persona().setEditable(false);
-                EdicionPersonaClienteCL(cod);
+                EdicionPersonaEmpleCL(cod);
                 String titulo = "Editar Persona";
                 viewper.getDialogoPersona().setName("Editar");
                 viewper.getDialogoPersona().setVisible(true);
@@ -224,15 +243,17 @@ public class Controlador_Empleados {
             if (nu == 1) {
                 System.out.println("Empleado");
 //                CargarEdicionCliente();
-                abrirDialogo_pro(2);
+                abrirDialogo_emple(2);
 //                viewper.getDialogoPersona().setTitle(titulo);
             }
         } else {
             JOptionPane.showMessageDialog(vista_emple, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     
-    private void EdicionPersonaClienteCL(int codigo) {
+//Metodo para editar la persona que se llamo al dialogo, desde la vista empleado.
+    private void EdicionPersonaEmpleCL(int codigo) {
         System.out.println("Codigoooooooo------------>" + codigo);
         List<Persona> listaBusper = modelPer.listarPersonas();
         for (int i = 0; i < listaBusper.size(); i++) {
@@ -263,7 +284,8 @@ public class Controlador_Empleados {
             }
         }
     }
-    
+ 
+    //Metodo Para cargar los cambios hechos en el dialogo de la persona que se llamo.
     public void EditarPersona() {
         Modelo_Persona modelPerE = new Modelo_Persona();
         modelPerE.setId_persona(Integer.parseInt(viewper.getTxt_ID_Persona().getText()));
@@ -301,10 +323,7 @@ public class Controlador_Empleados {
 
     }
 
-
-//    private void mostrar(){
-//    vista_emple.getDestokpersona().add(abrirDialogo(1));
-//    }
+    //Metodo para validar la creacion y el editar de un empleado mediante el ingreso de datos en el dialog.
     private void crearEditarEmpleado() {
         if (vista_emple.getDialogEmpleado().getName() == "crear") {
             //Insertar
@@ -383,6 +402,7 @@ public class Controlador_Empleados {
         }
     }
 
+ //Metodo para llamar al dialogo a la persona que se le selecciono.  
     public void modificar_per() {
         vista_emple.getTxtid_persona().setEditable(false);
         int seleccionado = vista_emple.getTblPersonas().getSelectedRow();
@@ -394,30 +414,10 @@ public class Controlador_Empleados {
         }
         vista_emple.getDialogPersona().setVisible(false);
     }
-
-//    public void EliminarEmpleado() {
-//        int seleccionado = vista_emple.getTblEmpleado().getSelectedRow();
-//        int respuesta = 0;
-//        Component rootPane = null;
-//        Modelo_Empleado empleli = new Modelo_Empleado();
-//        if (seleccionado != -1) {
-//            String idemple = vista_emple.getTblEmpleado().getValueAt(seleccionado, 0).toString();
-//
-//            respuesta = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro que deseas eliminar este servicio?");
-//            if (respuesta == 0) {
-//                if (empleli.RemoverEmpleado(idemple)) {
-//                    JOptionPane.showMessageDialog(rootPane, "El registro del servicio a sido eliminado");
-//                } else {
-//                    JOptionPane.showMessageDialog(rootPane, "Error al eliminar");
-//                }
-//
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(rootPane, "No hay datos a eliminar");
-//        }
-//    }
     
-     private void EliminarEmpleadoView() {
+  
+    //Metodo para cambiar el estado de empleado de activo a inactivo.
+    private void EliminarEmpleadoView() {
         int i = vista_emple.getTblEmpleado().getSelectedRow();
         if (i != -1) {
             String idpersona = vista_emple.getTblEmpleado().getValueAt(i, 0).toString();
@@ -439,6 +439,8 @@ public class Controlador_Empleados {
         }
     }
 
+    
+    //Metodo para modificar el empleado que a sido seleccionado
     public void modificar_emple() {
         vista_emple.getTxtidempleado().setEnabled(false);
         int seleccionado = vista_emple.getTblEmpleado().getSelectedRow();
@@ -457,6 +459,7 @@ public class Controlador_Empleados {
         }
     }
 
+    //Metodo para limpiar los campos de el dialogo.
     public void limpiar_emple() {
 
         vista_emple.getTxtsueldo().setText("");
@@ -464,7 +467,8 @@ public class Controlador_Empleados {
         vista_emple.getContratacion().setDate(null);
         vista_emple.getTxtid_persona().setText("");
     }
-
+    
+    //Metodo para cargar los empleados dentro de la tabla de la vista principal.
     private void CargarEmpleados() {
 
         //Enlazar el modelo de tabla con mi controlador.
@@ -488,7 +492,8 @@ public class Controlador_Empleados {
         });
 
     }
-
+    
+    //Cargar en los datos en la tabla persona, que se llamo a buscar. 
     private void CargarPersona() {
         vista_emple.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
         vista_emple.getTblPersonas().setRowHeight(100);
@@ -517,6 +522,7 @@ public class Controlador_Empleados {
         });
     }
 
+    //Metodo para el boton de cancelar la opcion dentro del dialogo.
     public void cancelar_emple() {
         int respuesta = 0;
         respuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro que deseas cancelar?");
@@ -528,6 +534,7 @@ public class Controlador_Empleados {
         }
     }
 
+    //
     public void ComboRol() {
         List<Rol> rl = modelo_emple.llenarComboRol();
         vista_emple.getBoxrol().removeAllItems();
@@ -537,7 +544,8 @@ public class Controlador_Empleados {
         }
     }
     
-     private void EdicionPersonaControl() {
+    //Control del dialogo de persona mediante validaciones de campos
+    private void EdicionPersonaControl() {
         boolean verificoED = true;
         String fec = ((JTextField) viewper.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
         if (viewper.getDialogoPersona().getName().equals("Editar")) {
@@ -597,7 +605,8 @@ public class Controlador_Empleados {
         }
         return GeneroPerso;
     }
-
+    
+    //Metodo para celda de control de colores de los labels de cada seccion.
     private void ControlLblPrincipalesActivos() {
         viewper.getLblCedulaRojo().setVisible(false);
         viewper.getLblNombreRojo().setVisible(false);
@@ -606,6 +615,8 @@ public class Controlador_Empleados {
         viewper.getLblGeneroRojo().setVisible(false);
     }
     
+    
+    //Validacion para el ingreso correcto de cedula.
     public boolean validadorDeCedula(String cedula) {
         boolean cedulaCorrecta = false;
 
@@ -652,6 +663,8 @@ public class Controlador_Empleados {
         return cedulaCorrecta;
     }
     
+    
+    //Metodo de busqueda de empleado
     private void BuscarEmpleado(String codigo) {
         DefaultTableModel tb = (DefaultTableModel) vista_emple.getTblEmpleado().getModel();
         tb.setNumRows(0);
@@ -662,6 +675,7 @@ public class Controlador_Empleados {
         });
     }
     
+    //Validacion para no repetir empleado.
      private boolean ValidaEmpleadoRepetido(int idrepetidoC) {
         boolean idreprtido = false;
         List<Empleado> listaE = modelo_emple.listarEmpleados();
@@ -672,5 +686,18 @@ public class Controlador_Empleados {
         }
         return idreprtido;
     }
+     
+//    private void reporteempleado_gene(){      
+//       Conexion_BD cpg = new Conexion_BD();
+//            try {
+//            JasperReport jr =(JasperReport)JRLoader.loadObject(getClass().getResource("/Vista/Resportes/Repo_emple.jasper"));
+//            JasperPrint jp= JasperFillManager.fillReport(jr, null, cpg.getCon());
+//            JasperViewer jv= new JasperViewer(jp);
+//            jv.setVisible(true);
+//            } catch (JRException e) {
+//            Logger.getLogger(Controlador_Empleados.class.getName()).log(Level.SEVERE, null, e);
+//            }
+//       
+//    }
 
 }

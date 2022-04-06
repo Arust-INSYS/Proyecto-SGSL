@@ -35,6 +35,7 @@ public class Control_VistaPrincipal {
     public Control_VistaPrincipal(Vista_Principal vista_menu){
         this.vista_menu=vista_menu;
         vista_menu.setVisible(true);
+        ReportesSGSL();
     }
     
     public void iniciaControl(){
@@ -138,7 +139,10 @@ public class Control_VistaPrincipal {
         control.incioControl();
     }
      
-    
+    private void ReportesSGSL(){
+        Controlador_Reportes cr = new Controlador_Reportes(vista_menu);
+        cr.IniciarControlReportes();
+    }
     
     
 }

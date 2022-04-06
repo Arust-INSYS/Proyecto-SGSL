@@ -261,6 +261,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         LblSueldoRojo = new javax.swing.JLabel();
         LblEstadoRojo = new javax.swing.JLabel();
         LblFechaRojo = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         DialogPersona = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -278,162 +279,112 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        DialogEmpleado.setFocusableWindowState(false);
+        DialogEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAceptar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAceptar.setForeground(new java.awt.Color(0, 102, 51));
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (2).png"))); // NOI18N
         btnAceptar.setText("ACEPTAR");
+        btnAceptar.setBorder(null);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DialogEmpleado.getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 100, 40));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 153));
         jLabel9.setText("Empleado");
+        DialogEmpleado.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 190, 50));
 
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(153, 0, 0));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (1).png"))); // NOI18N
         btnCancelar.setText("CANCELAR");
+        btnCancelar.setBorder(null);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DialogEmpleado.getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 80, 40));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 51, 153));
         jLabel10.setText("Id Empleado:");
+        DialogEmpleado.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 51, 153));
         jLabel11.setText("Sueldo:");
+        DialogEmpleado.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 153));
         jLabel8.setText("Estado Civil:");
+        DialogEmpleado.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 51, 153));
         jLabel12.setText("Fecha de contratación:");
+        DialogEmpleado.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         txtidempleado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txtidempleado.setForeground(new java.awt.Color(51, 51, 255));
         txtidempleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DialogEmpleado.getContentPane().add(txtidempleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 140, 28));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 51, 153));
         jLabel13.setText("Id Persona:");
+        DialogEmpleado.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         txtsueldo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DialogEmpleado.getContentPane().add(txtsueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 140, 27));
 
         txtid_persona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txtid_persona.setForeground(new java.awt.Color(51, 51, 255));
         txtid_persona.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DialogEmpleado.getContentPane().add(txtid_persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 140, 29));
 
         boxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero", "Casado", "Divorciado", " ", " " }));
         boxEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DialogEmpleado.getContentPane().add(boxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 138, 27));
 
         contratacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contratacion.setDateFormatString("yyyy-MM-dd");
+        DialogEmpleado.getContentPane().add(contratacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 140, 31));
 
+        verper.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        verper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-búsqueda-de-propiedad-45.png"))); // NOI18N
         verper.setText("Ver Persona");
+        verper.setBorder(null);
+        verper.setContentAreaFilled(false);
+        DialogEmpleado.getContentPane().add(verper, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
         boxrol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Empleado", "Administrador" }));
         boxrol.setToolTipText("");
         boxrol.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DialogEmpleado.getContentPane().add(boxrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 140, 31));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 153));
         jLabel3.setText("Rol:");
+        DialogEmpleado.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
         LblSueldoRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblSueldoRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblSueldoRojo.setText("*");
+        DialogEmpleado.getContentPane().add(LblSueldoRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
 
         LblEstadoRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblEstadoRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblEstadoRojo.setText("*");
+        DialogEmpleado.getContentPane().add(LblEstadoRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
 
         LblFechaRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblFechaRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblFechaRojo.setText("*");
+        DialogEmpleado.getContentPane().add(LblFechaRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
 
-        javax.swing.GroupLayout DialogEmpleadoLayout = new javax.swing.GroupLayout(DialogEmpleado.getContentPane());
-        DialogEmpleado.getContentPane().setLayout(DialogEmpleadoLayout);
-        DialogEmpleadoLayout.setHorizontalGroup(
-            DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(btnAceptar)
-                        .addGap(80, 80, 80)
-                        .addComponent(btnCancelar))
-                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DialogEmpleadoLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(boxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DialogEmpleadoLayout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DialogEmpleadoLayout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LblSueldoRojo)
-                                    .addComponent(LblEstadoRojo)))
-                            .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel12)
-                                                .addComponent(jLabel13))
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(boxrol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtid_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                            .addComponent(contratacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(verper)
-                                    .addComponent(LblFechaRojo))))))
-                .addContainerGap(73, Short.MAX_VALUE))
-        );
-        DialogEmpleadoLayout.setVerticalGroup(
-            DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(LblSueldoRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(LblEstadoRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LblFechaRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                            .addGap(27, 27, 27)
-                            .addComponent(jLabel12))
-                        .addGroup(DialogEmpleadoLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(contratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtid_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(verper))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boxrol, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(58, 58, 58)
-                .addGroup(DialogEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAceptar))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/limpdia3.jpg"))); // NOI18N
+        DialogEmpleado.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 470));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Persona");
@@ -573,6 +524,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

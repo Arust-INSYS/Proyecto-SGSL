@@ -329,6 +329,7 @@ public class Controlador_Servicio {
                     if(servimod.ModificarServicio()){
                         JOptionPane.showMessageDialog(vista_servi, "Servicio modificado satisfactoriamente");
                         vista_servi.getDialog_Crear().setVisible(false);
+                        CargarServicios();
                     }else{
                         JOptionPane.showMessageDialog(vista_servi, "No se pudo modificar el servicio");
                     }
@@ -407,7 +408,7 @@ public class Controlador_Servicio {
         listap.stream().forEach(pe->{
             
             tblModel.addRow(new Object[6]);//Creo una fila vacia/
-            vista_servi.getTblServicio().setValueAt(pe.getId_empleado(), i.value, 0);
+            vista_servi.getTblServicio().setValueAt(pe.getId_servicio(), i.value, 0);
             vista_servi.getTblServicio().setValueAt(pe.getNom_servicio(), i.value, 1);
             vista_servi.getTblServicio().setValueAt(pe.getDescri_servicio(), i.value, 2);
             vista_servi.getTblServicio().setValueAt(pe.getCosto_servicio(), i.value, 3);

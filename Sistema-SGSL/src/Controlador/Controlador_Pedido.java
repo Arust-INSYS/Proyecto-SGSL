@@ -103,8 +103,8 @@ public class Controlador_Pedido {
     }
     private void guardar3(){
         for (int i = 0; i < vista.getTablaPedidos().getRowCount(); i++) {
-            //Se pretende leer las filas de la tabla y luego guardarlas
-            
+            //Se pretende leer las filas de la tabla y luego guardarlas en la base
+            //el for permite recorrer las filas
           int id_pedido=Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 0));
           String direccion=(String) vista.getTablaPedidos().getValueAt(i, 1);
           int cantidad = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 2));
@@ -112,6 +112,7 @@ public class Controlador_Pedido {
           int id_cliente = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 4));
           int id_servicio = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 5));
           
+          //Se crea un opbjeto por fila y est recive los datos que se dan
            Modelo_Pedido pedido = new Modelo_Pedido();
            pedido.setId_pedido(id_pedido);
             pedido.setDireccion(direccion);

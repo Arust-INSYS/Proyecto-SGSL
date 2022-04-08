@@ -8,6 +8,7 @@ package Controlador;
 import Modelo.CLASES.Pedidos;
 import Modelo.Modelo_Pedido;
 import Vista.Vista_Pedidos;
+import Vista.Vista_Principal;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -25,6 +26,15 @@ public class Controlador_Pedido {
     private Modelo_Pedido modelo;
     private Vista_Pedidos vista;
     DefaultTableModel modelo_tabla;
+    
+    public static void main(String[] args) {
+       Vista_Pedidos vista = new Vista_Pedidos();
+        Modelo_Pedido modelo = new Modelo_Pedido();        
+        
+        
+        Controlador_Pedido control = new Controlador_Pedido(modelo,vista);
+        control.incioControl();
+    }
 
     public Controlador_Pedido(Modelo_Pedido modelo, Vista_Pedidos vista) {
         this.modelo = modelo;

@@ -32,17 +32,21 @@ public class Vista_Registro_Usuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        txt_NombreUsuario = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txt_Contrasenia = new javax.swing.JPasswordField();
-        jLabel6 = new javax.swing.JLabel();
-        txt_confirmarContra = new javax.swing.JPasswordField();
-        jLabel7 = new javax.swing.JLabel();
         btn_cancelarRegistroUsuario = new javax.swing.JButton();
         btn_registrarUsuario = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txt_NombreUsuario = new javax.swing.JTextField();
+        txt_Contrasenia = new javax.swing.JPasswordField();
+        txt_confirmarContra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,43 +55,73 @@ public class Vista_Registro_Usuario extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 70, -1, -1));
 
-        txt_NombreUsuario.setToolTipText("Ingrese su Cedula");
-        getContentPane().add(txt_NombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 170, 30));
+        btn_cancelarRegistroUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-cancelar-30.png"))); // NOI18N
+        btn_cancelarRegistroUsuario.setText("Cancelar");
+        getContentPane().add(btn_cancelarRegistroUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 119, -1));
+
+        btn_registrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-añadir-usuario-masculino-30.png"))); // NOI18N
+        btn_registrarUsuario.setText("Registrar");
+        getContentPane().add(btn_registrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 123, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 80, 128));
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("OPENLIMP");
+        jPanel1.add(jLabel4);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 60));
+
+        jPanel3.setBackground(new java.awt.Color(0, 80, 128));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Sistema de Gestión para Servicios de Limpieza");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 410, 60));
+
+        jPanel4.setBackground(new java.awt.Color(217, 214, 214));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setText("Registrar Usuario");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-añadir-grupo-de-usuarios-hombre-hombre-100.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Poiret One", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(40, 40, 40));
         jLabel5.setText("Usuario:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
-        getContentPane().add(txt_Contrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 170, 30));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Poiret One", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(40, 40, 40));
         jLabel6.setText("Contraseña:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
-        getContentPane().add(txt_confirmarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 170, 30));
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Poiret One", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(40, 40, 40));
         jLabel7.setText("Confirmar:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
-        btn_cancelarRegistroUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-cancelar-30.png"))); // NOI18N
-        btn_cancelarRegistroUsuario.setText("Cancelar");
-        getContentPane().add(btn_cancelarRegistroUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 119, -1));
+        txt_NombreUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        txt_NombreUsuario.setToolTipText("Ingrese su Cedula");
+        txt_NombreUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(txt_NombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 170, 30));
 
-        btn_registrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-añadir-usuario-masculino-30.png"))); // NOI18N
-        btn_registrarUsuario.setText("Registrar");
-        getContentPane().add(btn_registrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 123, -1));
+        txt_Contrasenia.setBackground(new java.awt.Color(204, 204, 204));
+        txt_Contrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(txt_Contrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 170, 30));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        jLabel1.setText("Registrar Usuario");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        txt_confirmarContra.setBackground(new java.awt.Color(204, 204, 204));
+        txt_confirmarContra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(txt_confirmarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 170, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/F.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 580));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 410, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,11 +171,15 @@ public class Vista_Registro_Usuario extends javax.swing.JFrame {
     private javax.swing.JButton btn_registrarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField txt_Contrasenia;
     private javax.swing.JTextField txt_NombreUsuario;
     private javax.swing.JPasswordField txt_confirmarContra;

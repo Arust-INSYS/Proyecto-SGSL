@@ -189,9 +189,17 @@ public class Vista_Principal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 80, 128));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("          SGSL.version.1");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 747, 20));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 450, 20));
+
+        lblnombreE.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblnombreE.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(lblnombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 160, 30));
+
+        lblrol.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblrol.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(lblrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 140, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1220, 50));

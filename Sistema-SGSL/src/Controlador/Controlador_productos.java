@@ -89,25 +89,17 @@ public class Controlador_productos {
             title = "Crear nuevo producto";
             vispro.getDialog_Crear().setName("crear");
                vispro.getTxtidproducto().setText(String.valueOf(modelpro.IncrementoIdproducto()));
-            Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-            int x = (int) ((dimension.getWidth() - vispro.getDialog_Crear().getWidth()) / 2);
-            int y = (int) ((dimension.getHeight() - vispro.getDialog_Crear().getHeight()) / 2);
-            vispro.getDialogbodega().setLocation(x, y);
             vispro.getDialog_Crear().setVisible(true);
         } else {
             int r = vispro.getTablita().getSelectedRow();
             if (r != -1) {
                 title = "Editar producto";
                 vispro.getDialog_Crear().setName("editar");
-                Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-                int x = (int) ((dimension.getWidth() - vispro.getDialog_Crear().getWidth()) / 2);
-                int y = (int) ((dimension.getHeight() - vispro.getDialog_Crear().getHeight()) / 2);
-                vispro.getDialogbodega().setLocation(x, y);
                 vispro.getDialog_Crear().setVisible(true);
             } else {
             }
         }
-        vispro.getDialog_Crear().setLocationRelativeTo(vispro);
+        vispro.getDialog_Crear().setLocation(600, 80);
         vispro.getDialog_Crear().setSize(730, 568);
         vispro.getDialog_Crear().setTitle(title);
     }
@@ -383,10 +375,7 @@ public class Controlador_productos {
     private void abrirdialobodega() {
         vispro.getDialogbodega().setLocationRelativeTo(vispro);
         vispro.getDialogbodega().setSize(600, 430);
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - vispro.getDialogbodega().getWidth()) / 2);
-        int y = (int) ((dimension.getHeight() - vispro.getDialogbodega().getHeight()) / 2);
-        vispro.getDialogbodega().setLocation(x, y);
+                vispro.getDialog_Crear().setLocation(600, 80);
         vispro.getDialogbodega().setTitle("BODEGAS");
         vispro.getDialogbodega().setVisible(true);
         cargarbodegas();

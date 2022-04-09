@@ -196,7 +196,7 @@ public class Controlador_Empleados {
             }
         }
         vista_emple.getDialogEmpleado().setLocationRelativeTo(vista_emple);
-        vista_emple.getDialogEmpleado().setSize(500, 500);
+        vista_emple.getDialogEmpleado().setSize(700, 400);
         vista_emple.getDialogEmpleado().setLocation(600, 80);
         vista_emple.getDialogEmpleado().setTitle(title);
         vista_emple.getDialogEmpleado().setVisible(true);
@@ -210,7 +210,7 @@ public class Controlador_Empleados {
             title = "Visualizar Persona";
             vista_emple.getDialogPersona().setName("Persona");
             vista_emple.getDialogPersona().setLocationRelativeTo(vista_emple);
-            vista_emple.getDialogPersona().setSize(600, 400);
+            vista_emple.getDialogPersona().setSize(700, 400);
             vista_emple.getDialogPersona().setTitle(title);
             vista_emple.getDialogPersona().setVisible(true);
             CargarPersona();

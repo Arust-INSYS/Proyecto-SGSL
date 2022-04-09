@@ -267,6 +267,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPersonas = new javax.swing.JTable();
         btningresar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmpleado = new javax.swing.JTable();
         TxtBuscarEmpleado = new javax.swing.JTextField();
@@ -289,12 +290,12 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         btnAceptar.setBorder(null);
         btnAceptar.setContentAreaFilled(false);
         btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        DialogEmpleado.getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 100, 40));
+        DialogEmpleado.getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 100, 40));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 153));
         jLabel9.setText("Empleado");
-        DialogEmpleado.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 190, 50));
+        DialogEmpleado.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 120, 30));
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(153, 0, 0));
@@ -303,91 +304,94 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         btnCancelar.setBorder(null);
         btnCancelar.setContentAreaFilled(false);
         btnCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        DialogEmpleado.getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 80, 40));
+        DialogEmpleado.getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 80, 40));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 51, 153));
         jLabel10.setText("Id Empleado:");
-        DialogEmpleado.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        DialogEmpleado.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 51, 153));
         jLabel11.setText("Sueldo:");
-        DialogEmpleado.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        DialogEmpleado.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 153));
         jLabel8.setText("Estado Civil:");
-        DialogEmpleado.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        DialogEmpleado.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 51, 153));
         jLabel12.setText("Fecha de contratación:");
-        DialogEmpleado.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+        DialogEmpleado.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
 
         txtidempleado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txtidempleado.setForeground(new java.awt.Color(51, 51, 255));
         txtidempleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DialogEmpleado.getContentPane().add(txtidempleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 140, 28));
+        DialogEmpleado.getContentPane().add(txtidempleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 140, 28));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 51, 153));
         jLabel13.setText("Id Persona:");
-        DialogEmpleado.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+        DialogEmpleado.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
         txtsueldo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DialogEmpleado.getContentPane().add(txtsueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 140, 27));
+        DialogEmpleado.getContentPane().add(txtsueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 140, 27));
 
         txtid_persona.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txtid_persona.setForeground(new java.awt.Color(51, 51, 255));
         txtid_persona.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DialogEmpleado.getContentPane().add(txtid_persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 140, 29));
+        DialogEmpleado.getContentPane().add(txtid_persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 140, 29));
 
         boxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero", "Casado", "Divorciado", " ", " " }));
         boxEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DialogEmpleado.getContentPane().add(boxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 138, 27));
+        DialogEmpleado.getContentPane().add(boxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 138, 27));
 
         contratacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         contratacion.setDateFormatString("yyyy-MM-dd");
-        DialogEmpleado.getContentPane().add(contratacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 140, 31));
+        DialogEmpleado.getContentPane().add(contratacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 140, 31));
 
         verper.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         verper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-búsqueda-de-propiedad-45.png"))); // NOI18N
         verper.setText("Ver Persona");
         verper.setBorder(null);
         verper.setContentAreaFilled(false);
-        DialogEmpleado.getContentPane().add(verper, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
+        DialogEmpleado.getContentPane().add(verper, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
 
         boxrol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Empleado", "Administrador" }));
         boxrol.setToolTipText("");
         boxrol.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        DialogEmpleado.getContentPane().add(boxrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 140, 31));
+        DialogEmpleado.getContentPane().add(boxrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 140, 31));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 153));
         jLabel3.setText("Rol:");
-        DialogEmpleado.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
+        DialogEmpleado.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
         LblSueldoRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblSueldoRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblSueldoRojo.setText("*");
-        DialogEmpleado.getContentPane().add(LblSueldoRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
+        DialogEmpleado.getContentPane().add(LblSueldoRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
 
         LblEstadoRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblEstadoRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblEstadoRojo.setText("*");
-        DialogEmpleado.getContentPane().add(LblEstadoRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
+        DialogEmpleado.getContentPane().add(LblEstadoRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, -1, -1));
 
         LblFechaRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblFechaRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblFechaRojo.setText("*");
-        DialogEmpleado.getContentPane().add(LblFechaRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
+        DialogEmpleado.getContentPane().add(LblFechaRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/limpdia3.jpg"))); // NOI18N
-        DialogEmpleado.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 470));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/dialogolimpiezaacho.jpg"))); // NOI18N
+        DialogEmpleado.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 350));
+
+        DialogPersona.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Persona");
+        DialogPersona.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 77, -1));
 
         tblPersonas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -399,38 +403,13 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(tblPersonas);
 
-        btningresar.setText("Ingre");
+        DialogPersona.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 330, 260));
 
-        javax.swing.GroupLayout DialogPersonaLayout = new javax.swing.GroupLayout(DialogPersona.getContentPane());
-        DialogPersona.getContentPane().setLayout(DialogPersonaLayout);
-        DialogPersonaLayout.setHorizontalGroup(
-            DialogPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DialogPersonaLayout.createSequentialGroup()
-                .addGroup(DialogPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DialogPersonaLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(btningresar)
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(DialogPersonaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        DialogPersonaLayout.setVerticalGroup(
-            DialogPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DialogPersonaLayout.createSequentialGroup()
-                .addGroup(DialogPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DialogPersonaLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel2))
-                    .addGroup(DialogPersonaLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(btningresar)))
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        btningresar.setText("Ingre");
+        DialogPersona.getContentPane().add(btningresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tablaemple.jpg"))); // NOI18N
+        DialogPersona.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 350));
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -527,6 +506,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;

@@ -291,6 +291,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         BtnAceptarPer.setForeground(new java.awt.Color(0, 102, 51));
         BtnAceptarPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (2).png"))); // NOI18N
         BtnAceptarPer.setText("ACEPTAR");
+        BtnAceptarPer.setBorder(null);
         BtnAceptarPer.setContentAreaFilled(false);
         BtnAceptarPer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DialogoPersona.getContentPane().add(BtnAceptarPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 100, 50));
@@ -299,13 +300,15 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         BtnCancelarPer.setForeground(new java.awt.Color(153, 0, 0));
         BtnCancelarPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (1).png"))); // NOI18N
         BtnCancelarPer.setText("CANCELAR");
+        BtnCancelarPer.setBorder(null);
         BtnCancelarPer.setContentAreaFilled(false);
         BtnCancelarPer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DialogoPersona.getContentPane().add(BtnCancelarPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, 50));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 153));
         jLabel7.setText("Persona");
-        DialogoPersona.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, -1));
+        DialogoPersona.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, -1, -1, 40));
 
         GrupoBotonGenero.add(RadioBtnMasculino);
         RadioBtnMasculino.setText("M");
@@ -332,8 +335,13 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         jLabel2.setText("Cédula:");
         DialogoPersona.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
+        BtnSeleccionarFoto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnSeleccionarFoto.setForeground(new java.awt.Color(102, 0, 153));
+        BtnSeleccionarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Aexaminaicons8-imagen-48.png"))); // NOI18N
         BtnSeleccionarFoto.setText("Seleccionar");
-        DialogoPersona.getContentPane().add(BtnSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
+        BtnSeleccionarFoto.setBorder(null);
+        BtnSeleccionarFoto.setContentAreaFilled(false);
+        DialogoPersona.getContentPane().add(BtnSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 153));
@@ -395,7 +403,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         DialogoPersona.getContentPane().add(LbLFechaRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
 
         LBLFONDOPERSONA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/APERSONAFONDO.jpg"))); // NOI18N
-        DialogoPersona.getContentPane().add(LBLFONDOPERSONA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 430));
+        DialogoPersona.getContentPane().add(LBLFONDOPERSONA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 430));
 
         setClosable(true);
         setIconifiable(true);

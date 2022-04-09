@@ -206,7 +206,6 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         BtnAceptarCli = new javax.swing.JButton();
         BtnCancelarCli = new javax.swing.JButton();
         JpanelInformacionBusqueda = new javax.swing.JPanel();
@@ -216,6 +215,8 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         SeparatorMedioVC = new javax.swing.JSeparator();
         LblNombresClienteBusqueda = new javax.swing.JLabel();
         SeparatorResultVC = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        LBLFONDOCLIENTE_VC = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblCliente = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -233,37 +234,40 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
 
+        DialogoCliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        DialogoCliente.getContentPane().add(TxtTelefonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 172, 123, -1));
+        DialogoCliente.getContentPane().add(Txt_ID_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 217, 123, -1));
+
         jLabel10.setText("Id_Cliente:");
+        DialogoCliente.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 127, -1, -1));
+        DialogoCliente.getContentPane().add(Txt_ID_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 124, 122, -1));
 
         jLabel3.setText("Id_Persiona:");
+        DialogoCliente.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 220, -1, -1));
 
         jLabel2.setText("Telefono:");
+        DialogoCliente.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 175, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 204));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("Cliente");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(191, 191, 191))
+            .addGap(0, 447, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addGap(0, 48, Short.MAX_VALUE)
         );
 
+        DialogoCliente.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         BtnAceptarCli.setText("Aceptar");
+        DialogoCliente.getContentPane().add(BtnAceptarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 263, -1, -1));
 
         BtnCancelarCli.setText("Cancelar");
+        DialogoCliente.getContentPane().add(BtnCancelarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 263, -1, -1));
 
         JpanelInformacionBusqueda.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -318,55 +322,14 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
             .addComponent(SeparatorMedioVC)
         );
 
-        javax.swing.GroupLayout DialogoClienteLayout = new javax.swing.GroupLayout(DialogoCliente.getContentPane());
-        DialogoCliente.getContentPane().setLayout(DialogoClienteLayout);
-        DialogoClienteLayout.setHorizontalGroup(
-            DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(DialogoClienteLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Txt_ID_Persona)
-                    .addComponent(Txt_ID_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
-            .addGroup(DialogoClienteLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(BtnAceptarCli)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnCancelarCli)
-                .addGap(92, 92, 92))
-            .addComponent(JpanelInformacionBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        DialogoClienteLayout.setVerticalGroup(
-            DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoClienteLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JpanelInformacionBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(Txt_ID_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TxtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(Txt_ID_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(DialogoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnAceptarCli)
-                    .addComponent(BtnCancelarCli))
-                .addGap(26, 26, 26))
-        );
+        DialogoCliente.getContentPane().add(JpanelInformacionBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 447, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Cliente");
+        DialogoCliente.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, -1));
+
+        LBLFONDOCLIENTE_VC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/AfondoClientes.jpg"))); // NOI18N
+        DialogoCliente.getContentPane().add(LBLFONDOCLIENTE_VC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, -1, -1));
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -474,6 +437,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnRemoverCliente;
     private javax.swing.JDialog DialogoCliente;
     private javax.swing.JPanel JpanelInformacionBusqueda;
+    private javax.swing.JLabel LBLFONDOCLIENTE_VC;
     private javax.swing.JLabel LblFechaAcutualVC;
     private javax.swing.JLabel LblNameBuscar;
     private javax.swing.JLabel LblNombresClienteBusqueda;

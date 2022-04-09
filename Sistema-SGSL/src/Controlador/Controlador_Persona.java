@@ -343,7 +343,7 @@ public class Controlador_Persona {
             }
         }
         vistaPer.getDialogoPersona().setLocation(600, 80);
-        vistaPer.getDialogoPersona().setSize(490, 543);
+        vistaPer.getDialogoPersona().setSize(700, 469);
         vistaPer.getDialogoPersona().setTitle(titulo);
     }
 

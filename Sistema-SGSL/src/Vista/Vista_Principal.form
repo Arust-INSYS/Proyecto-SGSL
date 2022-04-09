@@ -104,6 +104,16 @@
                     <Property name="text" type="java.lang.String" value="More Pedidos"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="JmenuProductosTopCVP">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Productos"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="JmenuBodegaEpacioCVP">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bodega"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
           </SubComponents>

@@ -221,7 +221,7 @@ public class Controlador_Cliente {
             vistaCli.getDialogoCliente().setVisible(true);
             
             vistaCli.getDialogoCliente().setLocation(600, 80);
-            vistaCli.getDialogoCliente().setSize(528, 389);
+            vistaCli.getDialogoCliente().setSize(546, 389);
             vistaCli.getDialogoCliente().setTitle(titulo);
         } else {
             if (tipo == 2) {
@@ -232,7 +232,7 @@ public class Controlador_Cliente {
                 vistaCli.getDialogoCliente().setVisible(true);
                 
                 vistaCli.getDialogoCliente().setLocation(600, 80);
-                vistaCli.getDialogoCliente().setSize(528, 389);
+                vistaCli.getDialogoCliente().setSize(546, 389);
                 vistaCli.getDialogoCliente().setTitle(titulo);
                 CargarEdicionCliente();
                 

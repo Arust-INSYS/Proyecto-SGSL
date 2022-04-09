@@ -192,7 +192,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("          SGSL.version.1");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 450, 20));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 220, 20));
 
         lblnombreE.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblnombreE.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,16 +215,16 @@ public class Vista_Principal extends javax.swing.JFrame {
         dkp_pane_principalLayout.setHorizontalGroup(
             dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkp_pane_principalLayout.createSequentialGroup()
-                .addContainerGap(291, Short.MAX_VALUE)
+                .addContainerGap(323, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(348, 348, 348))
+                .addGap(316, 316, 316))
         );
         dkp_pane_principalLayout.setVerticalGroup(
             dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkp_pane_principalLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+            .addGroup(dkp_pane_principalLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         getContentPane().add(dkp_pane_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 1130, 570));

@@ -108,7 +108,7 @@ public class Controlador_productos {
             }
         }
         vispro.getDialog_Crear().setLocationRelativeTo(vispro);
-        vispro.getDialog_Crear().setSize(620, 500);
+        vispro.getDialog_Crear().setSize(730, 568);
         vispro.getDialog_Crear().setTitle(title);
     }
 //metodo para cargar los productos en la tabla

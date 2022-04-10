@@ -66,8 +66,8 @@ public class Controlador_bodega {
                 visbo.getDialog_Crearbo().setVisible(true);
             }
         }
-        visbo.getDialog_Crearbo().setLocationRelativeTo(visbo);
-        visbo.getDialog_Crearbo().setSize(540, 420);
+        visbo.getDialog_Crearbo().setLocation(500, 50);
+        visbo.getDialog_Crearbo().setSize(730, 560);
         visbo.getDialog_Crearbo().setTitle(title);
     }
 //metodo para cargar las bodegas en la tabla

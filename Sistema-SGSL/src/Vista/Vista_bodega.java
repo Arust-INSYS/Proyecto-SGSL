@@ -198,57 +198,63 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
 
         Dialog_Crearbo.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 153));
         jLabel8.setText("Cantidad:");
-        Dialog_Crearbo.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, 30));
+        Dialog_Crearbo.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, 40));
 
-        btnAceptar_pro1.setForeground(new java.awt.Color(0, 0, 0));
-        btnAceptar_pro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-guardar- bodfega48.png"))); // NOI18N
+        btnAceptar_pro1.setForeground(new java.awt.Color(0, 102, 51));
+        btnAceptar_pro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (2).png"))); // NOI18N
         btnAceptar_pro1.setText("Guardar");
         btnAceptar_pro1.setToolTipText("Guardar");
         btnAceptar_pro1.setBorder(null);
         btnAceptar_pro1.setContentAreaFilled(false);
-        Dialog_Crearbo.getContentPane().add(btnAceptar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, -1));
+        btnAceptar_pro1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Dialog_Crearbo.getContentPane().add(btnAceptar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 80, 40));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 153));
         jLabel9.setText("BODEGA");
-        Dialog_Crearbo.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 26, 158, 32));
+        Dialog_Crearbo.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 158, 32));
 
-        btnCancelar_pro1.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar_pro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-cancelar-bodega2-48.png"))); // NOI18N
+        btnCancelar_pro1.setForeground(new java.awt.Color(153, 0, 0));
+        btnCancelar_pro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (1).png"))); // NOI18N
         btnCancelar_pro1.setText("CANCELAR");
         btnCancelar_pro1.setBorder(null);
         btnCancelar_pro1.setContentAreaFilled(false);
-        Dialog_Crearbo.getContentPane().add(btnCancelar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
+        btnCancelar_pro1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Dialog_Crearbo.getContentPane().add(btnCancelar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 80, 40));
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 51, 153));
         jLabel10.setText("Id bodega:");
-        Dialog_Crearbo.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, 30));
+        Dialog_Crearbo.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, 30));
 
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 51, 153));
         jLabel11.setText("Numero:");
-        Dialog_Crearbo.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, 30));
+        Dialog_Crearbo.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, 30));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 153));
         jLabel3.setText("Espacio:");
-        Dialog_Crearbo.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, 40));
-        Dialog_Crearbo.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 110, 30));
+        Dialog_Crearbo.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, 40));
+        Dialog_Crearbo.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 110, 30));
 
         txtidbodega.setBorder(null);
-        Dialog_Crearbo.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 50, 30));
+        Dialog_Crearbo.getContentPane().add(txtidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 50, 30));
 
         spinernum.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        Dialog_Crearbo.getContentPane().add(spinernum, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 100, 40));
+        Dialog_Crearbo.getContentPane().add(spinernum, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 100, 40));
 
-        jSpinnercant.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        Dialog_Crearbo.getContentPane().add(jSpinnercant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 100, 40));
+        jSpinnercant.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        Dialog_Crearbo.getContentPane().add(jSpinnercant, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 100, 40));
 
         spinerespacio.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        Dialog_Crearbo.getContentPane().add(spinerespacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 100, 40));
+        Dialog_Crearbo.getContentPane().add(spinerespacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 100, 40));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/fondo_lin.jpg"))); // NOI18N
-        Dialog_Crearbo.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 420));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/dialogolimpiezaachoproductos.jpg"))); // NOI18N
+        Dialog_Crearbo.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 530));
 
         jScrollPane3.setViewportView(areadescripcion);
 

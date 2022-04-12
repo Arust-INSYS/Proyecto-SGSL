@@ -42,8 +42,8 @@ public class Vista_Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -80,12 +80,13 @@ public class Vista_Login extends javax.swing.JFrame {
         btnRegistrar.setText("Registrar");
         getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, 40));
 
+        jPanel1.setBackground(new java.awt.Color(0, 80, 128));
+
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("OPENLIMP");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        jPanel1.add(jLabel1);
 
-        jPanel1.setBackground(new java.awt.Color(0, 80, 128));
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 70));
 
         jPanel3.setBackground(new java.awt.Color(0, 80, 128));

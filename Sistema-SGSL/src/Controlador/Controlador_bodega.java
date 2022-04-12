@@ -118,7 +118,7 @@ public class Controlador_bodega {
             p.setEspacio(Integer.parseInt(es));
 
             if (p.editarbo()) {
-                JOptionPane.showMessageDialog(visbo, " MMODIFICADO");
+                JOptionPane.showMessageDialog(visbo, " LA BODEGA FUE MODIFICADA ");
             } else {
                 JOptionPane.showMessageDialog(visbo, "Se a producido un error al modificar en la bodega .", "Error", JOptionPane.ERROR_MESSAGE);
             }

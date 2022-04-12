@@ -160,7 +160,6 @@ public class Controlador_Cliente {
         vistaCli.getLblNombresClienteBusqueda().setVisible(false);
         vistaCli.getSeparatorCliente().setVisible(false);
         vistaCli.getTxtBuscarCedulaCli().setVisible(false);
-        vistaCli.getJpanelInformacionBusqueda().setVisible(false);
         vistaCli.getLblNameBuscar().setVisible(false);
         vistaCli.getSeparatorMedioVC().setVisible(false);
         vistaCli.getSeparatorResultVC().setVisible(false);
@@ -171,7 +170,6 @@ public class Controlador_Cliente {
         vistaCli.getLblNombresClienteBusqueda().setVisible(true);
         vistaCli.getSeparatorCliente().setVisible(true);
         vistaCli.getTxtBuscarCedulaCli().setVisible(true);
-        vistaCli.getJpanelInformacionBusqueda().setVisible(true);
         vistaCli.getLblNameBuscar().setVisible(true);
         vistaCli.getSeparatorMedioVC().setVisible(true);
         vistaCli.getSeparatorResultVC().setVisible(true);
@@ -223,7 +221,7 @@ public class Controlador_Cliente {
             vistaCli.getDialogoCliente().setVisible(true);
             
             vistaCli.getDialogoCliente().setLocation(600, 80);
-            vistaCli.getDialogoCliente().setSize(447, 330);
+            vistaCli.getDialogoCliente().setSize(546, 389);
             vistaCli.getDialogoCliente().setTitle(titulo);
         } else {
             if (tipo == 2) {
@@ -234,7 +232,7 @@ public class Controlador_Cliente {
                 vistaCli.getDialogoCliente().setVisible(true);
                 
                 vistaCli.getDialogoCliente().setLocation(600, 80);
-                vistaCli.getDialogoCliente().setSize(447, 290);
+                vistaCli.getDialogoCliente().setSize(546, 389);
                 vistaCli.getDialogoCliente().setTitle(titulo);
                 CargarEdicionCliente();
                 
@@ -261,7 +259,7 @@ public class Controlador_Cliente {
                 viewper.getDialogoPersona().setName("Editar");
                 viewper.getDialogoPersona().setVisible(true);
                 viewper.getDialogoPersona().setLocation(600, 80);
-                viewper.getDialogoPersona().setSize(490, 543);
+                viewper.getDialogoPersona().setSize(700, 469);
                 viewper.getDialogoPersona().setTitle(titulo);
             }
             if (nu == 1) {

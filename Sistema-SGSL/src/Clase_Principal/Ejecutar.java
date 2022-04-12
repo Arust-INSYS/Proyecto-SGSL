@@ -30,8 +30,8 @@ public class Ejecutar {
         Vista_Principal vista = new Vista_Principal();
         Control_VistaPrincipal controlador = new Control_VistaPrincipal(vista);
         controlador.iniciaControl();
-        
-        //logeo
+//        
+//        //logeo
 //        Vista_Login vl = new Vista_Login();
 //        Modelo_Usuario mu = new Modelo_Usuario();
 //        Controlador_Login cl = new Controlador_Login(mu, vl);

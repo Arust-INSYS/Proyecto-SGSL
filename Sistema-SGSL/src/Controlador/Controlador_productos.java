@@ -468,6 +468,7 @@ private void busbo(java.awt.event.KeyEvent evt) {
         });
     }
 //-------------------------------------------------
+     //METODO PARA SUBIR LA CANTIDAD DE PRODUCTOS
      private void INCREMENTOCANTIDA(int idbo){
         Modelo_bodega modb = new Modelo_bodega();
         List<Bodega> listbod = modb.listarbodegas();
@@ -484,6 +485,7 @@ private void busbo(java.awt.event.KeyEvent evt) {
             
         }
     }
+ //METODO PARA BAJAR LA CANTIDAD DE ESPACIO
    private void DescargarCantidad(int idbo){
         Modelo_bodega modbo = new Modelo_bodega();
         List<Bodega> listbod = modbo.listarbodegas();
@@ -491,8 +493,8 @@ private void busbo(java.awt.event.KeyEvent evt) {
             if(listbod.get(i).getIdbodega() == idbo){
                 int espacioBG = listbod.get(i).getEspacio();
                 System.out.println("-->"+espacioBG);
-                int cantiB = listbod.get(i).getCantidad();  
-                int nuevac = espacioBG - cantiB;
+                int cantsp = Integer.parseInt(vispro.getSnipercanti().getValue().toString());
+                int nuevac = espacioBG - cantsp;
                 System.out.println("final-->"+nuevac);
                 modbo.setEspacio(nuevac);
                 if(modbo.modificarBodegaAlmacenamiento(idbo)){

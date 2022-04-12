@@ -164,8 +164,8 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         txtfecha = new javax.swing.JLabel();
         txtidbodega = new javax.swing.JTextField();
         spinernum = new javax.swing.JSpinner();
-        jSpinnercant = new javax.swing.JSpinner();
         spinerespacio = new javax.swing.JSpinner();
+        jSpinnercant = new javax.swing.JSpinner();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         areadescripcion = new javax.swing.JTextPane();
@@ -247,11 +247,11 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         spinernum.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         Dialog_Crearbo.getContentPane().add(spinernum, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 100, 40));
 
-        jSpinnercant.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        Dialog_Crearbo.getContentPane().add(jSpinnercant, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 100, 40));
-
         spinerespacio.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         Dialog_Crearbo.getContentPane().add(spinerespacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 100, 40));
+
+        jSpinnercant.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 0));
+        Dialog_Crearbo.getContentPane().add(jSpinnercant, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 100, 40));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/dialogolimpiezaachoproductos.jpg"))); // NOI18N
         Dialog_Crearbo.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 530));

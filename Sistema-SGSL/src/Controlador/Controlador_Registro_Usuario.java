@@ -83,6 +83,7 @@ public class Controlador_Registro_Usuario {
         Modelo_Usuario m_user = new Modelo_Usuario();
         Vista_Login vl = new Vista_Login();
         Controlador_Login cl = new Controlador_Login(m_user, vl);
+        vl.setVisible(true);
         cl.IniciarBoton();
     }
      //Método para limpiar los campos

@@ -237,6 +237,7 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblempleados = new javax.swing.JTable();
         ingreemple = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblServicio = new javax.swing.JTable();
@@ -255,18 +256,18 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 153));
         jLabel8.setText("Descripción:");
-        Dialog_Crear.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+        Dialog_Crear.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
         txtidservicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txtidservicio.setForeground(new java.awt.Color(51, 51, 255));
         txtidservicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Dialog_Crear.getContentPane().add(txtidservicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 140, 25));
+        Dialog_Crear.getContentPane().add(txtidservicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 140, 25));
 
         txtnom_servicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Dialog_Crear.getContentPane().add(txtnom_servicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 140, 27));
+        Dialog_Crear.getContentPane().add(txtnom_servicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 140, 27));
 
         txtcosto_servicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Dialog_Crear.getContentPane().add(txtcosto_servicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 140, 28));
+        Dialog_Crear.getContentPane().add(txtcosto_servicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 140, 28));
 
         btnAceptar_pro1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnAceptar_pro1.setForeground(new java.awt.Color(0, 102, 51));
@@ -275,12 +276,12 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         btnAceptar_pro1.setBorder(null);
         btnAceptar_pro1.setContentAreaFilled(false);
         btnAceptar_pro1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Dialog_Crear.getContentPane().add(btnAceptar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
+        Dialog_Crear.getContentPane().add(btnAceptar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, 40));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 153));
         jLabel9.setText("Servicio");
-        Dialog_Crear.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 11, 99, 32));
+        Dialog_Crear.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 99, 32));
 
         btnCancelar_pro1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancelar_pro1.setForeground(new java.awt.Color(153, 0, 0));
@@ -289,67 +290,70 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         btnCancelar_pro1.setBorder(null);
         btnCancelar_pro1.setContentAreaFilled(false);
         btnCancelar_pro1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Dialog_Crear.getContentPane().add(btnCancelar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
+        Dialog_Crear.getContentPane().add(btnCancelar_pro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, -1, 40));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel10.setForeground(new java.awt.Color(0, 51, 153));
         jLabel10.setText("Id Servicio:");
-        Dialog_Crear.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        Dialog_Crear.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
         descri_servicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane4.setViewportView(descri_servicio);
 
-        Dialog_Crear.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 260, 102));
+        Dialog_Crear.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 270, 80));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel11.setForeground(new java.awt.Color(0, 51, 153));
         jLabel11.setText("Nombre:");
-        Dialog_Crear.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+        Dialog_Crear.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel12.setForeground(new java.awt.Color(0, 51, 153));
         jLabel12.setText("Costo:");
-        Dialog_Crear.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
+        Dialog_Crear.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 51, 153));
         jLabel13.setText("Id Empleado:");
-        Dialog_Crear.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
+        Dialog_Crear.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
 
         txtid_empleado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         txtid_empleado.setForeground(new java.awt.Color(51, 51, 255));
         txtid_empleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Dialog_Crear.getContentPane().add(txtid_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 140, 29));
+        Dialog_Crear.getContentPane().add(txtid_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 140, 29));
 
         btnveremple.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnveremple.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-búsqueda-de-propiedad-45.png"))); // NOI18N
         btnveremple.setText("ver Empledo");
         btnveremple.setBorder(null);
         btnveremple.setContentAreaFilled(false);
-        Dialog_Crear.getContentPane().add(btnveremple, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, -1));
+        Dialog_Crear.getContentPane().add(btnveremple, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
 
         LblNombreRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblNombreRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblNombreRojo.setText("*");
-        Dialog_Crear.getContentPane().add(LblNombreRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
+        Dialog_Crear.getContentPane().add(LblNombreRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
 
         LblDescripcionRojo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblDescripcionRojo1.setForeground(new java.awt.Color(255, 0, 0));
         LblDescripcionRojo1.setText("*");
-        Dialog_Crear.getContentPane().add(LblDescripcionRojo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
+        Dialog_Crear.getContentPane().add(LblDescripcionRojo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
 
         LblCostoRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblCostoRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblCostoRojo.setText("*");
-        Dialog_Crear.getContentPane().add(LblCostoRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, -1));
+        Dialog_Crear.getContentPane().add(LblCostoRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/limpdia3.jpg"))); // NOI18N
-        Dialog_Crear.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 470));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/dialogolimpiezaacho.jpg"))); // NOI18N
+        Dialog_Crear.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 350));
 
         jScrollPane3.setViewportView(areadescripcion);
 
+        DialogEmple.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Empleado");
+        DialogEmple.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
         tblempleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -361,33 +365,13 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(tblempleados);
 
-        ingreemple.setText("Ingre");
+        DialogEmple.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 330, 260));
 
-        javax.swing.GroupLayout DialogEmpleLayout = new javax.swing.GroupLayout(DialogEmple.getContentPane());
-        DialogEmple.getContentPane().setLayout(DialogEmpleLayout);
-        DialogEmpleLayout.setHorizontalGroup(
-            DialogEmpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DialogEmpleLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(DialogEmpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DialogEmpleLayout.createSequentialGroup()
-                        .addComponent(ingreemple)
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel2))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
-        DialogEmpleLayout.setVerticalGroup(
-            DialogEmpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DialogEmpleLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(DialogEmpleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(ingreemple))
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        ingreemple.setText("Ingre");
+        DialogEmple.getContentPane().add(ingreemple, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tablaemple.jpg"))); // NOI18N
+        DialogEmple.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 710, 350));
 
         jLabel5.setText("jLabel5");
 
@@ -480,6 +464,7 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

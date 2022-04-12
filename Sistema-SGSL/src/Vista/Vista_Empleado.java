@@ -32,6 +32,8 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     public JButton getBtnCrear() {
         return BtnCrear;
     }
+    
+    
 
     public JButton getBtnActualizar() {
         return BtnActualizar;
@@ -280,7 +282,6 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        DialogEmpleado.setFocusableWindowState(false);
         DialogEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAceptar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N

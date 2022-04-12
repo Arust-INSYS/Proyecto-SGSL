@@ -39,11 +39,12 @@ public class Controlador_Reportes {
         viewP.getJmenuPersonasGeneroVP().addActionListener(l -> ImprimirGeneroCantidad());
         viewP.getJmenuClientesVP().addActionListener(l -> ImprimirClientesActivosInactivos());
         viewP.getJmenuClientesMorePedidoVP().addActionListener(l -> ImprimirClienteMorePedidos());
-        viewP.getMnEmpleado().addActionListener(l->ImprimirEmpleadosActivosInactivos());
-        viewP.getMnServicio().addActionListener(l->ImprimirServicios());
-        viewP.getjMenuproductosvp().addActionListener(l->ImprimiPRODUCTOS());
-        viewP.getjMenubodegvb().addActionListener(l->ImprimiBODEGA());
-
+        viewP.getMnEmpleado().addActionListener(l -> ImprimirEmpleadosActivosInactivos());
+        viewP.getMnServicio().addActionListener(l -> ImprimirServicios());
+        viewP.getjMenuproductosvp().addActionListener(l -> ImprimiPRODUCTOS());
+        viewP.getjMenubodegvb().addActionListener(l -> ImprimiBODEGA());
+        viewP.getJmenuProductosTopCVP().addActionListener(l -> ImprimirProductosMascaros());
+        viewP.getJmenuBodegaEpacioCVP().addActionListener(l -> ImprimirBodegaMasEspacio());
     }
 
     //Métodos que nos permiten hacer los reportes de persona general y gráficos.
@@ -121,7 +122,7 @@ public class Controlador_Reportes {
         }
 
     }
-    
+
     private void ImprimirClienteMorePedidos() {
 
         Conexion_BD cp = new Conexion_BD();
@@ -136,8 +137,8 @@ public class Controlador_Reportes {
             Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-        //Métodos que nos permiten hacer los reportes de empleados activos e inactivos y los gráficos.
+
+    //Métodos que nos permiten hacer los reportes de empleados activos e inactivos y los gráficos.
     private void ImprimirEmpleadosActivosInactivos() {
         String estado = null;
         String[] cade = {"Activos", "Inactivos"};
@@ -166,8 +167,8 @@ public class Controlador_Reportes {
         }
 
     }
-    
-        private void ImprimirServicios() {
+
+    private void ImprimirServicios() {
 
         Conexion_BD cp = new Conexion_BD();
         try {
@@ -181,7 +182,8 @@ public class Controlador_Reportes {
             Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        private void ImprimiPRODUCTOS() {
+
+    private void ImprimiPRODUCTOS() {
         Conexion_BD cp = new Conexion_BD();
         try {
             JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/reportepro.jasper"));
@@ -193,9 +195,9 @@ public class Controlador_Reportes {
         } catch (JRException ex) {
             Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
-        
-        private void ImprimiBODEGA() {
+    }
+
+    private void ImprimiBODEGA() {
         Conexion_BD cp = new Conexion_BD();
         try {
             JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/reportebodega.jasper"));
@@ -207,5 +209,34 @@ public class Controlador_Reportes {
         } catch (JRException ex) {
             Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
+    }
+    
+    
+    private void ImprimirProductosMascaros() {
+        Conexion_BD cp = new Conexion_BD();
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/ReporteProductosGraficoSGSL.jasper"));
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("logo", "Servlog.png");
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void ImprimirBodegaMasEspacio() {
+        Conexion_BD cp = new Conexion_BD();
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/ReporteBodegaMasEspacioSGSL.jasper"));
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("logo", "Servlog.png");
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

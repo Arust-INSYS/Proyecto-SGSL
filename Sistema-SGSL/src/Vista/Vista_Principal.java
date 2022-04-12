@@ -34,26 +34,49 @@ public class Vista_Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
+        jSeparator11 = new javax.swing.JToolBar.Separator();
+        jSeparator9 = new javax.swing.JToolBar.Separator();
         subMenu_Persona = new javax.swing.JButton();
+        jSeparator12 = new javax.swing.JToolBar.Separator();
+        jSeparator8 = new javax.swing.JToolBar.Separator();
+        jSeparator6 = new javax.swing.JToolBar.Separator();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         subMenu_servicios = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
         submenu_Pedidos = new javax.swing.JButton();
+        jSeparator10 = new javax.swing.JToolBar.Separator();
+        jSeparator16 = new javax.swing.JToolBar.Separator();
+        jSeparator13 = new javax.swing.JToolBar.Separator();
+        jSeparator17 = new javax.swing.JToolBar.Separator();
         sub_menupro = new javax.swing.JButton();
+        jSeparator15 = new javax.swing.JToolBar.Separator();
+        jSeparator19 = new javax.swing.JToolBar.Separator();
+        jSeparator14 = new javax.swing.JToolBar.Separator();
+        jSeparator20 = new javax.swing.JToolBar.Separator();
         btnbodega = new javax.swing.JButton();
+        jSeparator22 = new javax.swing.JToolBar.Separator();
+        jSeparator24 = new javax.swing.JToolBar.Separator();
+        jSeparator21 = new javax.swing.JToolBar.Separator();
+        jSeparator23 = new javax.swing.JToolBar.Separator();
+        btnRegresar = new javax.swing.JButton();
+        jSeparator18 = new javax.swing.JToolBar.Separator();
+        jSeparator25 = new javax.swing.JToolBar.Separator();
+        jSeparator26 = new javax.swing.JToolBar.Separator();
+        jSeparator27 = new javax.swing.JToolBar.Separator();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblnombreE = new javax.swing.JLabel();
+        lblrol = new javax.swing.JLabel();
         dkp_pane_principal = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblrol = new javax.swing.JLabel();
-        lblnombreE = new javax.swing.JLabel();
-        btnRegresar = new javax.swing.JButton();
         menu_principal = new javax.swing.JMenuBar();
         menu_persona = new javax.swing.JMenu();
         menuItem_clientes = new javax.swing.JMenuItem();
         menuItem_empleados = new javax.swing.JMenuItem();
-        menu_servicos = new javax.swing.JMenu();
-        menu_pedidos = new javax.swing.JMenu();
-        menu_productos = new javax.swing.JMenu();
         menuReportes = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         JmenuPersonasVP = new javax.swing.JMenuItem();
@@ -65,45 +88,127 @@ public class Vista_Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         JmenuPersonasGeneroVP = new javax.swing.JMenuItem();
         JmenuClientesMorePedidoVP = new javax.swing.JMenuItem();
+        JmenuProductosTopCVP = new javax.swing.JMenuItem();
+        JmenuBodegaEpacioCVP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jToolBar1.setBackground(new java.awt.Color(0, 80, 128));
+        jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.setRollover(true);
+        jToolBar1.setBorderPainted(false);
+        jToolBar1.add(jSeparator5);
+        jToolBar1.add(jSeparator11);
+        jToolBar1.add(jSeparator9);
 
-        subMenu_Persona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-persona-femenina-24.png"))); // NOI18N
+        subMenu_Persona.setForeground(new java.awt.Color(255, 255, 255));
+        subMenu_Persona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-añadir-grupo-de-usuarios-hombre-hombre-34.png"))); // NOI18N
+        subMenu_Persona.setText("Personas");
+        subMenu_Persona.setBorder(null);
+        subMenu_Persona.setContentAreaFilled(false);
         subMenu_Persona.setFocusable(false);
         subMenu_Persona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         subMenu_Persona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(subMenu_Persona);
+        jToolBar1.add(jSeparator12);
+        jToolBar1.add(jSeparator8);
+        jToolBar1.add(jSeparator6);
         jToolBar1.add(jSeparator1);
 
+        subMenu_servicios.setForeground(new java.awt.Color(255, 255, 255));
+        subMenu_servicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-campana-de-servicio-34.png"))); // NOI18N
         subMenu_servicios.setText("Servicos");
+        subMenu_servicios.setBorder(null);
+        subMenu_servicios.setContentAreaFilled(false);
         subMenu_servicios.setFocusable(false);
         subMenu_servicios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         subMenu_servicios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(subMenu_servicios);
+        jToolBar1.add(jSeparator4);
+        jToolBar1.add(jSeparator3);
+        jToolBar1.add(jSeparator2);
+        jToolBar1.add(jSeparator7);
 
+        submenu_Pedidos.setForeground(new java.awt.Color(255, 255, 255));
+        submenu_Pedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-historial-de-pedidos-34.png"))); // NOI18N
         submenu_Pedidos.setText("Pedidos");
+        submenu_Pedidos.setBorder(null);
+        submenu_Pedidos.setContentAreaFilled(false);
         submenu_Pedidos.setFocusable(false);
         submenu_Pedidos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         submenu_Pedidos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(submenu_Pedidos);
+        jToolBar1.add(jSeparator10);
+        jToolBar1.add(jSeparator16);
+        jToolBar1.add(jSeparator13);
+        jToolBar1.add(jSeparator17);
 
+        sub_menupro.setForeground(new java.awt.Color(255, 255, 255));
+        sub_menupro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-34.png"))); // NOI18N
         sub_menupro.setText("Productos");
+        sub_menupro.setBorder(null);
+        sub_menupro.setContentAreaFilled(false);
         sub_menupro.setFocusable(false);
         sub_menupro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         sub_menupro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(sub_menupro);
+        jToolBar1.add(jSeparator15);
+        jToolBar1.add(jSeparator19);
+        jToolBar1.add(jSeparator14);
+        jToolBar1.add(jSeparator20);
 
+        btnbodega.setForeground(new java.awt.Color(255, 255, 255));
+        btnbodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-almacén-34.png"))); // NOI18N
         btnbodega.setText("Bodega");
+        btnbodega.setBorder(null);
+        btnbodega.setContentAreaFilled(false);
         btnbodega.setFocusable(false);
         btnbodega.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnbodega.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnbodega);
+        jToolBar1.add(jSeparator22);
+        jToolBar1.add(jSeparator24);
+        jToolBar1.add(jSeparator21);
+        jToolBar1.add(jSeparator23);
+
+        btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-logout-rounded-left-30.png"))); // NOI18N
+        btnRegresar.setText("Regresar");
+        btnRegresar.setBorder(null);
+        btnRegresar.setContentAreaFilled(false);
+        btnRegresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRegresar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnRegresar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnRegresar);
+        jToolBar1.add(jSeparator18);
+        jToolBar1.add(jSeparator25);
+        jToolBar1.add(jSeparator26);
+        jToolBar1.add(jSeparator27);
+
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 570));
+
+        jPanel2.setBackground(new java.awt.Color(0, 80, 128));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("          SGSL.version.1");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 220, 20));
+
+        lblnombreE.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblnombreE.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(lblnombreE, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 160, 30));
+
+        lblrol.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblrol.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(lblrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 140, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1220, 50));
 
         dkp_pane_principal.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADAORI.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/PORTADAORfondo-removebg-preview.png"))); // NOI18N
 
         dkp_pane_principal.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -111,52 +216,27 @@ public class Vista_Principal extends javax.swing.JFrame {
         dkp_pane_principal.setLayout(dkp_pane_principalLayout);
         dkp_pane_principalLayout.setHorizontalGroup(
             dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dkp_pane_principalLayout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dkp_pane_principalLayout.createSequentialGroup()
+                .addContainerGap(323, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(316, 316, 316))
         );
         dkp_pane_principalLayout.setVerticalGroup(
             dkp_pane_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2)
-        );
-
-        jLabel1.setText("          SGSL.version.1");
-
-        btnRegresar.setText("Regresar");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(243, 243, 243))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(dkp_pane_principalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnRegresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblrol, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblnombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegresar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(lblrol, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblnombreE, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        menu_principal.setBackground(new java.awt.Color(74, 234, 234));
+        getContentPane().add(dkp_pane_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 1130, 570));
+
+        menu_principal.setBackground(new java.awt.Color(0, 80, 128));
         menu_principal.setPreferredSize(new java.awt.Dimension(236, 50));
 
+        menu_persona.setForeground(new java.awt.Color(255, 255, 255));
         menu_persona.setText("Persona");
+        menu_persona.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
         menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         menuItem_clientes.setText("Clientes");
@@ -168,16 +248,9 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         menu_principal.add(menu_persona);
 
-        menu_servicos.setText("Servicios");
-        menu_principal.add(menu_servicos);
-
-        menu_pedidos.setText("Pedidos");
-        menu_principal.add(menu_pedidos);
-
-        menu_productos.setText("Productos");
-        menu_principal.add(menu_productos);
-
+        menuReportes.setForeground(new java.awt.Color(255, 255, 255));
         menuReportes.setText("Reportes");
+        menuReportes.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
         jMenu2.setText("Reportes Generales");
 
@@ -209,29 +282,17 @@ public class Vista_Principal extends javax.swing.JFrame {
         JmenuClientesMorePedidoVP.setText("More Pedidos");
         jMenu1.add(JmenuClientesMorePedidoVP);
 
+        JmenuProductosTopCVP.setText("Productos");
+        jMenu1.add(JmenuProductosTopCVP);
+
+        JmenuBodegaEpacioCVP.setText("Bodega");
+        jMenu1.add(JmenuBodegaEpacioCVP);
+
         menuReportes.add(jMenu1);
 
         menu_principal.add(menuReportes);
 
         setJMenuBar(menu_principal);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 962, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(dkp_pane_principal)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(dkp_pane_principal)
-                .addGap(6, 6, 6)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -256,11 +317,6 @@ public class Vista_Principal extends javax.swing.JFrame {
         this.btnbodega = btnbodega;
     }
 
-    public void setSubMenu_servicios(JButton subMenu_servicios) {
-        this.subMenu_servicios = subMenu_servicios;
-    }
-
-    
     public JDesktopPane getDkp_pane_principal() {
         return dkp_pane_principal;
     }
@@ -268,6 +324,11 @@ public class Vista_Principal extends javax.swing.JFrame {
     public void setDkp_pane_principal(JDesktopPane dkp_pane_principal) {
         this.dkp_pane_principal = dkp_pane_principal;
     }
+    public void setSubMenu_servicios(JButton subMenu_servicios) {
+        this.subMenu_servicios = subMenu_servicios;
+    }
+
+
 
     public JMenuItem getMenuItem_clientes() {
         return menuItem_clientes;
@@ -381,14 +442,32 @@ public class Vista_Principal extends javax.swing.JFrame {
         this.JmenuClientesVP = JmenuClientesVP;
     }
 
+    public JMenuItem getJmenuProductosTopCVP() {
+        return JmenuProductosTopCVP;
+    }
+
+    public void setJmenuProductosTopCVP(JMenuItem JmenuProductosTopCVP) {
+        this.JmenuProductosTopCVP = JmenuProductosTopCVP;
+    }
+
+    public JMenuItem getJmenuBodegaEpacioCVP() {
+        return JmenuBodegaEpacioCVP;
+    }
+
+    public void setJmenuBodegaEpacioCVP(JMenuItem JmenuBodegaEpacioCVP) {
+        this.JmenuBodegaEpacioCVP = JmenuBodegaEpacioCVP;
+    }
+
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JmenuBodegaEpacioCVP;
     private javax.swing.JMenuItem JmenuClientesMorePedidoVP;
     private javax.swing.JMenuItem JmenuClientesVP;
     private javax.swing.JMenuItem JmenuPersonasGeneroVP;
     private javax.swing.JMenuItem JmenuPersonasVP;
+    private javax.swing.JMenuItem JmenuProductosTopCVP;
     private javax.swing.JMenuItem MnEmpleado;
     private javax.swing.JMenuItem MnServicio;
     private javax.swing.JButton btnRegresar;
@@ -400,19 +479,42 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenubodegvb;
     private javax.swing.JMenuItem jMenuproductosvp;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator10;
+    private javax.swing.JToolBar.Separator jSeparator11;
+    private javax.swing.JToolBar.Separator jSeparator12;
+    private javax.swing.JToolBar.Separator jSeparator13;
+    private javax.swing.JToolBar.Separator jSeparator14;
+    private javax.swing.JToolBar.Separator jSeparator15;
+    private javax.swing.JToolBar.Separator jSeparator16;
+    private javax.swing.JToolBar.Separator jSeparator17;
+    private javax.swing.JToolBar.Separator jSeparator18;
+    private javax.swing.JToolBar.Separator jSeparator19;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator20;
+    private javax.swing.JToolBar.Separator jSeparator21;
+    private javax.swing.JToolBar.Separator jSeparator22;
+    private javax.swing.JToolBar.Separator jSeparator23;
+    private javax.swing.JToolBar.Separator jSeparator24;
+    private javax.swing.JToolBar.Separator jSeparator25;
+    private javax.swing.JToolBar.Separator jSeparator26;
+    private javax.swing.JToolBar.Separator jSeparator27;
+    private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar.Separator jSeparator6;
+    private javax.swing.JToolBar.Separator jSeparator7;
+    private javax.swing.JToolBar.Separator jSeparator8;
+    private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblnombreE;
     private javax.swing.JLabel lblrol;
     private javax.swing.JMenuItem menuItem_clientes;
     private javax.swing.JMenuItem menuItem_empleados;
     private javax.swing.JMenu menuReportes;
-    private javax.swing.JMenu menu_pedidos;
     private javax.swing.JMenu menu_persona;
     private javax.swing.JMenuBar menu_principal;
-    private javax.swing.JMenu menu_productos;
-    private javax.swing.JMenu menu_servicos;
     private javax.swing.JButton subMenu_Persona;
     private javax.swing.JButton subMenu_servicios;
     private javax.swing.JButton sub_menupro;

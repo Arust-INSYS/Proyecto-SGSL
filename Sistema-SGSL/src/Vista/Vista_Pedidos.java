@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author HP
  */
-public class Vista_Pedidos extends javax.swing.JInternalFrame {
+public class Vista_Pedidos extends javax.swing.JFrame {
 
     /**
      * Creates new form Vista_Pedidos
@@ -127,10 +127,10 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(btnEnviar)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 570, -1));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 570, 20));
 
         tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

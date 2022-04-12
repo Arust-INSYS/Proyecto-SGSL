@@ -240,35 +240,33 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         DialogoPersona = new javax.swing.JDialog();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         BtnAceptarPer = new javax.swing.JButton();
         BtnCancelarPer = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        TxtCedulaPersona = new javax.swing.JTextField();
-        TxtNombrePersona = new javax.swing.JTextField();
-        TxtApellidoPersona = new javax.swing.JTextField();
-        TxtDireccionPersona = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         RadioBtnMasculino = new javax.swing.JRadioButton();
-        RadioBtnFemenino = new javax.swing.JRadioButton();
-        LblFotoPersona = new javax.swing.JLabel();
-        BtnSeleccionarFoto = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        Txt_ID_Persona = new javax.swing.JTextField();
-        FechaNacimientoPer = new com.toedter.calendar.JDateChooser();
-        jLabel3 = new javax.swing.JLabel();
-        LblCedulaRojo = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        LbLFechaRojo = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        LblApellido = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        LblNombreRojo = new javax.swing.JLabel();
+        LblCedulaRojo = new javax.swing.JLabel();
+        TxtDireccionPersona = new javax.swing.JTextField();
         LblGeneroRojo = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        BtnSeleccionarFoto = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        TxtApellidoPersona = new javax.swing.JTextField();
+        LblFotoPersona = new javax.swing.JLabel();
+        RadioBtnFemenino = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        TxtNombrePersona = new javax.swing.JTextField();
+        LblNombreRojo = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        FechaNacimientoPer = new com.toedter.calendar.JDateChooser();
+        Txt_ID_Persona = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        TxtCedulaPersona = new javax.swing.JTextField();
+        LblApellido = new javax.swing.JLabel();
+        LbLFechaRojo = new javax.swing.JLabel();
+        LBLFONDOPERSONA = new javax.swing.JLabel();
         GrupoBotonGenero = new javax.swing.ButtonGroup();
         BtnCrearPersona = new javax.swing.JButton();
         BtnEditarPersona = new javax.swing.JButton();
@@ -287,249 +285,125 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
 
         DialogoPersona.setResizable(false);
+        DialogoPersona.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(0, 255, 204));
+        BtnAceptarPer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnAceptarPer.setForeground(new java.awt.Color(0, 102, 51));
+        BtnAceptarPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (2).png"))); // NOI18N
+        BtnAceptarPer.setText("ACEPTAR");
+        BtnAceptarPer.setBorder(null);
+        BtnAceptarPer.setContentAreaFilled(false);
+        BtnAceptarPer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DialogoPersona.getContentPane().add(BtnAceptarPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 100, 50));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnCancelarPer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnCancelarPer.setForeground(new java.awt.Color(153, 0, 0));
+        BtnCancelarPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (1).png"))); // NOI18N
+        BtnCancelarPer.setText("CANCELAR");
+        BtnCancelarPer.setBorder(null);
+        BtnCancelarPer.setContentAreaFilled(false);
+        BtnCancelarPer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        DialogoPersona.getContentPane().add(BtnCancelarPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, 50));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 153));
         jLabel7.setText("Persona");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(19, 19, 19))
-        );
-
-        BtnAceptarPer.setText("Aceptar");
-
-        BtnCancelarPer.setText("Cancelar");
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        DialogoPersona.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, -1, -1, 40));
 
         GrupoBotonGenero.add(RadioBtnMasculino);
         RadioBtnMasculino.setText("M");
+        DialogoPersona.getContentPane().add(RadioBtnMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
 
-        GrupoBotonGenero.add(RadioBtnFemenino);
-        RadioBtnFemenino.setText("F");
-
-        LblFotoPersona.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        BtnSeleccionarFoto.setText("Seleccionar");
-
-        jLabel10.setText("Id_Persona");
-
-        FechaNacimientoPer.setDateFormatString("yyyy-MM-dd");
-
-        jLabel3.setText("Nombre:");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel6.setText("Dirección:");
+        DialogoPersona.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
 
         LblCedulaRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblCedulaRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblCedulaRojo.setText("*");
-
-        jLabel4.setText("Apellido:");
-
-        LbLFechaRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        LbLFechaRojo.setForeground(new java.awt.Color(255, 0, 0));
-        LbLFechaRojo.setText("*");
-
-        jLabel5.setText("Fecha Nacimiento:");
-
-        LblApellido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        LblApellido.setForeground(new java.awt.Color(255, 0, 0));
-        LblApellido.setText("*");
-
-        jLabel6.setText("Dirección:");
-
-        jLabel2.setText("Cédula:");
-
-        LblNombreRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        LblNombreRojo.setForeground(new java.awt.Color(255, 0, 0));
-        LblNombreRojo.setText("*");
+        DialogoPersona.getContentPane().add(LblCedulaRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
+        DialogoPersona.getContentPane().add(TxtDireccionPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 145, -1));
 
         LblGeneroRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblGeneroRojo.setForeground(new java.awt.Color(255, 0, 0));
         LblGeneroRojo.setText("*");
+        DialogoPersona.getContentPane().add(LblGeneroRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, -1));
 
-        jLabel8.setText("Foto");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel2.setText("Cédula:");
+        DialogoPersona.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
+        BtnSeleccionarFoto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnSeleccionarFoto.setForeground(new java.awt.Color(102, 0, 153));
+        BtnSeleccionarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Aexaminaicons8-imagen-48.png"))); // NOI18N
+        BtnSeleccionarFoto.setText("Seleccionar");
+        BtnSeleccionarFoto.setBorder(null);
+        BtnSeleccionarFoto.setContentAreaFilled(false);
+        DialogoPersona.getContentPane().add(BtnSeleccionarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 120, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel3.setText("Nombre:");
+        DialogoPersona.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        DialogoPersona.getContentPane().add(TxtApellidoPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 145, -1));
+
+        LblFotoPersona.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        DialogoPersona.getContentPane().add(LblFotoPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 121, 155));
+
+        GrupoBotonGenero.add(RadioBtnFemenino);
+        RadioBtnFemenino.setText("F");
+        DialogoPersona.getContentPane().add(RadioBtnFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 153));
         jLabel9.setText("Genero:");
+        DialogoPersona.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
+        DialogoPersona.getContentPane().add(TxtNombrePersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 145, -1));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        LblNombreRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LblNombreRojo.setForeground(new java.awt.Color(255, 0, 0));
+        LblNombreRojo.setText("*");
+        DialogoPersona.getContentPane().add(LblNombreRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(276, 276, 276)
-                        .addComponent(jLabel8)
-                        .addGap(34, 34, 34))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel6))
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(RadioBtnMasculino)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(RadioBtnFemenino)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(LblGeneroRojo)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(TxtDireccionPersona)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(71, 71, 71)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Txt_ID_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtCedulaPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(67, 67, 67)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FechaNacimientoPer, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtApellidoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(LblNombreRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LblCedulaRojo)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(LblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LbLFechaRojo))))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(BtnSeleccionarFoto)
-                                .addGap(23, 23, 23))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LblFotoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(LbLFechaRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel10)
-                                .addComponent(Txt_ID_Persona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(26, 26, 26)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(TxtCedulaPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(LblCedulaRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(26, 26, 26)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(jLabel3))
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(TxtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LblNombreRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(26, 26, 26)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(TxtApellidoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LblApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)))
-                            .addGap(26, 26, 26)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
-                                .addComponent(FechaNacimientoPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LblFotoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnSeleccionarFoto)))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(RadioBtnMasculino)
-                            .addComponent(RadioBtnFemenino)
-                            .addComponent(LblGeneroRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtDireccionPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel4.setText("Apellido:");
+        DialogoPersona.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
-        javax.swing.GroupLayout DialogoPersonaLayout = new javax.swing.GroupLayout(DialogoPersona.getContentPane());
-        DialogoPersona.getContentPane().setLayout(DialogoPersonaLayout);
-        DialogoPersonaLayout.setHorizontalGroup(
-            DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoPersonaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnAceptarPer)
-                .addGap(94, 94, 94)
-                .addComponent(BtnCancelarPer)
-                .addGap(111, 111, 111))
-            .addGroup(DialogoPersonaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        DialogoPersonaLayout.setVerticalGroup(
-            DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DialogoPersonaLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(DialogoPersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnAceptarPer)
-                    .addComponent(BtnCancelarPer))
-                .addGap(20, 20, 20))
-        );
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel8.setText("Foto");
+        DialogoPersona.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
+
+        FechaNacimientoPer.setDateFormatString("yyyy-MM-dd");
+        DialogoPersona.getContentPane().add(FechaNacimientoPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 145, -1));
+        DialogoPersona.getContentPane().add(Txt_ID_Persona, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 145, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel5.setText("Fecha Nacimiento:");
+        DialogoPersona.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel10.setText("Id_Persona:");
+        DialogoPersona.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
+        DialogoPersona.getContentPane().add(TxtCedulaPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 145, -1));
+
+        LblApellido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LblApellido.setForeground(new java.awt.Color(255, 0, 0));
+        LblApellido.setText("*");
+        DialogoPersona.getContentPane().add(LblApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+
+        LbLFechaRojo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LbLFechaRojo.setForeground(new java.awt.Color(255, 0, 0));
+        LbLFechaRojo.setText("*");
+        DialogoPersona.getContentPane().add(LbLFechaRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
+
+        LBLFONDOPERSONA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/APERSONAFONDO.jpg"))); // NOI18N
+        DialogoPersona.getContentPane().add(LBLFONDOPERSONA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 430));
 
         setClosable(true);
         setIconifiable(true);
@@ -635,6 +509,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JDialog DialogoPersona;
     private com.toedter.calendar.JDateChooser FechaNacimientoPer;
     private javax.swing.ButtonGroup GrupoBotonGenero;
+    private javax.swing.JLabel LBLFONDOPERSONA;
     private javax.swing.JLabel LbLFechaRojo;
     private javax.swing.JLabel LblApellido;
     private javax.swing.JLabel LblCedulaRojo;
@@ -665,9 +540,6 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblbuscar;

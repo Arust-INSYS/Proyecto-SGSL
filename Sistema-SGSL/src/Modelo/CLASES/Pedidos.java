@@ -14,23 +14,21 @@ import java.util.Date;
 public class Pedidos {
     private int id_pedido;
     private Date fecha_pedido;
-    private String direccion;
     private int cantidad_servicios;
-    private float total_servicios;
+    private double total_servicios;
     private int id_cliente;
-    private int id_servicio;
+    
 
     public Pedidos() {
     }
 
-    public Pedidos(int id_pedido, Date fecha_pedido, String direccion, int cantidad_servicios, float total_servicios, int id_cliente, int id_servicio) {
+    public Pedidos(int id_pedido, Date fecha_pedido, int cantidad_servicios, double total_servicios, int id_cliente) {
         this.id_pedido = id_pedido;
         this.fecha_pedido = fecha_pedido;
-        this.direccion = direccion;
         this.cantidad_servicios = cantidad_servicios;
         this.total_servicios = total_servicios;
         this.id_cliente = id_cliente;
-        this.id_servicio = id_servicio;
+        
     }
 
     public int getId_pedido() {
@@ -49,13 +47,6 @@ public class Pedidos {
         this.fecha_pedido = fecha_pedido;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public int getCantidad_servicios() {
         return cantidad_servicios;
@@ -65,11 +56,11 @@ public class Pedidos {
         this.cantidad_servicios = cantidad_servicios;
     }
 
-    public float getTotal_servicios() {
+    public double getTotal_servicios() {
         return total_servicios;
     }
 
-    public void setTotal_servicios(float total_servicios) {
+    public void setTotal_servicios(double total_servicios) {
         this.total_servicios = total_servicios;
     }
 
@@ -81,13 +72,6 @@ public class Pedidos {
         this.id_cliente = id_cliente;
     }
 
-    public int getId_servicio() {
-        return id_servicio;
-    }
-
-    public void setId_servicio(int id_servicio) {
-        this.id_servicio = id_servicio;
-    }
 
    
 

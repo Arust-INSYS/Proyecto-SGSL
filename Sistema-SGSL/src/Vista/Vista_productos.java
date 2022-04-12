@@ -438,29 +438,30 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblabodega);
 
-        dialogbodega.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 640, 175));
+        dialogbodega.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 570, 280));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(0, 51, 153));
         jLabel7.setText("BODEGAS");
-        dialogbodega.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 36, 203, 43));
+        dialogbodega.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 203, 43));
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
         jLabel15.setToolTipText("Buscar");
-        dialogbodega.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
-        dialogbodega.getContentPane().add(txbuscaidbo, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 94, 347, -1));
+        dialogbodega.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+        dialogbodega.getContentPane().add(txbuscaidbo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 347, -1));
 
-        btnacepidbodega.setForeground(new java.awt.Color(0, 0, 0));
-        btnacepidbodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-check visto-mark-48.png"))); // NOI18N
+        btnacepidbodega.setForeground(new java.awt.Color(0, 102, 51));
+        btnacepidbodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-botón-2-80 (2).png"))); // NOI18N
         btnacepidbodega.setText("Aceptar");
         btnacepidbodega.setToolTipText("Aceptar");
         btnacepidbodega.setBorder(null);
         btnacepidbodega.setContentAreaFilled(false);
-        dialogbodega.getContentPane().add(btnacepidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 340, 120, -1));
+        btnacepidbodega.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        dialogbodega.getContentPane().add(btnacepidbodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 80, 40));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/fondo_lin.jpg"))); // NOI18N
-        dialogbodega.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 410));
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/dialogolimpiezaachoproductos.jpg"))); // NOI18N
+        dialogbodega.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 540));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -617,7 +618,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         getContentPane().add(BtnRemoverServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 110, 50));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Imagen4F.png"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 180, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, -1));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));

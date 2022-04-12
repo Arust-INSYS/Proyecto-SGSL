@@ -374,8 +374,8 @@ public class Controlador_productos {
 //abre el dialog de bodegas 
     private void abrirdialobodega() {
         vispro.getDialogbodega().setLocationRelativeTo(vispro);
-        vispro.getDialogbodega().setSize(600, 430);
-                vispro.getDialog_Crear().setLocation(600, 80);
+        vispro.getDialogbodega().setSize(730, 560);
+        vispro.getDialogbodega().setLocation(600, 80);
         vispro.getDialogbodega().setTitle("BODEGAS");
         vispro.getDialogbodega().setVisible(true);
         cargarbodegas();

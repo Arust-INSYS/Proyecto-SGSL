@@ -88,6 +88,8 @@ public class Vista_Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         JmenuPersonasGeneroVP = new javax.swing.JMenuItem();
         JmenuClientesMorePedidoVP = new javax.swing.JMenuItem();
+        JmenuProductosTopCVP = new javax.swing.JMenuItem();
+        JmenuBodegaEpacioCVP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -280,6 +282,12 @@ public class Vista_Principal extends javax.swing.JFrame {
         JmenuClientesMorePedidoVP.setText("More Pedidos");
         jMenu1.add(JmenuClientesMorePedidoVP);
 
+        JmenuProductosTopCVP.setText("Productos");
+        jMenu1.add(JmenuProductosTopCVP);
+
+        JmenuBodegaEpacioCVP.setText("Bodega");
+        jMenu1.add(JmenuBodegaEpacioCVP);
+
         menuReportes.add(jMenu1);
 
         menu_principal.add(menuReportes);
@@ -434,14 +442,32 @@ public class Vista_Principal extends javax.swing.JFrame {
         this.JmenuClientesVP = JmenuClientesVP;
     }
 
+    public JMenuItem getJmenuProductosTopCVP() {
+        return JmenuProductosTopCVP;
+    }
+
+    public void setJmenuProductosTopCVP(JMenuItem JmenuProductosTopCVP) {
+        this.JmenuProductosTopCVP = JmenuProductosTopCVP;
+    }
+
+    public JMenuItem getJmenuBodegaEpacioCVP() {
+        return JmenuBodegaEpacioCVP;
+    }
+
+    public void setJmenuBodegaEpacioCVP(JMenuItem JmenuBodegaEpacioCVP) {
+        this.JmenuBodegaEpacioCVP = JmenuBodegaEpacioCVP;
+    }
+
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JmenuBodegaEpacioCVP;
     private javax.swing.JMenuItem JmenuClientesMorePedidoVP;
     private javax.swing.JMenuItem JmenuClientesVP;
     private javax.swing.JMenuItem JmenuPersonasGeneroVP;
     private javax.swing.JMenuItem JmenuPersonasVP;
+    private javax.swing.JMenuItem JmenuProductosTopCVP;
     private javax.swing.JMenuItem MnEmpleado;
     private javax.swing.JMenuItem MnServicio;
     private javax.swing.JButton btnRegresar;

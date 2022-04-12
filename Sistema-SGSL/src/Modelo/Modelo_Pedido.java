@@ -26,8 +26,8 @@ public class Modelo_Pedido extends Pedidos {
     public Modelo_Pedido() {
     }
 
-    public Modelo_Pedido(int id_pedido, Date fecha_pedido, String direccion, int cantidad_servicios, float total_servicios, int id_cliente, int id_servicio) {
-        super(id_pedido, fecha_pedido, direccion, cantidad_servicios, total_servicios, id_cliente, id_servicio);
+    public Modelo_Pedido(int id_pedido, Date fecha_pedido, int cantidad_servicios, double total_servicios, int id_cliente) {
+        super(id_pedido, fecha_pedido, cantidad_servicios, total_servicios, id_cliente);
     }
 
     public List<Pedidos> listarPedidos() {
@@ -40,11 +40,11 @@ public class Modelo_Pedido extends Pedidos {
                 Pedidos pedido = new Pedidos();
                 pedido.setId_pedido(rs.getInt("id_pedido"));
                 pedido.setFecha_pedido(rs.getDate("fecha_pedido"));
-                pedido.setDireccion(rs.getString("direccion"));
+//                pedido.setDireccion(rs.getString("direccion"));
                 pedido.setCantidad_servicios(rs.getInt("cantidad_servicios"));
-                pedido.setTotal_servicios(rs.getFloat("total_servicios"));
+//                pedido.setTotal_servicios(rs.getDouble("total_servicios"));
                 pedido.setId_cliente(rs.getInt("id_cliente"));
-                pedido.setId_servicio(rs.getInt("id_servicio"));
+//                pedido.setId_servicio(rs.getInt("id_servicio"));
 
                 lista.add(pedido);
 
@@ -60,15 +60,12 @@ public class Modelo_Pedido extends Pedidos {
     public boolean Insertar_Pedido() {
         try {
             String sql;
-            sql = "INSERT INTO Pedido (id_pedido, direccion,cantidad_servicios, total_servicios, id_cliente, id_servicio)";
-            sql += "VALUES(?,?,?,?,?,?)";
+            sql = "INSERT INTO Pedido (cantidad_servicios, total_servicios, id_cliente)";
+            sql += "VALUES(?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-            ps.setInt(1, getId_pedido());
-            ps.setString(2, getDireccion());
-            ps.setDouble(3, getCantidad_servicios());
-            ps.setFloat(4, getTotal_servicios());
-            ps.setInt(5, getId_cliente());
-            ps.setInt(6, getId_servicio());
+            ps.setInt(1, getCantidad_servicios());
+            ps.setDouble(2, getTotal_servicios());
+            ps.setInt(3, getId_cliente());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -85,11 +82,11 @@ public class Modelo_Pedido extends Pedidos {
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_pedido());
 //            ps.setDate(2, getFecha_pedido());
-            ps.setString(3, getDireccion());
-            ps.setDouble(4, getCantidad_servicios());
-            ps.setFloat(5, getTotal_servicios());
+//            ps.setString(3, getDireccion());
+            ps.setInt(4, getCantidad_servicios());
+            ps.setDouble(5, getTotal_servicios());
             ps.setInt(6, getId_cliente());
-            ps.setInt(7, getId_servicio());
+//            ps.setInt(7, getId_servicio());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {

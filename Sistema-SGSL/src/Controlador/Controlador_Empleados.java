@@ -23,11 +23,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.sql.Date;
+import java.util.Date;
+import java.time.LocalDate;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -39,12 +39,6 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -83,13 +77,10 @@ public class Controlador_Empleados {
         vista_emple.getBtnAceptar().addActionListener(l -> crearEditarEmpleado());
         vista_emple.getBtnRemover().addActionListener(l -> EliminarEmpleadoView());
         vista_emple.getBtnCancelar().addActionListener(l -> cancelar_emple());
-
-        //vista.getBtnbuscar_pro().addActionListener(l->Buscarpro());
         vista_emple.getVerper().addActionListener(l -> abrirDialogo(1));
         vista_emple.getBtningresar().addActionListener(l -> modificar_per());
         viewper.getBtnAceptarPer().addActionListener(l->EditarPersona());
         
-//        vista_emple.getLblbuscar().addAncestorListener(l->BuscarEmpleado());
     }
     
 //Validaciones para los campos de la interfaz mediante la accion key.
@@ -109,6 +100,11 @@ public class Controlador_Empleados {
                     vista_emple.getLblSueldoRojo().setVisible(false);
                 } else {
                     vista_emple.getLblSueldoRojo().setVisible(true);
+                }
+                 if (vista_emple.getBoxEstado().getSelectedItem().toString().equals("Seleccionar")) {
+                    vista_emple.getLblEstadoRojo().setVisible(true);
+                } else {
+                    vista_emple.getLblEstadoRojo().setVisible(false);
                 }
             }
 
@@ -168,15 +164,36 @@ public class Controlador_Empleados {
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (vista_emple.getBoxEstado().getSelectedItem()== "Seleccionar") {
-                    vista_emple.getLblEstadoRojo().setVisible(false);
-                } else {
+                if (vista_emple.getBoxEstado().getSelectedItem().toString().equals("Seleccionar")) {
                     vista_emple.getLblEstadoRojo().setVisible(true);
+                } else {
+                    vista_emple.getLblEstadoRojo().setVisible(false);
+                }
+            }
+        };
+        FocusListener focosfecha = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                Date fechav = vista_emple.getContratacion().getDate();
+                String fechacontra = ((JTextField) vista_emple.getContratacion().getDateEditor().getUiComponent()).getText();
+                if (fechacontra.isEmpty() || conf.FechaNacimiento(vista_emple.getContratacion()) == false ) {
+                    JOptionPane.showMessageDialog(vista_emple, "Fecha de ingreso superior a fecha actual", "Validación Fecha", JOptionPane.WARNING_MESSAGE);
+                    vista_emple.getLblFechaRojo().setVisible(true);
+                } else {
+                    vista_emple.getLblFechaRojo().setVisible(false);
                 }
             }
         };
         vista_emple.getTxtBuscarEmpleado().addKeyListener(buscar);
         vista_emple.getTxtsueldo().addKeyListener(vali);
+        vista_emple.getBoxEstado().addFocusListener(focosesta);
+        vista_emple.getBoxEstado().addKeyListener(vali);
+        vista_emple.getContratacion().addFocusListener(focosfecha);
     }
 
    // Abre el dialogo para crear y editar empleado
@@ -687,17 +704,5 @@ public class Controlador_Empleados {
         return idreprtido;
     }
      
-//    private void reporteempleado_gene(){      
-//       Conexion_BD cpg = new Conexion_BD();
-//            try {
-//            JasperReport jr =(JasperReport)JRLoader.loadObject(getClass().getResource("/Vista/Resportes/Repo_emple.jasper"));
-//            JasperPrint jp= JasperFillManager.fillReport(jr, null, cpg.getCon());
-//            JasperViewer jv= new JasperViewer(jp);
-//            jv.setVisible(true);
-//            } catch (JRException e) {
-//            Logger.getLogger(Controlador_Empleados.class.getName()).log(Level.SEVERE, null, e);
-//            }
-//       
-//    }
 
 }

@@ -257,7 +257,7 @@ public class Controlador_Servicio {
             modificar_servi();
         }
         vista_servi.getDialog_Crear().setLocationRelativeTo(vista_servi);
-        vista_servi.getDialog_Crear().setSize(500,500);
+        vista_servi.getDialog_Crear().setSize(700, 390);
         vista_servi.getDialog_Crear().setTitle(title);
         vista_servi.getDialog_Crear().setVisible(true); 
     }
@@ -270,7 +270,7 @@ public class Controlador_Servicio {
             title="Visualizar Empleado";
             vista_servi.getDialogEmple().setName("Empleado");
             vista_servi.getDialogEmple().setLocationRelativeTo(vista_servi);
-            vista_servi.getDialogEmple().setSize(600,400);
+            vista_servi.getDialogEmple().setSize(700,390);
             vista_servi.getDialogEmple().setTitle(title);
             vista_servi.getDialogEmple().setVisible(true);
             CargarEmpleados();

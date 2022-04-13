@@ -114,6 +114,16 @@
                     <Property name="text" type="java.lang.String" value="Bodega"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mncostoservi">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Costo Servicios"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mnsueldoemple">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Sueldo Empleados"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
           </SubComponents>

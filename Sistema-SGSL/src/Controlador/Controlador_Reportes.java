@@ -45,6 +45,8 @@ public class Controlador_Reportes {
         viewP.getjMenubodegvb().addActionListener(l -> ImprimiBODEGA());
         viewP.getJmenuProductosTopCVP().addActionListener(l -> ImprimirProductosMascaros());
         viewP.getJmenuBodegaEpacioCVP().addActionListener(l -> ImprimirBodegaMasEspacio());
+        viewP.getMnsueldoemple().addActionListener(l->ImprimirSueldoEmpleados());
+        viewP.getMncostoservi().addActionListener(l->ImprimirCostoServicio());
     }
 
     //Métodos que nos permiten hacer los reportes de persona general y gráficos.
@@ -230,6 +232,36 @@ public class Controlador_Reportes {
         Conexion_BD cp = new Conexion_BD();
         try {
             JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/ReporteBodegaMasEspacioSGSL.jasper"));
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("logo", "Servlog.png");
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void ImprimirCostoServicio() {
+
+        Conexion_BD cp = new Conexion_BD();
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/Rempo_grafico_costoservicio.jasper"));
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("logo", "Servlog.png");
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void ImprimirSueldoEmpleados() {
+
+        Conexion_BD cp = new Conexion_BD();
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/Reportes/Repo_grafico_sueldoemple.jasper"));
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("logo", "Servlog.png");
             JasperPrint jp = JasperFillManager.fillReport(jr, map, cp.getCon());

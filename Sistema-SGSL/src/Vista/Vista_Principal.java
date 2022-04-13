@@ -90,6 +90,8 @@ public class Vista_Principal extends javax.swing.JFrame {
         JmenuClientesMorePedidoVP = new javax.swing.JMenuItem();
         JmenuProductosTopCVP = new javax.swing.JMenuItem();
         JmenuBodegaEpacioCVP = new javax.swing.JMenuItem();
+        mncostoservi = new javax.swing.JMenuItem();
+        mnsueldoemple = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -238,11 +240,11 @@ public class Vista_Principal extends javax.swing.JFrame {
         menu_persona.setText("Persona");
         menu_persona.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
-        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menuItem_clientes.setText("Clientes");
         menu_persona.add(menuItem_clientes);
 
-        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
+        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menuItem_empleados.setText("Empleados");
         menu_persona.add(menuItem_empleados);
 
@@ -287,6 +289,12 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         JmenuBodegaEpacioCVP.setText("Bodega");
         jMenu1.add(JmenuBodegaEpacioCVP);
+
+        mncostoservi.setText("Costo Servicios");
+        jMenu1.add(mncostoservi);
+
+        mnsueldoemple.setText("Sueldo Empleados");
+        jMenu1.add(mnsueldoemple);
 
         menuReportes.add(jMenu1);
 
@@ -406,6 +414,23 @@ public class Vista_Principal extends javax.swing.JFrame {
         return JmenuPersonasVP;
     }
 
+    public JMenuItem getMncostoservi() {
+        return mncostoservi;
+    }
+
+    public void setMncostoservi(JMenuItem mncostoservi) {
+        this.mncostoservi = mncostoservi;
+    }
+
+    public JMenuItem getMnsueldoemple() {
+        return mnsueldoemple;
+    }
+
+    public void setMnsueldoemple(JMenuItem mnsueldoemple) {
+        this.mnsueldoemple = mnsueldoemple;
+    }
+    
+    
     public void setJmenuPersonasVP(JMenuItem JmenuPersonasVP) {
         this.JmenuPersonasVP = JmenuPersonasVP;
     }
@@ -515,6 +540,8 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu menuReportes;
     private javax.swing.JMenu menu_persona;
     private javax.swing.JMenuBar menu_principal;
+    private javax.swing.JMenuItem mncostoservi;
+    private javax.swing.JMenuItem mnsueldoemple;
     private javax.swing.JButton subMenu_Persona;
     private javax.swing.JButton subMenu_servicios;
     private javax.swing.JButton sub_menupro;

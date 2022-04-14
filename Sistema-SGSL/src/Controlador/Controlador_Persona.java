@@ -356,6 +356,7 @@ public class Controlador_Persona {
     private void crearEditarPersona() {
         boolean verifico = false;
         String fecha = ((JTextField) vistaPer.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
+        System.out.println("ffinitial"+fecha);
         Date fechaV = vistaPer.getFechaNacimientoPer().getDate();
         if (vistaPer.getDialogoPersona().getName().equals("Crear")) {
             if (vistaPer.getTxtCedulaPersona().getText().isEmpty()) {
@@ -381,6 +382,7 @@ public class Controlador_Persona {
                                 vistaPer.getLbLFechaRojo().setVisible(true);
                             } else {
                                 vistaPer.getLbLFechaRojo().setVisible(false);
+                                System.out.println("fechaaa"+fecha);
                                 if (conf.FechaNacimientoMayor(fecha) == false) {
                                     vistaPer.getLbLFechaRojo().setVisible(true);
                                 } else {
@@ -391,12 +393,14 @@ public class Controlador_Persona {
                                     } else {
                                         vistaPer.getLblGeneroRojo().setVisible(false);
                                         if (validadorDeCedula(vistaPer.getTxtCedulaPersona().getText()) == false) {
-                                            JOptionPane.showMessageDialog(vistaPer, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
+                                            System.out.println("Entro alif de valida cedula EC");
+                                            JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
                                             vistaPer.getLblCedulaRojo().setVisible(true);
                                         } else {
+                                            System.out.println("Paso dl if de valida cedula EC");
                                             vistaPer.getLblCedulaRojo().setVisible(false);
                                             if (ValidarUsuarioRepetido(vistaPer.getTxtCedulaPersona().getText()) == true) {
-                                                JOptionPane.showMessageDialog(vistaPer, "Error la cédula ya existe en la base de datos.", "Cédula Duplicada.", JOptionPane.ERROR_MESSAGE);
+                                                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "La cédula ingresada ya existe en la base de datos.", "Cédula Duplicada.", JOptionPane.ERROR_MESSAGE);
                                                 vistaPer.getTxtCedulaPersona().setBackground(Color.red);
                                             } else {
                                                 vistaPer.getTxtCedulaPersona().setBackground(Color.white);
@@ -412,7 +416,7 @@ public class Controlador_Persona {
                 }
             }
             if (verifico == false) {
-                JOptionPane.showMessageDialog(vistaPer, "Verifique el/los campos marcados con rojo.", "Validar creacion", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Verifique el/los campos marcados con rojo.", "Validar creacion", JOptionPane.WARNING_MESSAGE);
             }
 
         } else {

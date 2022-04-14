@@ -57,10 +57,15 @@ public class Controlador_Fecha {
         LocalDate fechaAhora = LocalDate.now();
         Period periodo = Period.between(fechanaci, fechaAhora);
         double edadP = periodo.toTotalMonths();
-        if (edadP < 18) {
+        double edfin = edadP / 12;
+        System.out.println("salidad edad-> "+edadP);
+        System.out.println("Edad din-> "+edfin);
+        if (edfin <= 18) {
+            System.out.println("Ingreso al if con-> "+edadP);
             JOptionPane.showMessageDialog(null, "No se ha completado la operación, Fecha La fecha del cliente es menor a 18 años");
             estado = false;
         } else {
+            System.out.println("Entro en el else con -> "+edadP);
             estado = true;
         }
 

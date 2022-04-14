@@ -321,6 +321,7 @@ public class Controlador_Persona {
             BloqueoTexField();
             Limpiar_DatosPersona();
             ControlLblPrincipalesActivos();
+            vistaPer.getTxtCedulaPersona().setBackground(Color.white);
             titulo = "Crear nueva Persona";
             vistaPer.getDialogoPersona().setName("Crear");
             vistaPer.getDialogoPersona().setVisible(true);
@@ -560,7 +561,7 @@ public class Controlador_Persona {
                 CargarTablaPersona();
                 Limpiar_DatosPersona();
                 IncremetoID();
-                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Persona Creada Satisfactoriamente");
                 vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -581,7 +582,7 @@ public class Controlador_Persona {
                 CargarTablaPersona();
                 IncremetoID();
                 Limpiar_DatosPersona();
-                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente.");
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Persona Creada Satisfactoriamente.");
                 vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.");
@@ -812,12 +813,12 @@ public class Controlador_Persona {
     //Método que permite cancelar ya sea la creación o edición de una persona.
     private void CancelarViewPersona() {
         if (vistaPer.getDialogoPersona().getName().equals("Crear")) {
-            int confirmar = JOptionPane.showConfirmDialog(vistaPer, "¿Está seguro que desea cancelar la creación de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int confirmar = JOptionPane.showConfirmDialog(vistaPer.getDialogoPersona(), "¿Está seguro que desea cancelar la creación de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirmar == JOptionPane.YES_OPTION) {
                 vistaPer.getDialogoPersona().dispose();
             }
         } else {
-            int confirmar = JOptionPane.showConfirmDialog(vistaPer, "¿Está seguro que desea cancelar la edición de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int confirmar = JOptionPane.showConfirmDialog(vistaPer.getDialogoPersona(), "¿Está seguro que desea cancelar la edición de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirmar == JOptionPane.YES_OPTION) {
                 vistaPer.getDialogoPersona().dispose();
             }

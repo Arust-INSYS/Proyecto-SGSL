@@ -142,7 +142,7 @@ public class Modelo_Servicio extends Servicios{
      public List<Servicios> BuscarServi(String id_servi) {
         List<Servicios> listaservi = new ArrayList<Servicios>();
         try {
-            String sql = "select * from servicios where CAST(id_servicio AS TEXT) LIKE '" + id_servi + "%' and CAST(id_empleado AS TEXT) LIKE '" + id_servi + "%';";
+            String sql = "select * from servicios where CAST(id_servicio AS TEXT) LIKE '" + id_servi + "%' or CAST(id_empleado AS TEXT) LIKE '" + id_servi + "%' or lower(nom_servicio) like '%" + id_servi + "%';";
             ResultSet rs = cpg.colsulta(sql);
             while (rs.next()) {
                 Servicios servi = new Servicios();
@@ -156,7 +156,7 @@ public class Modelo_Servicio extends Servicios{
             rs.close();
             return listaservi;
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Modelo_Servicio.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

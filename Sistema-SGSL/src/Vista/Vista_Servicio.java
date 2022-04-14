@@ -239,11 +239,11 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         ingreemple = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblServicio = new javax.swing.JTable();
         BtnActualizarServicio = new javax.swing.JButton();
         TxtBuscarServicio = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblServicio = new javax.swing.JTable();
         BtnCrearServicio = new javax.swing.JButton();
         BtnEditarServicio = new javax.swing.JButton();
         BtnRemoverServicio = new javax.swing.JButton();
@@ -351,7 +351,8 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         DialogEmple.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
         jLabel2.setText("Empleado");
         DialogEmple.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
@@ -367,8 +368,12 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         DialogEmple.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 330, 260));
 
-        ingreemple.setText("Ingre");
-        DialogEmple.getContentPane().add(ingreemple, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+        ingreemple.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ingreemple.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-agregar bodega-propiedad-48 (1).png"))); // NOI18N
+        ingreemple.setText("Ingresa Empleado");
+        ingreemple.setBorder(null);
+        ingreemple.setContentAreaFilled(false);
+        DialogEmple.getContentPane().add(ingreemple, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tablaemple.jpg"))); // NOI18N
         DialogEmple.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 710, 350));
@@ -376,26 +381,6 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         jLabel5.setText("jLabel5");
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tblServicio.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id Servicio", "Nombre", "Descripción", "Costo", "Id empleado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblServicio);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 640, 270));
 
         BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnActualizarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-escudo-48.png"))); // NOI18N
@@ -407,6 +392,18 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
+
+        tblServicio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Servicio", "Nombre", "Descripción", "Costo", "Id Empleado"
+            }
+        ));
+        jScrollPane5.setViewportView(tblServicio);
+
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 580, 260));
 
         BtnCrearServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BtnCrearServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48.png"))); // NOI18N
@@ -473,10 +470,10 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable tblServicio;
     private javax.swing.JTable tblempleados;
     private javax.swing.JTextField txtcosto_servicio;

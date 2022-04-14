@@ -128,11 +128,11 @@ public class Controlador_Persona {
                 }
                 if (Character.isLetter(c)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "Por favor, debe ingresar solo números en este campo.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Por favor, debe ingresar solo números en este campo.");
                 }
                 if (vistaPer.getTxtCedulaPersona().getText().length() == 10) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "Ya están los 10 dígitos de la cedula.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Ya están los 10 dígitos de la cedula.");
                 }
             }
 
@@ -156,7 +156,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "No debe ingresar números en este campo.");
                 }
             }
 
@@ -181,7 +181,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "No debe ingresar números en este campo.");
                 }
             }
 
@@ -205,7 +205,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "No debe ingresar números en este campo.");
                 }
             }
 
@@ -606,7 +606,7 @@ public class Controlador_Persona {
         if (jfc == null) {
             if (modelPerE.ModificarPersonaFT()) {
                 CargarTablaPersona();
-                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "La Persona a sido modificado satisfactoriamente.");
                 vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -624,7 +624,7 @@ public class Controlador_Persona {
             }
             if (modelPerE.ModificarPersonaBDA()) {
                 CargarTablaPersona();
-                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "La Persona a sido modificado satisfactoriamente.");
                 vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.");

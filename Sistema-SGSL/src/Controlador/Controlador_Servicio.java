@@ -475,7 +475,7 @@ public class Controlador_Servicio {
         tb.setNumRows(0);
         List<Servicios> listaServicio = modelo_servi.BuscarServi(codigo);
         listaServicio.stream().forEach(e -> {
-            String[] servicio = {String.valueOf(e.getId_servicio()), String.valueOf(e.getNom_servicio()), e.getDescri_servicio(), String.valueOf(e.getCosto_servicio()), String.valueOf(e.getId_empleado())};
+            String[] servicio = {String.valueOf(e.getId_servicio()), e.getNom_servicio(), e.getDescri_servicio(), String.valueOf(e.getCosto_servicio()), String.valueOf(e.getId_empleado())};
             tb.addRow(servicio);
         });
     }

@@ -128,11 +128,11 @@ public class Controlador_Persona {
                 }
                 if (Character.isLetter(c)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "Por favor, debe ingresar solo números en este campo.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Por favor, debe ingresar solo números en este campo.");
                 }
                 if (vistaPer.getTxtCedulaPersona().getText().length() == 10) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "Ya están los 10 dígitos de la cedula.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Ya están los 10 dígitos de la cedula.");
                 }
             }
 
@@ -156,7 +156,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "No debe ingresar números en este campo.");
                 }
             }
 
@@ -181,7 +181,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "No debe ingresar números en este campo.");
                 }
             }
 
@@ -205,7 +205,7 @@ public class Controlador_Persona {
                 char vn = e.getKeyChar();
                 if (Character.isDigit(vn)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaPer, "No debe ingresar números en este campo.");
+                    JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "No debe ingresar números en este campo.");
                 }
             }
 
@@ -321,6 +321,7 @@ public class Controlador_Persona {
             BloqueoTexField();
             Limpiar_DatosPersona();
             ControlLblPrincipalesActivos();
+            vistaPer.getTxtCedulaPersona().setBackground(Color.white);
             titulo = "Crear nueva Persona";
             vistaPer.getDialogoPersona().setName("Crear");
             vistaPer.getDialogoPersona().setVisible(true);
@@ -356,6 +357,7 @@ public class Controlador_Persona {
     private void crearEditarPersona() {
         boolean verifico = false;
         String fecha = ((JTextField) vistaPer.getFechaNacimientoPer().getDateEditor().getUiComponent()).getText();
+        System.out.println("ffinitial"+fecha);
         Date fechaV = vistaPer.getFechaNacimientoPer().getDate();
         if (vistaPer.getDialogoPersona().getName().equals("Crear")) {
             if (vistaPer.getTxtCedulaPersona().getText().isEmpty()) {
@@ -381,6 +383,7 @@ public class Controlador_Persona {
                                 vistaPer.getLbLFechaRojo().setVisible(true);
                             } else {
                                 vistaPer.getLbLFechaRojo().setVisible(false);
+                                System.out.println("fechaaa"+fecha);
                                 if (conf.FechaNacimientoMayor(fecha) == false) {
                                     vistaPer.getLbLFechaRojo().setVisible(true);
                                 } else {
@@ -391,12 +394,14 @@ public class Controlador_Persona {
                                     } else {
                                         vistaPer.getLblGeneroRojo().setVisible(false);
                                         if (validadorDeCedula(vistaPer.getTxtCedulaPersona().getText()) == false) {
-                                            JOptionPane.showMessageDialog(vistaPer, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
+                                            System.out.println("Entro alif de valida cedula EC");
+                                            JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
                                             vistaPer.getLblCedulaRojo().setVisible(true);
                                         } else {
+                                            System.out.println("Paso dl if de valida cedula EC");
                                             vistaPer.getLblCedulaRojo().setVisible(false);
                                             if (ValidarUsuarioRepetido(vistaPer.getTxtCedulaPersona().getText()) == true) {
-                                                JOptionPane.showMessageDialog(vistaPer, "Error la cédula ya existe en la base de datos.", "Cédula Duplicada.", JOptionPane.ERROR_MESSAGE);
+                                                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "La cédula ingresada ya existe en la base de datos.", "Cédula Duplicada.", JOptionPane.ERROR_MESSAGE);
                                                 vistaPer.getTxtCedulaPersona().setBackground(Color.red);
                                             } else {
                                                 vistaPer.getTxtCedulaPersona().setBackground(Color.white);
@@ -412,7 +417,7 @@ public class Controlador_Persona {
                 }
             }
             if (verifico == false) {
-                JOptionPane.showMessageDialog(vistaPer, "Verifique el/los campos marcados con rojo.", "Validar creacion", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Verifique el/los campos marcados con rojo.", "Validar creacion", JOptionPane.WARNING_MESSAGE);
             }
 
         } else {
@@ -556,7 +561,7 @@ public class Controlador_Persona {
                 CargarTablaPersona();
                 Limpiar_DatosPersona();
                 IncremetoID();
-                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente");
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Persona Creada Satisfactoriamente");
                 vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -577,7 +582,7 @@ public class Controlador_Persona {
                 CargarTablaPersona();
                 IncremetoID();
                 Limpiar_DatosPersona();
-                JOptionPane.showMessageDialog(vistaPer, "Persona Creada Satisfactoriamente.");
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "Persona Creada Satisfactoriamente.");
                 vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error no se puedo crear la Persona.");
@@ -601,7 +606,7 @@ public class Controlador_Persona {
         if (jfc == null) {
             if (modelPerE.ModificarPersonaFT()) {
                 CargarTablaPersona();
-                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "La Persona a sido modificado satisfactoriamente.");
                 vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -619,7 +624,7 @@ public class Controlador_Persona {
             }
             if (modelPerE.ModificarPersonaBDA()) {
                 CargarTablaPersona();
-                JOptionPane.showMessageDialog(vistaPer, "La Persona a sido modificado satisfactoriamente.");
+                JOptionPane.showMessageDialog(vistaPer.getDialogoPersona(), "La Persona a sido modificado satisfactoriamente.");
                 vistaPer.getDialogoPersona().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaPer, "Error, no se pudo modificar la Persona.");
@@ -808,12 +813,12 @@ public class Controlador_Persona {
     //Método que permite cancelar ya sea la creación o edición de una persona.
     private void CancelarViewPersona() {
         if (vistaPer.getDialogoPersona().getName().equals("Crear")) {
-            int confirmar = JOptionPane.showConfirmDialog(vistaPer, "¿Está seguro que desea cancelar la creación de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int confirmar = JOptionPane.showConfirmDialog(vistaPer.getDialogoPersona(), "¿Está seguro que desea cancelar la creación de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirmar == JOptionPane.YES_OPTION) {
                 vistaPer.getDialogoPersona().dispose();
             }
         } else {
-            int confirmar = JOptionPane.showConfirmDialog(vistaPer, "¿Está seguro que desea cancelar la edición de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int confirmar = JOptionPane.showConfirmDialog(vistaPer.getDialogoPersona(), "¿Está seguro que desea cancelar la edición de la persona?", "Cancelar.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirmar == JOptionPane.YES_OPTION) {
                 vistaPer.getDialogoPersona().dispose();
             }

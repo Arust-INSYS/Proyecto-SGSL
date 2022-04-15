@@ -390,9 +390,10 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         DialogPersona.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
         jLabel2.setText("Persona");
-        DialogPersona.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 77, -1));
+        DialogPersona.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 100, -1));
 
         tblPersonas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -406,8 +407,12 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
 
         DialogPersona.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 330, 260));
 
-        btningresar.setText("Ingre");
-        DialogPersona.getContentPane().add(btningresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, -1));
+        btningresar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btningresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-agregar bodega-propiedad-48 (1).png"))); // NOI18N
+        btningresar.setText("Ingresa Persona");
+        btningresar.setBorder(null);
+        btningresar.setContentAreaFilled(false);
+        DialogPersona.getContentPane().add(btningresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tablaemple.jpg"))); // NOI18N
         DialogPersona.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 350));

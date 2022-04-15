@@ -108,7 +108,7 @@ public class Controlador_Cliente {
                 }
                 if (Character.isLetter(c)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaCli, "Por favor, debe ingresar valores numéricos para la busqueda por cédula.", "Cédula.", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "Por favor, debe ingresar valores numéricos para la busqueda por cédula.", "Cédula.", JOptionPane.WARNING_MESSAGE);
                 }
                 if (vistaCli.getTxtBuscarCedulaCli().getText().length() == 10) {
                     e.consume();
@@ -135,7 +135,7 @@ public class Controlador_Cliente {
                 }
                 if (Character.isLetter(c)) {
                     e.consume();
-                    JOptionPane.showMessageDialog(vistaCli, "Por favor, debe ingresar valores numéricos.", "Teléfono.", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "Por favor, debe ingresar valores numéricos.", "Teléfono.", JOptionPane.WARNING_MESSAGE);
                 }
                 if (vistaCli.getTxtTelefonoCliente().getText().length() == 10) {
                     e.consume();
@@ -271,7 +271,7 @@ public class Controlador_Cliente {
 //                viewper.getDialogoPersona().setTitle(titulo);
             }
         } else {
-            JOptionPane.showMessageDialog(vistaCli, "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "Error, debe seleccionar una fila para la edición.", "Modificar de persona.", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -322,9 +322,9 @@ public class Controlador_Cliente {
         modelPerE.setDireccion(viewper.getTxtDireccionPersona().getText());
         if (jfc == null) {
             if (modelPerE.ModificarPersonaFT()) {
-                JOptionPane.showMessageDialog(vistaCli, "La Persona a sido modificado satisfactoriamente.");
+                JOptionPane.showMessageDialog(viewper.getDialogoPersona(), "La Persona a sido modificado satisfactoriamente.");
             } else {
-                JOptionPane.showMessageDialog(vistaCli, "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(viewper.getDialogoPersona(), "Error, no se pudo modificar la Persona.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             if (jfc != null) {
@@ -338,9 +338,9 @@ public class Controlador_Cliente {
                 }
             }
             if (modelPerE.ModificarPersonaBDA()) {
-                JOptionPane.showMessageDialog(vistaCli, "La Persona a sido modificado satisfactoriamente.");
+                JOptionPane.showMessageDialog(viewper.getDialogoPersona(), "La Persona a sido modificado satisfactoriamente.");
             } else {
-                JOptionPane.showMessageDialog(vistaCli, "Error, no se pudo modificar la Persona.");
+                JOptionPane.showMessageDialog(viewper.getDialogoPersona(), "Error, no se pudo modificar la Persona.");
             }
         }
         jfc = null;
@@ -350,7 +350,7 @@ public class Controlador_Cliente {
     private void CrearEditarPersona_Cliente() {
         if (vistaCli.getDialogoCliente().getName().equals("Crear")) {
             if (vistaCli.getTxt_ID_Persona().getText().isEmpty()) {
-                JOptionPane.showMessageDialog(viewper, "Por favor ingrese el id de persona para su registro.", "Vacio ID", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(viewper.getDialogoPersona(), "Por favor ingrese el id de persona para su registro.", "Vacio ID", JOptionPane.WARNING_MESSAGE);
             } else {
                 CrearCliente();
             }
@@ -369,12 +369,12 @@ public class Controlador_Cliente {
         modelCli.setTelefono(vistaCli.getTxtTelefonoCliente().getText());
         modelCli.setId_personaCI(Integer.parseInt(vistaCli.getTxt_ID_Persona().getText()));
         if (ValidaClienteRepetido(Integer.parseInt(vistaCli.getTxt_ID_Persona().getText())) == true) {
-            JOptionPane.showMessageDialog(vistaCli, "Cliente Repetido, este id ya existe.", "Cliente Repetido.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "Cliente Repetido, este id ya existe.", "Cliente Repetido.", JOptionPane.ERROR_MESSAGE);
         } else {
             if (modelCli.CrearClienteBDA()) {
                 CargarTablaCliente();
                 LimpiarDatosClienteCrear();
-                JOptionPane.showMessageDialog(vistaCli, "Cliente Creado Satisfactoriamente.");
+                JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "Cliente Creado Satisfactoriamente.");
                 vistaCli.getDialogoCliente().dispose();
             } else {
                 JOptionPane.showMessageDialog(vistaCli, "Error no se puedo crear el Cliente.");
@@ -396,7 +396,7 @@ public class Controlador_Cliente {
         modelCliED.setId_personaCI(Integer.parseInt(vistaCli.getTxt_ID_Persona().getText()));
         if (modelCliED.ModificarClienteBDA()) {
             CargarTablaCliente();
-            JOptionPane.showMessageDialog(vistaCli, "Cliente Modificado Satisfactoriamente.");
+            JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "Cliente Modificado Satisfactoriamente.");
             vistaCli.getDialogoCliente().dispose();
         } else {
             JOptionPane.showMessageDialog(vistaCli, "Error no se puedo Modificar el Cliente.", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -484,7 +484,7 @@ public class Controlador_Cliente {
                                 } else {
                                     viewper.getLblGeneroRojo().setVisible(false);
                                     if (validadorDeCedula(viewper.getTxtCedulaPersona().getText()) == false) {
-                                        JOptionPane.showMessageDialog(viewper, "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
+                                        JOptionPane.showMessageDialog(viewper.getDialogoPersona(), "Por favor digite una cedula ecuatoriana valida .", "Cédula Ecuatoriana.", JOptionPane.ERROR_MESSAGE);
                                         viewper.getLblCedulaRojo().setVisible(true);
                                     } else {
                                         viewper.getLblCedulaRojo().setVisible(false);
@@ -587,19 +587,19 @@ public class Controlador_Cliente {
             String idpersona = vistaCli.getTblCliente().getValueAt(i, 0).toString();
             int aux = Integer.parseInt(idpersona);
             String idc = vistaCli.getTblCliente().getValueAt(i, 0).toString();
-            int result = JOptionPane.showConfirmDialog(vistaCli, "Esta seguro que desea eliminar al cliente con cédula " + idc + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(vistaCli.getDialogoCliente(), "Esta seguro que desea eliminar al cliente con ID " + idc + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (result == JOptionPane.YES_OPTION) {
                 if (modeloCli.EliminarCliente(aux)) {
-                    JOptionPane.showMessageDialog(vistaCli, "El Cliente a sido eliminado correctamente de la base de datos.");
+                    JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "El Cliente a sido eliminado correctamente de la base de datos.");
                     CargarTablaCliente();
                 } else {
                     JOptionPane.showMessageDialog(vistaCli, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(vistaCli, "Registro cancelado para su eliminación.");
+                JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "Registro cancelado para su eliminación.");
             }
         } else {
-            JOptionPane.showMessageDialog(vistaCli, "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vistaCli.getDialogoCliente(), "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -45,12 +45,13 @@ import javax.xml.ws.Holder;
  * @author lorena
  */
 public class Controlador_Empleados {
+
     private Modelo_Empleado modelo_emple;
     private Vista_Empleado vista_emple;
     private Modelo_Persona modelPer;
     private JFileChooser jfc;
     private Vista_Persona viewper;
-    Controlador_Fecha  conf = new  Controlador_Fecha();
+    Controlador_Fecha conf = new Controlador_Fecha();
 
     public Controlador_Empleados(Modelo_Empleado modelo_emple, Vista_Empleado vista_emple, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modelo_emple = modelo_emple;
@@ -60,6 +61,8 @@ public class Controlador_Empleados {
         vista_emple.setVisible(true);
         valida();
         CargarEmpleados();
+        ControlLblPrincipalesActivos();
+        ControlLblPrincipalesEmple();
     }
 
     //Metodo de incremento de id de empleado automatico
@@ -79,10 +82,10 @@ public class Controlador_Empleados {
         vista_emple.getBtnCancelar().addActionListener(l -> cancelar_emple());
         vista_emple.getVerper().addActionListener(l -> abrirDialogo(1));
         vista_emple.getBtningresar().addActionListener(l -> modificar_per());
-        viewper.getBtnAceptarPer().addActionListener(l->EditarPersona());
-        
+        viewper.getBtnAceptarPer().addActionListener(l -> EditarPersona());
+
     }
-    
+
 //Validaciones para los campos de la interfaz mediante la accion key.
     public void valida() {
         KeyListener vali = new KeyListener() {
@@ -101,11 +104,14 @@ public class Controlador_Empleados {
                 } else {
                     vista_emple.getLblSueldoRojo().setVisible(true);
                 }
-                 if (vista_emple.getBoxEstado().getSelectedItem().toString().equals("Seleccionar")) {
+                if (vista_emple.getBoxEstado().getSelectedItem().toString().equals("Seleccionar")) {
                     vista_emple.getLblEstadoRojo().setVisible(true);
                 } else {
                     vista_emple.getLblEstadoRojo().setVisible(false);
                 }
+                
+               
+                
             }
 
             @Override
@@ -121,35 +127,34 @@ public class Controlador_Empleados {
         KeyListener buscar = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                
+
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                
+
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-               String busqueda = vista_emple.getTxtBuscarEmpleado().getText().toLowerCase();
+                String busqueda = vista_emple.getTxtBuscarEmpleado().getText().toLowerCase();
                 if (vista_emple.getTxtBuscarEmpleado().getText().trim().isEmpty()) {
                     CargarEmpleados();
                 } else {
-                   BuscarEmpleado(busqueda);
+                    BuscarEmpleado(busqueda);
                 }
 
-            
             }
         };
         FocusListener focosuel = new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                
+
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-             if (vista_emple.getTxtsueldo().getText().length() >= 1) {
+                if (vista_emple.getTxtsueldo().getText().length() >= 1) {
                     vista_emple.getLblSueldoRojo().setVisible(false);
                 } else {
                     vista_emple.getLblSueldoRojo().setVisible(true);
@@ -159,7 +164,7 @@ public class Controlador_Empleados {
         FocusListener focosesta = new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                
+
             }
 
             @Override
@@ -174,14 +179,14 @@ public class Controlador_Empleados {
         FocusListener focosfecha = new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                
+
             }
 
             @Override
             public void focusLost(FocusEvent e) {
                 Date fechav = vista_emple.getContratacion().getDate();
                 String fechacontra = ((JTextField) vista_emple.getContratacion().getDateEditor().getUiComponent()).getText();
-                if (fechacontra.isEmpty() || conf.FechaNacimiento(vista_emple.getContratacion()) == false ) {
+                if (fechacontra.isEmpty() || conf.FechaNacimiento(vista_emple.getContratacion()) == false) {
                     JOptionPane.showMessageDialog(vista_emple, "Fecha de ingreso superior a fecha actual", "Validación Fecha", JOptionPane.WARNING_MESSAGE);
                     vista_emple.getLblFechaRojo().setVisible(true);
                 } else {
@@ -189,14 +194,35 @@ public class Controlador_Empleados {
                 }
             }
         };
+        FocusListener focosu = new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (vista_emple.getTxtsueldo().getText().trim().isEmpty()) {
+                    
+                }else{
+                String sueldo = vista_emple.getTxtsueldo().getText().toString();
+                Double sal=  Double.valueOf(sueldo);
+                if(sal>=400){
+                
+                }else{
+                JOptionPane.showMessageDialog(vista_emple, "El sueldo ingresado no supera al salario basico", "Validación sueldo", JOptionPane.WARNING_MESSAGE);
+                }
+                }
+            }
+        };
         vista_emple.getTxtBuscarEmpleado().addKeyListener(buscar);
         vista_emple.getTxtsueldo().addKeyListener(vali);
+        vista_emple.getTxtsueldo().addFocusListener(focosu);
         vista_emple.getBoxEstado().addFocusListener(focosesta);
         vista_emple.getBoxEstado().addKeyListener(vali);
         vista_emple.getContratacion().addFocusListener(focosfecha);
     }
 
-   // Abre el dialogo para crear y editar empleado
+    // Abre el dialogo para crear y editar empleado
     private void abrirDialogo_emple(int ce) {
         String title = null;
         if (ce == 1) {
@@ -206,10 +232,10 @@ public class Controlador_Empleados {
             vista_emple.getTxtidempleado().setEditable(false);
             limpiar_emple();
         } else {
-            if(ce==2){
-            title = "Editar empleado";
-            vista_emple.getDialogEmpleado().setName("editar");
-            modificar_emple();
+            if (ce == 2) {
+                title = "Editar empleado";
+                vista_emple.getDialogEmpleado().setName("editar");
+                modificar_emple();
             }
         }
         vista_emple.getDialogEmpleado().setLocationRelativeTo(vista_emple);
@@ -218,7 +244,7 @@ public class Controlador_Empleados {
         vista_emple.getDialogEmpleado().setTitle(title);
         vista_emple.getDialogEmpleado().setVisible(true);
     }
-    
+
 //Abre el dialogo para vizualizar a la persona mediante la tabla de carga de datos.
     private void abrirDialogo(int ce) {
         String title;
@@ -234,9 +260,8 @@ public class Controlador_Empleados {
         } else {
         }
     }
-    
-    
- // Metodo de opcion, que realiza el llamado al dialogo persona o empleado segun elija.   
+
+    // Metodo de opcion, que realiza el llamado al dialogo persona o empleado segun elija.   
     private void TipoDialogoAbrirEmpleado() {
 
         int i = vista_emple.getTblEmpleado().getSelectedRow();
@@ -268,7 +293,6 @@ public class Controlador_Empleados {
         }
     }
 
-    
 //Metodo para editar la persona que se llamo al dialogo, desde la vista empleado.
     private void EdicionPersonaEmpleCL(int codigo) {
         System.out.println("Codigoooooooo------------>" + codigo);
@@ -301,7 +325,7 @@ public class Controlador_Empleados {
             }
         }
     }
- 
+
     //Metodo Para cargar los cambios hechos en el dialogo de la persona que se llamo.
     public void EditarPersona() {
         Modelo_Persona modelPerE = new Modelo_Persona();
@@ -344,50 +368,59 @@ public class Controlador_Empleados {
     private void crearEditarEmpleado() {
         if (vista_emple.getDialogEmpleado().getName() == "crear") {
             //Insertar
+            Date fechainfri = vista_emple.getContratacion().getDate();
             if (vista_emple.getTxtidempleado().getText().equals("") || vista_emple.getTxtsueldo().getText().equals("")
-                    || vista_emple.getBoxEstado().getSelectedItem().equals("") || vista_emple.getBoxrol().getSelectedItem().equals("")|| vista_emple.getTxtid_persona().getText().equals("")) {
+                    || vista_emple.getBoxEstado().getSelectedItem().equals("") || vista_emple.getBoxrol().getSelectedItem().equals("") || vista_emple.getTxtid_persona().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS CAMPOS");
             } else {
-                String id_emple = vista_emple.getTxtidempleado().getText().toString();
-                String sueldo = vista_emple.getTxtsueldo().getText();
-                String estado = vista_emple.getBoxEstado().getSelectedItem().toString();
-                String fechacontra = ((JTextField) vista_emple.getContratacion().getDateEditor().getUiComponent()).getText();
-                Date contratacion = java.sql.Date.valueOf(fechacontra);
-                String id_per = vista_emple.getTxtid_persona().getText().toString();
-                String rol = vista_emple.getBoxrol().getSelectedItem().toString();
+                if (fechainfri == null) {
+                    JOptionPane.showMessageDialog(vista_emple, "Campo de fecha vacio.", "Validación Fecha", JOptionPane.WARNING_MESSAGE);
+                    vista_emple.getLblFechaRojo().setVisible(true);
+                } else {
+                    vista_emple.getLblFechaRojo().setVisible(false);
+                    String id_emple = vista_emple.getTxtidempleado().getText().toString();
+                    String sueldo = vista_emple.getTxtsueldo().getText();
+                    String estado = vista_emple.getBoxEstado().getSelectedItem().toString();
+                    String fechacontra = ((JTextField) vista_emple.getContratacion().getDateEditor().getUiComponent()).getText();
+                    Date contratacion = java.sql.Date.valueOf(fechacontra);
+                    String id_per = vista_emple.getTxtid_persona().getText().toString();
+                    String rol = vista_emple.getBoxrol().getSelectedItem().toString();
 
-                Modelo_Empleado emple = new Modelo_Empleado();
-                emple.setId_empleado(Integer.parseInt(String.valueOf(id_emple)));
-                emple.setSueldo(Double.parseDouble(String.valueOf(sueldo)));
-                emple.setEstado_civil(estado);
-                emple.setFecha_contrato((java.sql.Date) contratacion);
-                emple.setId_persona(Integer.parseInt(String.valueOf(id_per)));
-                if(fechacontra.isEmpty() || conf.FechaNacimiento(vista_emple.getContratacion()) == false){
-      
-                }else{
-                int idrol = modelo_emple.IdRol(rol);
-                if(ValidaEmpleadoRepetido(Integer.parseInt(vista_emple.getTxtid_persona().getText())) == true){
-                    JOptionPane.showMessageDialog(vista_emple, "Empleado Repetido, este id ya existe.", "Empleado Repetido.", JOptionPane.ERROR_MESSAGE);
-                }else{
-               if (emple.creaEmpleado()) {
-                    int id_user = modelo_emple.IncrementoIdUsuario();
-                    if (modelo_emple.CrearUser(Integer.parseInt(id_emple), idrol, id_user)) {
-                        JOptionPane.showMessageDialog(vista_emple, "Servicio creado satisfactoriamente");
-                        vista_emple.getDialogEmpleado().setVisible(false);
-                        limpiar_emple();
-                        CargarEmpleados();
+                    Modelo_Empleado emple = new Modelo_Empleado();
+                    emple.setId_empleado(Integer.parseInt(String.valueOf(id_emple)));
+                    emple.setSueldo(Double.parseDouble(String.valueOf(sueldo)));
+                    emple.setEstado_civil(estado);
+                    emple.setFecha_contrato((java.sql.Date) contratacion);
+                    emple.setId_persona(Integer.parseInt(String.valueOf(id_per)));
+                    if (fechacontra.isEmpty() || conf.FechaNacimiento(vista_emple.getContratacion()) == false) {
+
                     } else {
-                        System.out.println("Error al crear al usuario");
+                        int idrol = modelo_emple.IdRol(rol);
+                        if (ValidaEmpleadoRepetido(Integer.parseInt(vista_emple.getTxtid_persona().getText())) == true) {
+                            JOptionPane.showMessageDialog(vista_emple, "Empleado Repetido, este id ya existe.", "Empleado Repetido.", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            if (emple.creaEmpleado()) {
+                                int id_user = modelo_emple.IncrementoIdUsuario();
+                                if (modelo_emple.CrearUser(Integer.parseInt(id_emple), idrol, id_user)) {
+                                    JOptionPane.showMessageDialog(vista_emple, "Servicio creado satisfactoriamente");
+                                    vista_emple.getDialogEmpleado().setVisible(false);
+                                    limpiar_emple();
+                                    CargarEmpleados();
+                                } else {
+                                    System.out.println("Error al crear al usuario");
+                                }
+
+                            } else {
+                                JOptionPane.showMessageDialog(vista_emple, "No se pudo crear el producto");
+                            }
+                        }
+
                     }
 
-                } else {
-                    JOptionPane.showMessageDialog(vista_emple, "No se pudo crear el producto");
                 }
-                }
-            }
             }
 
-        } else if (vista_emple.getDialogEmpleado().getName() == "editar") {
+            }else if (vista_emple.getDialogEmpleado().getName() == "editar") {
             if (vista_emple.getTxtidempleado().getText().equals("") || vista_emple.getTxtsueldo().getText().equals("")
                     || vista_emple.getBoxEstado().getSelectedItem().equals("Seleccionar") || vista_emple.getContratacion().getDate().equals("") || vista_emple.getTxtid_persona().getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS CAMPOS");
@@ -417,9 +450,8 @@ public class Controlador_Empleados {
                 }
             }
         }
-    }
-
- //Metodo para llamar al dialogo a la persona que se le selecciono.  
+        }
+        //Metodo para llamar al dialogo a la persona que se le selecciono.  
     public void modificar_per() {
         vista_emple.getTxtid_persona().setEditable(false);
         int seleccionado = vista_emple.getTblPersonas().getSelectedRow();
@@ -431,8 +463,7 @@ public class Controlador_Empleados {
         }
         vista_emple.getDialogPersona().setVisible(false);
     }
-    
-  
+
     //Metodo para cambiar el estado de empleado de activo a inactivo.
     private void EliminarEmpleadoView() {
         int i = vista_emple.getTblEmpleado().getSelectedRow();
@@ -456,7 +487,6 @@ public class Controlador_Empleados {
         }
     }
 
-    
     //Metodo para modificar el empleado que a sido seleccionado
     public void modificar_emple() {
         vista_emple.getTxtidempleado().setEnabled(false);
@@ -484,7 +514,7 @@ public class Controlador_Empleados {
         vista_emple.getContratacion().setDate(null);
         vista_emple.getTxtid_persona().setText("");
     }
-    
+
     //Metodo para cargar los empleados dentro de la tabla de la vista principal.
     private void CargarEmpleados() {
 
@@ -509,7 +539,7 @@ public class Controlador_Empleados {
         });
 
     }
-    
+
     //Cargar en los datos en la tabla persona, que se llamo a buscar. 
     private void CargarPersona() {
         vista_emple.getTblPersonas().setDefaultRenderer(Object.class, new Imangentabla());
@@ -560,7 +590,7 @@ public class Controlador_Empleados {
             vista_emple.getBoxrol().addItem(rol.getNombre_rol());
         }
     }
-    
+
     //Control del dialogo de persona mediante validaciones de campos
     private void EdicionPersonaControl() {
         boolean verificoED = true;
@@ -622,7 +652,7 @@ public class Controlador_Empleados {
         }
         return GeneroPerso;
     }
-    
+
     //Metodo para celda de control de colores de los labels de cada seccion.
     private void ControlLblPrincipalesActivos() {
         viewper.getLblCedulaRojo().setVisible(false);
@@ -632,7 +662,12 @@ public class Controlador_Empleados {
         viewper.getLblGeneroRojo().setVisible(false);
     }
     
-    
+     private void ControlLblPrincipalesEmple() {
+        vista_emple.getLblSueldoRojo().setVisible(false);
+        vista_emple.getLblEstadoRojo().setVisible(false);
+        vista_emple.getLblFechaRojo().setVisible(false);
+    }
+
     //Validacion para el ingreso correcto de cedula.
     public boolean validadorDeCedula(String cedula) {
         boolean cedulaCorrecta = false;
@@ -679,8 +714,7 @@ public class Controlador_Empleados {
         }
         return cedulaCorrecta;
     }
-    
-    
+
     //Metodo de busqueda de empleado
     private void BuscarEmpleado(String codigo) {
         DefaultTableModel tb = (DefaultTableModel) vista_emple.getTblEmpleado().getModel();
@@ -691,9 +725,9 @@ public class Controlador_Empleados {
             tb.addRow(empleado);
         });
     }
-    
+
     //Validacion para no repetir empleado.
-     private boolean ValidaEmpleadoRepetido(int idrepetidoC) {
+    private boolean ValidaEmpleadoRepetido(int idrepetidoC) {
         boolean idreprtido = false;
         List<Empleado> listaE = modelo_emple.listarEmpleados();
         for (int i = 0; i < listaE.size(); i++) {
@@ -703,6 +737,5 @@ public class Controlador_Empleados {
         }
         return idreprtido;
     }
-     
 
 }

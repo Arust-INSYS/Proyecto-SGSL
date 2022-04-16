@@ -56,6 +56,30 @@ public class Modelo_Pedido extends Pedidos {
             return null;
         }
     }
+    public List<Pedidos>  id_pedido(){
+        
+        List<Pedidos> lista = new ArrayList<Pedidos>();
+        String sql = "select id_pedido from pedido";
+            ResultSet rs = cpg.colsulta(sql);
+            
+        try {
+            while (rs.next()) {
+                Pedidos pedido = new Pedidos();
+                pedido.setId_pedido(rs.getInt("id_pedido"));
+
+                lista.add(pedido);
+
+            }
+            rs.close();
+            
+            return lista;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+             return null;
+        }
+            
+    }
 
     public boolean Insertar_Pedido() {
         try {

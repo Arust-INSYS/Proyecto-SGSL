@@ -13,6 +13,7 @@ import Vista.Vista_Pedidos;
 import Vista.Vista_Principal;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -36,12 +37,19 @@ public class Controlador_Pedido {
         
         Controlador_Pedido control = new Controlador_Pedido(modelo,vista);
         control.incioControl();
+        
+        LocalTime hora = LocalTime.now();
+        
+        System.out.println(
+        hora
+        );
     }
 
     public Controlador_Pedido(Modelo_Pedido modelo, Vista_Pedidos vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+        id_aumento();
         
     }
     
@@ -56,6 +64,26 @@ public class Controlador_Pedido {
         vista.getBtnGuardar2().addActionListener(l->guardar3());
         
     }
+    
+    public void id_aumento(){
+        
+    List<Pedidos>listapedi= modelo.id_pedido();    
+        listapedi.stream().forEach(lista->{
+               String id = Integer.toString(lista.getId_pedido()+1);
+                
+//                String foto = Byte.toString(pr.getFoto());
+//                LocalDate fecha_act = LocalDate.now();
+//                String fecha_f  = String.valueOf(fecha_act);
+                vista.getTxtIdPedido().setEnabled(false);
+//                vista.getTxt_fecha().setEnabled(false);
+                vista.getTxtIdPedido().setText(id);
+//                vista.getTxt_fecha().setText(fecha_f);
+                
+                
+        });
+    }
+    
+    
     private void agregar_datos(){
         
         modelo_tabla = (DefaultTableModel) vista.getTablaPedidos().getModel();   
@@ -112,14 +140,15 @@ public class Controlador_Pedido {
         
     }
     
+    
     private void guardar3(){
-        int cantidad =  Integer.parseInt(vista.getTxtCantidad().getText());
-        double total =  Double.parseDouble(vista.getTxtValor().getText());
+//        int cantidad =  Integer.parseInt(vista.getTxtCantidad().getText());
+//        double total =  Double.parseDouble(vista.getTxtValor().getText());
         int id_cliente = Integer.parseInt(vista.getTxtIdClientes().getText());
         
         Modelo_Pedido pedido = new Modelo_Pedido();
-        pedido.setCantidad_servicios(cantidad);
-        pedido.setTotal_servicios(total);
+        pedido.setCantidad_servicios(0);
+        pedido.setTotal_servicios(0);
         pedido.setId_cliente(id_cliente);
         if(pedido.Insertar_Pedido()){
                
@@ -131,43 +160,42 @@ public class Controlador_Pedido {
                  
     };
     
-    
-    
+       
    
-//                
-//        for (int i = 0; i < vista.getTablaPedidos().getRowCount(); i++) {
-//            //Se pretende leer las filas de la tabla y luego guardarlas en la base
-//            //el for permite recorrer las filas
-////          int id_pedido=Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 0));
-//          String direccion=(String) vista.getTablaPedidos().getValueAt(i, 0);
-//          int id_pedido_de = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 1));
-//          int id_servicio = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 2));
-//          
-//          
-//          //Se crea un opbjeto por fila y est recive los datos que se dan
-//           Modelo_detallePedido detalle = new Modelo_detallePedido();
-////           pedido.setId_pedido(id_pedido); //ELIMINAR
-//            detalle.setDireccion(direccion);
-//            detalle.setId_pedido(id_pedido_de);
-//            detalle.setId_servicio(id_servicio);
-//            
-//           if(detalle.Insertar_DetPedido()){
-//               
-////                JOptionPane.showMessageDialog(vista,"Pedido Creado Correctamente");
-//               
-//            }else{
-//            
-////                 JOptionPane.showMessageDialog(vista,"No se pudo crear el pedido");
-//                 
-//    };
-//           
-//          System.out.println("#Lista: "+i+
-//                " "+"Direccion: "+vista.getTablaPedidos().getValueAt(i, 0)+
-//                " "+"ID_Pedido: "+vista.getTablaPedidos().getValueAt(i, 1)+
-//                " "+"Id_Servicio: "+vista.getTablaPedidos().getValueAt(i, 2));
-//          
-// 
-//          }
+                
+        for (int i = 0; i < vista.getTablaPedidos().getRowCount(); i++) {
+            //Se pretende leer las filas de la tabla y luego guardarlas en la base
+            //el for permite recorrer las filas
+//          int id_pedido=Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 0));
+          String direccion=(String) vista.getTablaPedidos().getValueAt(i, 0);
+          int id_pedido_de = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 1));
+          int id_servicio = Integer.parseInt((String) vista.getTablaPedidos().getValueAt(i, 2));
+          
+          
+          //Se crea un opbjeto por fila y est recive los datos que se dan
+           Modelo_detallePedido detalle = new Modelo_detallePedido();
+//           pedido.setId_pedido(id_pedido); //ELIMINAR
+            detalle.setDireccion(direccion);
+            detalle.setId_pedido(id_pedido_de);
+            detalle.setId_servicio(id_servicio);
+            
+           if(detalle.Insertar_DetPedido()){
+               
+//                JOptionPane.showMessageDialog(vista,"Pedido Creado Correctamente");
+               
+            }else{
+            
+//                 JOptionPane.showMessageDialog(vista,"No se pudo crear el pedido");
+                 
+    };
+           
+          System.out.println("#Lista: "+i+
+                " "+"Direccion: "+vista.getTablaPedidos().getValueAt(i, 0)+
+                " "+"ID_Pedido: "+vista.getTablaPedidos().getValueAt(i, 1)+
+                " "+"Id_Servicio: "+vista.getTablaPedidos().getValueAt(i, 2));
+          
+ 
+          }
     }
     
     private void guardar(){

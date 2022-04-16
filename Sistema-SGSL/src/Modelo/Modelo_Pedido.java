@@ -59,7 +59,7 @@ public class Modelo_Pedido extends Pedidos {
     public List<Pedidos>  id_pedido(){
         
         List<Pedidos> lista = new ArrayList<Pedidos>();
-        String sql = "select max(id_pedido) * from pedido";
+        String sql = "select id_pedido from pedido";
             ResultSet rs = cpg.colsulta(sql);
             
         try {

@@ -65,6 +65,11 @@ public class Controlador_Pedido {
         
     }
     
+    //VALIDACIONES
+    
+    
+
+   
     public void id_aumento(){
         
     List<Pedidos>listapedi= modelo.id_pedido();    
@@ -142,8 +147,11 @@ public class Controlador_Pedido {
     
     
     private void guardar3(){
-//        int cantidad =  Integer.parseInt(vista.getTxtCantidad().getText());
+
+        int id_ped =  Integer.parseInt(vista.getTxtIdPedido().getText());
 //        double total =  Double.parseDouble(vista.getTxtValor().getText());
+//Validacion para comprobar si existe el registro
+    if(modelo.existe_pedido(id_ped)==0){
         int id_cliente = Integer.parseInt(vista.getTxtIdClientes().getText());
         
         Modelo_Pedido pedido = new Modelo_Pedido();
@@ -159,9 +167,9 @@ public class Controlador_Pedido {
                  JOptionPane.showMessageDialog(vista,"No se pudo crear el pedido");
                  
     };
-    
-       
-   
+    } else{
+        System.out.println("EL REGISTRO YA EXISTE");
+    }            
                 
         for (int i = 0; i < vista.getTablaPedidos().getRowCount(); i++) {
             //Se pretende leer las filas de la tabla y luego guardarlas en la base

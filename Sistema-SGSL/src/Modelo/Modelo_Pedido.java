@@ -79,7 +79,33 @@ public class Modelo_Pedido extends Pedidos {
              return null;
         }
             
+    } //permite cargar el id en la vista_pedido
+    
+    public int existe_pedido(int id_pedido){
+        String sql = "SELECT COUNT(id_pedido) FROM pedido WHERE id_pedido=?";
+        
+        
+        try {
+            
+            ResultSet rs = null;
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setInt(1, id_pedido);
+            
+            rs=ps.executeQuery();
+            
+           
+            if(rs.next()){
+                
+               return rs.getInt(1);
+            }
+            return 1;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return 1;
+        }
     }
+    
 
     public boolean Insertar_Pedido() {
         try {

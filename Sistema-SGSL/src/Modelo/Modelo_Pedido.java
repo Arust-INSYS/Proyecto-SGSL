@@ -6,6 +6,7 @@
 package Modelo;
 
 import Modelo.CLASES.Pedidos;
+import Modelo.CLASES.Servicios;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,6 +58,52 @@ public class Modelo_Pedido extends Pedidos {
         }
     }
     
+    //METODO PARA CARGAR LOS NOMBRE SE LOS SERVICIOS EN UN COMBO BOX
+    
+    public List<Servicios> combobox(){ 
+        List<Servicios> lista = new ArrayList<Servicios>();
+        
+        try {
+            String sql = "select nom_servicio from servicios";
+            ResultSet rs = cpg.colsulta(sql);
+            
+            while (rs.next()) {
+                Servicios ser = new Servicios();
+                ser.setNom_servicio(rs.getString("nom_servicio"));
+                
+                lista.add(ser);
+
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+    } //en uso
+    
+    public List<Servicios> selecctionitem(String nom_serv){
+         List<Servicios> lista = new ArrayList<Servicios>();
+        try {
+           
+            String sql = "SELECT id_servicio FROM servicios WHERE nom_servicio='"+nom_serv+"'";
+            
+            ResultSet rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Servicios ser = new Servicios();
+                ser.setId_servicio(rs.getInt("id_servicio"));
+                
+                lista.add(ser);
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
     public List<Pedidos> cargarValores(){
         List<Pedidos> lista = new ArrayList<Pedidos>();
          try {
@@ -78,7 +125,7 @@ public class Modelo_Pedido extends Pedidos {
             Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }
+    } //en uso
     
 
     public List<Pedidos>  id_pedido(){
@@ -104,7 +151,7 @@ public class Modelo_Pedido extends Pedidos {
              return null;
         }
             
-    } //permite cargar el id en la vista_pedido
+    } //permite cargar el id en la vista_pedido //en uso
     
     ////////////////////////////////////////////////////////////////////////////////////////////
     //VALIDACIÓN DE EXISTENCIA
@@ -131,7 +178,7 @@ public class Modelo_Pedido extends Pedidos {
             Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
             return 1;
         }
-    }
+    }//en uso
     
 
     public boolean Insertar_Pedido() {
@@ -149,7 +196,7 @@ public class Modelo_Pedido extends Pedidos {
             Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    }
+    } //en uso
 
     public boolean ModificarPedido() {
         try {
@@ -177,8 +224,5 @@ public class Modelo_Pedido extends Pedidos {
         return cpg.accion(nsql);
     }
 
-    public List<Pedidos> listarPedidos(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

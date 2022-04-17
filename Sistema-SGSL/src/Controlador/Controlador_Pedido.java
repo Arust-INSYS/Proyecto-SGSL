@@ -7,19 +7,25 @@ package Controlador;
 
 import Modelo.CLASES.Detalle_Pedido;
 import Modelo.CLASES.Pedidos;
+import Modelo.CLASES.Servicios;
+import Modelo.Conexion_BD;
 import Modelo.Modelo_Pedido;
 import Modelo.Modelo_detallePedido;
 import Vista.Vista_Pedidos;
 import Vista.Vista_Principal;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.ws.Holder;
 /**
  *
  * @author HP
@@ -62,10 +68,11 @@ public class Controlador_Pedido {
         vista.getBtnEliminar().addActionListener(l->eliminar_fila());
         vista.getBtnEnviar().addActionListener(l-> guardar());
         vista.getBtnGuardar2().addActionListener(l->guardar3());
+        llenar_comobobox();
         
     }
     
-    //VALIDACIONES
+    //------------------VALIDACIONES------------------------------------------
     
     
 
@@ -97,6 +104,34 @@ public class Controlador_Pedido {
         });
     }
     //------------------------------------------------------------------------
+    //METODO LLENAR COMBOBOX
+    
+    private void llenar_comobobox(){
+        
+        JComboBox serlist;
+        serlist=vista.getCmbxServicios();
+        serlist.removeAllItems();
+        List<Servicios>listaser= modelo.combobox();
+//        Holder<Integer>  i = new Holder<>(1);
+        listaser.stream().forEach(lista->{
+            String nom_servicios = lista.getNom_servicio();
+            serlist.addItem(nom_servicios);
+//            serlist.addItem(i.value+"."+nom_servicios);
+//        i.value++;
+            
+        });
+//        seleccion_combo();
+    }
+    
+    private void seleccion_combo(){
+        int fila = (int) vista.getCmbxServicios().getSelectedItem();
+        if(fila>=0){
+//            String servicio = (String)vista.getCmbxServicios().getSelectedItem();
+//            vista.getTxtServicio().setText(servicio);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccionar Fila");
+        }
+    }
     private void agregar_datos(){
         
         modelo_tabla = (DefaultTableModel) vista.getTablaPedidos().getModel();   

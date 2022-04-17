@@ -122,8 +122,8 @@ public class Vista_Pedidos extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 180, 40));
 
-        cmbxServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbxServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 130, -1));
+        cmbxServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item1" }));
+        jPanel1.add(cmbxServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 230));
 
@@ -258,6 +258,7 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         this.txtIdPedido = txtIdPedido;
     }
 
+    ///SERVICIOS
     public JTextField getTxtServicio() {
         return TxtServicio;
     }
@@ -265,6 +266,17 @@ public class Vista_Pedidos extends javax.swing.JFrame {
     public void setTxtServicio(JTextField TxtServicio) {
         this.TxtServicio = TxtServicio;
     }
+
+    public JComboBox<String> getCmbxServicios() {
+        return cmbxServicios;
+    }
+
+    public void setCmbxServicios(JComboBox<String> cmbxServicios) {
+        this.cmbxServicios = cmbxServicios;
+    }
+    
+    
+    
 
     public JLabel getLabelCount() {
         return labelCount;

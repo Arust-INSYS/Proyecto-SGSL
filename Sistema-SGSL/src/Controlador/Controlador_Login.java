@@ -43,6 +43,7 @@ public class Controlador_Login {
         } else {
             if (modelo_user.ValidarCredencial(user, password)) {
                 Vista_Principal vp = new Vista_Principal();
+                JOptionPane.showMessageDialog(vista_login, "Datos Validos", "", JOptionPane.INFORMATION_MESSAGE);
                 vp.setVisible(true);
                 vista_login.setVisible(false);
                 Control_VistaPrincipal cvp = new Control_VistaPrincipal(vp);
@@ -54,7 +55,7 @@ public class Controlador_Login {
                  JOptionPane.showMessageDialog(vista_login, "Datos Incorrectos", "", JOptionPane.ERROR_MESSAGE);
             }
         }
-
+        
     }
 //Metodo para abrir la ventana de Vista_Registro_Usuario
     public void AbrirVregistro() {

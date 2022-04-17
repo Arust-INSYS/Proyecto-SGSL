@@ -56,6 +56,56 @@ public class Modelo_Pedido extends Pedidos {
             return null;
         }
     }
+    public List<Pedidos>  id_pedido(){
+        
+        List<Pedidos> lista = new ArrayList<Pedidos>();
+        String sql = "select id_pedido from pedido";
+            ResultSet rs = cpg.colsulta(sql);
+            
+        try {
+            while (rs.next()) {
+                Pedidos pedido = new Pedidos();
+                pedido.setId_pedido(rs.getInt("id_pedido"));
+
+                lista.add(pedido);
+
+            }
+            rs.close();
+            
+            return lista;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+             return null;
+        }
+            
+    } //permite cargar el id en la vista_pedido
+    
+    public int existe_pedido(int id_pedido){
+        String sql = "SELECT COUNT(id_pedido) FROM pedido WHERE id_pedido=?";
+        
+        
+        try {
+            
+            ResultSet rs = null;
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setInt(1, id_pedido);
+            
+            rs=ps.executeQuery();
+            
+           
+            if(rs.next()){
+                
+               return rs.getInt(1);
+            }
+            return 1;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return 1;
+        }
+    }
+    
 
     public boolean Insertar_Pedido() {
         try {

@@ -62,6 +62,7 @@ public class Controlador_productos {
         validarsololetras(vispro.getTxtnom_pro());
         validarsololetras(vispro.getTxtmarca());
         validarsolonumeros(vispro.getTxtpreciopro());
+        valicomas(vispro.getTxtpreciopro());
 
     }
 //metodo para buscar una foto en la computadora
@@ -464,6 +465,23 @@ private void busbo(java.awt.event.KeyEvent evt) {
             @Override
             public void keyTyped(KeyEvent e) {
                 validarnum(e);
+            }
+        });
+    }
+    
+    private void validarnocomas(java.awt.event.KeyEvent evt) {
+        char vali = evt.getKeyChar();
+        if(vali == ','){
+            vispro.getToolkit().beep();
+            evt.consume();  
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE PONER COMAS");
+        }
+    }
+        private void valicomas(JTextField txt) {
+        txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                validarnocomas(e);
             }
         });
     }

@@ -81,6 +81,15 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         return btningresar;
     }
 
+    public JLabel getTxtfechahoy() {
+        return txtfechahoy;
+    }
+
+    public void setTxtfechahoy(JLabel txtfechahoy) {
+        this.txtfechahoy = txtfechahoy;
+    }
+    
+
     public void setBtningresar(JButton btningresar) {
         this.btningresar = btningresar;
     }
@@ -280,6 +289,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         BtnActualizar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        txtfechahoy = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         DialogEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -462,17 +472,18 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         getContentPane().add(BtnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
         BtnActualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-PRO{-48.png"))); // NOI18N
+        BtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
         BtnActualizar.setText("Actualizar");
         BtnActualizar.setBorder(null);
         BtnActualizar.setContentAreaFilled(false);
-        getContentPane().add(BtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, 60));
+        getContentPane().add(BtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, 60));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/EMPLECAP22.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, 190));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 190, 280));
+        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
@@ -520,6 +531,7 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblbuscar;
     private javax.swing.JTable tblEmpleado;
     private javax.swing.JTable tblPersonas;
+    private javax.swing.JLabel txtfechahoy;
     private javax.swing.JTextField txtid_persona;
     private javax.swing.JTextField txtidempleado;
     private javax.swing.JTextField txtsueldo;

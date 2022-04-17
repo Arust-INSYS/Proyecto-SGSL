@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 /**
@@ -92,6 +93,7 @@ public class Vista_Principal extends javax.swing.JFrame {
         JmenuBodegaEpacioCVP = new javax.swing.JMenuItem();
         mncostoservi = new javax.swing.JMenuItem();
         mnsueldoemple = new javax.swing.JMenuItem();
+        mnSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -300,6 +302,11 @@ public class Vista_Principal extends javax.swing.JFrame {
 
         menu_principal.add(menuReportes);
 
+        mnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        mnSalir.setText("Salir");
+        mnSalir.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        menu_principal.add(mnSalir);
+
         setJMenuBar(menu_principal);
 
         pack();
@@ -346,6 +353,15 @@ public class Vista_Principal extends javax.swing.JFrame {
         this.menuItem_clientes = menuItem_clientes;
     }
 
+    public JMenu getMnSalir() {
+        return mnSalir;
+    }
+
+    public void setMnSalir(JMenu mnSalir) {
+        this.mnSalir = mnSalir;
+    }
+    
+    
     public JMenuItem getMenuItem_empleados() {
         return menuItem_empleados;
     }
@@ -540,6 +556,7 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu menuReportes;
     private javax.swing.JMenu menu_persona;
     private javax.swing.JMenuBar menu_principal;
+    private javax.swing.JMenu mnSalir;
     private javax.swing.JMenuItem mncostoservi;
     private javax.swing.JMenuItem mnsueldoemple;
     private javax.swing.JButton subMenu_Persona;

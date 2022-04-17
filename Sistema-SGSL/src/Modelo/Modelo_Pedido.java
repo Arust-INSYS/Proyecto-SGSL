@@ -56,6 +56,31 @@ public class Modelo_Pedido extends Pedidos {
             return null;
         }
     }
+    
+    public List<Pedidos> cargarValores(){
+        List<Pedidos> lista = new ArrayList<Pedidos>();
+         try {
+            String sql = "select cantidad_servicios,total_servicios  from pedido";
+            ResultSet rs = cpg.colsulta(sql);
+            
+            while (rs.next()) {
+                Pedidos pedido = new Pedidos();                
+                
+                pedido.setCantidad_servicios(rs.getInt("cantidad_servicios"));
+                pedido.setTotal_servicios(rs.getDouble("total_servicios"));
+
+                lista.add(pedido);
+
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+
     public List<Pedidos>  id_pedido(){
         
         List<Pedidos> lista = new ArrayList<Pedidos>();
@@ -81,6 +106,8 @@ public class Modelo_Pedido extends Pedidos {
             
     } //permite cargar el id en la vista_pedido
     
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    //VALIDACIÓN DE EXISTENCIA
     public int existe_pedido(int id_pedido){
         String sql = "SELECT COUNT(id_pedido) FROM pedido WHERE id_pedido=?";
         

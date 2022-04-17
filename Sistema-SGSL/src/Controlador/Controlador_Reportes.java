@@ -47,6 +47,7 @@ public class Controlador_Reportes {
         viewP.getJmenuBodegaEpacioCVP().addActionListener(l -> ImprimirBodegaMasEspacio());
         viewP.getMnsueldoemple().addActionListener(l->ImprimirSueldoEmpleados());
         viewP.getMncostoservi().addActionListener(l->ImprimirCostoServicio());
+        viewP.getMnSalir().addActionListener(l->salir());
     }
 
     //Métodos que nos permiten hacer los reportes de persona general y gráficos.
@@ -270,5 +271,9 @@ public class Controlador_Reportes {
         } catch (JRException ex) {
             Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void salir(){
+    System.exit(0);
     }
 }

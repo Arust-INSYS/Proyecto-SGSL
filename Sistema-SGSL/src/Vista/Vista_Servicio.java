@@ -30,6 +30,16 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         this.BtnCrearServicio = BtnCrearServicio;
     }
 
+    public JLabel getTxtfechahoy() {
+        return txtfechahoy;
+    }
+
+    public void setTxtfechahoy(JLabel txtfechahoy) {
+        this.txtfechahoy = txtfechahoy;
+    }
+    
+    
+
 
     public JLabel getLblCostoRojo() {
         return LblCostoRojo;
@@ -248,6 +258,7 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         BtnEditarServicio = new javax.swing.JButton();
         BtnRemoverServicio = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        txtfechahoy = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -383,11 +394,11 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnActualizarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-escudo-48.png"))); // NOI18N
+        BtnActualizarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
         BtnActualizarServicio.setText("Actualizar");
         BtnActualizarServicio.setBorder(null);
         BtnActualizarServicio.setContentAreaFilled(false);
-        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 130, 70));
+        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 130, 70));
         getContentPane().add(TxtBuscarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 330, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
@@ -428,6 +439,7 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 190, 280));
+        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 120, 20));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/SERVICAP22.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 320, 180));
@@ -477,6 +489,7 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblServicio;
     private javax.swing.JTable tblempleados;
     private javax.swing.JTextField txtcosto_servicio;
+    private javax.swing.JLabel txtfechahoy;
     private javax.swing.JTextField txtid_empleado;
     private javax.swing.JTextField txtidservicio;
     private javax.swing.JTextField txtnom_servicio;

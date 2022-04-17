@@ -52,6 +52,7 @@ public class Controlador_Empleados {
     private JFileChooser jfc;
     private Vista_Persona viewper;
     Controlador_Fecha conf = new Controlador_Fecha();
+    LocalDate fechahoy = LocalDate.now();
 
     public Controlador_Empleados(Modelo_Empleado modelo_emple, Vista_Empleado vista_emple, Modelo_Persona modelPer, Vista_Persona viewper) {
         this.modelo_emple = modelo_emple;
@@ -63,6 +64,7 @@ public class Controlador_Empleados {
         CargarEmpleados();
         ControlLblPrincipalesActivos();
         ControlLblPrincipalesEmple();
+        vista_emple.getTxtfechahoy().setText(fechahoy + "");
     }
 
     //Metodo de incremento de id de empleado automatico
@@ -209,7 +211,7 @@ public class Controlador_Empleados {
                 if(sal>=400){
                 
                 }else{
-                JOptionPane.showMessageDialog(vista_emple, "El sueldo ingresado no supera al salario basico", "Validación sueldo", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(vista_emple, "El sueldo ingresado no supera al salario basico de $400", "Validación sueldo", JOptionPane.WARNING_MESSAGE);
                 }
                 }
             }
@@ -239,7 +241,7 @@ public class Controlador_Empleados {
             }
         }
         vista_emple.getDialogEmpleado().setLocationRelativeTo(vista_emple);
-        vista_emple.getDialogEmpleado().setSize(700, 400);
+        vista_emple.getDialogEmpleado().setSize(700,390);
         vista_emple.getDialogEmpleado().setLocation(600, 80);
         vista_emple.getDialogEmpleado().setTitle(title);
         vista_emple.getDialogEmpleado().setVisible(true);
@@ -253,7 +255,7 @@ public class Controlador_Empleados {
             title = "Visualizar Persona";
             vista_emple.getDialogPersona().setName("Persona");
             vista_emple.getDialogPersona().setLocationRelativeTo(vista_emple);
-            vista_emple.getDialogPersona().setSize(700, 400);
+            vista_emple.getDialogPersona().setSize(700,390);
             vista_emple.getDialogPersona().setTitle(title);
             vista_emple.getDialogPersona().setVisible(true);
             CargarPersona();
@@ -279,7 +281,7 @@ public class Controlador_Empleados {
                 viewper.getDialogoPersona().setName("Editar");
                 viewper.getDialogoPersona().setVisible(true);
                 viewper.getDialogoPersona().setLocation(600, 80);
-                viewper.getDialogoPersona().setSize(490, 543);
+                viewper.getDialogoPersona().setSize(700,390);
                 viewper.getDialogoPersona().setTitle(titulo);
             }
             if (nu == 1) {
@@ -402,7 +404,7 @@ public class Controlador_Empleados {
                             if (emple.creaEmpleado()) {
                                 int id_user = modelo_emple.IncrementoIdUsuario();
                                 if (modelo_emple.CrearUser(Integer.parseInt(id_emple), idrol, id_user)) {
-                                    JOptionPane.showMessageDialog(vista_emple, "Servicio creado satisfactoriamente");
+                                    JOptionPane.showMessageDialog(vista_emple, "Empleado creado satisfactoriamente");
                                     vista_emple.getDialogEmpleado().setVisible(false);
                                     limpiar_emple();
                                     CargarEmpleados();
@@ -442,7 +444,7 @@ public class Controlador_Empleados {
 //                    emple.setRol(rol);
 
                 if (emple.ModificarEmpleado()) {
-                    JOptionPane.showMessageDialog(vista_emple, "Servicio modificado satisfactoriamente");
+                    JOptionPane.showMessageDialog(vista_emple, "Empleado modificado satisfactoriamente");
                     vista_emple.getDialogEmpleado().setVisible(false);
                     CargarEmpleados();
                 } else {

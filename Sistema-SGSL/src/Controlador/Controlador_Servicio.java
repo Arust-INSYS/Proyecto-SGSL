@@ -18,6 +18,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +35,7 @@ import javax.xml.ws.Holder;
 public class Controlador_Servicio {
     private Modelo_Servicio modelo_servi;
     private Vista_Servicio vista_servi;
+    LocalDate fechahoy = LocalDate.now();
 
     public Controlador_Servicio(Modelo_Servicio modelo_servi, Vista_Servicio vista_servi) {
         this.modelo_servi = modelo_servi;
@@ -41,6 +43,7 @@ public class Controlador_Servicio {
         vista_servi.setVisible(true);
         valida();
         CargarServicios();
+        vista_servi.getTxtfechahoy().setText(fechahoy + "");
     }
     
     //Metodo de incremento de id de empleado automatico
@@ -75,16 +78,6 @@ public class Controlador_Servicio {
                e.consume();
                JOptionPane.showMessageDialog(vista_servi,"Solo acepta valores alfabeticos", "Validación de Letras", JOptionPane.WARNING_MESSAGE);
                }
-//                if(vista_servi.getTxtnom_servicio().getText().length()<=0){
-//                vista_servi.getTxtnom_servicio().setBackground(Color.RED);
-//                }else{
-//                vista_servi.getTxtnom_servicio().setBackground(Color.white);
-//                }
-//                if(vista_servi.getDescri_servicio().getText().length()<=0){
-//                vista_servi.getDescri_servicio().setBackground(Color.RED);
-//                }else{
-//                vista_servi.getDescri_servicio().setBackground(Color.white);
-//                }
                 if (vista_servi.getDescri_servicio().getText().length() >= 1) {
                     vista_servi.getLblDescripcionRojo1().setVisible(false);
                 } else {
@@ -302,6 +295,7 @@ public class Controlador_Servicio {
                     if(servi.creaServicio()){
                         JOptionPane.showMessageDialog(vista_servi, "Servicio creado satisfactoriamente");
                         vista_servi.getDialog_Crear().setVisible(false);
+                        CargarServicios();
                     }else{
                         JOptionPane.showMessageDialog(vista_servi, "No se pudo crear el producto");
                     }
@@ -339,25 +333,24 @@ public class Controlador_Servicio {
     
      //Metodo para cambiar el estado de servicio de activo a inactivo.
     public void EliminarServicio(){
-        int seleccionado = vista_servi.getTblServicio().getSelectedRow();
-        int respuesta=0;
-        Component rootPane = null;
-        Modelo_Servicio servieli = new Modelo_Servicio();
-          if(seleccionado !=-1){
-            String idservi = vista_servi.getTblServicio().getValueAt(seleccionado, 0).toString();
-            
-            respuesta = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro que deseas eliminar este servicio?");
-            if(respuesta==0){
-                if(servieli.RemoverServicio(idservi)){
-                    JOptionPane.showMessageDialog(rootPane,"El registro del servicio a sido eliminado");        
-                }else{
-                    JOptionPane.showMessageDialog(rootPane,"Error al eliminar");
+        int i = vista_servi.getTblServicio().getSelectedRow();
+        if (i != -1) {
+            String ide = vista_servi.getTblServicio().getValueAt(i, 0).toString();
+            Modelo_Servicio servieli = new Modelo_Servicio();
+            int result = JOptionPane.showConfirmDialog(vista_servi, "Esta seguro que desea eliminar al servicio con codigo " + ide + "?", "Confirmación .", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (result == JOptionPane.YES_OPTION) {
+                if (servieli.RemoverServicio(ide)) {
+                    JOptionPane.showMessageDialog(vista_servi, "El Servicio a sido eliminado correctamente de la base de datos.");
+                    CargarServicios();
+                } else {
+                    JOptionPane.showMessageDialog(vista_servi, "Se ha producido un error al rato de eliminar el registro.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
-
-                }
-            }else{
-                JOptionPane.showMessageDialog(rootPane, "No hay datos a eliminar");
+            } else {
+                JOptionPane.showMessageDialog(vista_servi, "Registro cancelado para su eliminación.");
             }
+        } else {
+            JOptionPane.showMessageDialog(vista_servi, "Error, usted debe seleccionar un registro de la tabla para proceder a su eliminación.", "Eliminar.", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     //Metodo para modificar el servicio que a sido seleccionado

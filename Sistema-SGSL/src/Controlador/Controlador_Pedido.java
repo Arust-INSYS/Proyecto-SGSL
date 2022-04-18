@@ -7,19 +7,25 @@ package Controlador;
 
 import Modelo.CLASES.Detalle_Pedido;
 import Modelo.CLASES.Pedidos;
+import Modelo.CLASES.Servicios;
+import Modelo.Conexion_BD;
 import Modelo.Modelo_Pedido;
 import Modelo.Modelo_detallePedido;
 import Vista.Vista_Pedidos;
 import Vista.Vista_Principal;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.ws.Holder;
 /**
  *
  * @author HP
@@ -62,10 +68,11 @@ public class Controlador_Pedido {
         vista.getBtnEliminar().addActionListener(l->eliminar_fila());
         vista.getBtnEnviar().addActionListener(l-> guardar());
         vista.getBtnGuardar2().addActionListener(l->guardar3());
+        llenar_comobobox();
         
     }
     
-    //VALIDACIONES
+    //------------------VALIDACIONES------------------------------------------
     
     
 
@@ -87,8 +94,44 @@ public class Controlador_Pedido {
                 
         });
     }
+    public void Cant_Ser(){
+        List<Pedidos>listapedi= modelo.cargarValores();
+        listapedi.stream().forEach(lista->{
+            String cantidad = Integer.toString(lista.getCantidad_servicios());
+            String total = Double.toString(lista.getTotal_servicios());
+            vista.getLabelCount().setText(cantidad);
+            vista.getLabelTotal().setText(total);
+        });
+    }
+    //------------------------------------------------------------------------
+    //METODO LLENAR COMBOBOX
     
+    private void llenar_comobobox(){
+        
+        JComboBox serlist;
+        serlist=vista.getCmbxServicios();
+        serlist.removeAllItems();
+        List<Servicios>listaser= modelo.combobox();
+//        Holder<Integer>  i = new Holder<>(1);
+        listaser.stream().forEach(lista->{
+            String nom_servicios = lista.getNom_servicio();
+            serlist.addItem(nom_servicios);
+//            serlist.addItem(i.value+"."+nom_servicios);
+//        i.value++;
+            
+        });
+//        seleccion_combo();
+    }
     
+    private void seleccion_combo(){
+        int fila = (int) vista.getCmbxServicios().getSelectedItem();
+        if(fila>=0){
+//            String servicio = (String)vista.getCmbxServicios().getSelectedItem();
+//            vista.getTxtServicio().setText(servicio);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccionar Fila");
+        }
+    }
     private void agregar_datos(){
         
         modelo_tabla = (DefaultTableModel) vista.getTablaPedidos().getModel();   
@@ -101,14 +144,14 @@ public class Controlador_Pedido {
         
         String [] info = new String[6];
         
-        info[0] = vista.getTxtDireccion().getText();
+        info[0] = vista.getTxtPane_Dir().getText();
         info[1] = vista.getTxtIdPedido().getText();
         info[2] = vista.getTxtServicio().getText();
         modelo_tabla.addRow(info);
 //        vista.getTxtIdPedido().setText("");
         vista.getTxtIdClientes().setText("");
-        vista.getTxtDireccion().setText("");
-        vista.getTxtValor().setText("");
+        vista.getTxtPane_Dir().setText("");
+//        vista.getTxtValor().setText("");
         vista.getTxtServicio().setText("");
           
                 
@@ -196,27 +239,30 @@ public class Controlador_Pedido {
 //                 JOptionPane.showMessageDialog(vista,"No se pudo crear el pedido");
                  
     };
+           Cant_Ser();//Método para mostrar la cantidad y total de a tabla pedido
            
-          System.out.println("#Lista: "+i+
+           
+          System.out.println("#Lista: "+i+ //ELIMINAR
                 " "+"Direccion: "+vista.getTablaPedidos().getValueAt(i, 0)+
                 " "+"ID_Pedido: "+vista.getTablaPedidos().getValueAt(i, 1)+
                 " "+"Id_Servicio: "+vista.getTablaPedidos().getValueAt(i, 2));
           
  
           }
+        
     }
     
     private void guardar(){
          int id_pedido=Integer.parseInt(vista.getTxtIdPedido().getText());
-            int cantidad = Integer.parseInt(vista.getTxtCantidad().getText());
-            double valor = Double.parseDouble(vista.getTxtValor().getText());
+//            int cantidad = Integer.parseInt(vista.getTxtCantidad().getText());
+//            double valor = Double.parseDouble(vista.getTxtValor().getText());
             int id_cliente = Integer.parseInt(vista.getTxtIdClientes().getText());
             
             Modelo_Pedido pedido = new Modelo_Pedido();
               
             pedido.setId_pedido(id_pedido);
-            pedido.setCantidad_servicios(cantidad);
-            pedido.setTotal_servicios((float) valor);
+//            pedido.setCantidad_servicios(cantidad);
+//            pedido.setTotal_servicios((float) valor);
             pedido.setId_cliente(id_cliente);
             
             if(pedido.Insertar_Pedido()){
@@ -255,7 +301,7 @@ public class Controlador_Pedido {
      public void limpiar_pedido(){
       vista.getTxtIdPedido().setText("");
       vista.getTxtIdClientes().setText("");
-      vista.getTxtDireccion().setText("");
+      vista.getTxtPane_Dir().setText("");
 //      vista.getFechapedido().setDate(null);
 //      vista.getNumeroServicios().setValue(0);
      

@@ -8,9 +8,12 @@ package Vista;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -37,18 +40,20 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         txtIdPedido = new javax.swing.JTextField();
         txtIdClientes = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        TxtValor = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         TxtServicio = new javax.swing.JTextField();
-        TxtCantidad = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         btnGuardar2 = new javax.swing.JButton();
+        labelCount = new javax.swing.JLabel();
+        labelTotal = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtPane_Dir = new javax.swing.JTextPane();
+        cmbxServicios = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         btnEnviar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -56,7 +61,7 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         tablaPedidos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,44 +76,54 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 207, -1, -1));
 
         jLabel2.setText("ID Pedido:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 94, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         jLabel3.setText("ID Cliente:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 122, -1, -1));
-        jPanel1.add(txtIdPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 91, 72, -1));
-        jPanel1.add(txtIdClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 123, 87, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel1.add(txtIdPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 72, -1));
+        jPanel1.add(txtIdClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 87, -1));
 
         jLabel6.setText("Dirección:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 126, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         jLabel7.setText("Pedidos");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 11, -1, -1));
 
         jLabel8.setText("Ciente:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 157, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         btnBuscar.setText("Buscar");
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 122, -1, -1));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, -1));
 
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("Nombre");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 157, 87, -1));
-        jPanel1.add(TxtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 50, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 87, -1));
 
         jLabel4.setText("Total:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
         jLabel5.setText("Serrvicio:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
-        jPanel1.add(TxtServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 40, -1));
-        jPanel1.add(TxtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 40, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, -1));
+        jPanel1.add(TxtServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 40, -1));
 
         jLabel10.setText("Cantidad");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
 
         btnGuardar2.setText("Guardar2");
         jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, -1, -1));
+
+        labelCount.setText("0");
+        jPanel1.add(labelCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 20, 20));
+
+        labelTotal.setText("0.0");
+        jPanel1.add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 40, 20));
+
+        jScrollPane4.setViewportView(txtPane_Dir);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 180, 40));
+
+        cmbxServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item1" }));
+        jPanel1.add(cmbxServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 230));
 
@@ -217,23 +232,15 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         this.tablaPedidos = tablaPedidos;
     }
 
-    public JTextField getTxtCantidad() {
-        return TxtCantidad;
+    public JTextPane getTxtPane_Dir() {
+        return txtPane_Dir;
     }
 
-    public void setTxtCantidad(JTextField TxtCantidad) {
-        this.TxtCantidad = TxtCantidad;
+    public void setTxtPane_Dir(JTextPane txtPane_Dir) {
+        this.txtPane_Dir = txtPane_Dir;
     }
 
-   
-
-    public JTextField getTxtDireccion() {
-        return txtDireccion;
-    }
-
-    public void setTxtDireccion(JTextField txtDirección) {
-        this.txtDireccion = txtDirección;
-    }
+    
 
     public JTextField getTxtIdClientes() {
         return txtIdClientes;
@@ -251,6 +258,7 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         this.txtIdPedido = txtIdPedido;
     }
 
+    ///SERVICIOS
     public JTextField getTxtServicio() {
         return TxtServicio;
     }
@@ -259,13 +267,34 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         this.TxtServicio = TxtServicio;
     }
 
-    public JTextField getTxtValor() {
-        return TxtValor;
+    public JComboBox<String> getCmbxServicios() {
+        return cmbxServicios;
     }
 
-    public void setTxtValor(JTextField TxtValor) {
-        this.TxtValor = TxtValor;
+    public void setCmbxServicios(JComboBox<String> cmbxServicios) {
+        this.cmbxServicios = cmbxServicios;
     }
+    
+    
+    
+
+    public JLabel getLabelCount() {
+        return labelCount;
+    }
+
+    public void setLabelCount(JLabel labelCount) {
+        this.labelCount = labelCount;
+    }
+
+    public JLabel getLabelTotal() {
+        return labelTotal;
+    }
+
+    public void setLabelTotal(JLabel labelTotal) {
+        this.labelTotal = labelTotal;
+    }
+
+    
 
     public JButton getBtnGuardar2() {
         return btnGuardar2;
@@ -278,15 +307,14 @@ public class Vista_Pedidos extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TxtCantidad;
     private javax.swing.JTextField TxtServicio;
-    private javax.swing.JTextField TxtValor;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnGuardar2;
+    private javax.swing.JComboBox<String> cmbxServicios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -301,9 +329,12 @@ public class Vista_Pedidos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel labelCount;
+    private javax.swing.JLabel labelTotal;
     private javax.swing.JTable tablaPedidos;
-    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtIdClientes;
     private javax.swing.JTextField txtIdPedido;
+    private javax.swing.JTextPane txtPane_Dir;
     // End of variables declaration//GEN-END:variables
 }

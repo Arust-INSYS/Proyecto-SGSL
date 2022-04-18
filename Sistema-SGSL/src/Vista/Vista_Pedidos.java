@@ -104,15 +104,17 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(191, 222, 236));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAgregar.setBackground(new java.awt.Color(51, 102, 255));
         btnAgregar.setText("Agregar");
         jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 255));
         btnEliminar.setText("Remover");
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
@@ -149,6 +151,7 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         jLabel10.setText("Cantidad:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
 
+        btnGuardar2.setBackground(new java.awt.Color(0, 0, 255));
         btnGuardar2.setText("Guardar");
         jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 

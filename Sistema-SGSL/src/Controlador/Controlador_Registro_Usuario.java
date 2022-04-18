@@ -24,6 +24,7 @@ public class Controlador_Registro_Usuario {
     public Controlador_Registro_Usuario(Modelo_Usuario modelo_user, Vista_Registro_Usuario vista_registroU) {
         this.modelo_user = modelo_user;
         this.vista_registroU = vista_registroU;
+        vista_registroU.setLocationRelativeTo(null);
         vista_registroU.setVisible(true);
     }
     

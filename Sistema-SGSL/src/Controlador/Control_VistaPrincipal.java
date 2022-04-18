@@ -24,6 +24,7 @@ import Vista.Vista_Principal;
 import Vista.Vista_bodega;
 import Vista.Vista_productos;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +36,7 @@ public class Control_VistaPrincipal {
     public Control_VistaPrincipal(Vista_Principal vista_menu){
         this.vista_menu=vista_menu;
         vista_menu.setVisible(true);
+        vista_menu.setLocationRelativeTo(null);
         ReportesSGSL();
     }
     
@@ -47,6 +49,7 @@ public class Control_VistaPrincipal {
         vista_menu.getMenuItem_empleados().addActionListener(l->Crud_empleados());
         vista_menu.getBtnRegresar().addActionListener(l-> Cerrar());
         vista_menu.getSubmenu_Pedidos().addActionListener(l->Crud_pedidos());
+        vista_menu.getJmenuSalirSistema().addActionListener(l -> Salir_Sistema());
 
     }
     private void Crud_Servicios(){
@@ -143,6 +146,12 @@ public class Control_VistaPrincipal {
         Controlador_Reportes cr = new Controlador_Reportes(vista_menu);
         cr.IniciarControlReportes();
     }
-    
-    
+    private void Salir_Sistema(){
+        int i = JOptionPane.showConfirmDialog(vista_menu, "¿Está seguro que desea salir del sistema?", "SALIR.", JOptionPane.YES_NO_OPTION);
+        if(i == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }else{
+            JOptionPane.showMessageDialog(vista_menu, "Salida del sistema cancelado.");
+        }
+    }
 }

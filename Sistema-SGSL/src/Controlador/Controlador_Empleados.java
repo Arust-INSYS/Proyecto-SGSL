@@ -191,8 +191,11 @@ public class Controlador_Empleados {
                 if (fechacontra.isEmpty() || conf.FechaNacimiento(vista_emple.getContratacion()) == false) {
                     JOptionPane.showMessageDialog(vista_emple, "Fecha de ingreso superior a fecha actual", "Validación Fecha", JOptionPane.WARNING_MESSAGE);
                     vista_emple.getLblFechaRojo().setVisible(true);
+                    
                 } else {
                     vista_emple.getLblFechaRojo().setVisible(false);
+                    
+                    
                 }
             }
         };
@@ -233,6 +236,7 @@ public class Controlador_Empleados {
             IncremetoID();
             vista_emple.getTxtidempleado().setEditable(false);
             limpiar_emple();
+            
         } else {
             if (ce == 2) {
                 title = "Editar empleado";
@@ -373,7 +377,7 @@ public class Controlador_Empleados {
             Date fechainfri = vista_emple.getContratacion().getDate();
             if (vista_emple.getTxtidempleado().getText().equals("") || vista_emple.getTxtsueldo().getText().equals("")
                     || vista_emple.getBoxEstado().getSelectedItem().equals("") || vista_emple.getBoxrol().getSelectedItem().equals("") || vista_emple.getTxtid_persona().getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS CAMPOS");
+                JOptionPane.showMessageDialog(vista_emple.getDialogEmpleado(), "INGRESE TODOS LOS CAMPOS");
             } else {
                 if (fechainfri == null) {
                     JOptionPane.showMessageDialog(vista_emple, "Campo de fecha vacio.", "Validación Fecha", JOptionPane.WARNING_MESSAGE);

@@ -94,8 +94,10 @@ public class Vista_Principal extends javax.swing.JFrame {
         mncostoservi = new javax.swing.JMenuItem();
         mnsueldoemple = new javax.swing.JMenuItem();
         mnSalir = new javax.swing.JMenu();
+        JmenuSalirSistema = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jToolBar1.setBackground(new java.awt.Color(0, 80, 128));
@@ -242,11 +244,11 @@ public class Vista_Principal extends javax.swing.JFrame {
         menu_persona.setText("Persona");
         menu_persona.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
 
-        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         menuItem_clientes.setText("Clientes");
         menu_persona.add(menuItem_clientes);
 
-        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        menuItem_empleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         menuItem_empleados.setText("Empleados");
         menu_persona.add(menuItem_empleados);
 
@@ -305,6 +307,11 @@ public class Vista_Principal extends javax.swing.JFrame {
         mnSalir.setForeground(new java.awt.Color(255, 255, 255));
         mnSalir.setText("Salir");
         mnSalir.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+
+        JmenuSalirSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-exit-25.png"))); // NOI18N
+        JmenuSalirSistema.setText("Salir del Sistema");
+        mnSalir.add(JmenuSalirSistema);
+
         menu_principal.add(mnSalir);
 
         setJMenuBar(menu_principal);
@@ -499,6 +506,14 @@ public class Vista_Principal extends javax.swing.JFrame {
         this.JmenuBodegaEpacioCVP = JmenuBodegaEpacioCVP;
     }
 
+    public JMenuItem getJmenuSalirSistema() {
+        return JmenuSalirSistema;
+    }
+
+    public void setJmenuSalirSistema(JMenuItem JmenuSalirSistema) {
+        this.JmenuSalirSistema = JmenuSalirSistema;
+    }
+
     
     
 
@@ -509,6 +524,7 @@ public class Vista_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem JmenuPersonasGeneroVP;
     private javax.swing.JMenuItem JmenuPersonasVP;
     private javax.swing.JMenuItem JmenuProductosTopCVP;
+    private javax.swing.JMenuItem JmenuSalirSistema;
     private javax.swing.JMenuItem MnEmpleado;
     private javax.swing.JMenuItem MnServicio;
     private javax.swing.JButton btnRegresar;

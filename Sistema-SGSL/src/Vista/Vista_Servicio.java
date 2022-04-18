@@ -335,7 +335,7 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         btnveremple.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnveremple.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-búsqueda-de-propiedad-45.png"))); // NOI18N
-        btnveremple.setText("ver Empledo");
+        btnveremple.setText("Ver Empleado");
         btnveremple.setBorder(null);
         btnveremple.setContentAreaFilled(false);
         Dialog_Crear.getContentPane().add(btnveremple, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
@@ -391,6 +391,8 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         jLabel5.setText("jLabel5");
 
+        setClosable(true);
+        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N

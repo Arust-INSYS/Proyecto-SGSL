@@ -25,6 +25,7 @@ public class Controlador_Login {
     public Controlador_Login(Modelo_Usuario modelo_user, Vista_Login vista_login) {
         this.modelo_user = modelo_user;
         this.vista_login = vista_login;
+        vista_login.setLocationRelativeTo(null);
 //        vista_login.setVisible(true);
     }
 //Método de control de todos los botones iniciales.

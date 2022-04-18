@@ -236,6 +236,7 @@ public class Controlador_Empleados {
             IncremetoID();
             vista_emple.getTxtidempleado().setEditable(false);
             limpiar_emple();
+            
         } else {
             if (ce == 2) {
                 title = "Editar empleado";

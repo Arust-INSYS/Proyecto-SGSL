@@ -286,9 +286,9 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         BtnEditar = new javax.swing.JButton();
         BtnRemover = new javax.swing.JButton();
         BtnCrear = new javax.swing.JButton();
-        BtnActualizar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        BtnActualizar = new javax.swing.JButton();
         txtfechahoy = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -473,19 +473,18 @@ public class Vista_Empleado extends javax.swing.JInternalFrame {
         });
         getContentPane().add(BtnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
-        BtnActualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
-        BtnActualizar.setText("Actualizar");
-        BtnActualizar.setBorder(null);
-        BtnActualizar.setContentAreaFilled(false);
-        getContentPane().add(BtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, 60));
-
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/EMPLECAP22.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, 190));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 190, 280));
-        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 20));
+
+        BtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
+        BtnActualizar.setText("Actualizar");
+        BtnActualizar.setBorder(null);
+        BtnActualizar.setContentAreaFilled(false);
+        getContentPane().add(BtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, -1, -1));
+        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 70, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));

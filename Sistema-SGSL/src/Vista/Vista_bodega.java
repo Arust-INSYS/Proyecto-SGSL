@@ -262,16 +262,14 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnActualizarServicio.setForeground(new java.awt.Color(0, 0, 0));
         BtnActualizarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
         BtnActualizarServicio.setText("Actualizar");
         BtnActualizarServicio.setToolTipText("Actualizar");
         BtnActualizarServicio.setBorder(null);
         BtnActualizarServicio.setContentAreaFilled(false);
-        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, -1, -1));
+        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("BODEGAS");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 260, 30));
 
@@ -355,7 +353,7 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         jInternalFrame1.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 850, 270));
 
         getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, 110, 20));
+        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 70, 20));
 
         TABLABODEGA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -370,30 +368,27 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 770, 270));
 
         BtnCrearServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnCrearServicio.setForeground(new java.awt.Color(0, 0, 0));
         BtnCrearServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-agregar bodega-propiedad-48 (1).png"))); // NOI18N
         BtnCrearServicio.setText("Crear");
         BtnCrearServicio.setBorder(null);
         BtnCrearServicio.setContentAreaFilled(false);
-        getContentPane().add(BtnCrearServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 212, 100, -1));
+        getContentPane().add(BtnCrearServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 100, -1));
 
         BtnEditarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnEditarServicio.setForeground(new java.awt.Color(0, 0, 0));
         BtnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-editar-bodeaspropiedad-48.png"))); // NOI18N
         BtnEditarServicio.setText("Editar");
         BtnEditarServicio.setToolTipText("Editar");
         BtnEditarServicio.setBorder(null);
         BtnEditarServicio.setContentAreaFilled(false);
-        getContentPane().add(BtnEditarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 100, 50));
+        getContentPane().add(BtnEditarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 100, 50));
 
         BtnRemoverServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnRemoverServicio.setForeground(new java.awt.Color(0, 0, 0));
         BtnRemoverServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-eliminar-bodega-propiedad-48 (1).png"))); // NOI18N
         BtnRemoverServicio.setText("Eliminar");
         BtnRemoverServicio.setToolTipText("Eliminar");
         BtnRemoverServicio.setBorder(null);
         BtnRemoverServicio.setContentAreaFilled(false);
-        getContentPane().add(BtnRemoverServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 110, 50));
+        getContentPane().add(BtnRemoverServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 110, 50));
         getContentPane().add(TxtBuscarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 144, 319, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
@@ -402,8 +397,8 @@ public class Vista_bodega extends javax.swing.JInternalFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Servicios_Logo_180.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 190, 190));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Imagen4F.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 180, 280));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 190, 280));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 530));

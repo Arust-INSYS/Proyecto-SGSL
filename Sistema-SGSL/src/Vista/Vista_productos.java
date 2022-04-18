@@ -399,7 +399,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         Dialog_Crear.getContentPane().add(btnexaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
 
         txtfecha.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        txtfecha.setForeground(new java.awt.Color(0, 0, 0));
         Dialog_Crear.getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 140, 30));
 
         btnbuscaridbodega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
@@ -445,7 +444,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jLabel7.setText("BODEGAS");
         dialogbodega.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 203, 43));
 
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
         jLabel15.setToolTipText("Buscar");
         dialogbodega.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
@@ -471,18 +469,16 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnActualizarServicio.setForeground(new java.awt.Color(0, 0, 0));
         BtnActualizarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-PRO{-48.png"))); // NOI18N
         BtnActualizarServicio.setText("Actualizar");
         BtnActualizarServicio.setBorder(null);
         BtnActualizarServicio.setContentAreaFilled(false);
         BtnActualizarServicio.setFocusPainted(false);
-        BtnActualizarServicio.setRolloverEnabled(true);
         getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 40, 140, 60));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Servicios_Logo_180.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 180, 170));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 180, 180));
 
         tablita.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -503,7 +499,7 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tablita);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 850, 300));
-        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 110, 20));
+        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 0, 70, 20));
 
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -587,12 +583,10 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
         getContentPane().add(TxtBuscarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 319, 30));
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
 
         BtnEditarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnEditarServicio.setForeground(new java.awt.Color(0, 0, 0));
         BtnEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48 (2).png"))); // NOI18N
         BtnEditarServicio.setText("Editar");
         BtnEditarServicio.setToolTipText("");
@@ -601,7 +595,6 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         getContentPane().add(BtnEditarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 100, 50));
 
         BtnCrearServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnCrearServicio.setForeground(new java.awt.Color(0, 0, 0));
         BtnCrearServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48.png"))); // NOI18N
         BtnCrearServicio.setText("Crear");
         BtnCrearServicio.setToolTipText("CREAR");
@@ -610,18 +603,16 @@ public class Vista_productos extends javax.swing.JInternalFrame {
         getContentPane().add(BtnCrearServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 110, 50));
 
         BtnRemoverServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnRemoverServicio.setForeground(new java.awt.Color(0, 0, 0));
         BtnRemoverServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-servicio-de-limpieza-48 (1).png"))); // NOI18N
         BtnRemoverServicio.setText("Remover");
         BtnRemoverServicio.setBorder(null);
         BtnRemoverServicio.setContentAreaFilled(false);
         getContentPane().add(BtnRemoverServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 110, 50));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Imagen4F.png"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, -1));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 190, -1));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("PRODUCTOS");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 250, 60));
 

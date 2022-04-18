@@ -370,7 +370,7 @@ public class Vista_Cliente extends javax.swing.JInternalFrame {
 
         lblbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
         getContentPane().add(lblbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, 40));
-        getContentPane().add(LblFechaAcutualVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 120, 20));
+        getContentPane().add(LblFechaAcutualVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 80, 20));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 320, 10));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/Blancoceleste.jpg"))); // NOI18N

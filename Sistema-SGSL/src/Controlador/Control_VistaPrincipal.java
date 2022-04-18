@@ -48,7 +48,6 @@ public class Control_VistaPrincipal {
         vista_menu.getBtnbodega().addActionListener(l -> Crud_bodega());
         vista_menu.getMenuItem_empleados().addActionListener(l->Crud_empleados());
         vista_menu.getBtnRegresar().addActionListener(l-> Cerrar());
-        vista_menu.getSubmenu_Pedidos().addActionListener(l->Crud_pedidos());
         vista_menu.getJmenuSalirSistema().addActionListener(l -> Salir_Sistema());
         vista_menu.getSubmenu_Pedidos().addActionListener(l->Crud_Pedidos());
 
@@ -142,14 +141,7 @@ public class Control_VistaPrincipal {
             vista_menu.getMenuItem_empleados().setEnabled(false);
         }
     }
-     private void Crud_pedidos(){
-        Vista_Pedidos vista = new Vista_Pedidos();
-        Modelo_Pedido modelo = new Modelo_Pedido();        
-        vista_menu.getDkp_pane_principal().add(vista);
-        
-        Controlador_Pedido control = new Controlador_Pedido(modelo,vista);
-        control.incioControl();
-    }
+     
      
     private void ReportesSGSL(){
         Controlador_Reportes cr = new Controlador_Reportes(vista_menu);

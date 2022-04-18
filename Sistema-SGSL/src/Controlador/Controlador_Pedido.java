@@ -160,7 +160,7 @@ public class Controlador_Pedido {
     //Metodo abrir dialogo
     public void dialogo_cliente(){
         vista.getDlgpersona().setVisible(true);
-        vista.getDlgpersona().setSize(500, 400);
+        vista.getDlgpersona().setSize(460, 390);
         vista.getDlgpersona().setLocationRelativeTo(null);
         lista_clientes();
         keylist_Client();       
@@ -342,7 +342,8 @@ public class Controlador_Pedido {
         id_aumento();
         vista.getTxtIdClientes().setText("");
         vista.getTxtPane_Dir().setText("");
-        
+        vista.getLabelCount().setText("");
+        vista.getLabelTotal().setText("");
         vista.getTxtServicio().setText("");
         DefaultTableModel tblModel;
         tblModel = (DefaultTableModel) vista.getTablaPedidos().getModel();

@@ -191,8 +191,11 @@ public class Controlador_Empleados {
                 if (fechacontra.isEmpty() || conf.FechaNacimiento(vista_emple.getContratacion()) == false) {
                     JOptionPane.showMessageDialog(vista_emple, "Fecha de ingreso superior a fecha actual", "Validación Fecha", JOptionPane.WARNING_MESSAGE);
                     vista_emple.getLblFechaRojo().setVisible(true);
+                    
                 } else {
                     vista_emple.getLblFechaRojo().setVisible(false);
+                    
+                    
                 }
             }
         };

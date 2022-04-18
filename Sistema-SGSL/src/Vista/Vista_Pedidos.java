@@ -8,6 +8,7 @@ package Vista;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
@@ -31,9 +32,13 @@ public class Vista_Pedidos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dlgpersona = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_buscar_cli = new javax.swing.JTable();
+        txt_buscarCli = new javax.swing.JTextField();
+        btnCargar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -43,7 +48,7 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        label_Cliente = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         TxtServicio = new javax.swing.JTextField();
@@ -61,19 +66,55 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         tablaPedidos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        tbl_buscar_cli.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id_cliente", "Nombre", "Apellido"
+            }
+        ));
+        jScrollPane2.setViewportView(tbl_buscar_cli);
+
+        btnCargar.setText("Cargar");
+
+        javax.swing.GroupLayout dlgpersonaLayout = new javax.swing.GroupLayout(dlgpersona.getContentPane());
+        dlgpersona.getContentPane().setLayout(dlgpersonaLayout);
+        dlgpersonaLayout.setHorizontalGroup(
+            dlgpersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgpersonaLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(dlgpersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dlgpersonaLayout.createSequentialGroup()
+                        .addComponent(txt_buscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCargar)))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        dlgpersonaLayout.setVerticalGroup(
+            dlgpersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgpersonaLayout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(dlgpersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_buscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCargar))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(191, 222, 236));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAgregar.setText("Agregar");
         jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 207, -1, -1));
 
-        btnEditar.setText("Editar");
-        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 207, -1, -1));
-
-        btnEliminar.setText("Eliminar");
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 207, -1, -1));
+        btnEliminar.setText("Remover");
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 
         jLabel2.setText("ID Pedido:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
@@ -81,7 +122,7 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         jLabel3.setText("ID Cliente:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
         jPanel1.add(txtIdPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 72, -1));
-        jPanel1.add(txtIdClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 87, -1));
+        jPanel1.add(txtIdClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 50, -1));
 
         jLabel6.setText("Dirección:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
@@ -93,24 +134,23 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         btnBuscar.setText("Buscar");
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, -1));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
 
-        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel9.setText("Nombre");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 87, -1));
+        label_Cliente.setText("Nombre");
+        jPanel1.add(label_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 87, -1));
 
         jLabel4.setText("Total:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
         jLabel5.setText("Serrvicio:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, -1));
-        jPanel1.add(TxtServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 40, -1));
+        jPanel1.add(TxtServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 40, -1));
 
-        jLabel10.setText("Cantidad");
+        jLabel10.setText("Cantidad:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
 
-        btnGuardar2.setText("Guardar2");
-        jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, -1, -1));
+        btnGuardar2.setText("Guardar");
+        jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
 
         labelCount.setText("0");
         jPanel1.add(labelCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 20, 20));
@@ -126,6 +166,8 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         jPanel1.add(cmbxServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 230));
+
+        jPanel4.setBackground(new java.awt.Color(191, 222, 236));
 
         btnEnviar.setText("Enviar");
 
@@ -146,6 +188,8 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 570, 20));
+
+        jPanel3.setBackground(new java.awt.Color(191, 222, 236));
 
         tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,13 +243,15 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         this.btnAgregar = btnCrear;
     }
 
-    public JButton getBtnEditar() {
-        return btnEditar;
-    }
+//    public JButton getBtnCancelar() {
+//        return btnCancelar;
+//    }
+//
+//    public void setBtnCancelar(JButton btnCancelar) {
+//        this.btnCancelar = btnCancelar;
+//    }
 
-    public void setBtnEditar(JButton btnEditar) {
-        this.btnEditar = btnEditar;
-    }
+    
 
     public JButton getBtnEliminar() {
         return btnEliminar;
@@ -303,18 +349,68 @@ public class Vista_Pedidos extends javax.swing.JFrame {
     public void setBtnGuardar2(JButton btnGuardar2) {
         this.btnGuardar2 = btnGuardar2;
     }
+
+    public JLabel getLabel_Cliente() {
+        return label_Cliente;
+    }
+
+    public void setLabel_Cliente(JLabel label_Cliente) {
+        this.label_Cliente = label_Cliente;
+    }
     
+    ///VISTA DLG_CLIENTE
+    
+    public JDialog getDlgpersona() {
+        return dlgpersona;
+    }
+
+    public void setDlgpersona(JDialog dlgpersona) {
+        this.dlgpersona = dlgpersona;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnCargar() {
+        return btnCargar;
+    }
+
+    public void setBtnCargar(JButton btnCargar) {
+        this.btnCargar = btnCargar;
+    }
+
+    public JTable getTbl_buscar_cli() {
+        return tbl_buscar_cli;
+    }
+
+    public void setTbl_buscar_cli(JTable tbl_buscar_cli) {
+        this.tbl_buscar_cli = tbl_buscar_cli;
+    }
+
+    public JTextField getTxt_buscarCli() {
+        return txt_buscarCli;
+    }
+
+    public void setTxt_buscarCli(JTextField txt_buscarCli) {
+        this.txt_buscarCli = txt_buscarCli;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxtServicio;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnCargar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnGuardar2;
     private javax.swing.JComboBox<String> cmbxServicios;
+    private javax.swing.JDialog dlgpersona;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -324,17 +420,20 @@ public class Vista_Pedidos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelCount;
     private javax.swing.JLabel labelTotal;
+    private javax.swing.JLabel label_Cliente;
     private javax.swing.JTable tablaPedidos;
+    private javax.swing.JTable tbl_buscar_cli;
     private javax.swing.JTextField txtIdClientes;
     private javax.swing.JTextField txtIdPedido;
     private javax.swing.JTextPane txtPane_Dir;
+    private javax.swing.JTextField txt_buscarCli;
     // End of variables declaration//GEN-END:variables
 }

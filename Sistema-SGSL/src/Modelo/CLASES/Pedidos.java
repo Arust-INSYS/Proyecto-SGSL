@@ -17,7 +17,7 @@ public class Pedidos {
     private int cantidad_servicios;
     private double total_servicios;
     private int id_cliente;
-    
+    private String estado;
 
     public Pedidos() {
     }
@@ -70,6 +70,14 @@ public class Pedidos {
 
     public void setId_cliente(int id_cliente) {
         this.id_cliente = id_cliente;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 

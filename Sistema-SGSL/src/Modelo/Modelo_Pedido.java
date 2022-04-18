@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Modelo.CLASES.Cliente;
 import Modelo.CLASES.Pedidos;
 import Modelo.CLASES.Servicios;
 import java.sql.PreparedStatement;
@@ -82,7 +83,83 @@ public class Modelo_Pedido extends Pedidos {
         }
         
     } //en uso
+    public List<Cliente> lista_clientes(){
+        List<Cliente> lista = new ArrayList<Cliente>();
+        ResultSet rs;
+        String sql="";
+        try {
+           
+               sql = "SELECT* FROM vista_cliente";
+           
+            
+             rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Cliente cl = new Cliente();
+//                ser.setId_servicio(rs.getInt("id_servicio"));
+                  cl.setId_clienteC(rs.getInt("id_cliente"));
+                  cl.setNombre(rs.getString("nombre"));
+                  cl.setApellido(rs.getString("apellido"));
+                lista.add(cl);
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    //  
+    public List<Pedidos> datos_pedido(){
+        List<Pedidos> lista = new ArrayList<Pedidos>();
+        ResultSet rs;
+        String sql="";
+        try {
+           
+               sql = "SELECT* FROM vista_ultimopedido";
+           
+            
+             rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Pedidos pd = new Pedidos();
+//                ser.setId_servicio(rs.getInt("id_servicio"));
+                  pd.setTotal_servicios(rs.getDouble("pago"));
+                  pd.setId_pedido(rs.getInt("id_pedido"));
+                lista.add(pd);
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     
+    public List<Cliente> buscar_clientes(String texto){
+        List<Cliente> lista = new ArrayList<Cliente>();
+        ResultSet rs;
+        String sql="";
+        try {
+           
+               sql = "SELECT* FROM vista_cliente WHERE UPPER(nombre) LIKE '"+texto+"%' OR "
+                       + " UPPER(apellido) LIKE '"+texto+"%'";
+           
+            
+             rs = cpg.colsulta(sql);
+            while (rs.next()) {
+                Cliente cl = new Cliente();
+//                ser.setId_servicio(rs.getInt("id_servicio"));
+                  cl.setId_clienteC(rs.getInt("id_cliente"));
+                  cl.setNombre(rs.getString("nombre"));
+                  cl.setApellido(rs.getString("apellido"));
+                lista.add(cl);
+            }
+            rs.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     public List<Servicios> selecctionitem(String nom_serv){
          List<Servicios> lista = new ArrayList<Servicios>();
         try {
@@ -197,7 +274,35 @@ public class Modelo_Pedido extends Pedidos {
             return false;
         }
     } //en uso
-
+    
+    public boolean Insertar_Pago() {
+        try {
+            String sql;
+            sql = "INSERT INTO comprobante_pago (valor_cancelar, id_pedido)";
+            sql += "VALUES(?,?)";
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setDouble(1, getTotal_servicios());
+            ps.setInt(2, getId_pedido());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    } //en uso
+    public boolean cancelar_pedido(){
+        try {
+            String sql;
+            sql = "UPDATE Pedido SET estado=UPPER('cancelado') WHERE id_pedido = (SELECT MAX(id_pedido) from pedido)";
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ps.setString(1, getEstado());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
     public boolean ModificarPedido() {
         try {
             String sql;

@@ -110,10 +110,18 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(191, 222, 236));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setBorder(null);
+        btnAgregar.setContentAreaFilled(false);
         jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/remover.png"))); // NOI18N
         btnEliminar.setText("Remover");
+        btnEliminar.setBorder(null);
+        btnEliminar.setContentAreaFilled(false);
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
         jLabel2.setText("ID Pedido:");
@@ -127,13 +135,19 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         jLabel6.setText("Dirección:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Yu Mincho Demibold", 0, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 255));
         jLabel7.setText("Pedidos");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 11, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 130, 30));
 
         jLabel8.setText("Ciente:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-eliminar-user-group-man-man-30(1).png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(null);
+        btnBuscar.setContentAreaFilled(false);
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
 
         label_Cliente.setText("Nombre");
@@ -149,12 +163,18 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
         jLabel10.setText("Cantidad:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
 
+        btnGuardar2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnGuardar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/guardar.png"))); // NOI18N
         btnGuardar2.setText("Guardar");
+        btnGuardar2.setBorder(null);
+        btnGuardar2.setContentAreaFilled(false);
         jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
+        labelCount.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labelCount.setText("0");
         jPanel1.add(labelCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 20, 20));
 
+        labelTotal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labelTotal.setText("0.0");
         jPanel1.add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 40, 20));
 
@@ -162,14 +182,17 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 180, 40));
 
-        cmbxServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item1" }));
+        cmbxServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
         jPanel1.add(cmbxServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 240));
 
         jPanel4.setBackground(new java.awt.Color(191, 222, 236));
 
+        btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/enviar.png"))); // NOI18N
         btnEnviar.setText("Enviar");
+        btnEnviar.setBorder(null);
+        btnEnviar.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -187,7 +210,7 @@ public class Vista_Pedidos extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 570, 20));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 570, 30));
 
         jPanel3.setBackground(new java.awt.Color(191, 222, 236));
 

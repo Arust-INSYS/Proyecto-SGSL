@@ -111,10 +111,10 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAgregar.setText("Agregar");
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 207, -1, -1));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         btnEliminar.setText("Remover");
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
         jLabel2.setText("ID Pedido:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
@@ -150,7 +150,7 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
 
         btnGuardar2.setText("Guardar");
-        jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
+        jPanel1.add(btnGuardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
         labelCount.setText("0");
         jPanel1.add(labelCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 20, 20));
@@ -165,7 +165,7 @@ public class Vista_Pedidos extends javax.swing.JFrame {
         cmbxServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item1" }));
         jPanel1.add(cmbxServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 200, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 230));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 560, 240));
 
         jPanel4.setBackground(new java.awt.Color(191, 222, 236));
 

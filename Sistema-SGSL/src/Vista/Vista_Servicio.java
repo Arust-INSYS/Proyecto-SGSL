@@ -249,7 +249,6 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         ingreemple = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        BtnActualizarServicio = new javax.swing.JButton();
         TxtBuscarServicio = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -259,6 +258,7 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         BtnRemoverServicio = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtfechahoy = new javax.swing.JLabel();
+        BtnActualizarServicio = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -394,13 +394,6 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
         setClosable(true);
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BtnActualizarServicio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnActualizarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
-        BtnActualizarServicio.setText("Actualizar");
-        BtnActualizarServicio.setBorder(null);
-        BtnActualizarServicio.setContentAreaFilled(false);
-        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 130, 70));
         getContentPane().add(TxtBuscarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 330, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
@@ -441,7 +434,13 @@ public class Vista_Servicio extends javax.swing.JInternalFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 190, 280));
-        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 120, 20));
+        getContentPane().add(txtfechahoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 80, 20));
+
+        BtnActualizarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-actualizar-48.png"))); // NOI18N
+        BtnActualizarServicio.setText("Actualizar");
+        BtnActualizarServicio.setBorder(null);
+        BtnActualizarServicio.setContentAreaFilled(false);
+        getContentPane().add(BtnActualizarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, 110, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/SERVICAP22.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 320, 180));

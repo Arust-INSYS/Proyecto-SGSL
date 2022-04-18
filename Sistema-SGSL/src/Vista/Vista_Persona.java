@@ -481,7 +481,7 @@ public class Vista_Persona extends javax.swing.JInternalFrame {
 
         lblbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/icons8-busca-mas-48.png"))); // NOI18N
         getContentPane().add(lblbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, 40));
-        getContentPane().add(LblFechaAcutualVP, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, 120, 20));
+        getContentPane().add(LblFechaAcutualVP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, 80, 20));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 330, 10));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/tabla_eje1.png"))); // NOI18N

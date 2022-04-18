@@ -20,7 +20,7 @@ import javax.swing.JTextPane;
  *
  * @author HP
  */
-public class Vista_Pedidos extends javax.swing.JFrame {
+public class Vista_Pedidos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Vista_Pedidos

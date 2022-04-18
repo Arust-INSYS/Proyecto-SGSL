@@ -42,26 +42,11 @@ public class Controlador_Pedido {
     private Vista_Pedidos vista;
     DefaultTableModel modelo_tabla;
     
-    public static void main(String[] args) {
-       Vista_Pedidos vista = new Vista_Pedidos();
-        Modelo_Pedido modelo = new Modelo_Pedido();        
-        
-        
-        Controlador_Pedido control = new Controlador_Pedido(modelo,vista);
-        control.incioControl();
-        
-        LocalTime hora = LocalTime.now();
-        
-        System.out.println(
-        hora
-        );
-    }
 
     public Controlador_Pedido(Modelo_Pedido modelo, Vista_Pedidos vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
-        vista.setLocationRelativeTo(null);
         id_aumento();
         vista.getBtnEnviar().setEnabled(false);
     }

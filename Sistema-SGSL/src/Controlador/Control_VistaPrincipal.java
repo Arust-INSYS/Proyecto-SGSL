@@ -50,6 +50,7 @@ public class Control_VistaPrincipal {
         vista_menu.getBtnRegresar().addActionListener(l-> Cerrar());
         vista_menu.getSubmenu_Pedidos().addActionListener(l->Crud_pedidos());
         vista_menu.getJmenuSalirSistema().addActionListener(l -> Salir_Sistema());
+        vista_menu.getSubmenu_Pedidos().addActionListener(l->Crud_Pedidos());
 
     }
     private void Crud_Servicios(){
@@ -58,6 +59,14 @@ public class Control_VistaPrincipal {
         vista_menu.getDkp_pane_principal().add(vista_servi);
         Controlador_Servicio controlador = new Controlador_Servicio(modelo_servi, vista_servi);
         controlador.iniciaControl();
+        
+    }
+    private void Crud_Pedidos(){
+        Vista_Pedidos vista_pedidos = new Vista_Pedidos();
+        Modelo_Pedido modelo_ped = new Modelo_Pedido();
+        vista_menu.getDkp_pane_principal().add(vista_pedidos);
+        Controlador_Pedido controlador = new Controlador_Pedido(modelo_ped, vista_pedidos);
+        controlador.incioControl();
     }
     private void Crud_productos(){
         Vista_productos vista_pro = new Vista_productos();

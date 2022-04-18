@@ -28,10 +28,10 @@ public class Ejecutar {
         
         
         //logeo
-        Vista_Login vl = new Vista_Login();
-        Modelo_Usuario mu = new Modelo_Usuario();
-        Controlador_Login cl = new Controlador_Login(mu, vl);
-        cl.IniciarBoton();
+//        Vista_Login vl = new Vista_Login();
+//        Modelo_Usuario mu = new Modelo_Usuario();
+//        Controlador_Login cl = new Controlador_Login(mu, vl);
+//        cl.IniciarBoton();
         //
         Vista_Carga viewcarga = new Vista_Carga();
         Controlador_Carga conC = new Controlador_Carga(viewcarga);
